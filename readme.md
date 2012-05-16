@@ -1,1 +1,1 @@
-This is the web application for the remmitances project.
+This is the web application for curious city.

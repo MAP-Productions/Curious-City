@@ -1,0 +1,32 @@
+
+
+
+/* Submit a Question */
+
+
+.submit-step-selected {
+
+	color:blue;
+}
+
+
+.submit-step {
+
+	padding:25px;
+}
+
+
+#question-form-2 {
+
+	display:none;
+}
+
+#question-form-3 {
+
+	display:none;
+}
+
+#question-form-4 {
+
+	display:none;
+}

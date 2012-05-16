@@ -57,8 +57,11 @@ this.curiouscity = {
 
 		console.log('curious eh');
 		
+		var Questions = curiouscity.module("questions");
 		
 		
+		this.submitView = new Questions.Views.Submit({model:new Questions.Model()});
+		$('#main').append(this.submitView.render());
 		
 		
 	},

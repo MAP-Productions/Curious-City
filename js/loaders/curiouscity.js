@@ -19,7 +19,6 @@ require.config({
 var loadFiles = [
 	'order!lib/jquery-1.7.1.min',
 
-
 	//libraries
 	'order!lib/underscore',
 	'order!lib/backbone',

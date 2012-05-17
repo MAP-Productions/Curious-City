@@ -9,7 +9,7 @@
 
 		url: function()
 		{
-			return null;
+			return 'php/submit.php'
 		},
 
 		initialize : function()
@@ -18,5 +18,7 @@
 
 
 	});
+	
+	
 
 })(curiouscity.module("questions"));

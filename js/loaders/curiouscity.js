@@ -39,6 +39,7 @@ var loadFiles = [
 	
 	//views
 	'order!app/views/view.question.vote',
+	'order!app/views/view.question.submit',
 
 	
 	//plugins

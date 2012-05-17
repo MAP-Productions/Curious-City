@@ -4,14 +4,15 @@
 
 	
 
-		initialize : function()
+			initialize : function(options)
 		{
+			_.extend(this,options);
 
 		},
 		
 		url: function()
 		{
-			return 'js/data/votingquestions.js';
+			return 'php/questions.php?votingperiod='+this.votingperiod;
 		},
 		
 		parse: function(data)

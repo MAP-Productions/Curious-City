@@ -27,11 +27,27 @@
 
 		render : function( )
 		{
-			return this.el;
+			return this;
 		},
 	
 		getTemplate : function()
 		{
+			
+			var html =
+			
+			"<div class='question'>"+
+				"<div class='row'>"+
+					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
+					"<a href='#'><i class='vote'></i></a>"+
+					"<div class='span7 question-text'>"+
+						"<h2><%= text %></h2>"+
+					"</div>"+
+				"</div>"+
+			"</div>";
+			
+			
+			
+			/*
 			var html =	"<span class='question-prompt' ><h1>What are you curious about?</h1></span>";
 			html += "<span class='step-one' ><a>Step 1: question</a></span>";
 			html += "<span class='step-one' ><a>Step 2: contact</a></span>";
@@ -40,7 +56,7 @@
 						"<div class='question-form-1'></div>"+
 						"<div class='question-form-2`'></div>"+
 						"<div class='question-form-3'></div>";
-			
+			*/
 			
 			return html;
 		}

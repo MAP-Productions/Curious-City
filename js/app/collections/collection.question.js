@@ -4,7 +4,7 @@
 
 	
 
-			initialize : function(options)
+		initialize : function(options)
 		{
 			_.extend(this,options);
 

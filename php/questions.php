@@ -105,7 +105,7 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 		$rowData = $entry->getCustom();
 		$question =array();
 		
-		$publicColumns=array('id','name','question','anonymous','percentage');
+		$publicColumns=array('id','name','question','anonymous','percentage','imageurl');
 		
 		foreach($rowData as $customEntry) {
 		 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();

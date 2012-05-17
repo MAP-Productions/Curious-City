@@ -77,10 +77,17 @@ this.curiouscity = {
 		
 		this.questionsCollection = new Questions.Collection({'votingperiod':'current'});
 		this.questionsCollection.fetch({success:function(collection,response){
-		console.log(collection);
-		console.log(response);
-		}
-		
+				
+				
+				_.each( _.toArray(collection),function(question){
+					console.log('adding view');
+					var questionView = new Questions.Views.Vote({model:question});
+					$('#questions').append(questionView.render().el);
+				
+				});
+			
+				
+			}
 		});
 		
 		

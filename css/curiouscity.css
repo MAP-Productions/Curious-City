@@ -1,3 +1,15 @@
+h5
+{
+	font-weight:lighter;
+	font-size:11px;
+}
+
+h1,h2
+{
+	font-weight:400;
+}
+
+
 body
 {
 	background-color:#eee;
@@ -6,8 +18,77 @@ body
 #wbez-header
 {
 	background-color:black;
-	height:25px;
 	color:#aaa;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	padding:2px 0;
+}
+
+.container.main
+{
+	position:relative;
+	top:25px;
+}
+
+#cc-nav{ margin:10px 0;}
+#cc-nav ul
+{
+	list-style:none;
+	margin:0;
+}
+
+#cc-nav ul li
+{
+	float:left;
+	
+}
+
+#cc-nav ul li a
+{
+	border-left:1px dotted #777;
+	height:55px;
+	width:97px;
+	display:inline-block;
+	padding:10px 5px;
+}
+
+#how-it-works
+{
+	background:white;
+	padding:20px 0 10px 0;
+	border-top:1px dotted #777;
+}
+
+#how-it-works ul
+{
+	list-style:none;
+	margin:0;
+}
+
+#how-it-works ul li
+{
+	float:left;
+	height:55px;
+	width:123px;
+	display:inline-block;
+	padding:10px 5px;
+	color:red;
+}
+
+#how-it-works ul li+li{ border-left:1px dotted #777; }
+
+#how-it-works-expander
+{
+	border-top:1px dotted #777;
+	margin-bottom:20px;
+}
+#how-it-works-expander a
+{
+	background-color:white;
+	border-radius: 0 0 5px 5px;
+	padding: 2px 10px;
 }
 
 #questions
@@ -19,9 +100,45 @@ body
 {
 	height:125px;
 	background-color:white;
+	position:relative;
 }
 .question + .question{ margin-top:2px;}
 .question-image{ height:125px;}
+
+#flash .right-col .super h1,
+#flash .right-col .sub h5,
+.question .question-text h2{ padding:10px 10px 0 20px }
+
+#flash .right-col .super h1{ padding-top: 0;}
+
+.vote
+{
+	background-image:url(../images/votebutton.png);
+	height:51px;
+	width:51px;
+	display:inline-block;
+	overflow:hidden;
+	position: absolute;
+	top: 40px;
+	left: 355px;
+}
+.vote.hover{background-position:-50px 0;}
+.vote.active{background-position:-100px 0;}
+.vote.checked{background-position:-150px 0;}
+
+.arrow
+{
+	background-image:url(../images/arrows.png);
+	height:12px;
+	width:12px;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align: text-top;
+}
+.arrow.right{background-position:-15px 0;}
+.arrow.down{background-position:-30px 0;}
+.arrow.left{background-position:-45px 0;}
+
 
 
 #voting-date a
@@ -35,4 +152,19 @@ body
 	min-height:300px;
 	background-color:#ddd;
 	margin:10px 0;
+}
+
+footer
+{
+	min-height:150px;
+}
+
+#footer-head
+{
+	text-align:center;
+}
+
+#sponsor-branding
+{
+	
 }

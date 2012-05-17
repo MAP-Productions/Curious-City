@@ -5,4 +5,9 @@ jQuery(function($)
 	
 	Curiouscity.init();
 
+
+
+	$('#how-it-works-expander').click(function(){
+		$('#how-it-works').toggleClass('hide')
+	})
 });

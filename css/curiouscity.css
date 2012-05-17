@@ -1,0 +1,38 @@
+body
+{
+	background-color:#eee;
+}
+
+#wbez-header
+{
+	background-color:black;
+	height:25px;
+	color:#aaa;
+}
+
+#questions
+{
+	padding:10px 0;
+	border-bottom: 1px dotted #777;
+}
+.question
+{
+	height:125px;
+	background-color:white;
+}
+.question + .question{ margin-top:2px;}
+.question-image{ height:125px;}
+
+
+#voting-date a
+{
+	border-bottom: 1px dotted #777;
+	float:left;
+}
+
+#discussion
+{
+	min-height:300px;
+	background-color:#ddd;
+	margin:10px 0;
+}

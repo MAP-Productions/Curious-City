@@ -96,6 +96,7 @@ body
 {
 	padding:10px 0;
 	border-bottom: 1px dotted #777;
+	min-height:200px;
 }
 .question
 {
@@ -105,6 +106,9 @@ body
 }
 .question + .question{ margin-top:2px;}
 .question-image{ height:125px;}
+
+
+#flash{ min-height: 150px;}
 
 #flash .right-col .super h1,
 #flash .right-col .sub h5,
@@ -179,40 +183,21 @@ footer
 	text-align:center;
 }
 
-#sponsor-branding
+.submit-sequence ul
 {
-	
-
-
-
-
-/* Submit a Question */
-
-
-.submit-step-selected {
-
-	color:blue;
+	list-style:none;
+	margin:0;
 }
 
-
-.submit-step {
-
-	padding:25px;
+.submit-sequence ul li
+{
+	border-top: 1px dotted #777;
+	padding:10px 0;
 }
 
-
-#question-form-2 {
-
-	display:none;
+.submit-sequence ul li.active
+{
+	color:red;
 }
 
-#question-form-3 {
-
-	display:none;
-}
-
-#question-form-4 {
-
-	display:none;
-
-}
+#submit-name-preview{ margin-bottom:20px;}

@@ -55,14 +55,12 @@ this.curiouscity = {
 	loadSubmit : function(  )
 	{
 
-		console.log('curious eh');
+		console.log('curious eh?: submitttt');
 		
 		var Questions = curiouscity.module("questions");
 		
-		
-		this.submitView = new Questions.Views.Submit({model:new Questions.Model()});
-		$('#main').append(this.submitView.render());
-		
+		this.submitView = new Questions.Views.Submit({ model:new Questions.Model() });
+		$('#questions').html(this.submitView.render().el);
 		
 	},
 	
@@ -76,11 +74,11 @@ this.curiouscity = {
 		
 		
 		this.questionsCollection = new Questions.Collection({'votingperiod':'current'});
-		this.questionsCollection.fetch({success:function(collection,response){
-		console.log(collection);
-		console.log(response);
-		}
-		
+		this.questionsCollection.fetch({
+			success:function(collection,response){
+				console.log(collection);
+				console.log(response);
+			}
 		});
 		
 		

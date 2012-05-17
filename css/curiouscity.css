@@ -139,7 +139,21 @@ body
 .arrow.down{background-position:-30px 0;}
 .arrow.left{background-position:-45px 0;}
 
+[class^="social-"], [class*=" social-"]
+{
+	background-image:url(../images/socialicons.png);
+	height:15px;
+	width:15px;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align: text-top;
+}
+.social-facebook{background-position:0 0;}
+.social-twitter{background-position:-15px 0;}
+.social-rss{background-position:-30px 0;}
+.social-googleplus{background-position:-45px 0;}
 
+.social{ margin-left: 2px;}
 
 #voting-date a
 {

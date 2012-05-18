@@ -23,7 +23,7 @@ var loadFiles = [
 	'order!lib/underscore',
 	'order!lib/backbone',
 	'order!lib/jquery-ui.min',	
-
+	'order!lib/quicksand',	
 
 
 	//core
@@ -41,11 +41,8 @@ var loadFiles = [
 	'order!app/views/view.question.vote',
 	'order!app/views/view.question.submit',
 
-	
-	//plugins
-	
-		
-	
+	'order!lib/spin',	
+
 	//app
 		
 	'order!app/index'

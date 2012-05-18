@@ -27,7 +27,6 @@ this.curiouscity = {
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
-
 		this.isLoaded = true
 		this.startRouter();
 	},
@@ -75,17 +74,24 @@ this.curiouscity = {
 		
 		this.questionsCollection = new Questions.Collection({'votingperiod':'current'});
 
-		this.questionsCollection.fetch({success:function(collection,response){
-				
+		this.questionsCollection.fetch({
+			
+			success:function(collection,response)
+			{
+				$('#questions').spin(false);
 				
 				_.each( _.toArray(collection),function(question){
 					console.log('adding view');
 					var questionView = new Questions.Views.Vote({model:question});
 					$('#questions').append(questionView.render().el);
-				
 				});
-			
-
+				
+				_.each( _.toArray(collection),function(question){
+					console.log('adding view');
+					var questionView = new Questions.Views.Vote({model:question});
+					$('#questions-order').prepend(questionView.render().el);
+				});
+				
 			}
 		});
 		

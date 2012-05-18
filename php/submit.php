@@ -1,5 +1,6 @@
 <?php
 
+	require_once 'config.php';
 	set_include_path("../gdata/library");
 	
 	require_once 'Zend/Loader.php';
@@ -13,8 +14,6 @@
 	
 	
 	
-	$email = 'curiouscityquestions@gmail.com';
-	$password = 'curiouscitywbez';
 	
 	try {
 			  $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
@@ -25,16 +24,12 @@
 
 
 	$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
-	
-	  
-	$spreadsheetKey="t2ouvEBOfK4OUtCRmGAA31w";
-	$worksheetId ="od6";
-	
+
 	$post_data = file_get_contents("php://input");
   	$post_data = json_decode($post_data,true);	
 		
 	$post_data['votingperiod']='none';
-	
+	$post_data['id']=time().rand(100);
 
 	$insertedListEntry = $spreadsheetService->insertRow($post_data, $spreadsheetKey, $worksheetId);
 														

@@ -1,5 +1,6 @@
 <?php
 
+	require_once 'config.php';
 set_include_path("../gdata/library");
 /**
  * Zend Framework
@@ -33,8 +34,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 
 
 $votingperiod = htmlspecialchars ($_GET['votingperiod']);
-$email = 'curiouscityquestions@gmail.com';
-$password = 'curiouscitywbez';
+
 
 try {
           $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
@@ -48,17 +48,8 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 
 
 	
-		/*
-		$feed = $spreadsheetService->getSpreadsheetFeed();
-        
-        $currKey = explode('/', $feed->entries[0]->id->text);
-        $spreadsheetKey = $currKey[5];
-         */
-         
-         
-         
-       	$spreadsheetKey="t2ouvEBOfK4OUtCRmGAA31w";
-        $worksheetId ="od6";
+	
+       	
         
         
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();

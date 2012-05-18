@@ -25,42 +25,11 @@ set_include_path("../gdata/library");
  * @see Zend_Loader
  */
 require_once 'Zend/Loader.php';
-
-/**
- * @see Zend_Gdata
- */
 Zend_Loader::loadClass('Zend_Gdata');
-
-/**
- * @see Zend_Gdata_ClientLogin
- */
 Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-
-/**
- * @see Zend_Gdata_Spreadsheets
- */
 Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
-
-/**
- * @see Zend_Gdata_App_AuthException
- */
 Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
-
-/**
- * @see Zend_Http_Client
- */
 Zend_Loader::loadClass('Zend_Http_Client');
-
-
-/**
- * SimpleCRUD
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage Demos
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
 
 
 $votingperiod = htmlspecialchars ($_GET['votingperiod']);
@@ -105,35 +74,30 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 		$rowData = $entry->getCustom();
 		$question =array();
 		
-		$publicColumns=array('id','name','question','anonymous','percentage','imageurl');
+		$publicColumns=array('id','name','question','anonymous','imageurl','votes');
 		
 		foreach($rowData as $customEntry) {
 		 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
- 		 
- 		
- 		// echo $customEntry->getColumnName() . " = " . $customEntry->getText()."<br>";
-		
-		
 		}
 		
-		if($question['anonymous']==1)$question['name']='Anonymous';
-		
-		$questions[]=$question;
-		
-		
+			if($question['anonymous']==1)$question['name']='Anonymous';
+			unset($question['anonymous']);
+			$questions[]=$question;
 		}
+		
+		foreach ($questions as $key => $row) {
+			$votes[$key]  = $row['votes	'];
+		}
+		
+		// Sort the data with volume descending, edition ascending
+		// Add $data as the last parameter, to sort by the common key
+		array_multisort($votes, SORT_DESC, $questions);
+		
+		for($i=0;$i<sizeof($questions);$i++){
+			unset($questions[$i]['votes']);
+			$questions[$i]['rank']=$i+1;
+		}
+		
 		
 		echo json_encode(array("questions"=>$questions));
-		/*
-		  foreach($feed->entries as $entry) {
-            if ($entry instanceof Zend_Gdata_Spreadsheets_CellEntry) {
-                print $entry->title->text .' '. $entry->content->text . "<br>";
-            } else if ($entry instanceof Zend_Gdata_Spreadsheets_ListEntry) {
-                print $i .' '. $entry->title->text .' | '. $entry->content->text . "<br>";
-            } else {
-                print $i .' '. $entry->title->text . "<br>";
-            }
-            $i++;
-        }
-        
-        */
+	?>

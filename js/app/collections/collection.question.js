@@ -16,11 +16,12 @@
 		parse: function(data)
 		{
 			return data.questions;
+		},
 		
+		comparator : function(question)
+		{
+			return question.get('rank')
 		}
-		
-
-
 	});
 
 })(curiouscity.module("questions"));

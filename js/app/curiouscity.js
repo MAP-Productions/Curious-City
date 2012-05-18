@@ -80,16 +80,18 @@ this.curiouscity = {
 			{
 				$('#questions').spin(false);
 				
-				_.each( _.toArray(collection),function(question){
+				_.each( _.shuffle( _.toArray(collection) ),function(question){
 					console.log('adding view');
 					var questionView = new Questions.Views.Vote({model:question});
 					$('#questions').append(questionView.render().el);
 				});
 				
+				console.log(collection)
+				
 				_.each( _.toArray(collection),function(question){
 					console.log('adding view');
 					var questionView = new Questions.Views.Vote({model:question});
-					$('#questions-order').prepend(questionView.render().el);
+					$('#questions-order').append(questionView.render().el);
 				});
 				
 			}

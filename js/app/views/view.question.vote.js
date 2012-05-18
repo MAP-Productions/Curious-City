@@ -13,7 +13,8 @@
 		
 			var blanks = {
 				image_url: this.model.get('imageurl'),
-				text: this.model.get('question')
+				text: this.model.get('question'),
+				rank: this.model.get('rank')
 			};
 			//use template to clone the database items into
 			var template = _.template( this.getTemplate() );
@@ -34,7 +35,7 @@
 		
 		getID : function()
 		{
-			console.log(this.$el.data('id'))
+			console.log(this.model.get('rank'))
 		},
 	
 		getTemplate : function()
@@ -42,7 +43,7 @@
 			
 			var html =
 		
-				"<div class='row'>"+
+				"<div class='row' data-test='<%= rank %>'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
 					"<a href='#'><i class='vote'></i></a>"+
 					"<div class='span7 question-text'>"+

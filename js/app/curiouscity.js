@@ -21,9 +21,6 @@ this.curiouscity = {
   // Keep active application instances namespaced under an app object.
   app: _.extend({
 	
-	
-
-
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
@@ -37,16 +34,18 @@ this.curiouscity = {
 		var Router = Backbone.Router.extend({
 			routes: {
 				""							: 'loadMain',
-//				"submit"							: 'loadSubmit',
+//				"submit"					:'loadSubmit',
 				':page'						:	'loadPage',
-				"connection/:connectionId"	: "goToConnection",
-
+				"connection/:connectionId"	:	"goToConnection",
 			},
 			
 			loadPage : function(page){ _this.loadPage(page) },
 			goToConnection : function( connectionId ){ _this.goToConnection( connectionId ) },
 			loadSubmit: function(  ){ _this.loadSubmit() },
-			loadMain: function(  ){ _this.loadMain() }
+			loadMain: function()
+			{
+				this.navigate('vote');
+			}
 		});
 
 		this.router = new Router();
@@ -64,7 +63,9 @@ this.curiouscity = {
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			console.log('fade in: #'+page);
-			$('#'+page+'-page').fadeIn().addClass('focus');
+			$('#'+page+'-page').addClass('focus').fadeIn('fast',function(){
+				console.log('fade in complete')
+			});
 		})
 		
 	},
@@ -82,6 +83,8 @@ this.curiouscity = {
 	},
 	
 	
+	
+	
 		loadMain : function(  )
 	{
 
@@ -91,11 +94,13 @@ this.curiouscity = {
 		
 		this.questionsCollection = new Questions.Collection({'votingperiod':'current'});
 
+		$('#vote-page').spin();
+
 		this.questionsCollection.fetch({
 			
 			success:function(collection,response)
 			{
-				$('#questions').spin(false);
+				$('#vote-page').spin(false);
 				
 				_.each( _.shuffle( _.toArray(collection) ),function(question){
 					console.log('adding view');

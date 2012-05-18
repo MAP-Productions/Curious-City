@@ -14,6 +14,7 @@
 
 		initialize : function()
 		{
+			console.log('question model init')
 		},
 
 

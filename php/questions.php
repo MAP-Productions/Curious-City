@@ -35,9 +35,6 @@ Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
 Zend_Loader::loadClass('Zend_Http_Client');
 
 
-
-
-
 try {
           $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
                     Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
@@ -48,12 +45,6 @@ try {
 
 $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 
-
-	
-	
-       	
-        
-        
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
 		$query->setWorksheetId($worksheetId);
@@ -94,7 +85,6 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 		
 		if(rand(0,100)>50)$canvote=0;
 		else $canvote=1;
-		
 		
 		echo json_encode(array("questions"=>$questions,"votingperiod"=>"current","canvote"=>$canvote));
 	?>

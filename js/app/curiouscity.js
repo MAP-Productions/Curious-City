@@ -55,6 +55,7 @@ this.curiouscity = {
 
 	loadPage : function(page)
 	{
+		var _this = this;
 		//console.log('load page: '+ page)
 		
 		//var Pages = curiouscity.module('pages');
@@ -65,6 +66,14 @@ this.curiouscity = {
 			console.log('fade in: #'+page);
 			$('#'+page+'-page').addClass('focus').fadeIn('fast',function(){
 				console.log('fade in complete')
+				
+				switch(page)
+				{
+					case 'vote':
+						_this.loadVoteQuestions();
+						break;
+				}
+				
 			});
 		})
 		
@@ -82,43 +91,39 @@ this.curiouscity = {
 		
 	},
 	
-	
-	
-	
-		loadMain : function(  )
+	loadVoteQuestions : function()
 	{
-
-		console.log('curious eh: Main');
+		if(!this.questionsCollection)
+		{
+			var Questions = curiouscity.module("questions");
 		
-		var Questions = curiouscity.module("questions");
-		
-		this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
+			this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
 
-		$('#vote-page').spin();
-
-		this.questionsCollection.fetch({
+			$('#vote-page').spin();
+			this.questionsCollection.reset();
+			this.questionsCollection.fetch({
 			
-			success:function(collection,response)
-			{
-				$('#vote-page').spin(false);
+				success:function(collection,response)
+				{
+					$('#vote-page').spin(false);
 				
-				_.each( _.shuffle( _.toArray(collection) ),function(question){
-					console.log('adding view');
-					var questionView = new Questions.Views.Vote({model:question});
-					$('#questions').append(questionView.render().el);
-				});
+					_.each( _.shuffle( _.toArray(collection) ),function(question){
+						console.log('adding view');
+						var questionView = new Questions.Views.Vote({model:question});
+						$('#questions').append(questionView.render().el);
+					});
 				
-				console.log(collection)
+					console.log(collection)
 				
-				_.each( _.toArray(collection),function(question){
-					console.log('adding view');
-					var questionView = new Questions.Views.Vote({model:question});
-					$('#questions-order').append(questionView.render().el);
-				});
+					_.each( _.toArray(collection),function(question){
+						console.log('adding view');
+						var questionView = new Questions.Views.Vote({model:question});
+						$('#questions-order').append(questionView.render().el);
+					});
 				
-			}
-		});
-		
+				}
+			});
+		}
 		
 	},
 	

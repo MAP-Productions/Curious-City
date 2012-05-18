@@ -15,6 +15,7 @@
 		
 		parse: function(data)
 		{
+			console.log(data)
 			return data.questions;
 		},
 		

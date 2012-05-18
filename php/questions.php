@@ -1,5 +1,8 @@
 <?php
 
+	$votingperiod = htmlspecialchars ($_GET['votingperiod']);	
+	
+	require_once 'config.php';
 set_include_path("../gdata/library");
 /**
  * Zend Framework
@@ -32,9 +35,8 @@ Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
 Zend_Loader::loadClass('Zend_Http_Client');
 
 
-$votingperiod = htmlspecialchars ($_GET['votingperiod']);
-$email = 'curiouscityquestions@gmail.com';
-$password = 'curiouscitywbez';
+
+
 
 try {
           $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
@@ -48,17 +50,8 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 
 
 	
-		/*
-		$feed = $spreadsheetService->getSpreadsheetFeed();
-        
-        $currKey = explode('/', $feed->entries[0]->id->text);
-        $spreadsheetKey = $currKey[5];
-         */
-         
-         
-         
-       	$spreadsheetKey="t2ouvEBOfK4OUtCRmGAA31w";
-        $worksheetId ="od6";
+	
+       	
         
         
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
@@ -99,5 +92,9 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 		}
 		
 		
-		echo json_encode(array("questions"=>$questions));
+		if(rand(0,100)>50)$canvote=0;
+		else $canvote=1;
+		
+		
+		echo json_encode(array("questions"=>$questions,"votingperiod"=>"current","canvote"=>$canvote));
 	?>

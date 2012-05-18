@@ -1,5 +1,7 @@
 <?php
 
+	$votingperiod = htmlspecialchars ($_GET['votingperiod']);	
+	
 	require_once 'config.php';
 set_include_path("../gdata/library");
 /**
@@ -33,7 +35,7 @@ Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
 Zend_Loader::loadClass('Zend_Http_Client');
 
 
-$votingperiod = htmlspecialchars ($_GET['votingperiod']);
+
 
 
 try {
@@ -90,5 +92,9 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 		}
 		
 		
-		echo json_encode(array("questions"=>$questions));
+		if(rand(0,100)>50)$canvote=0;
+		else $canvote=1;
+		
+		
+		echo json_encode(array("questions"=>$questions,"votingperiod"=>"current","canvote"=>$canvote));
 	?>

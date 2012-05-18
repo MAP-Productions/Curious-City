@@ -89,7 +89,7 @@ this.curiouscity = {
 		
 		var Questions = curiouscity.module("questions");
 		
-		this.questionsCollection = new Questions.Collection({'votingperiod':'current'});
+		this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
 
 		this.questionsCollection.fetch({
 			

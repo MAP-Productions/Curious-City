@@ -1,9 +1,10 @@
 <?php
-
-	$votingperiod = htmlspecialchars ($_GET['votingperiod']);	
-	
+	header('Content-type: application/json');
+	if(isset($_GET['votingperiod'])) $worksheetId = htmlspecialchars ($_GET['votingperiod']);
+	else $worksheetId ="od6";
 	require_once 'config.php';
-set_include_path("../gdata/library");
+	set_include_path("../gdata/library");
+	
 /**
  * Zend Framework
  *
@@ -43,12 +44,13 @@ try {
 }
 
 
-$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
+		$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
 		$query->setWorksheetId($worksheetId);
-		$query->setSpreadsheetQuery('votingperiod = '.$votingperiod);
+		
+		
 		$listFeed = $spreadsheetService->getListFeed($query);
 		
 		$questions=array();
@@ -58,7 +60,9 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 		$rowData = $entry->getCustom();
 		$question =array();
 		
-		$publicColumns=array('id','name','question','anonymous','imageurl','votes');
+		if($votingperiod) $publicColumns=array('id','name','question','anonymous','imageurl','votes','winner');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl');
+		
 		
 		foreach($rowData as $customEntry) {
 		 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
@@ -68,6 +72,8 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 			unset($question['anonymous']);
 			$questions[]=$question;
 		}
+		
+		if($votingperiod){
 		
 		foreach ($questions as $key => $row) {
 			$votes[$key]  = $row['votes	'];
@@ -82,9 +88,12 @@ $spreadsheetService = new Zend_Gdata_Spreadsheets($client);
 			$questions[$i]['rank']=$i+1;
 		}
 		
+		}
 		
 		if(rand(0,100)>50)$canvote=0;
 		else $canvote=1;
 		
 		echo json_encode(array("questions"=>$questions,"votingperiod"=>"current","canvote"=>$canvote));
+		
+	
 	?>

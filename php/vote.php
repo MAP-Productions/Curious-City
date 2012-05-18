@@ -56,6 +56,8 @@
         
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
+		
+		
 		$query->setWorksheetId($worksheetId);
 		$query->setSpreadsheetQuery('id = '.$questionid.' and votingperiod = '.$votingperiod);
 		$listFeed = $spreadsheetService->getListFeed($query);

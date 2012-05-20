@@ -1,8 +1,7 @@
 <?php
 
 		$questionid = htmlspecialchars ($_GET['questionid']);
-		$votingperiod = htmlspecialchars ($_GET['votingperiod']);
-
+		$worksheetId ="od7";
 	
 
 
@@ -56,10 +55,10 @@
         
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
-		
-		
 		$query->setWorksheetId($worksheetId);
-		$query->setSpreadsheetQuery('id = '.$questionid.' and votingperiod = '.$votingperiod);
+		$query->setSpreadsheetQuery('id = '.$questionid);
+		
+		
 		$listFeed = $spreadsheetService->getListFeed($query);
 
 

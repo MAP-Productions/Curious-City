@@ -28,14 +28,37 @@
 		{
 			return this;
 		},
-	
+		
 		events : {
-			'click' : 'getID'
+			'click .vote' : 'voteThis',
+			'mouseover .vote' : 'voteOver',
+			'mouseout .vote' : 'voteOut'
 		},
 		
-		getID : function()
+		voteOver : function()
 		{
-			console.log(this.model.get('rank'))
+			this.$el.addClass('hover');
+			this.$el.find('.vote').addClass('hover')
+		},
+		
+		voteOut : function()
+		{
+			this.$el.removeClass('hover');
+			this.$el.find('.vote').removeClass('hover')
+		},
+		
+		voteThis : function()
+		{
+			console.log('vote on this one:')
+			console.log(this)
+			
+			this.voteOver = {};
+			this.voteOut = {};
+			
+			$('div[data-id='+this.model.id+']').find('.vote').addClass('hover');
+			$('#questions').find('.vote').not('.hover').fadeOut();
+			$('#questions,#questions-order').find('.vote').not('.hover').remove();
+			$('#questions').quicksand('#questions-order>div');
 		},
 	
 		getTemplate : function()

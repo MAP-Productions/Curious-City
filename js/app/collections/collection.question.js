@@ -16,6 +16,7 @@
 		parse: function(data)
 		{
 			console.log(data)
+			this.canvote = data.canvote;
 			return data.questions;
 		},
 		

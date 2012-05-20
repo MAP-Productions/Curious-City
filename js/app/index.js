@@ -1,6 +1,5 @@
 jQuery(function($)
 {
-	$('#questions').spin();
 	
 	// Shorthand the application namespace
 	var Curiouscity	 = curiouscity.app;

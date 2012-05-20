@@ -21,9 +21,6 @@ this.curiouscity = {
   // Keep active application instances namespaced under an app object.
   app: _.extend({
 	
-	
-
-
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
@@ -37,16 +34,18 @@ this.curiouscity = {
 		var Router = Backbone.Router.extend({
 			routes: {
 				""							: 'loadMain',
-//				"submit"							: 'loadSubmit',
+//				"submit"					:'loadSubmit',
 				':page'						:	'loadPage',
-				"connection/:connectionId"	: "goToConnection",
-
+				"connection/:connectionId"	:	"goToConnection",
 			},
 			
 			loadPage : function(page){ _this.loadPage(page) },
 			goToConnection : function( connectionId ){ _this.goToConnection( connectionId ) },
 			loadSubmit: function(  ){ _this.loadSubmit() },
-			loadMain: function(  ){ _this.loadMain() }
+			loadMain: function()
+			{
+				this.navigate('vote');
+			}
 		});
 
 		this.router = new Router();
@@ -56,6 +55,7 @@ this.curiouscity = {
 
 	loadPage : function(page)
 	{
+		var _this = this;
 		//console.log('load page: '+ page)
 		
 		//var Pages = curiouscity.module('pages');
@@ -64,7 +64,17 @@ this.curiouscity = {
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			console.log('fade in: #'+page);
-			$('#'+page+'-page').fadeIn().addClass('focus');
+			$('#'+page+'-page').addClass('focus').fadeIn('fast',function(){
+				console.log('fade in complete')
+				
+				switch(page)
+				{
+					case 'vote':
+						_this.loadVoteQuestions();
+						break;
+				}
+				
+			});
 		})
 		
 	},
@@ -81,39 +91,39 @@ this.curiouscity = {
 		
 	},
 	
-	
-		loadMain : function(  )
+	loadVoteQuestions : function()
 	{
-
-		console.log('curious eh: Main');
+		if(!this.questionsCollection)
+		{
+			var Questions = curiouscity.module("questions");
 		
-		var Questions = curiouscity.module("questions");
-		
-		this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
+			this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
 
-		this.questionsCollection.fetch({
+			$('#vote-page').spin();
+			this.questionsCollection.reset();
+			this.questionsCollection.fetch({
 			
-			success:function(collection,response)
-			{
-				$('#questions').spin(false);
+				success:function(collection,response)
+				{
+					$('#vote-page').spin(false);
 				
-				_.each( _.shuffle( _.toArray(collection) ),function(question){
-					console.log('adding view');
-					var questionView = new Questions.Views.Vote({model:question});
-					$('#questions').append(questionView.render().el);
-				});
+					_.each( _.shuffle( _.toArray(collection) ),function(question){
+						console.log('adding view');
+						var questionView = new Questions.Views.Vote({model:question});
+						$('#questions').append(questionView.render().el);
+					});
 				
-				console.log(collection)
+					console.log(collection)
 				
-				_.each( _.toArray(collection),function(question){
-					console.log('adding view');
-					var questionView = new Questions.Views.Vote({model:question});
-					$('#questions-order').append(questionView.render().el);
-				});
+					_.each( _.toArray(collection),function(question){
+						console.log('adding view');
+						var questionView = new Questions.Views.Vote({model:question});
+						$('#questions-order').append(questionView.render().el);
+					});
 				
-			}
-		});
-		
+				}
+			});
+		}
 		
 	},
 	

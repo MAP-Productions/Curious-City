@@ -34,7 +34,6 @@ this.curiouscity = {
 		var Router = Backbone.Router.extend({
 			routes: {
 				""							: 'loadMain',
-//				"submit"					:'loadSubmit',
 				':page'						:	'loadPage',
 				"connection/:connectionId"	:	"goToConnection",
 			},
@@ -56,11 +55,6 @@ this.curiouscity = {
 	loadPage : function(page)
 	{
 		var _this = this;
-		//console.log('load page: '+ page)
-		
-		//var Pages = curiouscity.module('pages');
-		//var view = new Pages.Views[page]();
-		
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			console.log('fade in: #'+page);
@@ -72,6 +66,9 @@ this.curiouscity = {
 					case 'vote':
 						_this.loadVoteQuestions();
 						break;
+					case 'ask':
+						_this.loadAsk();
+						break;
 				}
 				
 			});
@@ -79,15 +76,15 @@ this.curiouscity = {
 		
 	},
 
-	loadSubmit : function(  )
+	loadAsk : function(  )
 	{
 
 		console.log('curious eh?: submitttt');
-		
+		$('#discussion').fadeOut();
 		var Questions = curiouscity.module("questions");
 		
-		this.submitView = new Questions.Views.Submit({ model:new Questions.Model() });
-		$('#questions').html(this.submitView.render().el);
+		this.askView = new Questions.Views.Ask();
+		$('#ask-form').html(this.askView.render().el);
 		
 	},
 	

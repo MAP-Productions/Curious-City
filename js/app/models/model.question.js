@@ -9,7 +9,7 @@
 
 		url: function()
 		{
-			return 'php/submit.php'
+			return 'php/ask.php'
 		},
 
 		initialize : function()

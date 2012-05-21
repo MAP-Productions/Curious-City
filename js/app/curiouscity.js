@@ -26,10 +26,17 @@ this.curiouscity = {
 	{
 		
 		
-		$('#disqus-add-comment').click(function(){
-			$(this).fadeOut();
-			$('#dsq-reply').fadeIn();
-			});
+		$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
+		$('#disqus-sort-popular').click(function(){ 
+			$('#disqus-sort-newest').addClass('disqus-sort-unselected');
+			$(this).removeClass('disqus-sort-unselected');
+			DISQUS.dtpl.actions.fire('thread.sort', 'best');
+		});
+		$('#disqus-sort-newest').click(function(){ 
+			$('#disqus-sort-popular').addClass('disqus-sort-unselected');
+			$(this).removeClass('disqus-sort-unselected');
+			DISQUS.dtpl.actions.fire('thread.sort', 'newest');
+		});
 		
 		
 		

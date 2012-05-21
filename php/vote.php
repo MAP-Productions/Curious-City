@@ -36,12 +36,6 @@
 		Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
 		Zend_Loader::loadClass('Zend_Http_Client');
 
-
-
-		
-		
-	
-
 		try {
 				  $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
 							Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);

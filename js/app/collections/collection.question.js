@@ -2,6 +2,8 @@
 
 	Questions.Collection = Backbone.Collection.extend({
 
+		model : Questions.Model,
+
 		initialize : function(options)
 		{
 			_.extend(this,options);

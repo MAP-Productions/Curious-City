@@ -67,6 +67,9 @@
 		$question['votes']=$question['votes']+1;
 		
 		$updatedListEntry = $spreadsheetService->updateRow($entry,$question);
+		//setcookie(CURIOUS_CITY_VOTE, $questionid, time()+60*60*24*30,'/','.wbez.org'); 
+		setcookie(CURIOUS_CITY_VOTE, $questionid, time()+60,'/','.wbez.org'); 
+		
 		echo 'ok';
 		
 		

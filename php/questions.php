@@ -36,12 +36,12 @@ Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
 Zend_Loader::loadClass('Zend_Http_Client');
 
 
-try {
-          $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
-                    Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
-} catch (Zend_Gdata_App_AuthException $ae) {
-          exit("Error: ". $ae->getMessage() ."\nCredentials provided were email: [$email] and password [$password].\n");
-}
+		try {
+				  $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
+							Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
+		} catch (Zend_Gdata_App_AuthException $ae) {
+				  exit("Error: ". $ae->getMessage() ."\nCredentials provided were email: [$email] and password [$password].\n");
+		}
 
 
 		$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
@@ -89,10 +89,17 @@ try {
 		
 		}
 		
-		if(rand(0,100)>50)$canvote=0;
-		else $canvote=1;
+			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
+				$canvote=0;
+				$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
+			}
+			else{
+				$canvote=1;
+				$yourvote=0;
+			}
+			
 		
-		echo json_encode(array("questions"=>$questions,"votingperiod"=>"current","canvote"=>$canvote));
+		echo json_encode(array("questions"=>$questions,"votingperiod"=>"current","canvote"=>$canvote,"yourvote"=>$yourvote));
 		
 	
 	?>

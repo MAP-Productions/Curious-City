@@ -343,3 +343,7 @@ footer
 .the-team .name{font-weight:bold;}
 .the-team p{color:#999;}
 
+.question-single .content
+{
+	min-height:300px;
+}

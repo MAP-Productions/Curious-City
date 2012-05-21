@@ -1,6 +1,9 @@
 (function(Questions) {
 
 	Questions.Collection = Backbone.Collection.extend({
+		
+		votingperiod : true,
+		model : Questions.Model,
 
 		initialize : function(options)
 		{
@@ -10,7 +13,8 @@
 		
 		url: function()
 		{
-			return 'php/questions.php?votingperiod='+this.votingperiod;
+			if(this.votingperiod != false) return 'php/questions.php?votingperiod='+this.votingperiod;
+			else return 'php/questions.php';
 		},
 		
 		parse: function(data)

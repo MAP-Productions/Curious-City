@@ -24,7 +24,22 @@ this.curiouscity = {
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
+		
+		
+		$('.add-comment').click(function(){
+			$(this).fadeOut();
+			$('.dsq-reply').fadeIn();
+			});
+		
+		
+		
 		this.isLoaded = true
+		
+		
+		
+		
+		
+		
 		this.startRouter();
 	},
 	

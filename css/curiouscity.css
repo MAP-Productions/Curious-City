@@ -237,6 +237,7 @@ footer li
 
 #discussion
 {
+	display:none;
 	min-height:300px;
 	background-color:#ddd;
 	margin:10px 0;

@@ -101,6 +101,7 @@
 			
 			this.model.save();
 			$('#question-form-3').fadeOut('fast',function(){
+				$('#ask-flash .super h1').html('Thanks! Your question was submitted');
 				$('#question-form-4').fadeIn('fast');	
 			});
 		
@@ -139,7 +140,6 @@
 							"<a class='submit-back'>  back</a>"+
 						"</form>"+
 						"<div id='question-form-4'  class='question-form hide'>"+
-							"<h1>Thanks! Your question was submitted</h1>"+
 							"<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar turpis vitae justo porta vulputate. Curabitur et leo cursus lectus fringilla porttitor. Nunc placerat, lorem vitae  placerat porta, est sapien sollicitudin diam, at scelerisque dolor magna nec quam.</span>"+
 						"</div>"+
 					"</div>"+

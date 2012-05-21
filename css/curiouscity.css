@@ -244,17 +244,54 @@ footer li
 }
 #disqus-controls{
 
-height: 50px;
-
+height: 27px;
+padding-top:20px;
 }
 
 #disqus_thread{
 
 background:white;
-padding-left:20px;
-padding-right:20px;
+padding:20px;
+width:570px;
+-moz-border-radius: 5px;
+border-radius: 5px;
 }
 
+#disqus-sort-popular{
+
+width:70px;
+position:absolute;
+left:455px;
+
+}
+
+#disqus-sort-recent{
+position:absolute;
+left:350px;
+width:90px;
+
+}
+
+.disqus-sort-tab{
+
+background-color:white;
+-moz-border-radius-top: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+padding:5px;
+text-align:center;
+}
+
+
+#disqus-add-comment{
+
+position:absolute;
+left:832px;
+width:115px;
+margin:-7px;
+
+
+}
 footer
 {
 	min-height:150px;

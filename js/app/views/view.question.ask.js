@@ -21,7 +21,6 @@
 			$(this.el).append( _.template( this.getTemplate(), blanks ) );
 		},
 		
-
 		render : function()
 		{
 			return this;

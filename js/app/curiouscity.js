@@ -103,20 +103,28 @@ this.curiouscity = {
 				success:function(collection,response)
 				{
 					$('#vote-page').spin(false);
-				
-					_.each( _.shuffle( _.toArray(collection) ),function(question){
-						console.log('adding view');
-						var questionView = new Questions.Views.Vote({model:question});
-						$('#questions').append(questionView.render().el);
-					});
-				
 					console.log(collection)
-				
-					_.each( _.toArray(collection),function(question){
-						console.log('adding view');
-						var questionView = new Questions.Views.Vote({model:question});
-						$('#questions-order').append(questionView.render().el);
-					});
+					if(collection.canvote)
+					{
+						console.log('can vote!')
+						_.each( _.shuffle( _.toArray(collection) ),function(question){
+							var questionView = new Questions.Views.Vote({model:question,vote:true});
+							$('#questions').append(questionView.render().el);
+						});
+						_.each( _.toArray(collection),function(question){
+							var questionView = new Questions.Views.Vote({model:question,vote:true});
+							$('#questions-order').append(questionView.render().el);
+						});
+					}
+					else
+					{
+						console.log('cannot vote')
+						_.each( _.toArray(collection),function(question){
+							var questionView = new Questions.Views.Vote({model:question,vote:false});
+							$('#questions').append(questionView.render().el);
+						});
+					}
+					
 				
 				}
 			});

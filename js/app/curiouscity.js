@@ -26,7 +26,7 @@ this.curiouscity = {
 	{
 		
 		
-		$('.add-comment').click(function(){
+		$('#disqus-add-comment').click(function(){
 			$(this).fadeOut();
 			$('#dsq-reply').fadeIn();
 			});

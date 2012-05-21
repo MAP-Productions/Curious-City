@@ -8,13 +8,13 @@
 
 		url: function()
 		{
-			return 'php/ask.php'
+			return 'php/q?questionid='+this.id;
+			//return 'php/ask.php'
 		},
 
 		initialize : function()
 		{
 			if(this.get('imageurl')=='') this.set('imageurl','images/default.jpg')
-			
 		},
 
 

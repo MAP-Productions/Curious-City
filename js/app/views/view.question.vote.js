@@ -33,7 +33,8 @@
 		events : {
 			'click .vote' : 'voteThis',
 			'mouseover .vote' : 'voteOver',
-			'mouseout .vote' : 'voteOut'
+			'mouseout .vote' : 'voteOut',
+			'click .question-link' : 'goToQuestion'
 		},
 		
 		voteOver : function()
@@ -46,6 +47,13 @@
 		{
 			this.$el.removeClass('hover');
 			this.$el.find('.vote').removeClass('hover')
+		},
+		
+		goToQuestion : function()
+		{
+			//console.log('go to question!!! '+ this.model.id);
+			curiouscity.app.router.navigate('question/'+this.model.id, {trigger:true});
+			return false;
 		},
 		
 		voteThis : function()
@@ -72,7 +80,7 @@
 					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>";
 					if(this.options.vote) html += "<a href='#'><i class='vote'></i></a>";
 					html += "<div class='span7 question-text'>"+
-						"<h2><%= text %></h2>"+
+						"<h2><a class='question-link' href='#'><%= text %></a></h2>"+
 					"</div>"+
 				"</div>";
 			

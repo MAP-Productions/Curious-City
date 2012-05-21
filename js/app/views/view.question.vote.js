@@ -51,7 +51,7 @@
 		
 		goToQuestion : function()
 		{
-			//console.log('go to question!!! '+ this.model.id);
+			console.log('go to question!!! '+ this.model.id);
 			curiouscity.app.router.navigate('question/'+this.model.id, {trigger:true});
 			return false;
 		},

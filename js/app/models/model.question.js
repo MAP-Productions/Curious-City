@@ -8,8 +8,7 @@
 
 		url: function()
 		{
-			return 'php/q?questionid='+this.id;
-			//return 'php/ask.php'
+			return 'php/q.php?questionid='+this.id;
 		},
 
 		initialize : function()

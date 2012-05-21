@@ -36,6 +36,7 @@ this.curiouscity = {
 				""							: 'loadMain',
 				':page'						:	'loadPage',
 				"connection/:connectionId"	:	"goToConnection",
+				'question/:questionID' : 'goToQuestion',
 				'archive/question/:questionID' : 'goToArchiveQuestion'
 			},
 			
@@ -103,17 +104,19 @@ this.curiouscity = {
 			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){
 				console.log('go to question '+questionID)
 				console.log(_this)
-				if(_this.archive)
-				{
-					console.log('draw the question view')
-					_this.renderQuestion(questionID);
-				}
-				else
-				{
-					console.log('need to load the archive!')
-					_this.loadArchiveCollection();
-					_this.archive.on('reset', function(){ _this.renderQuestion(questionID) }, _this)
-				}
+				var Questions = curiouscity.module("questions");
+				
+				var q = new Questions.Model();
+				q.id = questionID;
+				q.fetch({
+					success: function(response)
+					{
+						console.log('done')
+						console.log(q)
+						_this.renderQuestion(q);
+					}
+				})
+				
 			})
 		});
 		return false;
@@ -130,26 +133,24 @@ this.curiouscity = {
 				if(_this.archive)
 				{
 					console.log('draw the question view')
-					_this.renderQuestion(questionID);
+					_this.renderQuestion(_this.archive.get(questionID));
 				}
 				else
 				{
 					console.log('need to load the archive!')
 					_this.loadArchiveCollection();
-					_this.archive.on('reset', function(){ _this.renderQuestion(questionID) }, _this)
+					_this.archive.on('reset', function(){ _this.renderQuestion( _this.archive.get(questionID) ) }, _this)
 				}
 			})
 		});
 		return false;
 	},
 	
-	renderQuestion : function(questionID)
+	renderQuestion : function( model )
 	{
-		console.log('render question: '+ questionID)
-		console.log(this.archive.get(questionID) )
 		$('#question-page').spin(false);
 		var Questions = curiouscity.module("questions");
-		var questionView = new Questions.Views.Single({model:this.archive.get(questionID)})
+		var questionView = new Questions.Views.Single({model:model})
 		
 		$('#question-page').html(questionView.render().el)
 	},
@@ -238,6 +239,7 @@ this.curiouscity = {
 						_.each( _.shuffle( _.toArray(collection) ),function(question){
 							var questionView = new Questions.Views.Vote({model:question,vote:true});
 							$('#questions').append(questionView.render().el);
+							questionView.delegateEvents();
 						});
 						_.each( _.toArray(collection),function(question){
 							var questionView = new Questions.Views.Vote({model:question,vote:true});
@@ -250,6 +252,7 @@ this.curiouscity = {
 						_.each( _.toArray(collection),function(question){
 							var questionView = new Questions.Views.Vote({model:question,vote:false});
 							$('#questions').append(questionView.render().el);
+							questionView.delegateEvents();
 						});
 					}
 					

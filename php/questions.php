@@ -84,7 +84,7 @@ try {
 		array_multisort($votes, SORT_DESC, $questions);
 		
 		for($i=0;$i<sizeof($questions);$i++){
-			unset($questions[$i]['votes']);
+			//unset($questions[$i]['votes']);
 			$questions[$i]['rank']=$i+1;
 		}
 		

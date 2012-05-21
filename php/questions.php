@@ -58,7 +58,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		$rowData = $entry->getCustom();
 		$question =array();
 		
-		if($votingperiod) $publicColumns=array('id','name','question','anonymous','imageurl','votes','winner');
+		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','votes','winner');
 		else  $publicColumns=array('id','name','question','anonymous','imageurl');
 		
 		

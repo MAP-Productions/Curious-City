@@ -58,6 +58,21 @@ body
 #stories-page{}
 #archive-page{}
 
+footer
+{
+	padding-top:20px;
+	border-top: 1px dotted #777;
+}
+footer img
+{
+	width:70px
+}
+footer li
+{
+	
+	float :right;
+	padding:5px;
+}
 
 #how-it-works
 {

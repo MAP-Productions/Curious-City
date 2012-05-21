@@ -100,7 +100,7 @@ this.curiouscity = {
 		console.log('load archive')
 		var Questions = curiouscity.module("questions");
 		var Pages = curiouscity.module('pages');
-		this.archive = new Questions.Collection({'votingperiod':'od7'});
+		this.archive = new Questions.Collection({'votingperiod':false});
 		$('#archive-page #archive-questions').empty();
 		$('#archive-page #archive-questions').spin();
 		this.archive.reset();

@@ -12,7 +12,8 @@
 		
 		url: function()
 		{
-			return 'php/questions.php?votingperiod='+this.votingperiod;
+			if(this.votingperiod != false) 'php/questions.php?votingperiod='+this.votingperiod;
+			return 'php/questions.php';
 		},
 		
 		parse: function(data)

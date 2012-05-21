@@ -239,7 +239,6 @@ footer li
 {
 	display:none;
 	min-height:300px;
-	
 	margin:10px 0;
 }
 #disqus-controls{
@@ -251,7 +250,9 @@ padding-top:20px;
 #disqus_thread{
 
 background:white;
-padding:20px;
+padding-top:20px;
+padding-left:20px;
+padding-right:20px;
 width:570px;
 
 }

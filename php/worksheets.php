@@ -32,17 +32,12 @@
 		Zend_Loader::loadClass('Zend_Http_Client');
 
 
-
-		
-		
-	
-
-		try {
-				  $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
-							Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
-		} catch (Zend_Gdata_App_AuthException $ae) {
-				  exit("Error: ". $ae->getMessage() ."\nCredentials provided were email: [$email] and password [$password].\n");
+		try{
+			$client = Zend_Gdata_ClientLogin::getHttpClient($email, $password, Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
+		}catch (Zend_Gdata_App_AuthException $ae) {
+			exit("Error Connecting");
 		}
+
 
 
 		$spreadsheetService = new Zend_Gdata_Spreadsheets($client);

@@ -28,20 +28,19 @@
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
-Zend_Loader::loadClass('Zend_Gdata');
-Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
-Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
-Zend_Loader::loadClass('Zend_Http_Client');
+		require_once 'Zend/Loader.php';
+		Zend_Loader::loadClass('Zend_Gdata');
+		Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
+		Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
+		Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
+		Zend_Loader::loadClass('Zend_Http_Client');
+		
 
-
-try {
-          $client = Zend_Gdata_ClientLogin::getHttpClient($email, $password,
-                    Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
-} catch (Zend_Gdata_App_AuthException $ae) {
-          exit("Error: ". $ae->getMessage() ."\nCredentials provided were email: [$email] and password [$password].\n");
-}
+		try{
+			$client = Zend_Gdata_ClientLogin::getHttpClient($email, $password, Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
+		}catch (Zend_Gdata_App_AuthException $ae) {
+			exit("Error Connecting");
+		}
 
 
 		$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
@@ -66,6 +65,7 @@ try {
 		}
 		
 			if($question['anonymous']==1)$question['name']='Anonymous';
+			if(empty($question['imageurl']))unset($question['imageurl']);
 			unset($question['anonymous']);
 		}
 

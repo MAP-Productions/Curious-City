@@ -24,7 +24,29 @@ this.curiouscity = {
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
+		
+		
+		$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
+		$('#disqus-sort-popular').click(function(){ 
+			$('#disqus-sort-newest').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
+			$('#disqus-sort-popular').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');;
+			DISQUS.dtpl.actions.fire('thread.sort', 'best');
+		});
+		$('#disqus-sort-newest').click(function(){ 
+			$('#disqus-sort-popular').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
+			$('#disqus-sort-newest').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
+			DISQUS.dtpl.actions.fire('thread.sort', 'newest');
+		});
+		
+		
+		
 		this.isLoaded = true
+		
+		
+		
+		
+		
+		
 		this.startRouter();
 	},
 	
@@ -72,12 +94,9 @@ this.curiouscity = {
 						_this.loadAsk();
 						break;
 					case 'archive':
-						$('#discussion').fadeIn();
 						_this.loadArchive();
 						break;
 					default :
-						$('#discussion').fadeIn();
-						
 				}
 				
 			});

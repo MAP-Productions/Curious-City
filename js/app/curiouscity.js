@@ -93,12 +93,9 @@ this.curiouscity = {
 						_this.loadAsk();
 						break;
 					case 'archive':
-						$('#discussion').fadeIn();
 						_this.loadArchive();
 						break;
 					default :
-						$('#discussion').fadeIn();
-						
 				}
 				
 			});

@@ -248,6 +248,11 @@ height: 50px;
 
 }
 
+#disqus_thread{
+
+background:white;
+}
+
 footer
 {
 	min-height:150px;

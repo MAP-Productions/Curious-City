@@ -53,6 +53,12 @@ body
 	padding:10px 5px;
 }
 
+#vote-page{}
+#ask-page{ height: 500px;}
+#stories-page{}
+#archive-page{}
+
+
 #how-it-works
 {
 	background:white;
@@ -96,7 +102,8 @@ body
 
 #pages{ min-height: 250px;}
 
-#questions
+#questions,
+#archive-questions
 {
 	padding:10px 0;
 	border-bottom: 1px dotted #777;
@@ -248,3 +255,14 @@ footer
 }
 
 #submit-name-preview{ margin-bottom:20px;}
+
+#about-page .right-col>div+div,
+#about-page .left-col>div
+{
+	border-top:1px dotted #777;
+	margin-top:20px;
+	padding-top:20px;
+}
+.the-team .name{font-weight:bold;}
+.the-team p{color:#999;}
+

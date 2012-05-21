@@ -64,11 +64,19 @@ this.curiouscity = {
 				switch(page)
 				{
 					case 'vote':
+						$('#discussion').fadeIn();
 						_this.loadVoteQuestions();
 						break;
 					case 'ask':
 						_this.loadAsk();
 						break;
+					case 'archive':
+						$('#discussion').fadeIn();
+						_this.loadArchive();
+						break;
+					default :
+						$('#discussion').fadeIn();
+						
 				}
 				
 			});
@@ -78,13 +86,40 @@ this.curiouscity = {
 
 	loadAsk : function(  )
 	{
-
 		console.log('curious eh?: submitttt');
 		$('#discussion').fadeOut();
 		var Questions = curiouscity.module("questions");
 		
 		this.askView = new Questions.Views.Ask();
 		$('#ask-form').html(this.askView.render().el);
+		
+	},
+	
+	loadArchive : function()
+	{
+		console.log('load archive')
+		var Questions = curiouscity.module("questions");
+		var Pages = curiouscity.module('pages');
+		this.archive = new Questions.Collection({'votingperiod':'od7'});
+		$('#archive-page #archive-questions').empty();
+		$('#archive-page #archive-questions').spin();
+		this.archive.reset();
+		this.archive.fetch({
+		
+			success:function(collection,response)
+			{
+				$('#archive-page #archive-questions').spin(false);
+				console.log(collection)
+
+				_.each( _.shuffle( _.toArray(collection) ),function(question){
+					var questionView = new Pages.Views.archive({model:question});
+					$('#archive-page #archive-questions').append(questionView.render().el);
+				});
+					
+				
+			
+			}
+		});
 		
 	},
 	

@@ -53,10 +53,7 @@
 			console.log('vote on this one:')
 			console.log(this)
 			
-			$.post('php/vote.php?questionid='+this.model.id, function(data){
-				console.log('data posted')
-				console.log(data)
-			})
+			$.post('php/vote.php?questionid='+this.model.id, function(data){}); //vote post
 			
 			this.voteOver = {};
 			this.voteOut = {};

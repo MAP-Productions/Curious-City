@@ -28,13 +28,13 @@ this.curiouscity = {
 		
 		$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
 		$('#disqus-sort-popular').click(function(){ 
-			$('#disqus-sort-newest').addClass('disqus-sort-unselected');
-			$('#disqus-sort-popular').removeClass('disqus-sort-unselected');
+			$('#disqus-sort-newest').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
+			$('#disqus-sort-popular').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');;
 			DISQUS.dtpl.actions.fire('thread.sort', 'best');
 		});
 		$('#disqus-sort-newest').click(function(){ 
-			$('#disqus-sort-popular').addClass('disqus-sort-unselected');
-			$('#disqus-sort-newest').removeClass('disqus-sort-unselected');
+			$('#disqus-sort-popular').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
+			$('#disqus-sort-newest').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
 			DISQUS.dtpl.actions.fire('thread.sort', 'newest');
 		});
 		

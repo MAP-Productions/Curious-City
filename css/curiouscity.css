@@ -263,6 +263,11 @@ background-color:#E6E6E6;
 
 }
 
+.disqus-sort-selected{
+
+background-color:white;
+
+}
 
 #disqus-sort-popular{
 
@@ -281,7 +286,6 @@ width:90px;
 
 .disqus-sort-tab{
 
-background-color:white;
 -moz-border-radius-top: 5px;
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;

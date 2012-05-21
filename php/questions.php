@@ -67,6 +67,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		}
 		
 			if($question['anonymous']==1)$question['name']='Anonymous';
+			if(empty($question['imageurl']))unset($question['imageurl']);
 			unset($question['anonymous']);
 			$questions[]=$question;
 		}

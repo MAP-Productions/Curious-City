@@ -22,3 +22,4 @@ jQuery(function($)
 
 	
 });
+var disqus_developer = 1;

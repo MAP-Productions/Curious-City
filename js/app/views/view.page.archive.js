@@ -26,7 +26,7 @@
 		
 		goToQuestion : function()
 		{
-			curiouscity.app.router.navigate('archive/question/'+this.model.id, {trigger:true});
+			curiouscity.app.router.navigate('!/archive/question/'+this.model.id, {trigger:true});
 			return false;
 		},
 

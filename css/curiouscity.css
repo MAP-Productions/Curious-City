@@ -321,6 +321,27 @@ footer
 	margin:0;
 }
 
+.submit-question-text
+{
+	height:200px;
+}
+.submit-sequence
+{
+	color: #777;
+}
+.phone-submit
+{
+	border-top: 1px dotted #777;
+	padding-top: 10px;
+	margin-top: 64px;
+}
+
+.submit-cell
+{
+	float:left;
+	margin-right:10px;
+}
+
 .submit-sequence ul li
 {
 	border-top: 1px dotted #777;

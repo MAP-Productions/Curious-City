@@ -118,7 +118,7 @@
 						"<li class='step2'>Step 2: Contact</li>"+
 						"<li class='step3'>Step 3: Preview</li>"+
 					"</ul>"+
-					"<div class='phone-submit'>Submit with your phone! Call Curious City 1.800.789.7752</div>"+
+					"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.800.789.7752</div>"+
 				"</div>"+
 				"<div class='span7'>"+
 					"<div class='question-form-wrapper'>"+

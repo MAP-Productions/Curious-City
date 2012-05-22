@@ -16,8 +16,6 @@ jQuery(function($)
 	
 	$('#nav-about').click(function(){
 
-		console.log( $("#questions-order>div") )
-
 		$("#questions").quicksand( $("#questions-order>div"),{
 			attribute: "data-id"
 		});

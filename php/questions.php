@@ -72,7 +72,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 			$questions[]=$question;
 		}
 		
-		if($votingperiod){
+		if(isset($_GET['votingperiod'])){
 		
 		foreach ($questions as $key => $row) {
 			$votes[$key]  = $row['votes	'];

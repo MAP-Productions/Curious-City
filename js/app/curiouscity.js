@@ -74,6 +74,9 @@ this.curiouscity = {
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			console.log('fade in: #'+page);
+			
+			//if(page == 'archive') $('#archive-page').empty();
+			
 			$('#'+page+'-page').addClass('focus').fadeIn('fast',function(){
 				// calls made once the page div is visible and ready to display whatever
 				switch(page)

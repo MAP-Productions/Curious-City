@@ -42,9 +42,9 @@ app: _.extend({
 		this.questionsCollection.fetch({
 			success:function(collection,response)
 			{
-				$('#ballot>div').spin(false).effect('highlight',{'color':'#49BEE8'},2000);
+				$('#ballot>div').spin(false);
 				_this.makePairs();
-				console.log(_this.pairs)
+				_this.parseData();
 				_this.displayNextPair();
 			}
 		});
@@ -64,14 +64,65 @@ app: _.extend({
 		this.pairs = p;
 	},
 	
+	parseData : function()
+	{
+		var votes = this.questionsCollection.pluck('votes');
+		var total = 0;
+		for(var i = 0 ; i < votes.length ; i++ )
+			total += parseInt( votes[i] );
+		
+		_.each(_.toArray(this.questionsCollection), function(question){
+			question.set('percent', Math.floor(question.get('votes')/total*100) )
+		})
+		
+	},
+	
+	voteOnQuestion : function(questionID, position)
+	{
+		var _this = this;
+		var Questions = curiouscity.module("questions");
+		var question = this.questionsCollection.get(questionID);
+		//$.post('php/vote.php?questionid='+ questionID, function(data){}); //vote post
+		
+		var thanksView = new Questions.Views.WidgetThanks({model: question})
+		
+		if(position=='left')
+		{
+			$('#right-ballot').fadeOut('fast', function(){
+				$('#right-ballot').html( thanksView.render().el );
+				$('#right-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},5000) } );
+			})
+		}
+		else
+		{
+			$('#left-ballot').fadeOut('fast', function(){
+				$('#left-ballot').html( thanksView.render().el );
+				$('#left-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},5000) } );
+			})
+		}
+		
+		//this.displayNextPair();
+	},
+	
 	displayNextPair : function()
 	{
+		var _this = this;
 		var Questions = curiouscity.module("questions");
-		var leftView = new Questions.Views.Widget({model: this.pairs[ this.counter][0] });
-		var rightView = new Questions.Views.Widget({model: this.pairs[this.counter][1] });
+		this.leftView = new Questions.Views.Widget({model: this.pairs[ this.counter][0], position:'left' });
+		this.rightView = new Questions.Views.Widget({model: this.pairs[this.counter][1], position:'right' });
 		
-		$('#left-ballot').html( leftView.render().el );
-		$('#right-ballot').html( rightView.render().el );
+		$('#left-ballot').fadeOut('fast', function(){
+			$('#left-ballot').html( _this.leftView.render().el );
+			$('#left-ballot').fadeIn('fast', function(){
+				$('#right-ballot').fadeOut('fast', function(){
+					$('#right-ballot').html( _this.rightView.render().el );
+					$('#right-ballot').fadeIn('fast');
+				})
+			});
+			
+		})
+		
+		
 		
 		this.counter++;
 	}

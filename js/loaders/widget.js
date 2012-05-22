@@ -36,6 +36,7 @@ var loadFiles = [
 	
 	//views
 	'order!app/views/view.widget.single',
+	'order!app/views/view.widget.thanks',
 
 	'order!lib/spin',	
 

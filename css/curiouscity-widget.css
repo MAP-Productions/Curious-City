@@ -8,6 +8,7 @@ h3{ font-weight:500; }
 	height:330px;
 	padding:10px;
 	background-color:#eee;
+	overflow:hidden;
 }
 
 #tagline
@@ -39,6 +40,46 @@ h3{ font-weight:500; }
 }
 #right-ballot{}
 
+.question
+{
+	background-color:white;
+	color:#222;
+	-webkit-transition: color,background-color .25s linear;
+	 transition: color,background-color .25s linear;
+	height:100%;
+}
+
+.question.hover
+{
+	-webkit-transition: color,background-color .25s linear;
+	 transition: color,background-color .25s linear;
+	background-color:#49BEE8;
+	color:white;
+}
+.question .ballot-image
+{
+	-webkit-transition: opacity .25s linear;
+	 transition: opacity .25s linear;
+	opacity:1;
+}
+.question.hover .ballot-image
+{
+	-webkit-transition: opacity .25s linear;
+	 transition: opacity .25s linear;
+	opacity:.75;
+}
+
+.question-thanks
+{
+	padding:3px;
+	color:#777;
+}
+.question-thanks .social
+{
+	padding: 10px 0 ;
+}
+
+
 #submit-question
 {
 	margin-top:2px;
@@ -55,11 +96,19 @@ h3{ font-weight:500; }
 {
 	color:#777;
 }
-
+#sponsors ul
+{
+	position:relative;
+	top:-12px;
+}
 #sponsors li
 {
 	float:left;
 	margin-right:5px;
+}
+#sponsors img
+{
+	max-height:50px;
 }
 
 .ballot-image
@@ -73,6 +122,12 @@ h3{ font-weight:500; }
 	padding-top:23px;
 }
 
+.thanks-text h3
+{
+	color: #49BEE8;
+}
+
+
 .vote
 {
 	background-image:url(../images/votebutton.png);
@@ -84,4 +139,20 @@ h3{ font-weight:500; }
 	top:12px;
 	left:46px;
 }
-.vote:hover, .vote.hover{background-position:-51px 0;}
+.vote.hover{background-position:-51px 0;}
+
+[class^="social-"], [class*=" social-"]
+{
+	background-image:url(../images/socialicons.png);
+	height:15px;
+	width:15px;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align: text-top;
+}
+.social-facebook{background-position:0 0;}
+.social-twitter{background-position:-15px 0;}
+.social-rss{background-position:-30px 0;}
+.social-googleplus{background-position:-45px 0;}
+
+.social i{ margin-right:5px;}

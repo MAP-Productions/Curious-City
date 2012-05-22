@@ -42,11 +42,6 @@ this.curiouscity = {
 		
 		this.isLoaded = true
 		
-		
-		
-		
-		
-		
 		this.startRouter();
 	},
 	

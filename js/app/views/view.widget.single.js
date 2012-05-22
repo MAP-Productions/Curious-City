@@ -41,20 +41,11 @@
 			this.$el.find('.vote').removeClass('hover')
 		},
 		
-		goToQuestion : function()
-		{
-			console.log('go to question!!! '+ this.model.id);
-			curiouscity.app.router.navigate('question/'+this.model.id, {trigger:true});
-			return false;
-		},
-		
 		voteThis : function()
 		{
-			console.log('vote on this one:')
-			console.log(this)
-			
-			$.post('php/vote.php?questionid='+this.model.id, function(data){}); //vote post
-			
+			this.undelegateEvents();
+			this.$el.find('.vote').addClass('hover');
+			curiouscity.app.voteOnQuestion( this.model.id, this.options.position )
 		},
 	
 		getTemplate : function()

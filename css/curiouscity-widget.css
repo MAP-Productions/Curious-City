@@ -1,0 +1,87 @@
+body{ background-color:black;; }
+
+h3{ font-weight:500; }
+
+.wrapper
+{
+	width:300px;
+	height:330px;
+	padding:10px;
+	background-color:#eee;
+}
+
+#tagline
+{
+	border-top:1px dotted #777;
+	margin-top: 5px;
+	padding-top: 5px;
+	color:#777;
+}
+
+#ballot
+{
+	height:170px;
+}
+
+#left-ballot,
+#right-ballot
+{
+	height:100%;
+	width:149px;
+	float:left;
+	background-color:white;
+	position: relative;
+}
+
+#left-ballot
+{
+	margin-right:2px;
+}
+#right-ballot{}
+
+#submit-question
+{
+	margin-top:2px;
+	padding: 3px 0;
+	border-top:1px dotted #777;
+	border-bottom:1px dotted #777;
+	text-align:center;
+}
+
+#submit-question a:link,
+#submit-question a:hover
+#submit-question a:active
+#submit-question a:visited
+{
+	color:#777;
+}
+
+#sponsors li
+{
+	float:left;
+	margin-right:5px;
+}
+
+.ballot-image
+{
+	height:40px;
+}
+
+#ballot .text 
+{
+	padding:3px;
+	padding-top:23px;
+}
+
+.vote
+{
+	background-image:url(../images/votebutton.png);
+	height:51px;
+	width:51px;
+	display:inline-block;
+	overflow:hidden;
+	position: absolute;
+	top:12px;
+	left:46px;
+}
+.vote:hover, .vote.hover{background-position:-51px 0;}

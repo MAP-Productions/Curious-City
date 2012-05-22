@@ -220,6 +220,14 @@ this.curiouscity = {
 	
 	loadVoteQuestions : function()
 	{
+	
+				DISQUS.reset({
+		reload: true,
+		config: function () {  
+		this.page.identifier = "vote";  
+		this.page.url = "http://curiouscity.wbez.org/#!/vote";
+		}
+		});
 		if(!this.questionsCollection)
 		{
 			var Questions = curiouscity.module("questions");

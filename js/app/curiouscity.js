@@ -115,6 +115,16 @@ this.curiouscity = {
 	goToArchiveQuestion : function( questionID )
 	{
 		var _this = this;
+		
+		DISQUS.reset({
+		reload: true,
+		config: function () {  
+		this.page.identifier = "question-"+questionID;  
+		this.page.url = "http://example.com/#!/question/"+questionID;
+		}
+		});
+		$('#discussion').fadeIn();
+
 		$('.focus').removeClass('focus').fadeOut('fast', function(){
 			$('#question-page').empty();
 			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){

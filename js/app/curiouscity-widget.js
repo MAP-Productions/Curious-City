@@ -92,14 +92,14 @@ app: _.extend({
 		{
 			$('#right-ballot').fadeOut('fast', function(){
 				$('#right-ballot').html( thanksView.render().el );
-				$('#right-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},5000) } );
+				$('#right-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},2250) } );
 			})
 		}
 		else
 		{
 			$('#left-ballot').fadeOut('fast', function(){
 				$('#left-ballot').html( thanksView.render().el );
-				$('#left-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},5000) } );
+				$('#left-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},2250) } );
 			})
 		}
 		

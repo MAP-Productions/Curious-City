@@ -24,8 +24,14 @@ this.curiouscity = {
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
+		this.loadDisqus();
+		this.startRouter();
 		
-		
+		this.isLoaded = true
+	},
+	
+	loadDisqus : function()
+	{
 		$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
 		$('#disqus-sort-popular').click(function(){ 
 			$('#disqus-sort-newest').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
@@ -37,12 +43,6 @@ this.curiouscity = {
 			$('#disqus-sort-newest').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
 			DISQUS.dtpl.actions.fire('thread.sort', 'newest');
 		});
-		
-		
-		
-		this.isLoaded = true
-		
-		this.startRouter();
 	},
 	
 	startRouter: function()
@@ -50,18 +50,16 @@ this.curiouscity = {
 		var _this = this;
 		var Router = Backbone.Router.extend({
 			routes: {
-				""							: 'loadMain',
-				':page'						:	'loadPage',
-				"connection/:connectionId"	:	"goToConnection",
-				'question/:questionID' : 'goToQuestion',
-				'archive/question/:questionID' : 'goToArchiveQuestion'
+				""								:	'loadMain',
+				'!/:page'							:	'loadPage',
+				"!/connection/:connectionId"		:	"goToConnection",
+				'!/archive/question/:questionID'	:	'goToArchiveQuestion'
 			},
 			
+			loadMain: function(){ this.navigate('!/vote',{trigger:true}) },
 			loadPage : function(page){ _this.loadPage(page) },
+			
 			goToConnection : function( connectionId ){ _this.goToConnection( connectionId ) },
-			loadSubmit: function(  ){ _this.loadSubmit() },
-			loadMain: function(){ this.navigate('vote') },
-			goToQuestion : function(questionID){ _this.goToQuestion(questionID) },
 			goToArchiveQuestion : function(questionID){ _this.goToArchiveQuestion(questionID) }
 		});
 
@@ -77,19 +75,23 @@ this.curiouscity = {
 			$(this).removeClass('focus');
 			console.log('fade in: #'+page);
 			$('#'+page+'-page').addClass('focus').fadeIn('fast',function(){
-				console.log('fade in complete')
-				
+				// calls made once the page div is visible and ready to display whatever
 				switch(page)
 				{
 					case 'vote':
 						$('#discussion').fadeIn();
 						_this.loadVoteQuestions();
 						break;
+					case 'stories':
+					
+						break;
 					case 'ask':
 						_this.loadAsk();
 						break;
 					case 'archive':
 						_this.loadArchive();
+						break;
+					case 'about':
 						break;
 					default :
 				}
@@ -110,37 +112,11 @@ this.curiouscity = {
 		
 	},
 	
-	goToQuestion : function(questionID)
-	{
-		
-		var _this = this;
-		$('.focus').removeClass('focus').fadeOut('fast', function(){
-			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){
-				console.log('go to question '+questionID)
-				console.log(_this)
-				var Questions = curiouscity.module("questions");
-				
-				var q = new Questions.Model();
-				q.id = questionID;
-				q.fetch({
-					success: function(response)
-					{
-						console.log('done')
-						console.log(q)
-						_this.renderQuestion(q);
-					}
-				})
-				
-			})
-		});
-		return false;
-
-	},
-	
-	goToArchiveQuestion : function(questionID)
+	goToArchiveQuestion : function( questionID )
 	{
 		var _this = this;
 		$('.focus').removeClass('focus').fadeOut('fast', function(){
+			$('#question-page').empty();
 			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){
 				console.log('go to question '+questionID)
 				console.log(_this)

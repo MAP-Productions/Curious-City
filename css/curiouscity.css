@@ -192,6 +192,7 @@ footer li
 	overflow:hidden;
 	vertical-align: text-top;
 }
+.arrow.left{background-position:-45px 0;}
 .arrow.right{background-position:-15px 0;}
 .arrow.down{background-position:-30px 0;}
 .arrow.images/sample1.jpg{background-position:-45px 0;}

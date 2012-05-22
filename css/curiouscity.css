@@ -315,6 +315,18 @@ footer
 	text-align:center;
 }
 
+.top-left-corner-info
+{
+	width:300px;
+	height:130px;
+	position:relative;
+}
+
+.top-left-corner-info h5
+{
+	position: absolute;
+	bottom: 0;
+}
 .submit-sequence ul
 {
 	list-style:none;

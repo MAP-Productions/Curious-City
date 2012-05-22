@@ -68,8 +68,10 @@ app: _.extend({
 	{
 		var votes = this.questionsCollection.pluck('votes');
 		var total = 0;
-		for(var i = 0 ; i < votes.length ; i++ )
-			total += parseInt( votes[i] );
+		for(var i = 0 ; i < votes.length ; i++ ) total += parseInt( votes[i] );
+		
+		$('#questions-count').html(votes.length);
+		$('#tagline').fadeTo(100,1);
 		
 		_.each(_.toArray(this.questionsCollection), function(question){
 			question.set('percent', Math.floor(question.get('votes')/total*100) )
@@ -107,24 +109,32 @@ app: _.extend({
 	displayNextPair : function()
 	{
 		var _this = this;
-		var Questions = curiouscity.module("questions");
-		this.leftView = new Questions.Views.Widget({model: this.pairs[ this.counter][0], position:'left' });
-		this.rightView = new Questions.Views.Widget({model: this.pairs[this.counter][1], position:'right' });
 		
-		$('#left-ballot').fadeOut('fast', function(){
-			$('#left-ballot').html( _this.leftView.render().el );
-			$('#left-ballot').fadeIn('fast', function(){
-				$('#right-ballot').fadeOut('fast', function(){
-					$('#right-ballot').html( _this.rightView.render().el );
-					$('#right-ballot').fadeIn('fast');
-				})
-			});
+		if(this.counter < this.pairs.length)
+		{
+			var Questions = curiouscity.module("questions");
+			this.leftView = new Questions.Views.Widget({model: this.pairs[ this.counter][0], position:'left' });
+			this.rightView = new Questions.Views.Widget({model: this.pairs[this.counter][1], position:'right' });
+		
+			$('#left-ballot').fadeOut('fast', function(){
+				$('#left-ballot').html( _this.leftView.render().el );
+				$('#left-ballot').fadeIn('fast', function(){
+					$('#right-ballot').fadeOut('fast', function(){
+						$('#right-ballot').html( _this.rightView.render().el );
+						$('#right-ballot').fadeIn('fast');
+					})
+				});
 			
-		})
+			})
 		
 		
 		
-		this.counter++;
+			this.counter++;
+		}
+		else
+		{
+			console.log('this is the end of the line')
+		}
 	}
 	
 	

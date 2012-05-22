@@ -256,12 +256,12 @@ this.curiouscity = {
 					{
 						console.log('can vote!')
 						_.each( _.shuffle( _.toArray(collection) ),function(question){
-							var questionView = new Questions.Views.Vote({model:question,vote:true});
+							var questionView = new Questions.Views.Vote({model:question,vote:true, linked:false});
 							$('#questions').append(questionView.render().el);
 							questionView.delegateEvents();
 						});
 						_.each( _.toArray(collection),function(question){
-							var questionView = new Questions.Views.Vote({model:question,vote:true});
+							var questionView = new Questions.Views.Vote({model:question,vote:true, linked:true});
 							$('#questions-order').append(questionView.render().el);
 						});
 					}

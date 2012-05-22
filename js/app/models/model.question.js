@@ -13,7 +13,6 @@
 
 		initialize : function()
 		{
-			if(this.get('imageurl')=='') this.set('imageurl','images/default.jpg')
 		},
 
 

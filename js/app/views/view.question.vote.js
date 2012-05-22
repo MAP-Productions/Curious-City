@@ -74,15 +74,29 @@
 	
 		getTemplate : function()
 		{
-			var html =
-		
+			var html = '';
+			
+			if(this.options.vote && !this.options.linked)
+			{
+				html +=
 				"<div class='row' data-test='<%= rank %>'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>";
-					if(this.options.vote) html += "<a href='#'><i class='vote'></i></a>";
-					html += "<div class='span7 question-text'>"+
+					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
+					"<a href='#'><i class='vote'></i></a>"+
+					"<div class='span7 question-text'>"+
+						"<h2><%= text %></h2>"+
+					"</div>"+
+				"</div>";
+			}
+			else
+			{
+				html +=
+				"<div class='row' data-test='<%= rank %>'>"+
+					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
+					"<div class='span7 question-text'>"+
 						"<h2><a class='question-link' href='#'><%= text %></a></h2>"+
 					"</div>"+
 				"</div>";
+			}
 			
 			return html;
 		}

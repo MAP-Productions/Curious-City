@@ -190,12 +190,12 @@ footer li
 	height: 0;
 	width: 0;
 	border-bottom: 100px solid transparent;
-	border-left: 100px solid transparent;
 	border-top: 0px solid black;
 	border-right: 100px solid black;
 	z-index:0;
 	position:absolute;
 	right:0;
+	opacity:0.8;
 }
 .rank-number
 {

@@ -31,6 +31,7 @@
 		{
 			var html =
 		
+			"<div class='nav'><a class='prev' href='#'>previous</a><a class='next' href='#'></a></div>"+
 			"<div class='hero-unit' style='background-image:url(<%= imageurl %>)'>"+
 			"</div>"+
 			"<h1><%= question %></h1>"+

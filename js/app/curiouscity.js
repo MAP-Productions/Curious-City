@@ -213,8 +213,14 @@ this.curiouscity = {
 		$('.focus').removeClass('focus').fadeOut('fast', function(){
 			$('#question-page').empty();
 			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){
-				console.log('go to question '+questionID)
-				_this.renderQuestion(_this.archive.get(questionID));
+				var Questions = curiouscity.module("questions");
+				var question = new Questions.Model({id:questionID});
+				question.fetch({
+					success : function()
+					{
+						_this.renderQuestion( question );
+					}
+				});
 				
 			})
 		});

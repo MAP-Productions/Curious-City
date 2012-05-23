@@ -111,7 +111,7 @@
 				if(this.voted_this) html += "<a href='#'><i class='vote hover'></i></a>";
 				html += "<div class='span7 question-text'>"+
 						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
-						"<div class='comment-count'><a href='#'>Discuss <i class='icon-comment'></i></a></div>"+
+						"<div class='comment-count'><a href='#' class='question-link'>Discuss <i class='icon-comment'></i></a></div>"+
 					"</div>"+
 				"</div>";
 			}

@@ -12,15 +12,8 @@ jQuery(function($)
 		
 		if( $('#how-it-works').hasClass('open') ) $('#how-it-works').show('blind',{direction:'vertical'},500);
 		else $('#how-it-works').hide('blind',{direction:'vertical'},500);
+		return false;
 	})
-	
-	$('#nav-about').click(function(){
-
-		$("#questions").quicksand( $("#questions-order>div"),{
-			attribute: "data-id"
-		});
-	})
-	
 
 	
 });

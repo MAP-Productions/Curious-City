@@ -7,20 +7,35 @@
 		
 		tagName : 'div',
 		className: 'question',
-		vote : true,
+		
+		voted : false,
+		voted_this : false,
 		
 		initialize : function()
 		{
-		
-			//copy the cloned item into the el
-			$(this.el).attr('data-id',this.model.id)
-	
+			curiouscity.app.questionsCollection.on('sorted', this.sorted, this);
 		},
-		
+
 		render : function( )
 		{
-			$(this.el).append( _.template( this.getTemplate(), this.model.attributes ) );
+			this.$el.html( _.template( this.getTemplate(), this.model.attributes ) );
 			return this;
+		},
+
+		
+				
+		sorted : function()
+		{
+			var _this = this;
+			this.voted = true;
+			$(this.el).removeClass('hover');
+			$('#questions').find('[data-id='+ this.model.id +']').after(this.render().el).remove();
+			
+			$('.question-link').off('click').click(function(){
+				_this.goToQuestion();
+				return false;
+			})
+
 		},
 		
 		events : {
@@ -45,25 +60,28 @@
 		goToQuestion : function()
 		{
 			console.log('go to question!!! '+ this.model.id);
-			curiouscity.app.router.navigate('!/question/'+this.model.id, {trigger:true});
+			curiouscity.app.router.navigate('!/archive/question/'+this.model.id, {trigger:true});
 			return false;
 		},
 		
 		voteThis : function()
 		{
-			console.log('vote on this one:')
-			console.log(this)
-			
+			console.log('vote on this one:');
+			this.voted_this = true;
+			var _this = this;
 			curiouscity.app.voteOnQuestion();
 			$.post('php/vote.php?questionid='+this.model.id, function(data){}); //vote post
 			
 			this.voteOver = {};
 			this.voteOut = {};
 			
-			$('div[data-id='+this.model.id+']').find('.vote').addClass('hover');
-			$('#questions').find('.vote').not('.hover').fadeOut();
-			$('#questions,#questions-order').find('.vote').not('.hover').remove();
-			$('#questions').quicksand('#questions-order>div');
+			//sort divs
+			var newOrder = $('#questions>div').clone();
+			newOrder = _.sortBy( newOrder, function(div){ return $(div).data('rank') })
+			$('#questions').quicksand( newOrder, function(){
+				curiouscity.app.questionsCollection.trigger('sorted')
+			});
+			
 			return false;
 		},
 	
@@ -71,10 +89,10 @@
 		{
 			var html = '';
 			
-			if(this.options.vote && !this.options.linked)
+			if( !this.voted )
 			{
 				html +=
-				"<div class='row' data-test='<%= rank %>'>"+
+				"<div class='row' data-id='"+ this.model.id +"' data-rank='<%= rank %>'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
 					"<a href='#'><i class='vote'></i></a>"+
 					"<div class='span7 question-text'>"+
@@ -85,13 +103,13 @@
 			else
 			{
 				html +=
-				"<div class='row' data-test='<%= rank %>'>"+
+				"<div class='row'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+
 						"<div class='rank-corner'></div>"+
 						"<h2 class='rank-number'><%= rank_string %></h2>"+
-					"</div>"+
-					"<i class='vote'></i>"+
-					"<div class='span7 question-text'>"+
+					"</div>";
+				if(this.voted_this) html += "<a href='#'><i class='vote hover'></i></a>";
+				html += "<div class='span7 question-text'>"+
 						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
 						"<div class='comment-count'><a href='#'>Discuss <i class='icon-comment'></i></a></div>"+
 					"</div>"+

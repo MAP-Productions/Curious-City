@@ -12,21 +12,14 @@
 		initialize : function()
 		{
 		
-			var blanks = {
-				image_url: this.model.get('imageurl'),
-				text: this.model.get('question'),
-				rank: this.model.get('rank')
-			};
-			//use template to clone the database items into
-			var template = _.template( this.getTemplate() );
 			//copy the cloned item into the el
 			$(this.el).attr('data-id',this.model.id)
-			$(this.el).append( template( blanks ) );
 	
 		},
 		
 		render : function( )
 		{
+			$(this.el).append( _.template( this.getTemplate(), this.model.attributes ) );
 			return this;
 		},
 		
@@ -82,10 +75,10 @@
 			{
 				html +=
 				"<div class='row' data-test='<%= rank %>'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
+					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
 					"<a href='#'><i class='vote'></i></a>"+
 					"<div class='span7 question-text'>"+
-						"<h2><%= text %></h2>"+
+						"<h2><%= question %></h2>"+
 					"</div>"+
 				"</div>";
 			}
@@ -93,9 +86,14 @@
 			{
 				html +=
 				"<div class='row' data-test='<%= rank %>'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
+					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+
+						"<div class='rank-corner'></div>"+
+						"<h2 class='rank-number'><%= rank_string %></h2>"+
+					"</div>"+
+					"<i class='vote'></i>"+
 					"<div class='span7 question-text'>"+
-						"<h2><a class='question-link' href='#'><%= text %></a></h2>"+
+						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
+						"<div class='comment-count'><a href='#'>Discuss <i class='icon-comment'></i></a></div>"+
 					"</div>"+
 				"</div>";
 			}

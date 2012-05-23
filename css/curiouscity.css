@@ -173,6 +173,12 @@ footer li
 	opacity:0.5 ;
 }
 
+.question-text .comment-count
+{
+	position:absolute;
+	bottom:5px;
+	right:10px;
+}
 
 #flash .right-col .super h1,
 #flash .right-col .sub h5,

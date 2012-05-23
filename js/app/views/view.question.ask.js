@@ -38,7 +38,7 @@
 				 $('#flickr-search').fadeOut('fast').empty().fadeIn();
 				_.each(_.toArray(collection),function(model){
 					
-					var url=	"http://farm"+model.get('farm')+".staticflickr.com/"+model.get('server')+"/"+model.get('id')+"_"+model.get('secret')+"_s.jpg";
+					var url=	"http://farm"+model.get('farm')+".staticflickr.com/"+model.get('server')+"/"+model.get('id')+"_"+model.get('secret')+"_m.jpg";
 				    var attribution = "http://www.flickr.com/photos/"+model.get('owner')+"/"+model.get('id');
 				    $('#flickr-search').append('<img data-attribution="'+attribution+'" class="flickr-image" src="'+url+'" />');
 				});

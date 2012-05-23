@@ -192,6 +192,14 @@ this.curiouscity = {
 			var questionView = new Pages.Views.archive({model:question});
 			$('#archive-page #archive-questions').append(questionView.render().el);
 		});
+		DISQUS.reset({
+			reload: true,
+			config: function () {  
+			console.log('resetting');
+			this.page.identifier = "archive";  
+			this.page.url = "http://example.com/#!/archive";
+			}
+		});
 	},
 	
 	goToArchiveQuestion : function( questionID )

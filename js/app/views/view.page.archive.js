@@ -11,11 +11,10 @@
 		
 		render : function()
 		{
-			var blanks = {
-				image_url: this.model.get('imageurl'),
-				text: this.model.get('question'),
-			};
-			$(this.el).append( _.template( this.getTemplate(), blanks ) );
+			
+			var c = (this.model.get('commentcount') == 1) ? 'comment': 'comments';
+
+			$(this.el).append( _.template( this.getTemplate(), _.extend(this.model.attributes,{lang:c}) ) );
 			
 			return this;
 		},
@@ -35,9 +34,10 @@
 			var html =
 		
 				"<div class='row'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= image_url %>)'></div>"+
+					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
 					"<div class='span7 question-text'>"+
-						"<h2><a class='question-link' href='#'><%= text %></a></h2>"+
+						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
+						"<div class='comment-count'><a href='#'><%= commentcount %> <%= lang %></a></div>"+
 					"</div>"+
 				"</div>";
 			

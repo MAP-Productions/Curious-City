@@ -52,7 +52,7 @@
 		goToQuestion : function()
 		{
 			console.log('go to question!!! '+ this.model.id);
-			curiouscity.app.router.navigate('question/'+this.model.id, {trigger:true});
+			curiouscity.app.router.navigate('!/question/'+this.model.id, {trigger:true});
 			return false;
 		},
 		
@@ -61,6 +61,7 @@
 			console.log('vote on this one:')
 			console.log(this)
 			
+			curiouscity.app.voteOnQuestion();
 			$.post('php/vote.php?questionid='+this.model.id, function(data){}); //vote post
 			
 			this.voteOver = {};
@@ -70,6 +71,7 @@
 			$('#questions').find('.vote').not('.hover').fadeOut();
 			$('#questions,#questions-order').find('.vote').not('.hover').remove();
 			$('#questions').quicksand('#questions-order>div');
+			return false;
 		},
 	
 		getTemplate : function()

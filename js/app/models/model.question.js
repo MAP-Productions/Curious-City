@@ -3,7 +3,8 @@
 	Questions.Model = Backbone.Model.extend({
 
 		defaults : {
-			'imageurl' : 'images/default.jpg'
+			'imageurl' : 'images/default.jpg',
+			'commentcount' : 1
 		},
 
 		url: function()

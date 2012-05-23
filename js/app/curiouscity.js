@@ -225,6 +225,14 @@ this.curiouscity = {
 		var questionView = new Questions.Views.Single({model:model})
 		
 		$('#question-page').html(questionView.render().el)
+	},
+	
+	voteOnQuestion : function()
+	{
+		console.log('voted!!!!!')
+		$('#vote-page .super h1').html('Find out final results Wednesday on The Afternoon Shift on WBEZ 91.5');
+		$('#vote-page .sub h5').html('Thanks for Voting! Here’s how the votes are stacking up so far.');
+		
 	}
 
 	

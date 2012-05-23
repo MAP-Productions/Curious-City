@@ -63,7 +63,7 @@ ul.horizontal li+li
 }
 
 #vote-page{}
-#ask-page{ height: 500px;}
+#ask-page{ height: 700px;}
 #stories-page{}
 #archive-page{}
 
@@ -194,6 +194,27 @@ footer li
 .question .question-text h2{ padding:10px 10px 0 20px }
 
 #ask-flash .right-col .super h1{ padding-top: 0;}
+
+
+.flickr-image {
+
+
+	padding:3px;
+	width:100px;
+	border:solid transparent 2px;
+}
+
+.flickr-image:hover {
+
+	border:solid #08C 2px;
+	cursor:pointer;
+}
+
+.flickr-image-selected {
+
+	background-color: #08C;
+}
+
 
 .vote
 {

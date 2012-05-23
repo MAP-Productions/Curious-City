@@ -33,9 +33,12 @@ var loadFiles = [
 	//models
 	
 	'order!app/models/model.question',
+		'order!app/models/model.question.ask',
+		
 	//collections
 	
 	'order!app/collections/collection.question',
+	'order!app/collections/collection.flickr',
 	
 	//views
 	'order!app/views/view.question.vote',

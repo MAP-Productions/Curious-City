@@ -20,7 +20,7 @@ this.curiouscity = {
 
   // Keep active application instances namespaced under an app object.
   app: _.extend({
-	
+		
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
@@ -242,7 +242,18 @@ this.curiouscity = {
 		$('#vote-page .super h1').html('Find out final results Wednesday on The Afternoon Shift on WBEZ 91.5');
 		$('#vote-page .sub h5').html('Thanks for Voting! Here’s how the votes are stacking up so far.');
 		
+	},
+	
+	goToPrevInArchive : function()
+	{
+		console.log('go to previous')
+	},
+	
+	goToNextInArchive : function()
+	{
+		console.log('go to next')
 	}
+	
 
 	
 }, Backbone.Events)

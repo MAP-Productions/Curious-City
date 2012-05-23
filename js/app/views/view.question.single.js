@@ -24,25 +24,43 @@
 		},
 		
 		events : {
-			
+			'click .prev' : 'goToPrev',
+			'click .next' : 'goToNext'
+		},
+		
+		goToPrev : function()
+		{
+			console.log('prevvvvv')
+			curiouscity.app.goToPrevInArchive();
+			return false;
+		},
+		
+		goToNext : function()
+		{
+			console.log('nexxxxxt')
+			curiouscity.app.goToNextInArchive();
+			return false
 		},
 	
 		getTemplate : function()
 		{
 			var html =
 		
-			"<div class='nav'><a class='prev' href='#'>previous</a><a class='next' href='#'></a></div>"+
-			"<div class='hero-unit' style='background-image:url(<%= imageurl %>)'>"+
-			"</div>"+
-			"<h1><%= question %></h1>"+
-			"<p>posted by <%= name %></p>"+
-			"<div class='row content'>"+
-				"<div class='span4'></div>"+
+			"<div class='nav clearfix'><a class='prev pull-left' href='#'><i class='arrow-left'></i> previous</a><a class='next pull-right' href='#'>next <i class='arrow-right'></i></a></div>"+
+			"<div class='row'>"+
+
+				"<div class='span4'>"+
+					"<div class='hero-unit' style='background-image:url(<%= imageurl %>)'></div>"+
+				"</div>"+
+
 				"<div class='span8'>"+
+					"<h1><%= question %></h1>"+
+					"<p>posted by <%= name %></p>"+
 					"<div class='question-discussion'></div>"+
 				"</div>"+
+			
 			"</div>";
-
+			
 			return html;
 		}
 		

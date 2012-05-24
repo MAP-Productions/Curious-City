@@ -27,8 +27,7 @@
 		},
 		
 		events : {
-			'click .prev' : 'goToPrev',
-			'click .next' : 'goToNext'
+		
 		},
 		
 		goToPrev : function()

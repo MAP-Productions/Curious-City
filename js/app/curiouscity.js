@@ -292,15 +292,7 @@ this.curiouscity = {
 		
 	},
 	
-	goToPrevInArchive : function()
-	{
-		console.log('go to previous')
-	},
-	
-	goToNextInArchive : function()
-	{
-		console.log('go to next')
-	}
+
 	
 
 	

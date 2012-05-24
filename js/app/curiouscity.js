@@ -279,13 +279,6 @@ this.curiouscity = {
 	renderQuestion : function( model )
 	{
 	
-				DISQUS.reset({
-		reload: true,
-		config: function () {  
-		this.page.identifier = "vote";  
-		this.page.url = "http://curiouscity.wbez.org/#!/vote";
-		}
-		});
 	
 		$('#question-page').spin(false);
 		var Questions = curiouscity.module("questions");

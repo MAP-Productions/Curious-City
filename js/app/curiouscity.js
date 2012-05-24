@@ -20,7 +20,7 @@ this.curiouscity = {
 
   // Keep active application instances namespaced under an app object.
   app: _.extend({
-	
+		
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
@@ -134,20 +134,23 @@ this.curiouscity = {
 		{
 			console.log('--you can vote! :)')
 			_.each( _.shuffle( _.toArray( this.questionsCollection ) ),function(question){
-				var questionView = new Questions.Views.Vote({model:question,vote:true, linked:false});
+				var questionView = new Questions.Views.Vote({model:question,voted:false, attributes:{'data-id':question.id,'data-rank':question.get('rank')}});
 				$('#questions').append(questionView.render().el);
 			});
+			/*
 			_.each( _.toArray( this.questionsCollection ),function(question){
 				var questionView = new Questions.Views.Vote({model:question,vote:true, linked:true});
 				$('#questions-order').append(questionView.render().el);
 			});
+			*/
 		}
 		else
 		{
 			console.log('--you cannot vote :(')
 			_.each( _.toArray( this.questionsCollection ),function(question){
-				var questionView = new Questions.Views.Vote({model:question,vote:false});
+				var questionView = new Questions.Views.Vote({model:question,vote:true});
 				$('#questions').append(questionView.render().el);
+				//questionView.delegateEvents();
 			});
 		}
 	},
@@ -218,8 +221,14 @@ this.curiouscity = {
 		$('.focus').removeClass('focus').fadeOut('fast', function(){
 			$('#question-page').empty();
 			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){
-				console.log('go to question '+questionID)
-				_this.renderQuestion(_this.archive.get(questionID));
+				var Questions = curiouscity.module("questions");
+				var question = new Questions.Model({id:questionID});
+				question.fetch({
+					success : function()
+					{
+						_this.renderQuestion( question );
+					}
+				});
 				
 			})
 		});
@@ -251,7 +260,18 @@ this.curiouscity = {
 		$('#vote-page .super h1').html('Find out final results Wednesday on The Afternoon Shift on WBEZ 91.5');
 		$('#vote-page .sub h5').html('Thanks for Voting! Here’s how the votes are stacking up so far.');
 		
+	},
+	
+	goToPrevInArchive : function()
+	{
+		console.log('go to previous')
+	},
+	
+	goToNextInArchive : function()
+	{
+		console.log('go to next')
 	}
+	
 
 	
 }, Backbone.Events)

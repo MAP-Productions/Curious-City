@@ -112,7 +112,7 @@ this.curiouscity = {
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			$('#vote-page').addClass('focus').fadeIn('fast',function(){
-				$('#discussion').hide();
+				$('#discussion').show();
 				});
 		});
 		

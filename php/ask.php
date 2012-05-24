@@ -41,7 +41,7 @@
 				'votingperiod'=>'none',
 				'dateuploaded'=>time(),
 				'id'=>$rowCount,
-				'commenst'=>0,
+				'comments'=>0,
 				'votes'=>0,
 			);
 	

@@ -190,7 +190,7 @@ this.curiouscity = {
 	
 	loadArchiveQuestions : function(order)
 	{
-		this.page='archive';
+		
 		// reload archive each time the page is loaded
 		console.log('load archive: '+order)
 		
@@ -204,7 +204,7 @@ this.curiouscity = {
 
 		var _this = this;
 		if(order=='popular'){
-			if(!this.recentArchive){
+			if(!this.popularArchive){
 				var Questions = curiouscity.module("questions");
 				this.popularArchive = new Questions.Collection({'votingperiod':false,"order":order});
 				$('#archive-page #archive-questions').empty();

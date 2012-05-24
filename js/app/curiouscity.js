@@ -144,6 +144,14 @@ this.curiouscity = {
 	
 	displayVoteQuestions : function()
 	{
+	
+		DISQUS.reset({
+			reload: true,
+			config: function () {  
+			this.page.identifier = "question-"+questionID;  
+			this.page.url = "http://example.com/#!/vote"+questionID;
+			}
+		});
 		var Questions = curiouscity.module("questions");
 		if( this.questionsCollection.canvote )
 		{

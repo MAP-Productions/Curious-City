@@ -31,6 +31,7 @@
 			'click .submit-final': 'post',
 			'click .submit-back': 'back',
 			'click .submit-flickr-search': 'flickrSearch',
+			'focus #question-form-1 input' : 'removeErrors'
 		},
 		flickrSearch: function(){
 			
@@ -138,6 +139,12 @@
 			$('.step'+(this.step-1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
 		},
+		
+		removeErrors : function(el)
+		{
+			$(el.target).closest('.error').removeClass('error')
+		},
+		
 		post: function()
 		{
 		

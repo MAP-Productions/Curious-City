@@ -64,7 +64,7 @@
 				console.log(response);
 				console.log(collection);
 			}});
-		
+			return false;
 		},
 		back: function()
 		{
@@ -90,6 +90,7 @@
 			
 			$('.step'+(this.step+1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
+			return false;
 		},
 		
 		next: function()
@@ -124,7 +125,7 @@
 				console.log(this.model)
 			
 				$(this.el).find('#submit-question-preview').html('"'+ this.model.get('question') +'"');
-				$(this.el).find('#submit-name-preview').html('posted by '+ (this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name'));
+				$(this.el).find('#submit-name-preview').html('posted by '+ ((this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name')));
 				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')')
 				
 				$('#question-form-2').fadeOut('fast',function(){
@@ -138,6 +139,7 @@
 			
 			$('.step'+(this.step-1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
+			return false;
 		},
 		
 		removeErrors : function(el)
@@ -210,12 +212,10 @@
 								"<input id = 'submit-flickr-query' class = 'submit-flickr-query' type='tel'/><button class='submit-flickr-search btn'>Search Flickr</button>"+
 							"</div>"+
 							"<ul id='flickr-search' class='well thumbnails'></ul>"+
-							"<a class='submit-back'>back  </a>"+
+							"<a class='submit-back'>back</a>"+
 							"<button class='submit-next btn btn-primary'>Next</button>"+
 						"</form>"+
 						"<form id='question-form-3' class='question-form hide'>"+
-						
-						
 							"<div class='row'>"+
 								"<div class='span3'>"+
 									"<div class='hero-unit image-preview'></div>"+
@@ -225,8 +225,8 @@
 									"<div id='submit-name-preview'></div>"+
 								"</div>"+
 							"</div>"+
+							"<a class='submit-back'>back</a>"+
 							"<button class='submit-final btn btn-primary'>Looks Good!</button>"+
-							"<a class='submit-back'>  back</a>"+
 						"</form>"+
 						"<div id='question-form-4'  class='question-form hide'>"+
 							"<span><h3>What happens now?</h3></span><br><br>"+

@@ -425,6 +425,13 @@ footer
 	margin-top: 64px;
 }
 
+.submit-back {
+
+	cursor:pointer;
+	padding-right:5px;
+
+}
+
 .submit-cell
 {
 	float:left;

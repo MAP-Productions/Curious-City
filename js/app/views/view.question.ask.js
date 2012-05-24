@@ -124,7 +124,7 @@
 				console.log(this.model)
 			
 				$(this.el).find('#submit-question-preview').html('"'+ this.model.get('question') +'"');
-				$(this.el).find('#submit-name-preview').html('posted by '+this.model.get('name'));
+				$(this.el).find('#submit-name-preview').html('posted by '+ (this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name'));
 				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')')
 				
 				$('#question-form-2').fadeOut('fast',function(){

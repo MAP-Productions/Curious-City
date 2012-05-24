@@ -40,7 +40,9 @@
 	$defaults=array(
 				'votingperiod'=>'none',
 				'dateuploaded'=>time(),
-				'id'=>$rowCount
+				'id'=>$rowCount,
+				'commenst'=>0,
+				'votes'=>0,
 			);
 	
 	$question=array_merge($post_data,$defaults);

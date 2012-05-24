@@ -14,7 +14,7 @@
 		url: function()
 		{
 			if(this.votingperiod != false) return 'php/questions.php?votingperiod='+this.votingperiod;
-			else return 'php/questions.php';
+			else return 'php/questions.php?order='+this.order;
 		},
 		
 		parse: function(data)
@@ -22,11 +22,6 @@
 			console.log(data)
 			this.canvote = data.canvote;
 			return data.questions;
-		},
-		
-		comparator : function(question)
-		{
-			return question.get('rank')
 		}
 	});
 

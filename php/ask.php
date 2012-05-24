@@ -15,15 +15,37 @@
 	}catch (Zend_Gdata_App_AuthException $ae) {
 		exit("Error Connecting");
 	}
+	
+	
+	
+	
 
 	$worksheetId ="od6";
 	$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
+	
+
+	
+	$query = new Zend_Gdata_Spreadsheets_DocumentQuery();
+	$query->setSpreadsheetKey($spreadsheetKey);
+	$feed = $spreadsheetService->getWorksheetFeed($query);
+	$rowCount=0;
+	foreach($feed->entries as $entry){
+		$wkshtId = explode('/', $entry->id->text);
+		if($wkshtId[8]==$worksheetId) $rowCount=$entry->getRowCount();
+	}
 
 	$post_data = file_get_contents("php://input");
   	$post_data = json_decode($post_data,true);	
-		
-	$post_data['votingperiod']='none';
-	$post_data['id']=substr(time(),5).rand(100,999);
-	$post_data['dateuploaded']=time();
-	$insertedListEntry = $spreadsheetService->insertRow($post_data, $spreadsheetKey, $worksheetId);
+	
+	$defaults=array(
+				'votingperiod'=>'none',
+				'dateuploaded'=>time(),
+				'id'=>$rowCount
+			);
+	
+	$question=array_merge($post_data,$defaults);
+	$insertedListEntry = $spreadsheetService->insertRow($question, $spreadsheetKey, $worksheetId);
+
+
+	echo "ok";
 ?>

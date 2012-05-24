@@ -2,6 +2,8 @@
 	header('Content-type: application/json');
 	if(isset($_GET['votingperiod'])) $worksheetId = htmlspecialchars ($_GET['votingperiod']);
 	else $worksheetId ="od6";
+	
+
 	require_once 'config.php';
 	set_include_path("../gdata/library");
 	
@@ -48,7 +50,11 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		$query->setSpreadsheetKey($spreadsheetKey);
 		$query->setWorksheetId($worksheetId);
 		
-		
+		if(isset($_GET['order'])&&htmlspecialchars ($_GET['order'])=='popular') $query->setOrderBy('column:comments');
+		if(isset($_GET['votingperiod'])) $query->setOrderBy('column:votes');
+	//	if(isset($_GET['searchquery'])) $query->setSpreadsheetQuery('question contains '.htmlspecialchars ($_GET['searchquery']));
+		$query->setReverse(true);
+		$query->setReverse('true');
 		$listFeed = $spreadsheetService->getListFeed($query);
 		
 		$questions=array();
@@ -59,7 +65,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		$question =array();
 		
 		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','votes','winner');
-		else  $publicColumns=array('id','name','question','anonymous','imageurl');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl','comments');
 		
 		
 		foreach($rowData as $customEntry) {
@@ -73,19 +79,9 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		}
 		
 		if(isset($_GET['votingperiod'])){
-		
-		foreach ($questions as $key => $row) {
-			$votes[$key]  = $row['votes	'];
-		}
-		
-		// Sort the data with volume descending, edition ascending
-		// Add $data as the last parameter, to sort by the common key
-		array_multisort($votes, SORT_DESC, $questions);
-		
-		for($i=0;$i<sizeof($questions);$i++){
-			$questions[$i]['rank']=$i+1;
-		}
-		
+			for($i=0;$i<sizeof($questions);$i++){
+				$questions[$i]['rank']=$i+1;
+			}
 		}
 		
 			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){

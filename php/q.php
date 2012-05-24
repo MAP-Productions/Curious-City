@@ -43,7 +43,21 @@
 		}
 
 
+	
+
 		$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
+
+
+		$query = new Zend_Gdata_Spreadsheets_DocumentQuery();
+		$query->setSpreadsheetKey($spreadsheetKey);
+		$feed = $spreadsheetService->getWorksheetFeed($query);
+		$rowCount=0;
+		foreach($feed->entries as $entry){
+			$wkshtId = explode('/', $entry->id->text);
+			if($wkshtId[8]==$worksheetId) $rowCount=$entry->getRowCount();
+		}
+
+
 
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
@@ -52,12 +66,12 @@
 		
 		$listFeed = $spreadsheetService->getListFeed($query);
 		
-		$questions=array();
+
 		
 		foreach ($listFeed->entries as $entry){
 		
 		$rowData = $entry->getCustom();
-		$publicColumns=array('id','name','question','anonymous','imageurl');
+		$publicColumns=array('index','id','name','question','anonymous','imageurl');
 		
 		
 		foreach($rowData as $customEntry) {
@@ -68,7 +82,12 @@
 			if(empty($question['imageurl']))unset($question['imageurl']);
 			unset($question['anonymous']);
 		}
-
+		
+		if($rowCount>$question['id']) $question['next']=$question['id']+1;
+		else $question['next']=-1;
+		
+		if($question['id']>1) $question['previous']=$question['id']-1;
+		else $question['previous']=-1;
 		
 		echo json_encode($question);
 		

@@ -20,12 +20,14 @@
 			var template = _.template( this.getTemplate() );
 			//copy the cloned item into the el
 			$(this.el).html( template( this.model.attributes ) );
+			if(this.model.get('previous')==-1)$(this.el).find('.previous').hide();
+			if(this.model.get('next')==-1)$(this.el).find('.next').hide();
+			
 			return this;
 		},
 		
 		events : {
-			'click .prev' : 'goToPrev',
-			'click .next' : 'goToNext'
+		
 		},
 		
 		goToPrev : function()
@@ -46,7 +48,7 @@
 		{
 			var html =
 		
-			"<ul class='pager'><li class='previous'><a href='#' class='prev'>&larr; previous</a></li><li class='next'><a href='#' class'next'>next &rarr;</a></ul>"+
+			"<ul class='pager'><li class='previous'><a href='#!/archive/question/<%= previous %>'>&larr; previous</a></li><li class='next'><a href='#!/archive/question/<%= next %>'>next &rarr;</a></ul>"+
 			"<div class='row'>"+
 
 				"<div class='span4'>"+

@@ -159,6 +159,9 @@ footer li
 {
 	height:100px;
 	position:relative;
+	background:no-repeat;
+	background-size: 310px;
+	background-position: 0 50%;
 }
 
 .question.hover

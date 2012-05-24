@@ -108,7 +108,13 @@ this.curiouscity = {
 
 	loadVoteQuestions : function()
 	{
-	
+		DISQUS.reset({
+			reload: true,
+			config: function () {  
+			this.page.identifier = "vote";
+			this.page.url = "http://example.com/#!/vote";
+			}
+		});
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			$('#vote-page').addClass('focus').fadeIn('fast',function(){
@@ -145,13 +151,7 @@ this.curiouscity = {
 	displayVoteQuestions : function()
 	{
 	
-		DISQUS.reset({
-			reload: true,
-			config: function () {  
-			this.page.identifier = "vote";
-			this.page.url = "http://example.com/#!/vote";
-			}
-		});
+	
 		var Questions = curiouscity.module("questions");
 		if( this.questionsCollection.canvote )
 		{

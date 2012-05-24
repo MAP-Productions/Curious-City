@@ -53,15 +53,17 @@ this.curiouscity = {
 				""								:	'loadMain',
 				'!/:page'							:	'loadPage',
 				'!/archive/question/:questionID'	:	'goToArchiveQuestion',
+				'!/vote/:votingPeriod'	:	'goToVotingPeriod',
 				'!/archive/:order'	:	'goToArchive'
 			},
 			
-			loadMain: function(){ this.navigate('!/vote',{trigger:true}) },
+			loadMain: function(){ this.navigate('!/vote/current',{trigger:true}) },
 			loadPage : function(page){ _this.loadPage(page) },
 			
-			//goToConnection : function( connectionId ){ _this.goToConnection( connectionId ) },
 			goToArchiveQuestion : function(questionID){ _this.goToArchiveQuestion(questionID) },
-			goToArchive : function(order){ _this.loadArchiveQuestions(order) }
+			goToArchive : function(order){ _this.loadArchiveQuestions(order) },
+			goToVotingPeriod : function(votingPeriod){ _this.loadVoteQuestions(votingPeriod) }
+		
 		});
 
 		this.router = new Router();
@@ -106,6 +108,14 @@ this.curiouscity = {
 
 	loadVoteQuestions : function()
 	{
+	
+		$('.focus').fadeOut('fast',function(){
+			$(this).removeClass('focus');
+			$('#vote-page').addClass('focus').fadeIn('fast',function(){
+				$('#discussion').hide();
+				});
+		});
+		
 		//only load once per visit
 		if( !this.questionsCollection )
 		{
@@ -246,6 +256,7 @@ this.curiouscity = {
 			this.page.url = "http://example.com/#!/question/"+questionID;
 			}
 		});
+		
 		$('#discussion').fadeIn();
 
 		$('.focus').removeClass('focus').fadeOut('fast', function(){

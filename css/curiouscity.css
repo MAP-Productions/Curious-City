@@ -222,19 +222,18 @@ footer li
 
 #ask-flash .right-col .super h1{ padding-top: 0;}
 
-
-.flickr-image {
-
-
-	padding:3px;
-	width:100px;
-	border:solid transparent 2px;
+#flickr-search{ margin:0; margin-bottom:10px;}
+#flickr-search a
+{
+	height:90px;
+	width:90px;
+	overflow:hidden;
 }
 
-.flickr-image:hover {
-
-	border:solid #08C 2px;
-	cursor:pointer;
+#flickr-search img
+{
+	width:90px;
+	height:90px;
 }
 
 .flickr-image-selected {

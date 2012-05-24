@@ -148,8 +148,8 @@ this.curiouscity = {
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
-			this.page.identifier = "question-"+questionID;  
-			this.page.url = "http://example.com/#!/vote"+questionID;
+			this.page.identifier = "vote";
+			this.page.url = "http://example.com/#!/vote";
 			}
 		});
 		var Questions = curiouscity.module("questions");

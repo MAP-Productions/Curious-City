@@ -29,9 +29,11 @@
 				"<div class='ballot-image'></div>"+
 				"<div class='thanks-text'>"+
 					"<h3>Thanks!<br /><%= percent %>% Agree</h3>"+
-					"<div class='social'><i class='social-facebook'></i><i class='social-twitter'></i><i class='social-googleplus'></i></div>"+
+				/*
+				"<div class='social'><i class='social-facebook'></i><i class='social-twitter'></i><i class='social-googleplus'></i></div>"+
 					"<p>share your vote</p>"+
-				"</div>";
+				*/
+			"</div>";
 			
 			return html;
 		}

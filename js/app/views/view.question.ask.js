@@ -13,6 +13,8 @@
 			console.log('question view init')
 			this.model= new Questions.Model.Ask();
 			
+			this.model.on('error', this.validationError, this);
+			
 			_.extend(this,options);
 			var blanks = {};
 			this.step = 1;
@@ -29,6 +31,7 @@
 			'click .submit-final': 'post',
 			'click .submit-back': 'back',
 			'click .submit-flickr-search': 'flickrSearch',
+			'focus #question-form-1 input' : 'removeErrors'
 		},
 		flickrSearch: function(){
 			
@@ -91,19 +94,30 @@
 		
 		next: function()
 		{
+			this.advance = true;
+			$('.error').removeClass('error');
 			if(this.step == 1)
 			{
-				this.model.set({question:$(this.el).find('.submit-question-text')[0].value});
-				this.model.set({name:$(this.el).find('.submit-name-text')[0].value});
-				this.model.set({email:$(this.el).find('.submit-email-text')[0].value});
-				
-				$('#question-form-1').fadeOut('fast',function(){
-					$('#question-form-2').fadeIn('fast');
-					$('#ask-flash .super h1').html('Add a photo to your question!');
-					$('#ask-flash .sub h5').empty();
+				console.log('validate this')
+				console.log('advance: '+ this.advance)
+				this.model.set({
+					question:$(this.el).find('.submit-question-text')[0].value,
+					name:$(this.el).find('.submit-name-text')[0].value,
+					email:$(this.el).find('.submit-email-text')[0].value,
+					email_confirm:$(this.el).find('.submit-email-confirm-text')[0].value,
+					anonymous : $('#anonymous').is(':checked') ? 1 : 0
 				});
+				console.log('advance: '+ this.advance)
 				
-				this.step++;
+				if(this.advance)
+				{
+					$('#question-form-1').fadeOut('fast',function(){
+						$('#question-form-2').fadeIn('fast');
+						$('#ask-flash .super h1').html('Add a photo to your question!');
+						$('#ask-flash .sub h5').empty();
+					});
+					this.step++;
+				}
 			}
 			else if (this.step==2)
 			{
@@ -125,6 +139,12 @@
 			$('.step'+(this.step-1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
 		},
+		
+		removeErrors : function(el)
+		{
+			$(el.target).closest('.error').removeClass('error')
+		},
+		
 		post: function()
 		{
 		
@@ -135,7 +155,17 @@
 				$('#ask-flash .super h1').html('Thanks! Your question was submitted');
 				$('#question-form-4').fadeIn('fast');	
 			});
-		
+		},
+
+		validationError : function(model, error)
+		{
+			console.log('validation error')
+			console.log(model)
+			console.log(error)
+			
+			$(error).addClass('error');
+			
+			this.advance = false;
 		},
 	
 		getTemplate : function()
@@ -154,11 +184,11 @@
 				"<div class='span7'>"+
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							"<textarea class='submit-question-text span7'></textarea>"+
-							"<label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'submit-name-text' type='text'/></label>"+
+							"<div class='control-group question-text'><textarea class='submit-question-text span7'></textarea></div>"+
+							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'submit-name-text' type='text'/></label></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'> <i class='icon-user'></i> remain anonymous?</label>"+
-							"<label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'submit-email-text' type='email'/></label>"+
-							"<label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'submit-email-confirm-text' type='email'/></label>"+
+							"<div class='control-group email-main'><label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'submit-email-text' type='email'/></label></div>"+
+							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'submit-email-confirm-text' type='email'/></label></div>"+
 							
 							"<button class='btn submit-next btn-primary'>Next</button>"+
 						"</div>"+

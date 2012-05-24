@@ -4,7 +4,7 @@
 
 		defaults : {
 			'imageurl' : 'images/default.jpg',
-			'commentcount' : 1
+			'comments' : 0
 		},
 
 		url: function()

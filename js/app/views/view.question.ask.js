@@ -31,7 +31,7 @@
 			'click .submit-final': 'post',
 			'click .submit-back': 'back',
 			'click .submit-flickr-search': 'flickrSearch',
-			'focus #question-form-1 input' : 'removeErrors'
+			'focus #question-form-1 input, #question-form-1 textarea' : 'removeErrors'
 		},
 		flickrSearch: function(){
 			
@@ -154,6 +154,9 @@
 			$('#question-form-3').fadeOut('fast',function(){
 				$('#ask-flash .super h1').html('Thanks! Your question was submitted');
 				$('#question-form-4').fadeIn('fast');	
+				$('#left-col1').fadeOut('fast', function(){
+					$('#left-col2').fadeIn();
+				});
 			});
 		},
 
@@ -174,12 +177,22 @@
 			
 			"<div class='row'>"+
 				"<div class='span5 submit-sequence'>"+
-					"<ul>"+
-						"<li class='step1 active'>Step 1: Question</li>"+
-						"<li class='step2'>Step 2: Add Media</li>"+
-						"<li class='step3'>Step 3: Preview</li>"+
-					"</ul>"+
-					"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.800.789.7752</div>"+
+					"<div id='left-col1'>"+
+						"<ul class='unstyled'>"+
+							"<li class='step1 active'>Step 1: Question</li>"+
+							"<li class='step2'>Step 2: Add Media</li>"+
+							"<li class='step3'>Step 3: Preview</li>"+
+						"</ul>"+
+						"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.800.789.7752</div>"+
+					"</div>"+
+				
+					"<div id='left-col2' class='hide'>"+
+						"<ul class='unstyled'>"+
+							"<li><a href='#!/vote'>See the Questions up for Voting now <i class='arrow right'></i></a></li>"+
+							"<li><a href='#!/archive'>Browse Other Questions <i class='arrow right'></i></a></li>"+
+						"</ul>"+
+					"</div>"+
+				
 				"</div>"+
 				"<div class='span7'>"+
 					"<div class='question-form-wrapper'>"+

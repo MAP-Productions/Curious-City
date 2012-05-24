@@ -43,7 +43,9 @@
 				'id'=>$rowCount,
 				'comments'=>'0',
 				'votes'=>'0',
-				'anonymous'=>$post_data['anonymous']
+				'approved'=>'1',
+				'anonymous'=>$post_data['anonymous'],
+				'orginialquestion'=>$post_data['question']
 			);    
 	
 	$question=array_merge($post_data,$defaults);

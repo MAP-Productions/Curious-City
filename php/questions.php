@@ -52,6 +52,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		
 		if(isset($_GET['order'])&&htmlspecialchars ($_GET['order'])=='popular') $query->setOrderBy('column:comments');
 		if(isset($_GET['votingperiod'])) $query->setOrderBy('column:votes');
+		else $query->setSpreadsheetQuery('approved=1');
 	//	if(isset($_GET['searchquery'])) $query->setSpreadsheetQuery('question contains '.htmlspecialchars ($_GET['searchquery']));
 		$query->setReverse(true);
 		$query->setReverse('true');

@@ -92,6 +92,7 @@ this.curiouscity = {
 						_this.loadAsk();
 						break;
 					case 'archive':
+						$('#discussion').fadeOut();
 						_this.loadArchiveQuestions();
 						break;
 					case 'about':

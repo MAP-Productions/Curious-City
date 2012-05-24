@@ -46,7 +46,7 @@
 		{
 			var html =
 		
-			"<ul class='pager'><li class='previous'><a href='#'>&larr; previous</a></li><li class='next'><a href='#'>next &rarr;</a></ul>"+
+			"<ul class='pager'><li class='previous'><a href='#' class='prev'>&larr; previous</a></li><li class='next'><a href='#' class'next'>next &rarr;</a></ul>"+
 			"<div class='row'>"+
 
 				"<div class='span4'>"+

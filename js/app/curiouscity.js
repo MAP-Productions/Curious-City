@@ -24,9 +24,9 @@ this.curiouscity = {
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
+		this.archive = new Array();
 		this.loadDisqus();
 		this.startRouter();
-		
 		this.isLoaded = true
 	},
 	
@@ -52,15 +52,16 @@ this.curiouscity = {
 			routes: {
 				""								:	'loadMain',
 				'!/:page'							:	'loadPage',
-				//"!/connection/:connectionId"		:	"goToConnection",
-				'!/archive/question/:questionID'	:	'goToArchiveQuestion'
+				'!/archive/question/:questionID'	:	'goToArchiveQuestion',
+				'!/archive/:order'	:	'goToArchive'
 			},
 			
 			loadMain: function(){ this.navigate('!/vote',{trigger:true}) },
 			loadPage : function(page){ _this.loadPage(page) },
 			
 			//goToConnection : function( connectionId ){ _this.goToConnection( connectionId ) },
-			goToArchiveQuestion : function(questionID){ _this.goToArchiveQuestion(questionID) }
+			goToArchiveQuestion : function(questionID){ _this.goToArchiveQuestion(questionID) },
+			goToArchive : function(order){ _this.loadArchiveQuestions(order) }
 		});
 
 		this.router = new Router();
@@ -74,8 +75,6 @@ this.curiouscity = {
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			console.log('fade in: #'+page);
-			
-			//if(page == 'archive') $('#archive-page').empty();
 			
 			$('#'+page+'-page').addClass('focus').fadeIn('fast',function(){
 				// calls made once the page div is visible and ready to display whatever
@@ -93,7 +92,7 @@ this.curiouscity = {
 						break;
 					case 'archive':
 						$('#discussion').fadeOut();
-						_this.loadArchiveQuestions();
+						_this.loadArchiveQuestions('recent');
 						break;
 					case 'about':
 						break;
@@ -113,7 +112,12 @@ this.curiouscity = {
 			var _this = this;
 			var Questions = curiouscity.module("questions");
 		
-			this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
+			this.questionsCollection = new Questions.Collection({'votingperiod':'od7',
+		
+		comparator : function(question)
+		{
+			return question.get('rank')
+		}});
 			$('#vote-page').spin();
 			this.questionsCollection.reset();
 			this.questionsCollection.fetch({
@@ -166,43 +170,68 @@ this.curiouscity = {
 		$('#ask-form').html(this.askView.render().el);
 	},
 	
-	loadArchiveQuestions : function()
+	loadArchiveQuestions : function(order)
 	{
+		this.page='archive';
 		// reload archive each time the page is loaded
-		console.log('load archive')
-		var _this = this;
-		if(!this.archive)
-		{
-			var Questions = curiouscity.module("questions");
-			this.archive = new Questions.Collection({'votingperiod':false});
-		}
-		$('#archive-page #archive-questions').empty();
-		$('#archive-page #archive-questions').spin();
-		this.archive.fetch({
-			success:function(collection,response)
-			{
-				$('#archive-page #archive-questions').spin(false);
-				console.log(collection)
-				_this.displayArchiveQuestions();
-			}
+		console.log('load archive: '+order)
+		
+
+		$('.focus').fadeOut('fast',function(){
+			$(this).removeClass('focus');
+			$('#archive-page').addClass('focus').fadeIn('fast',function(){
+				$('#discussion').hide();
+				});
 		});
+
+		var _this = this;
+		if(order=='popular'){
+			if(!this.recentArchive){
+				var Questions = curiouscity.module("questions");
+				this.popularArchive = new Questions.Collection({'votingperiod':false,"order":order});
+				$('#archive-page #archive-questions').empty();
+				$('#archive-page #archive-questions').spin();
+				this.popularArchive.fetch({
+					success:function(collection,response){
+						$('#archive-page #archive-questions').spin(false);
+						_this.displayArchiveQuestions(collection);
+					}	
+				});
+			}
+			else {
+				$('#archive-page #archive-questions').empty();
+				this.displayArchiveQuestions(this.popularArchive);
+			}
+		
+		}
+		else{
+			if(!this.recentArchive){
+				var Questions = curiouscity.module("questions");
+				this.recentArchive = new Questions.Collection({'votingperiod':false,"order":order});
+				$('#archive-page #archive-questions').empty();
+				$('#archive-page #archive-questions').spin();
+				this.recentArchive.fetch({
+					success:function(collection,response){
+						$('#archive-page #archive-questions').spin(false);
+						_this.displayArchiveQuestions(collection);
+					}	
+				});
+			}
+			else {
+				$('#archive-page #archive-questions').empty();
+				this.displayArchiveQuestions(this.recentArchive);
+			}
+		}
+		
 	},
 	
-	displayArchiveQuestions : function()
+	displayArchiveQuestions : function(archive)
 	{
 		console.log('display vote questions')
 		var Pages = curiouscity.module('pages');
-		_.each( _.shuffle( _.toArray(this.archive) ),function(question){
+		_.each( _.toArray(archive) ,function(question){
 			var questionView = new Pages.Views.archive({model:question});
 			$('#archive-page #archive-questions').append(questionView.render().el);
-		});
-		DISQUS.reset({
-			reload: true,
-			config: function () {  
-			console.log('resetting');
-			this.page.identifier = "archive";  
-			this.page.url = "http://example.com/#!/archive";
-			}
 		});
 	},
 	

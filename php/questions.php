@@ -3,10 +3,7 @@
 	if(isset($_GET['votingperiod'])) $worksheetId = htmlspecialchars ($_GET['votingperiod']);
 	else $worksheetId ="od6";
 	
-	if(isset($_GET['order'])) $order = htmlspecialchars ($_GET['order']);
-	else $order ="recent";
-	
-	
+
 	require_once 'config.php';
 	set_include_path("../gdata/library");
 	
@@ -52,8 +49,10 @@ Zend_Loader::loadClass('Zend_Http_Client');
     	$query = new Zend_Gdata_Spreadsheets_ListQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
 		$query->setWorksheetId($worksheetId);
-		if($order=="popular") $query->setOrderBy('column:comments');
+		
+		if(isset($_GET['order'])&&htmlspecialchars ($_GET['order'])=='popular') $query->setOrderBy('column:comments');
 		if(isset($_GET['votingperiod'])) $query->setOrderBy('column:votes');
+	//	if(isset($_GET['searchquery'])) $query->setSpreadsheetQuery('question contains '.htmlspecialchars ($_GET['searchquery']));
 		$query->setReverse(true);
 		$query->setReverse('true');
 		$listFeed = $spreadsheetService->getListFeed($query);

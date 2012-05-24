@@ -37,7 +37,7 @@
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
 					"<div class='span7 question-text'>"+
 						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
-						"<div class='comment-count'><a href='#'><%= commentcount %> <%= lang %></a></div>"+
+						"<div class='comment-count'><a href='#'><%= comments %> <%= lang %></a></div>"+
 					"</div>"+
 				"</div>";
 			

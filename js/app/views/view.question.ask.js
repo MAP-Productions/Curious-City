@@ -229,7 +229,12 @@
 							"<a class='submit-back'>  back</a>"+
 						"</form>"+
 						"<div id='question-form-4'  class='question-form hide'>"+
-							"<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar turpis vitae justo porta vulputate. Curabitur et leo cursus lectus fringilla porttitor. Nunc placerat, lorem vitae  placerat porta, est sapien sollicitudin diam, at scelerisque dolor magna nec quam.</span>"+
+							"<span><h3>What happens now?</h3></span><br><br>"+
+								"<ul>"+
+									"<li>Your question will now live in the <a href='#!/archive/recent'> question archive</a>. Anyone can comment on, or maybe even answer your question there.</li><br>"+
+									"<li>WBEZ is constantly mining the question archive and selecting questions for voting. If your question makes it into a <a href='#!/vote'>voting round</a>, we'll contact you via the email address you provided.</li><br>"+
+									"<li>Winning questions are investigated by WBEZ reporters online and on air at WBEZ 91.5fm each Wednesday on <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' onclick='window.open(this.href); return false;'  >The Afternoon Shift</a>.</li>"+
+									"</ul>"+	
 						"</div>"+
 					"</div>"+
 				"</div>"+

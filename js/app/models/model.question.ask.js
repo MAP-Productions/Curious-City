@@ -15,7 +15,7 @@
 		initialize : function()
 		{
 		},
-		
+		/*
 		validate : function(attrs)
 		{
 			var errors = '';
@@ -29,7 +29,7 @@
 			return errors;
 		}
 
-
+	*/
 	});
 	
 	

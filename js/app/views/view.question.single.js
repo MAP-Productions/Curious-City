@@ -46,7 +46,7 @@
 		{
 			var html =
 		
-			"<div class='nav clearfix'><a class='prev pull-left' href='#'><i class='arrow-left'></i> previous</a><a class='next pull-right' href='#'>next <i class='arrow-right'></i></a></div>"+
+			"<ul class='pager'><li class='previous'><a href='#'>&larr; previous</a></li><li class='next'><a href='#'>next &rarr;</a></ul>"+
 			"<div class='row'>"+
 
 				"<div class='span4'>"+

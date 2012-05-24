@@ -93,9 +93,12 @@
 		{
 			if(this.step == 1)
 			{
-				this.model.set({question:$(this.el).find('.submit-question-text')[0].value});
-				this.model.set({name:$(this.el).find('.submit-name-text')[0].value});
-				this.model.set({email:$(this.el).find('.submit-email-text')[0].value});
+				this.model.set({
+					question:$(this.el).find('.submit-question-text')[0].value,
+					name:$(this.el).find('.submit-name-text')[0].value,
+					email:$(this.el).find('.submit-email-text')[0].value,
+					anonymous : $('#anonymous').is(':checked') ? 1 : 0
+				});
 				
 				$('#question-form-1').fadeOut('fast',function(){
 					$('#question-form-2').fadeIn('fast');

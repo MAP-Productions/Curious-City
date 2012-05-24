@@ -41,9 +41,10 @@
 				'votingperiod'=>'none',
 				'dateuploaded'=>time(),
 				'id'=>$rowCount,
-				'comments'=>0,
-				'votes'=>0,
-			);
+				'comments'=>'0',
+				'votes'=>'0',
+				'anonymous'=>$post_data['anonymous']
+			);    
 	
 	$question=array_merge($post_data,$defaults);
 	$insertedListEntry = $spreadsheetService->insertRow($question, $spreadsheetKey, $worksheetId);

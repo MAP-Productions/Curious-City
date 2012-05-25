@@ -83,6 +83,7 @@ this.curiouscity = {
 				switch(page)
 				{
 					case 'vote':
+						$('#discussion-headline').html("What are people saying this round");
 						$('#discussion').fadeIn();
 						_this.loadVoteQuestions();
 						break;
@@ -115,6 +116,7 @@ this.curiouscity = {
 			this.page.url = "http://example.com/#!/vote";
 			}
 		});
+		$('#discussion-headline').html("What are people saying about this question");
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			$('#vote-page').addClass('focus').fadeIn('fast',function(){

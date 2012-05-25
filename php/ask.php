@@ -52,5 +52,5 @@
 	$insertedListEntry = $spreadsheetService->insertRow($question, $spreadsheetKey, $worksheetId);
 
 
-	echo "ok";
+	echo json_encode($question);
 ?>

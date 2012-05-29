@@ -160,6 +160,7 @@
 					$('#left-col2').fadeIn();
 				});
 			});
+			return false;
 		},
 
 		validationError : function(model, error)

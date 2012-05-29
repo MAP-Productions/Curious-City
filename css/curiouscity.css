@@ -286,6 +286,7 @@ footer li
 	float:left;
 	margin-right:10px;
 }
+.number-1{ background-position: 10px 0;}
 .number-2{ background-position:-44px 0;}
 .number-3{ background-position:-93px 0;}
 .number-4{ background-position:-143px 0;}

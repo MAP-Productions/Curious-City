@@ -22,7 +22,8 @@ this.curiouscity = {
 
 app: _.extend({
 	
-	counter : 0,
+	counter : 1,
+	currentVote : 0,
 	
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
@@ -37,15 +38,22 @@ app: _.extend({
 		var _this = this;
 		var Questions = curiouscity.module("questions");
 	
-		this.questionsCollection = new Questions.Collection({'votingperiod':'od7'});
+		this.questionsCollection = new Questions.Collection({'votingperiod':'od7',
+			comparator : function(question)
+		{
+			return Math.random();
+		}
+		});
 		$('#ballot>div').spin('small');
 		this.questionsCollection.fetch({
 			success:function(collection,response)
 			{
 				$('#ballot>div').spin(false);
-				_this.makePairs();
-				_this.parseData();
-				_this.displayNextPair();
+				//_this.makePairs();
+				//_this.parseData();
+				
+				_this.displayPair(0,1);
+				
 			}
 		});
 	},
@@ -86,25 +94,67 @@ app: _.extend({
 		var question = this.questionsCollection.get(questionID);
 		//$.post('php/vote.php?questionid='+ questionID, function(data){}); //vote post
 		
+		this.currentVote=_.indexOf(_.toArray(this.questionsCollection),question);
+		this.counter++;
+		
 		var thanksView = new Questions.Views.WidgetThanks({model: question})
 		
 		if(position=='left')
 		{
 			$('#right-ballot').fadeOut('fast', function(){
 				$('#right-ballot').html( thanksView.render().el );
-				$('#right-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},2250) } );
+				$('#right-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayPair(_this.currentVote,_this.counter)},2250) } );
 			})
 		}
 		else
 		{
 			$('#left-ballot').fadeOut('fast', function(){
 				$('#left-ballot').html( thanksView.render().el );
-				$('#left-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayNextPair()},2250) } );
+				$('#left-ballot').fadeIn( 'fast', function(){ setTimeout(function(){_this.displayPair(_this.counter,_this.currentVote)},2250) } );
 			})
 		}
 		
-		//this.displayNextPair();
 	},
+	
+	displayPair : function(i,j)
+	{
+	
+		if(this.counter<_.size(this.questionsCollection)){
+		
+		
+		var _this = this;
+		
+
+		var Questions = curiouscity.module("questions");
+	
+		this.questionsCollection.at(i).set({'percent':Math.floor(100.0*parseFloat(this.questionsCollection.at(i).get('votes'))/(parseFloat(this.questionsCollection.at(i).get('votes'))+parseFloat(this.questionsCollection.at(j).get('votes'))))});
+		this.questionsCollection.at(j).set({'percent':Math.floor(100.0*parseFloat(this.questionsCollection.at(j).get('votes'))/(parseFloat(this.questionsCollection.at(i).get('votes'))+parseFloat(this.questionsCollection.at(j).get('votes'))))});
+		
+		this.leftView = new Questions.Views.Widget({model: this.questionsCollection.at(i), position:'left' });
+		this.rightView = new Questions.Views.Widget({model: this.questionsCollection.at(j), position:'right' });
+	
+		
+	
+		$('#left-ballot').fadeOut('fast', function(){
+			$('#left-ballot').html( _this.leftView.render().el );
+			$('#left-ballot').fadeIn('fast', function(){
+				$('#right-ballot').fadeOut('fast', function(){
+					$('#right-ballot').html( _this.rightView.render().el );
+					$('#right-ballot').fadeIn('fast');
+				})
+			});
+		
+		});
+		}
+		else{
+			$.post('php/vote.php?questionid='+ this.questionsCollection.at(this.currentVote).id, function(data){});
+		}
+		
+		
+
+	},
+	
+	
 	
 	displayNextPair : function()
 	{

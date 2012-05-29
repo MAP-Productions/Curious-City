@@ -52,7 +52,7 @@
 			"<div class='row'>"+
 
 				"<div class='span4'>"+
-					"<div class='hero-unit' style='background-image:url(<%= imageurl %>)'></div>"+
+					"<div class='hero-unit question-image' style='height: 30px;background-image:url(<%= imageurl %>)'></div>"+
 				"</div>"+
 
 				"<div class='span8'>"+

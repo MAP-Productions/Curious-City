@@ -206,7 +206,7 @@ this.curiouscity = {
 
 		var _this = this;
 		if(order=='popular'){
-			if(!this.popularArchive){
+			if(!this.popularArchive||true){
 				var Questions = curiouscity.module("questions");
 				this.popularArchive = new Questions.Collection({'votingperiod':false,"order":order});
 				$('#archive-page #archive-questions').empty();
@@ -225,7 +225,7 @@ this.curiouscity = {
 		
 		}
 		else{
-			if(!this.recentArchive){
+			if(!this.recentArchive||true){
 				var Questions = curiouscity.module("questions");
 				this.recentArchive = new Questions.Collection({'votingperiod':false,"order":order});
 				$('#archive-page #archive-questions').empty();

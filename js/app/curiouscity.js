@@ -266,7 +266,7 @@ this.curiouscity = {
 			this.page.url = "http://example.com/#!/question/"+questionID;
 			}
 		});
-		
+		window.scroll(0,0); 
 		$('#discussion').fadeIn();
 
 		$('.focus').removeClass('focus').fadeOut('fast', function(){

@@ -46,7 +46,9 @@
 					
 					var url=	"http://farm"+model.get('farm')+".staticflickr.com/"+model.get('server')+"/"+model.get('id')+"_"+model.get('secret')+"_m.jpg";
 				    var attribution = "http://www.flickr.com/photos/"+model.get('owner')+"/"+model.get('id');
-				    $('#flickr-search').append('<li><a href="#" class="thumbnail"><img data-attribution="'+attribution+'" class="flickr-image" src="'+url+'" /></a></li>');
+				    var username = model.get('ownername');
+				   
+				   $('#flickr-search').append('<li><a href="#" class="thumbnail"><img  data-username="'+username+'"  data-attribution="'+attribution+'" class="flickr-image" src="'+url+'" /></a></li>');
 				});
 				
 				
@@ -56,6 +58,8 @@
 					$(this).addClass('flickr-image-selected');
 					_this.model.set({'imageurl':$(this).find('.flickr-image').attr('src')});
 					_this.model.set({'imageattribution':$(this).find('.flickr-image').data('attribution')});
+					_this.model.set({'imageusername':$(this).find('.flickr-image').data('username')});
+					
 					return false;
 				});
 				

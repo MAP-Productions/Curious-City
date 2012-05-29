@@ -71,7 +71,7 @@
 		foreach ($listFeed->entries as $entry){
 		
 		$rowData = $entry->getCustom();
-		$publicColumns=array('index','id','name','question','anonymous','imageurl');
+		$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername');
 		
 		
 		foreach($rowData as $customEntry) {

@@ -16,6 +16,8 @@
 
 			$(this.el).append( _.template( this.getTemplate(), _.extend(this.model.attributes,{lang:c}) ) );
 			
+			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
+	
 			return this;
 		},
 
@@ -34,7 +36,8 @@
 			var html =
 		
 				"<div class='row'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
+					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+
+					"</div>"+
 					"<div class='span7 question-text'>"+
 						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
 						"<div class='comment-count'><a href='#'><%= comments %> <%= lang %></a></div>"+

@@ -65,8 +65,8 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		$rowData = $entry->getCustom();
 		$question =array();
 		
-		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','votes','winner');
-		else  $publicColumns=array('id','name','question','anonymous','imageurl','comments');
+		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments');
 		
 		
 		foreach($rowData as $customEntry) {
@@ -75,6 +75,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		
 			if($question['anonymous']==1)$question['name']='Anonymous';
 			if(empty($question['imageurl']))unset($question['imageurl']);
+			if(empty($question['imageattribution']))unset($question['imageattribution']);
 			unset($question['anonymous']);
 			$questions[]=$question;
 		}

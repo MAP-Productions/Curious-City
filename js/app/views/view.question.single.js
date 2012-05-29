@@ -22,6 +22,7 @@
 			$(this.el).html( template( this.model.attributes ) );
 			if(this.model.get('previous')==-1)$(this.el).find('.previous').hide();
 			if(this.model.get('next')==-1)$(this.el).find('.next').hide();
+			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
 			
 			return this;
 		},

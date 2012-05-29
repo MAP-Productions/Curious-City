@@ -155,6 +155,7 @@ footer li
 	position:relative;
 }
 .question + .question{ margin-top:2px;}
+
 .question-image
 {
 	height:100px;
@@ -162,6 +163,14 @@ footer li
 	background:no-repeat;
 	background-size: 310px;
 	background-position: 0 50%;
+}
+
+.image-credits {
+
+	position: absolute;
+	bottom: 0px;
+	right: 2px;
+
 }
 
 .question.hover

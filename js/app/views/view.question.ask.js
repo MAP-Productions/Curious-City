@@ -72,6 +72,7 @@
 		},
 		back: function()
 		{
+			
 			if(this.step==2){
 				this.model.set({text:$(this.el).find('.submit-question-text')[0].value});
 				$('#question-form-2').fadeOut('fast',function(){
@@ -94,11 +95,13 @@
 			
 			$('.step'+(this.step+1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
+			window.scroll(0,0); 
 			return false;
 		},
 		
 		next: function()
 		{
+			
 			this.advance = true;
 			$('.error').removeClass('error');
 			if(this.step == 1)
@@ -129,9 +132,9 @@
 			{
 				console.log(this.model)
 			
-				$(this.el).find('#submit-question-preview').html('"'+ this.model.get('question') +'"');
+				$(this.el).find('#submit-question-preview').html(this.model.get('question'));
 				$(this.el).find('#submit-name-preview').html('posted by '+ ((this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name')));
-				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')')
+				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')');
 				
 				$('#question-form-2').fadeOut('fast',function(){
 					$('#question-form-3').fadeIn('fast');
@@ -144,6 +147,7 @@
 			
 			$('.step'+(this.step-1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
+			window.scroll(0,0); 
 			return false;
 		},
 		
@@ -205,7 +209,7 @@
 				"<div class='span7'>"+
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							"<div class='control-group question-text'><textarea class='submit-question-text span7'></textarea></div>"+
+							"<div class='control-group'><textarea class='submit-question-text span7'></textarea></div>"+
 							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What neighborhood or town do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></label></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'> <i class='icon-user'></i> remain anonymous?</label>"+
@@ -225,13 +229,13 @@
 						"<form id='question-form-3' class='question-form hide'>"+
 							"<div class='row'>"+
 								"<div class='span3'>"+
-									"<div class='hero-unit image-preview'></div>"+
+									"<div class='image-preview'></div>"+
 								"</div>"+
 								"<div class='span4'>"+
 									"<h2 id='submit-question-preview'></h2>"+
 									"<div id='submit-name-preview'></div>"+
 								"</div>"+
-							"</div>"+
+							"</div><br><br>"+
 							"<a class='submit-back'>back</a>"+
 							"<button class='submit-final btn btn-primary'>Looks Good!</button>"+
 						"</form>"+

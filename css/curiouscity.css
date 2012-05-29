@@ -166,6 +166,14 @@ footer li
 	background-position: 0 50%;
 }
 
+.image-preview {
+	background: no-repeat;
+	background-size: 220px;
+	background-position: 0 50%;
+	height:71px;
+
+}
+
 .image-credits {
 
 	position: absolute;
@@ -237,7 +245,17 @@ footer li
 	position:absolute;
 	bottom:5px;
 	right:10px;
+	
 }
+
+.question-text {
+
+	max-height:100px;
+	overflow:hidden;
+
+}
+
+
 
 .rank-corner
 {

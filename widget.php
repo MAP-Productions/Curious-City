@@ -39,7 +39,7 @@
 	
 	<div class='wrapper'>
 		<header>
-			<img src="images/cc-logo.png"/>
+			<a href="http://curiouscity.wbez.org" ><img src="images/cc-logo.png"/></a>
 		</header>
 	
 		<div class="main">
@@ -56,7 +56,7 @@
 			<div id="ballot">
 				<div id="left-ballot"></div>
 				<div id="right-ballot"></div>
-				<div id="follow-up"><div class="link link-1" >Check out earlier investigations </div><div class="link link-2" >Shape Stories as they unfold </div><div class="link link-3" >Tune in Wednesdays to The Afternoon Shift on WBEZ for winners & updates.</div>
+				<div id="follow-up"><div class="link link-1" >Check out <a href="www.wbez.org/curiouscity" >earlier investigations</a></div><div class="link link-2" >Shape Stories as they unfold </div><div class="link link-3" >Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" >The Afternoon Shift</a> on WBEZ for winners + updates.</div>
 				</div>
 			</div>
 			

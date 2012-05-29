@@ -32,6 +32,7 @@ ul.horizontal li+li
 	left:0;
 	width:100%;
 	padding:2px 0;
+	height:24px;
 }
 
 .container.main
@@ -470,11 +471,11 @@ footer
 {
 	color: #777;
 }
-.phone-submit
-{
-	border-top: 1px dotted #777;
-	padding-top: 10px;
-	margin-top: 64px;
+
+
+.short-input {
+
+width:270px;
 }
 
 .submit-back {
@@ -483,6 +484,7 @@ footer
 	padding-right:5px;
 
 }
+
 
 .submit-cell
 {

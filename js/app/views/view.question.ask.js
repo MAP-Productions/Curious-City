@@ -110,6 +110,7 @@
 					name:$(this.el).find('.submit-name-text')[0].value,
 					email:$(this.el).find('.submit-email-text')[0].value,
 					email_confirm:$(this.el).find('.submit-email-confirm-text')[0].value,
+					neighborhood:$(this.el).find('.submit-neighborhood-text')[0].value,
 					anonymous : $('#anonymous').is(':checked') ? 1 : 0
 				});
 				console.log('advance: '+ this.advance)
@@ -205,10 +206,11 @@
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
 							"<div class='control-group question-text'><textarea class='submit-question-text span7'></textarea></div>"+
-							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'submit-name-text' type='text'/></label></div>"+
+							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What neighborhood or town do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
+							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></label></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'> <i class='icon-user'></i> remain anonymous?</label>"+
-							"<div class='control-group email-main'><label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'submit-email-text' type='email'/></label></div>"+
-							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'submit-email-confirm-text' type='email'/></label></div>"+
+							"<div class='control-group email-main'><label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'short-input submit-email-text' type='email'/></label></div>"+
+							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'short-input submit-email-confirm-text' type='email'/></label></div>"+
 							
 							"<button class='btn submit-next btn-primary'>Next</button>"+
 						"</div>"+

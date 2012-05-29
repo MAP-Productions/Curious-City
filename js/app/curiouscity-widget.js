@@ -35,6 +35,9 @@ app: _.extend({
 
 	loadQuestionCollection : function()
 	{
+		
+		if(window.vote==-1){
+		
 		var _this = this;
 		var Questions = curiouscity.module("questions");
 	
@@ -48,14 +51,25 @@ app: _.extend({
 		this.questionsCollection.fetch({
 			success:function(collection,response)
 			{
+				
 				$('#ballot>div').spin(false);
 				//_this.makePairs();
 				//_this.parseData();
-				
+				$('#questions-count').html(_.size(collection));
+				$('#tagline').fadeTo(100,1);
 				_this.displayPair(0,1);
+			
 				
 			}
 		});
+		
+		}
+		else{
+		
+			this.displayFollowUp();
+		
+		
+		}
 	},
 	
 	makePairs : function()
@@ -148,12 +162,25 @@ app: _.extend({
 		}
 		else{
 			$.post('php/vote.php?questionid='+ this.questionsCollection.at(this.currentVote).id, function(data){});
+			this.displayFollowUp();
 		}
 		
 		
 
 	},
 	
+	displayFollowUp :function(){
+		
+		$('#left-ballot').fadeOut('fast');
+		$('#right-ballot').fadeOut('fast',function(){
+			
+			$('#headline').fadeOut('fast',function(){$(this).html('<h3>Thanks for Voting!!</h3>').fadeIn();});
+			$('#follow-up').fadeIn();
+		});
+	
+		
+	
+	},
 	
 	
 	displayNextPair : function()

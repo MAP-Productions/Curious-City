@@ -12,6 +12,8 @@ h1,h2
 body
 {
 	background-color:#eee;
+	height:350px;
+	width:320px;
 }
 
 ul.horizontal li

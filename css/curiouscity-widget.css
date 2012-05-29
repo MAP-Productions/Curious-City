@@ -22,6 +22,7 @@ h3{ font-weight:500; }
 #ballot
 {
 	height:200px;
+	
 }
 
 #left-ballot,
@@ -32,6 +33,7 @@ h3{ font-weight:500; }
 	float:left;
 	background-color:white;
 	position: relative;
+	display:none;
 }
 
 #left-ballot
@@ -114,6 +116,10 @@ h3{ font-weight:500; }
 .ballot-image
 {
 	height:40px;
+	position:relative;
+	background:no-repeat;
+	background-size: 150px;
+	background-position: 0 50%;
 }
 
 #ballot .text 
@@ -121,6 +127,35 @@ h3{ font-weight:500; }
 	padding:3px;
 	padding-top:23px;
 }
+
+#follow-up {
+
+	background-color:#49BEE8;
+	color:white;
+	font-size:14px;
+	height:185px;
+	display:none;
+	padding:5px;
+
+}
+
+.link {
+	
+	padding-left:5px;
+	padding-top:15px;
+	padding-bottom:15px;
+	font-weight:bold;
+	font-size:18px;
+
+
+}
+
+.link-2 {
+	border-top: white 1px dotted;
+	border-bottom: white 1px dotted;
+
+}
+
 
 .thanks-text h3
 {

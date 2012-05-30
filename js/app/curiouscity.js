@@ -116,7 +116,7 @@ this.curiouscity = {
 			this.page.url = "http://example.com/#!/vote";
 			}
 		});
-		$('#discussion-headline').html("What are people saying about this question");
+		$('#discussion-headline').html("What are people saying about this round");
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
 			$('#vote-page').addClass('focus').fadeIn('fast',function(){
@@ -270,7 +270,7 @@ this.curiouscity = {
 		});
 		window.scroll(0,0); 
 		$('#discussion').fadeIn();
-
+	$('#discussion-headline').html("What are people saying about this question");
 		$('.focus').removeClass('focus').fadeOut('fast', function(){
 			$('#question-page').empty();
 			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){

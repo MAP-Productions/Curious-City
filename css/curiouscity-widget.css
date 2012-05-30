@@ -155,8 +155,7 @@ h3{ font-weight:500; }
 	padding-left:5px;
 	padding-top:15px;
 	padding-bottom:15px;
-	font-weight:bold;
-	font-size:18px;
+	font-size:17px;
 
 
 }
@@ -167,7 +166,12 @@ h3{ font-weight:500; }
 
 }
 
-
+.link-icon {
+	padding-right:5px;
+	bottom: 4px;
+	position: relative;
+	
+}
 .thanks-text h3
 {
 	color: #49BEE8;

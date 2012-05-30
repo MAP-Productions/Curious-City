@@ -57,12 +57,43 @@ ul.horizontal li+li
 
 #cc-nav ul li a
 {
+	font-size:16px;
 	border-left:1px dotted #777;
-	height:55px;
+	height:30px;
 	width:97px;
 	display:inline-block;
-	padding:10px 5px;
+	padding:25px 5px;
+	color: #666666;
 }
+
+#cc-nav ul li a:hover
+{
+	color: #0CF;
+	text-decoration:none;
+}
+
+
+#how-it-works-expander a
+{
+	color: #666666;
+	padding-right:5px;
+}
+
+#how-it-works-expander a:hover
+{
+	color: #0CF;
+	text-decoration:none;
+}
+
+.twitter-headline {
+	padding-bottom: 48px;
+
+}
+
+.twitter-wrapper {
+	background: white;
+}
+
 
 #vote-page{}
 #ask-page{ height: 700px;}
@@ -192,6 +223,17 @@ footer li
 	background-size:50px;
 }
 
+
+.header-logo {
+
+	width:85px;
+	height:20px;
+}
+
+.header-email-link{
+	color:#999999;
+
+}
 .logo-wyncote {
 	background-image:url("../images/logos/wyncote_bw.png");
 }
@@ -312,7 +354,7 @@ footer li
 
 .flickr-image-selected {
 
-	background-color: #08C;
+	background-color: #00CCFF;
 }
 
 

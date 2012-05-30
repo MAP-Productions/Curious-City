@@ -37,9 +37,9 @@
 	
 	<div id="wbez-header">
 		<div class="container">
-			<div class="logo pull-left"><a href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
+			<div class="header-logo pull-left"><a href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
 			<div class="social pull-right">
-				<a href="mailto:curiouscity@wbez.org" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
+				<a class="header-email-link" href="mailto:curiouscity@wbez.org" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
 				
 				<!--<span class="st_plusone" displayText="Google +1"></span>-->
 				<span class="st_twitterfollow" displayText="Twitter Follow" st_username="WBEZCuriousCity"></span>
@@ -56,7 +56,7 @@
 			<div id="cc-nav">
 				<div class="row">
 					<div class="span5">
-						<img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="380px"/>
+						<a href="http://curiouscity.wbez.org" ><img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="380px"/></a>
 					</div>
 					<div class="span7">
 						<ul>
@@ -94,7 +94,7 @@
 					</li>
 				</ul>
 			</div>
-			<div id="how-it-works-expander" class="clearfix"><a href="#" class="pull-left">how it works <i class="arrow down"></i></a></div>
+			<div id="how-it-works-expander" class="clearfix"><a href="#" class="pull-left cc-nav">how it works <i class="arrow down"></i></a></div>
 
 		
 		</header>
@@ -269,38 +269,40 @@ Torey Malatia, Daniel Ash, Sally Eisele, Matthew Green, Jane Verwys, Breeze Rich
 		<div >
 				<div class="row">
 					<div class="span5">
-						<h2>Twitter Updates</h2>
-						<br><br><br>
-<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: 'WBEZCuriousCity',
-  interval: 30000,
-  title: '',
-  subject: '',
-  width: 'auto',
-  height: 300,
-  theme: {
-    shell: {
-      background: '#ffffff',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#000000',
-      links: '#00ccff'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: true,
-    live: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
+						<h2 class="twitter-headline">Twitter Updates</h2>
+							<div class='twitter-wrapper'>
+	
+									<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+									<script>
+									new TWTR.Widget({
+									  version: 2,
+									  type: 'search',
+									  search: 'WBEZCuriousCity',
+									  interval: 30000,
+									  title: '',
+									  subject: '',
+									  width: 'auto',
+									  height: 300,
+									  theme: {
+										shell: {
+										  background: '#ffffff',
+										  color: '#ffffff'
+										},
+										tweets: {
+										  background: '#ffffff',
+										  color: '#000000',
+										  links: '#00ccff'
+										}
+									  },
+									  features: {
+										scrollbar: false,
+										loop: true,
+										live: true,
+										behavior: 'default'
+									  }
+									}).render().start();
+									</script>
+								</div>
 					</div>
 					<div class="span7">
 						<h2 id="discussion-headline"></h2>

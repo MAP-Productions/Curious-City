@@ -383,6 +383,7 @@ footer li
 {
 	border-bottom: 1px dotted #777;
 	float:left;
+	display:none;
 }
 
 #discussion

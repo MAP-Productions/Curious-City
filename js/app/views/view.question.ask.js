@@ -138,7 +138,7 @@
 				
 				$('#question-form-2').fadeOut('fast',function(){
 					$('#question-form-3').fadeIn('fast');
-					$('#ask-flash .super h1').html('Double check your question');
+					$('#ask-flash .super h1').html('Double check your question:');
 					$('#ask-flash .sub h5').empty();
 				});
 				this.step++;
@@ -195,7 +195,7 @@
 							"<li class='step2'>Step 2: Add Media</li>"+
 							"<li class='step3'>Step 3: Preview</li>"+
 						"</ul>"+
-						"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.800.789.7752</div>"+
+						"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.888.789.7752</div>"+
 					"</div>"+
 				
 					"<div id='left-col2' class='hide'>"+
@@ -210,9 +210,9 @@
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
 							"<div class='control-group'><textarea class='submit-question-text span7'></textarea></div>"+
-							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What neighborhood or town do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
+							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></label></div>"+
-							"<label class='checkbox'><input type='checkbox' id='anonymous'> <i class='icon-user'></i> remain anonymous?</label>"+
+							"<label class='checkbox'><input type='checkbox' id='anonymous'> <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+
 							"<div class='control-group email-main'><label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'short-input submit-email-text' type='email'/></label></div>"+
 							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'short-input submit-email-confirm-text' type='email'/></label></div>"+
 							
@@ -223,7 +223,7 @@
 								"<input id = 'submit-flickr-query' class = 'submit-flickr-query' type='tel'/><button class='submit-flickr-search btn'>Search Flickr</button>"+
 							"</div>"+
 							"<ul id='flickr-search' class='well thumbnails'></ul>"+
-							"<a class='submit-back'>back</a>"+
+							"<a class='submit-back'>Back</a>"+
 							"<button class='submit-next btn btn-primary'>Next</button>"+
 						"</form>"+
 						"<form id='question-form-3' class='question-form hide'>"+
@@ -236,8 +236,8 @@
 									"<div id='submit-name-preview'></div>"+
 								"</div>"+
 							"</div><br><br>"+
-							"<a class='submit-back'>back</a>"+
-							"<button class='submit-final btn btn-primary'>Looks Good!</button>"+
+							"<a class='submit-back'>Back</a>"+
+							"<button class='submit-final btn btn-primary'>Looks good!</button>"+
 						"</form>"+
 						"<div id='question-form-4'  class='question-form hide'>"+
 							"<span><h3>What happens now?</h3></span><br><br>"+

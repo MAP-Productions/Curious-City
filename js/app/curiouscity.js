@@ -159,6 +159,7 @@ this.curiouscity = {
 		{
 			console.log('--you can vote! :)')
 			_.each( _.shuffle( _.toArray( this.questionsCollection ) ),function(question){
+				
 				var questionView = new Questions.Views.Vote({model:question,voted:false, attributes:{'data-id':question.id,'data-rank':question.get('rank')}});
 				$('#questions').append(questionView.render().el);
 			});
@@ -171,9 +172,10 @@ this.curiouscity = {
 		}
 		else
 		{
-			console.log('--you cannot vote :(')
+			console.log('--you cannot vote :(');
+			var _this = this;
 			_.each( _.toArray( this.questionsCollection ),function(question){
-				var questionView = new Questions.Views.Vote({model:question,vote:true});
+				var questionView = new Questions.Views.Vote({model:question,voted:true, voted_this: _this.questionsCollection.yourvote==question.id });
 				$('#questions').append(questionView.render().el);
 				//questionView.delegateEvents();
 			});

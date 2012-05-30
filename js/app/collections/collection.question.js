@@ -21,6 +21,7 @@
 		{
 			console.log(data)
 			this.canvote = data.canvote;
+			this.yourvote = data.yourvote;
 			return data.questions;
 		}
 	});

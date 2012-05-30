@@ -8,12 +8,14 @@
 		tagName : 'div',
 		className: 'question',
 		
-		voted : false,
-		voted_this : false,
+//		voted : false,
+//		voted_this : false,
 		
 		initialize : function()
 		{
 			curiouscity.app.questionsCollection.on('sorted', this.sorted, this);
+			_.extend(this,this.options);
+			console.log(this.voted_this);
 		},
 
 		render : function( )
@@ -94,6 +96,7 @@
 			
 			if( !this.voted )
 			{
+			console.log('you have not voted template');
 				html +=
 				"<div class='row' data-id='"+ this.model.id +"' data-rank='<%= rank %>'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
@@ -105,6 +108,7 @@
 			}
 			else
 			{
+			console.log('you HAVE voted template');
 				html +=
 				"<div class='row'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+

@@ -386,6 +386,18 @@ footer li
 	display:none;
 }
 
+#guidelines-modal{
+	display:none;
+}
+
+#good-question-modal{
+	display:none;
+}
+.good-question-link{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
 #discussion
 {
 	display:none;

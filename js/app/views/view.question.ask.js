@@ -12,7 +12,7 @@
 		{
 			console.log('question view init')
 			this.model= new Questions.Model.Ask();
-			
+			$('.good-question-link').show();
 			this.model.on('error', this.validationError, this);
 			
 			_.extend(this,options);
@@ -79,8 +79,10 @@
 					$('#question-form-1').fadeIn('fast');
 					$('#ask-flash .super h1').html('What do you wonder about Chicago,the region, or the people who live here?');
 					$('#ask-flash .sub h5').html('Please write your question');
+					$('.good-question-link').show();
 				});
 				this.step--;
+				
 			}
 			if(this.step==3){
 				this.model.set({text:$(this.el).find('.submit-question-text')[0].value});
@@ -106,6 +108,7 @@
 			$('.error').removeClass('error');
 			if(this.step == 1)
 			{
+				$('.good-question-link').hide();
 				console.log('validate this')
 				console.log('advance: '+ this.advance)
 				this.model.set({

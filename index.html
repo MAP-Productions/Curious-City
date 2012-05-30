@@ -136,8 +136,8 @@
 							<div class="super">
 								<h1>What do you wonder about Chicago, the region, or the people who live here?</h1>
 							</div>
-							<div class="sub">
-								<h5>Please type your question below:</h5>
+							<div class="sub" style="position:relative">
+								<h5>Please type your question below:</h5><span class='good-question-link' ><a data-toggle="modal" href="#good-question-modal" >Show me some good examples</a></span>
 							</div>
 						</div>
 					</div>
@@ -307,7 +307,7 @@ new TWTR.Widget({
 							<div id="disqus-controls">
 								<div class="disqus-sort-tab disqus-sort-selected" id="disqus-sort-popular"><a>Popular</a></div>
   								<div class="disqus-sort-tab disqus-sort-unselected" id="disqus-sort-newest"><a >Most Recent</a></div>
-  								<div class="disqus-guidelines" id="disqus-guidelines"><a >Guidelines</a></div>
+  								<div class="disqus-guidelines" id="disqus-guidelines"><a data-toggle="modal" href="#guidelines-modal" >Guidelines</a></div>
   								<button id="disqus-add-comment" class="btn">Add a comment</button>
   							</div>
 		
@@ -336,11 +336,71 @@ new TWTR.Widget({
 		
 		
 		</div>
-		<div id=
+
 		
+		<div class="modal" id="guidelines-modal">
+		  <div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>Guidelines</h3>
+		  </div>
+		  <div class="modal-body">
+		  
+			<p>Your questions and comments inform, enrich and drive Curious City reporting. While sparking or contributing to the meaningful discussions, please follow these guidelines:</p>
+			
+			<h4>DO:</h4>
+			
+			<ul>
+				<li>Keep your comments focused on the topic at hand.</li>
+				<li>Be respectful of all who post on this blog – if you disagree with someone, be polite.</li>
+				<li>Acknowledge the source of any material that’s not your own.</li>
+			</ul>
+			<h4>DO NOT:</h4>
+			<ul>
+				<li>Use profanity, personal attacks or hate speech.</li>
+				<li>Promote yourself, a business or try to raise money.</li>
+				<li>“Feed the trolls:” don’t respond to inflammatory or obscene posts, just flag them.  </li>
+			</ul>
+			<p>We reserve the right to: edit questions for clarity and brevity, close a comment thread, curate comments, not publish rumors or allegations we know to be unsubstantiated or false and to remove posts and not post questions that don’t follow these guidelines.</p>
+			   
+		  </div>
+		  <div class="modal-footer">
+			<a data-dismiss="modal" href="#" class="btn">Close</a>
+		  </div>
+		</div>
 		
-		
-		
+		<div class="modal" id="good-question-modal">
+		  <div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>What makes a good Curious City question?</h3>
+		  </div>
+		  <div class="modal-body">
+		  
+			<p>To increase the chances of WBEZ picking your question for a vote, make sure it satisfies these requirements:</p>
+			
+			<b>Local Relevance</b>: Questions that in some way relate to Chicago and the region. This includes but is not limited to questions about places or things in the area, local phenomenon or about a person or the people who live here.  <br>
+			<i>Example of an irrelevant question</i>: Why is Missoula, Montana such a popular spot for fishing?
+			<i>Example of a relevant question</i>: Why is Chicago’s Navy Pier such a popular spot for fishing?  <br>
+			
+			<b>Impartial</b>: True curiosity requires an open mind and impartiality. Questions that begin with a bias are more likely to result in biased answers.     <br>
+			<i>Example of a biased question</i>:  Why are the CTA’s bus drivers and train operators so bad at their jobs?
+			<i>Example of an impartial question</i>: Why do the CTA’s buses and trains sometimes arrive in clumps even though they can track each other?<br>
+			
+			<b>Clearly stated</b>: Questions with typos and grammatical errors can be hard to understand. Before you submit, take a minute to read your question aloud to hear if it makes sense. Use spell check if you’re unsure of a spelling.  <br>
+			<i>Example of an unclear question</i>: Why don’t the flores in the city building dwntwn not go to other 1s?
+			<i>Example of a clear question</i>: Why do the same floors in Chicago’s city and county government building not connect to one another?  <br>
+
+			<p>We will NOT post or consider answering any questions that:<p>
+			<ul>
+				<li>are libelous, use profanity, personal attacks or hate speech</li>
+				<li>promote a business or person</li>
+				<li>try to raise money</li>
+				<li>show bias</li>
+			</ul>
+		  </div>
+		  <div class="modal-footer">
+			<a data-dismiss="modal" href="#" class="btn">Close</a>
+		  </div>
+		</div>
 		
 		
 		
@@ -366,13 +426,5 @@ new TWTR.Widget({
 	<!-- Application source -->
 	<script data-main="js/loaders/curiouscity.js" src="js/lib/require.js"></script>
 	
-	<script>
-		/*
-		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		s.parentNode.insertBefore(g,s)}(document,'script'));
-		*/
-	</script>
 </body>
 </html>

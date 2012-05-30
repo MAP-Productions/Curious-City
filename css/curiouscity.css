@@ -58,7 +58,7 @@ ul.horizontal li+li
 #cc-nav ul li a
 {
 	font-size:16px;
-	border-left:1px dotted #777;
+	border-left:2px dotted #808184;
 	height:30px;
 	width:97px;
 	display:inline-block;
@@ -68,7 +68,7 @@ ul.horizontal li+li
 
 #cc-nav ul li a:hover
 {
-	color: #0CF;
+	color: #08C;
 	text-decoration:none;
 }
 
@@ -81,7 +81,7 @@ ul.horizontal li+li
 
 #how-it-works-expander a:hover
 {
-	color: #0CF;
+	color: #08C;
 	text-decoration:none;
 }
 
@@ -103,7 +103,7 @@ ul.horizontal li+li
 footer
 {
 	padding-top:20px;
-	border-top: 1px dotted #777;
+	border-top: 2px dotted #808184;
 }
 footer img
 {
@@ -120,7 +120,7 @@ footer li
 {
 	background:white;
 	padding:20px 0 10px 0;
-	border-top:1px dotted #777;
+	border-top:2px dotted #808184;
 }
 
 #how-it-works ul
@@ -147,7 +147,7 @@ footer li
 
 #how-it-works-expander
 {
-	border-top:1px dotted #777;
+	border-top:2px dotted #808184;
 	margin-bottom:20px;
 }
 #how-it-works-expander a
@@ -163,13 +163,13 @@ footer li
 #archive-questions
 {
 	padding:10px 0;
-	border-bottom: 1px dotted #777;
+	border-bottom: 2px dotted #808184;
 	min-height:200px;
 }
 
 .archive-search
 {
-	border-top: 1px dotted #777;
+	border-top: 2px dotted #808184;
 	margin-top: 20px;
 	padding-top: 10px;
 }
@@ -423,7 +423,7 @@ footer li
 
 #voting-date a
 {
-	border-bottom: 1px dotted #777;
+	border-bottom: 2px dotted #808184;
 	float:left;
 	display:none;
 }
@@ -580,7 +580,7 @@ width:270px;
 
 .submit-sequence ul li
 {
-	border-top: 1px dotted #777;
+	border-top: 2px dotted #808184;
 	padding:10px 0;
 }
 
@@ -594,7 +594,7 @@ width:270px;
 #about-page .right-col>div+div,
 #about-page .left-col>div
 {
-	border-top:1px dotted #777;
+	border-top:2px dotted #808184;
 	margin-top:20px;
 	padding-top:20px;
 }

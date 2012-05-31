@@ -169,7 +169,7 @@
 			
 			this.model.save();
 			$('#question-form-3').fadeOut('fast',function(){
-				$('#ask-flash .super h1').html('Thanks! Your question was submitted');
+				$('#ask-flash .super h1').html('Thanks! Your question was submitted.');
 				$('#question-form-4').fadeIn('fast');	
 				$('#left-col1').fadeOut('fast', function(){
 					$('#left-col2').fadeIn();

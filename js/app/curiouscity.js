@@ -89,7 +89,7 @@ this.curiouscity = {
 		switch(page)
 		{
 			case 'vote':
-				$('#discussion-headline').html("What are people saying this round");
+				$('#discussion-headline').html("What people are saying about this round:");
 				$('#discussion').fadeIn();
 				this.loadVoteQuestions();
 				break;
@@ -160,7 +160,7 @@ this.curiouscity = {
 		
 		this.questionID=-1;
 		
-		$('#discussion-headline').html("What are people saying about this round");
+		$('#discussion-headline').html("What people are saying about this round:");
 		$('.focus').hide().removeClass('focus');
 		$('#vote-page').addClass('focus').show();
 		$('#discussion').show();
@@ -348,8 +348,8 @@ this.curiouscity = {
 	voteOnQuestion : function()
 	{
 		console.log('voted!!!!!')
-		$('#vote-page .super h1').html("Thanks for Voting! Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results.");
-		$('#vote-page .sub h5').html('Here’s how the votes are stacking up so far:');
+		$('#vote-page .super h1').html("Thanks for voting! ");
+		$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Here’s how the votes are stacking up so far:");
 		
 	},
 	

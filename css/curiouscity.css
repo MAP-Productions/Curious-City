@@ -257,10 +257,12 @@ footer li
 	background-image:url("../images/logos/cpb_bw.png");
 }
 
+/*
 .logo-cpb:hover {
 	background-image:url("../images/logos/cpb_color.gif");
 }
 
+*/
 
 .logo-air {
 	background-image:url("../images/logos/air_bw.png");
@@ -269,12 +271,12 @@ footer li
 	background-image:url("../images/logos/localore_bw.png");
 }
 
-
+/*
 .logo-localore:hover {
 	background-image:url("../images/logos/localore_color.png");
 }
 
-
+*/
 
 .question.hover
 {

@@ -233,10 +233,23 @@ footer li
 }
 
 
+#wbez-header .container {
+
+padding-top:2px;
+
+}
+
 .header-logo {
 
 	width:85px;
 	height:20px;
+}
+
+.header-icon-social{
+	float:right; 
+	width:20px; 
+	height:20px; 
+	overflow:hidden;
 }
 
 .header-email-link{

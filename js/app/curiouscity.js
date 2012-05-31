@@ -121,8 +121,8 @@ this.curiouscity = {
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
-			this.page.identifier = "vote";
-			this.page.url = "http://example.com/#!/vote";
+			this.page.identifier = "June1-15/2012";
+			
 			}
 		});
 		

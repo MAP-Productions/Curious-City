@@ -19,6 +19,8 @@
 <script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-369047-1']);
+			_gaq.push(['_setDomainName', 'wbez.org']);
+			_gaq.push(['_addIgnoredRef', 'wbez.org']);
 			_gaq.push(['_trackPageview']);
 			(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -38,11 +40,11 @@
 	
 	<div id="wbez-header">
 		<div class="container">
-			<div class="header-logo pull-left"><a href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
+			<div class="header-logo pull-left"><a onClick='_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on WBEZ logo\", \"\"]);' href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
 			<div class="social pull-right">
 				<div class="header-icon-social"><span class='st_facebook' displayText='Facebook' '></span></div>
-				<div class="header-icon-social"><span class='st_twitter' displayText='Tweet'></span></div>
-				<a class="header-email-link" href="mailto:curiouscity@wbez.org" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
+				<div class="header-icon-social"  ><span class='st_twitter' displayText='Tweet'></span></div>
+				<a class="header-email-link" href="mailto:curiouscity@wbez.org" onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Mail curiouscity@wbez.org\", \"\"]);" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
 			</div>
 		</div>
 	</div>
@@ -92,7 +94,7 @@
 					</li>
 				</ul>
 			</div>
-			<div id="how-it-works-expander" class="clearfix"><a href="#" class="pull-left cc-nav">how it works <i class="arrow down"></i></a></div>
+			<div id="how-it-works-expander" class="clearfix"><a onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on \'How it Works\'\", \"\"]);" href="#" class="pull-left cc-nav">how it works <i class="arrow down"></i></a></div>
 
 		
 		</header>

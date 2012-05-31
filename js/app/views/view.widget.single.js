@@ -53,7 +53,7 @@
 			var html =
 			
 				"<div class='ballot-image' style='background-image:url(<%= imageurl %>)'></div>"+
-				"<a href='#'><i class='vote'></i></a>"+
+				"<a href='#' onClick='_gaq.push([\"_trackEvent\", \"CC-Widget-Vote\", \"Vote\", \"\"]);'><i class='vote'></i></a>"+
 				"<div class='text'>"+
 					"<p><%= question %></p>"+
 				"</div>";

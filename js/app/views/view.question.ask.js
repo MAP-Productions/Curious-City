@@ -215,7 +215,7 @@
 							"<div class='control-group'><textarea class='submit-question-text span7'></textarea></div>"+
 							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></label></div>"+
-							"<label class='checkbox'><input type='checkbox' id='anonymous'> <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+
+							"<label class='checkbox'><input type='checkbox' id='anonymous'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Select Anonymous\", \"\"]);' > <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+
 							"<div class='control-group email-main'><label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'short-input submit-email-text' type='email'/></label></div>"+
 							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'short-input submit-email-confirm-text' type='email'/></label></div>"+
 							
@@ -223,7 +223,7 @@
 						"</div>"+
 						"<form id='question-form-2'  class='question-form hide'>"+
 							"<div class='input-append'>"+
-								"<input id = 'submit-flickr-query' class = 'submit-flickr-query' type='tel'/><button class='submit-flickr-search btn'>Search Flickr</button>"+
+								"<input id = 'submit-flickr-query' class = 'submit-flickr-query' type='tel'/><button class='submit-flickr-search btn'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Search Flickr\", \"\"]);' >Search Flickr</button>"+
 							"</div>"+
 							"<ul id='flickr-search' class='well thumbnails'></ul>"+
 							"<a class='submit-back'>Back</a>"+

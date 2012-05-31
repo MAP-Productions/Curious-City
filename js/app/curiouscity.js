@@ -81,6 +81,36 @@ this.curiouscity = {
 
 	loadPage : function(page)
 	{
+	
+		
+		$('.focus').hide();
+		$('.focus').removeClass('focus');
+		$('#'+page+'-page').addClass('focus').show();
+		switch(page)
+		{
+			case 'vote':
+				$('#discussion-headline').html("What are people saying this round");
+				$('#discussion').fadeIn();
+				this.loadVoteQuestions();
+				break;
+			case 'stories':
+			
+				break;
+			case 'ask':
+				this.loadAsk();
+				break;
+			case 'archive':
+				$('#discussion').fadeOut();
+				this.loadArchiveQuestions('recent');
+				break;
+			case 'about':
+				break;
+			default :
+		}
+				
+
+	
+		/*
 		var _this = this;
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
@@ -113,6 +143,8 @@ this.curiouscity = {
 			});
 		})
 		
+		*/
+		
 	},
 
 	loadVoteQuestions : function()
@@ -129,12 +161,10 @@ this.curiouscity = {
 		this.questionID=-1;
 		
 		$('#discussion-headline').html("What are people saying about this round");
-		$('.focus').fadeOut('fast',function(){
-			$(this).removeClass('focus');
-			$('#vote-page').addClass('focus').fadeIn('fast',function(){
-				$('#discussion').show();
-				});
-		});
+		$('.focus').hide().removeClass('focus');
+		$('#vote-page').addClass('focus').show();
+		$('#discussion').show();
+	
 		
 		//only load once per visit
 		if( !this.questionsCollection )
@@ -211,12 +241,10 @@ this.curiouscity = {
 		console.log('load archive: '+order)
 		
 
-		$('.focus').fadeOut('fast',function(){
-			$(this).removeClass('focus');
-			$('#archive-page').addClass('focus').fadeIn('fast',function(){
-				$('#discussion').hide();
-				});
-		});
+		$('.focus').hide().removeClass('focus');
+		$('#discussion').hide();
+		$('#archive-page').addClass('focus').show();
+
 
 		var _this = this;
 		if(order=='popular'){
@@ -284,21 +312,24 @@ this.curiouscity = {
 		});
 		window.scroll(0,0); 
 		$('#discussion').fadeIn();
-	$('#discussion-headline').html("What are people saying about this question");
-		$('.focus').removeClass('focus').fadeOut('fast', function(){
-			$('#question-page').empty();
-			$('#question-page').spin().addClass('focus').fadeIn('fast',function(){
-				var Questions = curiouscity.module("questions");
-				var question = new Questions.Model({id:questionID});
-				question.fetch({
-					success : function()
-					{
-						_this.renderQuestion( question );
-					}
-				});
-				
-			})
+		$('#discussion-headline').html("What are people saying about this question");
+		
+		
+		$('.focus').removeClass('focus').hide();
+		
+		$('#question-page').empty();
+		
+		$('#question-page').addClass('focus').show().spin();
+		var Questions = curiouscity.module("questions");
+		var question = new Questions.Model({id:questionID});
+		question.fetch({
+			success : function()
+			{
+				_this.renderQuestion( question );
+			}
 		});
+				
+	
 		return false;
 	},
 	

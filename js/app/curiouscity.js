@@ -45,6 +45,14 @@ this.curiouscity = {
 		});
 	},
 	
+	disqusCommentInserted: function(){
+		console.log ('comment inserted');	
+	},
+	disqusCommentDeleted: function(){
+		console.log ('comment deleted');	
+	},
+	
+	
 	startRouter: function()
 	{
 		var _this = this;

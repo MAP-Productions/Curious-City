@@ -13,6 +13,9 @@
 			console.log('question view init')
 			this.model= new Questions.Model.Ask();
 			$('.good-question-link').show();
+			$('#ask-flash .super h1').html('What do you wonder about Chicago, the region, or the people who live here?');
+			$('#ask-flash .sub h5').html('Please type your question below');
+					
 			this.model.on('error', this.validationError, this);
 			
 			_.extend(this,options);

@@ -53,8 +53,9 @@
 		$feed = $spreadsheetService->getWorksheetFeed($query);
 		$rowCount=0;
 		foreach($feed->entries as $entry){
+			
 			$wkshtId = explode('/', $entry->id->text);
-			if($wkshtId[8]==$worksheetId) $rowCount=$entry->getRowCount();
+			if($wkshtId[8]==$worksheetId) $rowCount=$entry->getRowCount()->getText();
 		}
 
 
@@ -65,7 +66,6 @@
 		$query->setSpreadsheetQuery('id='.$questionid);
 		
 		$listFeed = $spreadsheetService->getListFeed($query);
-		
 
 		
 		foreach ($listFeed->entries as $entry){
@@ -89,7 +89,7 @@
 		
 		if($question['id']>1) $question['next']=$question['id']-1;
 		else $question['next']=-1;
-		
+		 $question['rowcount']=$rowCount;
 		echo json_encode($question);
 		
 	

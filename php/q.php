@@ -71,7 +71,7 @@
 		foreach ($listFeed->entries as $entry){
 		
 		$rowData = $entry->getCustom();
-		$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername');
+		$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername','soundcloud');
 		
 		
 		foreach($rowData as $customEntry) {
@@ -80,6 +80,7 @@
 		
 			if($question['anonymous']==1)$question['name']='Anonymous';
 			if(empty($question['imageurl']))unset($question['imageurl']);
+			if(empty($question['soundcloud']))unset($question['soundcloud']);
 			unset($question['anonymous']);
 		}
 		

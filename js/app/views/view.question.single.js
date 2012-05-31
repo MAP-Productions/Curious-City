@@ -23,7 +23,7 @@
 			if(this.model.get('previous')==-1)$(this.el).find('.previous').hide();
 			if(this.model.get('next')==-1)$(this.el).find('.next').hide();
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
-			
+			if(this.model.get('soundcloud'))$($(this.el).find('.soundcloud')[0]).append(this.model.get('soundcloud'));
 			return this;
 		},
 		
@@ -58,7 +58,8 @@
 
 				"<div class='span8'>"+
 					"<h1><%= question %></h1>"+
-					"<p>posted by <%= name %></p>"+
+					"<p>posted by <%= name %></p><br><br>"+
+					"<div class='soundcloud'></div><br><br>"+
 					"<div class='question-discussion'></div>"+
 				"</div>"+
 			

@@ -195,7 +195,7 @@
 					"<div id='left-col1'>"+
 						"<ul class='unstyled'>"+
 							"<li class='step1 active'>Step 1: Question</li>"+
-							"<li class='step2'>Step 2: Add Media</li>"+
+							"<li class='step2'>Step 2: Add Image</li>"+
 							"<li class='step3'>Step 3: Preview</li>"+
 						"</ul>"+
 						"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.888.789.7752</div>"+

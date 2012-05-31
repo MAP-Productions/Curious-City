@@ -15,6 +15,8 @@
 		{
 			curiouscity.app.questionsCollection.on('sorted', this.sorted, this);
 			_.extend(this,this.options);
+			
+			if(this.voted) this.undelegateEvents();
 			console.log(this.voted_this);
 		},
 
@@ -46,7 +48,7 @@
 		},
 		
 		voteOver : function()
-		{
+		{		
 			this.$el.addClass('hover');
 			this.$el.find('.vote').addClass('hover')
 		},

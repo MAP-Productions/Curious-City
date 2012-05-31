@@ -83,7 +83,7 @@
 			unset($question['anonymous']);
 		}
 		
-		if($rowCount>$question['id']) $question['previous']=$question['id']+1;
+		if($rowCount>$question['id']-1) $question['previous']=$question['id']+1;
 		else $question['previous']=-1;
 		
 		if($question['id']>1) $question['next']=$question['id']-1;

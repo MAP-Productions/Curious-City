@@ -72,7 +72,16 @@ ul.horizontal li+li
 	text-decoration:none;
 }
 
+#question-page {
 
+width:100%;
+
+}
+
+#archive-questions{
+
+width:100%;
+}
 #how-it-works-expander a
 {
 	color: #666666;

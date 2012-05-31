@@ -34,10 +34,7 @@
 			$(this.el).removeClass('hover');
 			$('#questions').find('[data-id='+ this.model.id +']').after(this.render().el).remove();
 			
-			$('.question-link').off('click').click(function(){
-				_this.goToQuestion();
-				return false;
-			})
+		
 
 		},
 		
@@ -45,7 +42,7 @@
 			'click .vote' : 'voteThis',
 			'mouseover .vote' : 'voteOver',
 			'mouseout .vote' : 'voteOut',
-			'click .question-link' : 'goToQuestion'
+			
 		},
 		
 		voteOver : function()
@@ -65,6 +62,7 @@
 			console.log('go to question!!! '+ this.model.id);
 			curiouscity.app.router.navigate('!/archive/question/'+this.model.id, {trigger:true});
 			return false;
+			
 		},
 		
 		voteThis : function()
@@ -117,8 +115,8 @@
 					"</div>";
 				if(this.voted_this) html += "<a href='#'><i class='vote hover'></i></a>";
 				html += "<div class='span7 question-text'>"+
-						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+
-						"<div class='comment-count'><a href='#' class='question-link'>Discuss <i class='icon-comment'></i></a></div>"+
+						"<h2><a class='question-link' href='#!/archive/question/"+this.model.id+"'><%= question %></a></h2>"+
+						"<div class='comment-count'><a href='#!/archive/question/"+this.model.id+"'class='question-link'>Discuss <i class='icon-comment'></i></a></div>"+
 					"</div>"+
 				"</div>";
 			}

@@ -46,10 +46,10 @@ this.curiouscity = {
 	},
 	
 	disqusCommentInserted: function(){
-		console.log ('comment inserted');	
+		if(this.questionID!=-1) $.post('php/comment.php?new=true&questionid='+this.questionID, function(data){}); 
 	},
 	disqusCommentDeleted: function(){
-		console.log ('comment deleted');	
+		if(this.questionID!=-1)$.post('php/vote.php?questionid='+this.questionID, function(data){});
 	},
 	
 	
@@ -117,6 +117,7 @@ this.curiouscity = {
 
 	loadVoteQuestions : function()
 	{
+		this.questionID=-1;
 		DISQUS.reset({
 			reload: true,
 			config: function () {  
@@ -124,6 +125,9 @@ this.curiouscity = {
 			this.page.url = "http://example.com/#!/vote";
 			}
 		});
+		
+		this.questionID=-1;
+		
 		$('#discussion-headline').html("What are people saying about this round");
 		$('.focus').fadeOut('fast',function(){
 			$(this).removeClass('focus');
@@ -267,6 +271,8 @@ this.curiouscity = {
 	
 	goToArchiveQuestion : function( questionID )
 	{
+	
+		this.questionID=questionID;
 		var _this = this;
 		
 		DISQUS.reset({

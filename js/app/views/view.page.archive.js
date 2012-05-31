@@ -12,8 +12,8 @@
 		render : function()
 		{
 			
-			var c = (this.model.get('commentcount') == 1) ? 'comment': 'comments';
-
+			var c = (this.model.get('comments') == 1) ? 'comment': 'comments';
+			console.log(c);
 			$(this.el).append( _.template( this.getTemplate(), _.extend(this.model.attributes,{lang:c}) ) );
 			
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");

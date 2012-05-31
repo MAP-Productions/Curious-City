@@ -16,7 +16,7 @@
 			curiouscity.app.questionsCollection.on('sorted', this.sorted, this);
 			_.extend(this,this.options);
 			
-			if(this.voted) this.undelegateEvents();
+			if(this.voted) this.events={};
 			console.log(this.voted_this);
 		},
 

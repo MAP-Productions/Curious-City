@@ -88,7 +88,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 			}
 		}
 		
-			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])&&in_array($_COOKIE['CURIOUS_CITY_VOTE'],$ids)){
+			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
 				$canvote=0;
 				$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
 			}

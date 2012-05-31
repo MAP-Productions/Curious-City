@@ -49,7 +49,7 @@
 		{
 			var html =
 		
-			"<ul  class='pager'><li class='previous'><a href='#!/archive/question/<%= previous %>'><i class='arrow left'></i> Previous Question</a></li><li class='next'><a href='#!/archive/question/<%= next %>'>Next Question <i class='arrow right'></i></a></ul>"+
+			"<ul  class='pager'><li class='previous'><a href='#!/archive/question/<%= previous %>'  onClick='_gaq.push([\"_trackEvent\", \"CC-Question\", \"Click Previous\", \"\"]);'  ><i class='arrow left'></i> Previous Question</a></li><li class='next'><a href='#!/archive/question/<%= next %>'  onClick='_gaq.push([\"_trackEvent\", \"CC-Question\", \"Click Next\", \"\"]);' >Next Question <i class='arrow right'></i></a></ul>"+
 			"<div class='row'>"+
 
 				"<div class='span4'>"+

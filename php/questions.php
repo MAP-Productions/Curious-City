@@ -64,6 +64,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		
 		$rowData = $entry->getCustom();
 		$question =array();
+		$ids=array();
 		
 		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner');
 		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments');
@@ -78,6 +79,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 			if(empty($question['imageattribution']))unset($question['imageattribution']);
 			unset($question['anonymous']);
 			$questions[]=$question;
+			$ids[]=$question['id'];
 		}
 		
 		if(isset($_GET['votingperiod'])){
@@ -86,7 +88,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 			}
 		}
 		
-			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
+			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])&&in_array($_COOKIE['CURIOUS_CITY_VOTE'],$ids)){
 				$canvote=0;
 				$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
 			}

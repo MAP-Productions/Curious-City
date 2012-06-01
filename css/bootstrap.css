@@ -172,6 +172,7 @@ a:hover {
 
 .row {
   margin-left: -20px;
+  margin-top:10px;
   *zoom: 1;
 }
 
@@ -183,6 +184,7 @@ a:hover {
 
 .row:after {
   clear: both;
+  
 }
 
 [class*="span"] {

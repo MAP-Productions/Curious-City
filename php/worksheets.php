@@ -44,14 +44,46 @@
         $query = new Zend_Gdata_Spreadsheets_DocumentQuery();
 		$query->setSpreadsheetKey($spreadsheetKey);
 		$feed = $spreadsheetService->getWorksheetFeed($query);
+		/*
 		
 		foreach($feed->entries as $entry){
 			$wkshtId = explode('/', $entry->id->text);
 			echo $wkshtId[8]."<br>";
 			echo $entry->title->text."<br>";
 		}
+		*/
+			
+			
+			if(htmlspecialchars ($_GET['period'])=='current'){
+				$wkshtIndex=1;
+			}
+			else{
+				$i=0;
+				foreach($feed->entries as $entry){
+					if($entry->title->text==htmlspecialchars ($_GET['period'])) $wkshtIndex=$i;
+					else $i++;
+				}
+			}
+			
+			
+			
 	
-
+			$wkshtId = explode('/', $feed->entries[$wkshtIndex]->id->text);
+			echo $wkshtId[8]."<br>";
+			echo $feed->entries[$wkshtIndex]->title->text."<br>";
+			
+			
+			if(isset($feed->entries[$wkshtIndex+1])){
+					$wkshtId = explode('/', $feed->entries[$wkshtIndex+1]->id->text);
+					echo "previous: ".$wkshtId[8]."<br>";
+					echo "previous: ".$feed->entries[$wkshtIndex+1]->title->text."<br>";
+			}
+			
+			if($wkshtIndex!=1&&isset($feed->entries[$wkshtIndex-1])){
+					$wkshtId = explode('/', $feed->entries[$wkshtIndex-1]->id->text);
+					echo "next: ".$wkshtId[8]."<br>";
+					echo "next: ".$feed->entries[$wkshtIndex-1]->title->text."<br>";
+			}
 		
 		
 ?>

@@ -257,11 +257,23 @@ padding-top:2px;
 
 }
 
+.twitter-icon{
+
+	margin-left: 4px;
+	margin-bottom: 2px;
+
+}
+
+.twitter-icon:hover{
+	opacity:0.7;
+}
+
 .logo-zeega {
 
 	background-image:url("../images/logos/zeega_bw.png");
 
 }
+
 
 
 .logo-wyncote {

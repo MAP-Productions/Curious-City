@@ -185,7 +185,7 @@ this.curiouscity = {
 				{
 					$('#vote-page').spin(false);
 					_this.displayVoteQuestions();
-					if(collection.voted==1){
+					if(collection.canvote==0){
 						$('#vote-page .super h1').html("Thanks for voting! ");
 						$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Follow our investigations via <a target='blank' href='http://facebook.com/curiouscity' >Facebook</a> and <a target='blank' href='https://twitter.com/#!/WBEZCuriousCity'>Twitter</a>. Here’s how the votes are stacking up so far:<br>");
 					}

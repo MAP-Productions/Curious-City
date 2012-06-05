@@ -197,7 +197,7 @@ this.curiouscity = {
 					
 					}
 					$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
-					$('#previous-winner').find('h5').html('<a href ="#!/question/'+collection.previousWinner.id+'" >"'+collection.previousWinner.question.substr(0,100)+'..."</a>');
+					$('#previous-winner').find('h5').html('<a href ="#!/archive/question/'+collection.previousWinner.id+'" >"'+collection.previousWinner.question.substr(0,100)+'..."</a>');
 			
 				}
 			});

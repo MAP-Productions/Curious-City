@@ -147,13 +147,13 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		}
 
 		
-		if(isset($_COOKIE['CURIOUS_CITY_VOTES'])){
+		if(isset($_COOKIE['CURIOUS_CITY'])){
 			$canvote=0;
-			$yourvote=$_COOKIE['CURIOUS_CITY_VOTES'];
+			$yourvote=$_COOKIE['CURIOUS_CITY'];
 		}
 		else{
 			$canvote=1;
-			$yourvote=5;
+			$yourvote=-1;
 		}
 			
 		

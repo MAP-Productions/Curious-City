@@ -1,7 +1,7 @@
 <?php
 
 		$questionid = htmlspecialchars ($_GET['questionid']);
-		$worksheetId ="od7";
+		$worksheetId = htmlspecialchars ($_GET['votingperiod']);
 	
 
 

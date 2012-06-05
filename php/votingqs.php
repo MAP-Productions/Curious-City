@@ -122,6 +122,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 
 		for($i=0;$i<sizeof($questions);$i++){
 			$questions[$i]['rank']=$i+1;
+			$questions[$i]['wkshtId']=$currentId;
 		}
 	
 		/* END GET CURRENT QUESTIONS */
@@ -157,7 +158,7 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		}
 			
 		
-		echo json_encode(array("questions"=>$questions,"votingperiod"=>$currentTitle,"nextperiod"=>$nextPeriod,"previousperiod"=>$previousPeriod,"canvote"=>$canvote,"yourvote"=>$yourvote,"previousWinner"=>$previousWinner));
+		echo json_encode(array("questions"=>$questions, "votingperiod"=>$currentTitle,"nextperiod"=>$nextPeriod,"previousperiod"=>$previousPeriod,"canvote"=>$canvote,"yourvote"=>$yourvote,"previousWinner"=>$previousWinner));
 		
 	
 	?>

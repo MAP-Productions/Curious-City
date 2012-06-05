@@ -13,7 +13,7 @@
 		
 		url: function()
 		{
-			if(this.votingperiod != false) return 'php/questions.php?votingperiod='+this.votingperiod;
+			if(this.votingperiod != false) return 'php/votingqs.php?votingperiod='+this.votingperiod;
 			else return 'php/questions.php?order='+this.order;
 		},
 		
@@ -22,6 +22,7 @@
 			console.log(data)
 			this.canvote = data.canvote;
 			this.yourvote = data.yourvote;
+			this.previousWinner=data.previousWinner;
 			return data.questions;
 		}
 	});

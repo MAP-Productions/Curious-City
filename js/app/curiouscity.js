@@ -150,13 +150,7 @@ this.curiouscity = {
 	loadVoteQuestions : function()
 	{
 		this.questionID=-1;
-		DISQUS.reset({
-			reload: true,
-			config: function () {  
-			this.page.identifier = "June1-15/2012";
-			
-			}
-		});
+
 		
 		this.questionID=-1;
 		
@@ -172,7 +166,7 @@ this.curiouscity = {
 			var _this = this;
 			var Questions = curiouscity.module("questions");
 		
-			this.questionsCollection = new Questions.Collection({'votingperiod':'od7',
+			this.questionsCollection = new Questions.Collection({'votingperiod':'current',
 		
 		comparator : function(question)
 		{
@@ -183,6 +177,14 @@ this.curiouscity = {
 			this.questionsCollection.fetch({
 				success:function(collection,response)
 				{
+				
+					DISQUS.reset({
+						reload: true,
+						config: function () {  
+							this.page.identifier = collection.votingperiod;
+						}
+					});
+					
 					$('#vote-page').spin(false);
 					_this.displayVoteQuestions();
 					if(collection.canvote==0){
@@ -191,11 +193,12 @@ this.curiouscity = {
 					}
 					else{
 							$('#vote-page .super h1').html("Which should we investigate next? ");
-						$('#vote-page .sub h5').html("Select the question you’d most like answered.");
+							$('#vote-page .sub h5').html("Select the question you’d most like answered.");
 					
 					}
-					
-					console.log(collection)
+					$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
+					$('#previous-winner').find('h5').html('<a href ="#!/question/'+collection.previousWinner.id+'" >"'+collection.previousWinner.question.substr(0,100)+'..."</a>');
+			
 				}
 			});
 		}

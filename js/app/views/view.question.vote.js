@@ -72,10 +72,11 @@
 		voteThis : function()
 		{
 			console.log('vote on this one:');
+			
 			this.voted_this = true;
 			var _this = this;
 			curiouscity.app.voteOnQuestion();
-			$.post('php/vote.php?votingperiod='+this.model.wkshtId+'questionid='+this.model.id, function(data){}); //vote post
+			$.post('php/vote.php?votingperiod='+this.model.get('wkshtId')+'&questionid='+this.model.id, function(data){}); //vote post
 			
 			this.voteOver = {};
 			this.voteOut = {};

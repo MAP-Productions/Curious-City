@@ -181,7 +181,7 @@ this.curiouscity = {
 					DISQUS.reset({
 						reload: true,
 						config: function () {  
-							this.page.identifier = collection.votingperiod;
+							this.page.identifier = _this.questionsCollection.votingperiod;
 						}
 					});
 					
@@ -202,6 +202,16 @@ this.curiouscity = {
 				}
 			});
 		}
+		else{
+		
+		DISQUS.reset({
+						reload: true,
+						config: function () {  
+							this.page.identifier = _this.questionsCollection.votingperiod;
+						}
+					});
+					
+			}
 		
 	},
 	

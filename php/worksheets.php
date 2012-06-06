@@ -48,8 +48,8 @@
 		
 		foreach($feed->entries as $entry){
 			$wkshtId = explode('/', $entry->id->text);
-			echo $wkshtId[8]."<br>";
-			echo $entry->title->text."<br>";
+			echo $wkshtId[8];
+			echo $entry->title->text;
 		}
 		*/
 			
@@ -69,20 +69,20 @@
 			
 	
 			$wkshtId = explode('/', $feed->entries[$wkshtIndex]->id->text);
-			echo $wkshtId[8]."<br>";
-			echo $feed->entries[$wkshtIndex]->title->text."<br>";
+			$currentId= $wkshtId[8];
+			$currentTitle= $feed->entries[$wkshtIndex]->title->text;
 			
 			
 			if(isset($feed->entries[$wkshtIndex+1])){
 					$wkshtId = explode('/', $feed->entries[$wkshtIndex+1]->id->text);
-					echo "previous: ".$wkshtId[8]."<br>";
-					echo "previous: ".$feed->entries[$wkshtIndex+1]->title->text."<br>";
+					$previousId=$wkshtId[8];
+					$previousTitle=$feed->entries[$wkshtIndex+1]->title->text;
 			}
 			
 			if($wkshtIndex!=1&&isset($feed->entries[$wkshtIndex-1])){
 					$wkshtId = explode('/', $feed->entries[$wkshtIndex-1]->id->text);
-					echo "next: ".$wkshtId[8]."<br>";
-					echo "next: ".$feed->entries[$wkshtIndex-1]->title->text."<br>";
+					$nextId=$wkshtId[8];
+					$nextId=$feed->entries[$wkshtIndex-1]->title->text;
 			}
 		
 		

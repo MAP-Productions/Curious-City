@@ -153,8 +153,9 @@
 			
 					if(isset($_COOKIE['CURIOUS_CITY_DEV'])) echo "false";
 					else { 
+						
+						setcookie(CURIOUS_CITY_DEV, '1', time()+60*2,'/','.wbez.org'); 
 						echo "true";
-						setcookie(CURIOUS_CITY_DEV, $questionid, time()+60*2,'/','.wbez.org'); 
 					}
 				?> ;
 		

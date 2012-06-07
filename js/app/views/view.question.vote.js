@@ -17,12 +17,12 @@
 			_.extend(this,this.options);
 			
 			if(this.voted) this.events={};
-			console.log(this.voted_this);
+			//console.log(this.voted_this);
 		},
 
 		render : function( )
 		{
-		 console.log(this);
+		 	//console.log(this);
 			this.$el.html( _.template( this.getTemplate(), this.model.attributes ) );
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
 			
@@ -63,7 +63,7 @@
 		
 		goToQuestion : function()
 		{
-			console.log('go to question!!! '+ this.model.id);
+			//console.log('go to question!!! '+ this.model.id);
 			curiouscity.app.router.navigate('!/archive/question/'+this.model.id, {trigger:true});
 			return false;
 			
@@ -84,7 +84,7 @@
 			//sort divs
 			var newOrder = $('#questions>div').clone();
 			newOrder = _.sortBy( newOrder, function(div){ return $(div).data('rank') })
-			console.log(newOrder);
+			//console.log(newOrder);
 			
 			$('#questions').quicksand( newOrder, function(){
 				curiouscity.app.questionsCollection.trigger('sorted')
@@ -99,7 +99,7 @@
 			
 			if( !this.voted )
 			{
-			console.log('you have not voted template');
+			//console.log('you have not voted template');
 				html +=
 				"<div class='row' data-id='"+ this.model.id +"' data-rank='<%= rank %>'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
@@ -111,7 +111,7 @@
 			}
 			else
 			{
-			console.log('you HAVE voted template');
+			//console.log('you HAVE voted template');
 				html +=
 				"<div class='row'>"+
 					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+

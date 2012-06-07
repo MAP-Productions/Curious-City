@@ -22,7 +22,7 @@
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<script src="js/lib/modernizr-2.5.3.min.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-369047-1']);
 			_gaq.push(['_trackPageview']);
@@ -32,10 +32,126 @@
 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
 			})();
 </script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "c09036ef-5691-4751-b69d-288d40fa03f7"}); </script>
+	
+	<script type="text/javascript">
+		<?php
+			require_once 'php/config.php';
+			$votingPeriod = "current";
+			set_include_path("gdata/library");
 
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "c09036ef-5691-4751-b69d-288d40fa03f7"}); </script>
+			require_once 'Zend/Loader.php';
+			Zend_Loader::loadClass('Zend_Gdata');
+			Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
+			Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
+			Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
+			Zend_Loader::loadClass('Zend_Http_Client');
 
+		
+			try{
+				$client = Zend_Gdata_ClientLogin::getHttpClient($email, $password, Zend_Gdata_Spreadsheets::AUTH_SERVICE_NAME);
+			}catch (Zend_Gdata_App_AuthException $ae) {
+				exit("Error Connecting");
+			}
+
+			$spreadsheetService = new Zend_Gdata_Spreadsheets($client);
+	
+			/* GET WORKSHEET INFO */
+			
+			$query = new Zend_Gdata_Spreadsheets_DocumentQuery();
+			$query->setSpreadsheetKey($spreadsheetKey);
+			$feed = $spreadsheetService->getWorksheetFeed($query);
+			
+			$wkshtIndex=1;
+			$wkshtId = explode('/', $feed->entries[$wkshtIndex]->id->text);
+			$currentId= $wkshtId[8];
+			$currentTitle= $feed->entries[$wkshtIndex]->title->text;
+		
+			if(isset($feed->entries[$wkshtIndex+1])){
+				$wkshtId = explode('/', $feed->entries[$wkshtIndex+1]->id->text);
+				$previousId=$wkshtId[8];
+				$previousPeriod=$feed->entries[$wkshtIndex+1]->title->text;
+			}
+			else $previousPeriod=-1;
+		
+			$nextPeriod =-1;
+
+			/* END GET WORKSHEET INFO */
+
+
+			/* GET CURRENT QUESTIONS */
+			$query = new Zend_Gdata_Spreadsheets_ListQuery();
+			$query->setSpreadsheetKey($spreadsheetKey);
+			$query->setWorksheetId($currentId);
+			$query->setOrderBy('column:votes');
+			$query->setReverse('true');
+			$listFeed = $spreadsheetService->getListFeed($query);
+		
+			$questions=array();
+		
+			foreach ($listFeed->entries as $entry){
+		
+			$rowData = $entry->getCustom();
+			$question =array();
+			$ids=array();
+			
+			$publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner');
+			
+			
+			foreach($rowData as $customEntry) {
+			 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
+			}
+			
+				if($question['anonymous']==1)$question['name']='Anonymous';
+				if(empty($question['imageurl']))unset($question['imageurl']);
+				if(empty($question['imageattribution']))unset($question['imageattribution']);
+				unset($question['anonymous']);
+				$questions[]=$question;
+				$ids[]=$question['id'];
+			}
+	
+			for($i=0;$i<sizeof($questions);$i++){
+				$questions[$i]['rank']=$i+1;
+				$questions[$i]['wkshtId']=$currentId;
+			}
+		
+			/* END GET CURRENT QUESTIONS */
+		
+		
+			 /* GET PREVIOUS WINNER */
+			 
+			$query = new Zend_Gdata_Spreadsheets_ListQuery();
+			$query->setSpreadsheetKey($spreadsheetKey);
+			$query->setWorksheetId($previousId);
+			$query->setSpreadsheetQuery('winner=1');
+			$listFeed = $spreadsheetService->getListFeed($query);
+			
+			$previousWinner=array();
+			foreach ($listFeed->entries as $entry){
+			
+				$rowData = $entry->getCustom();
+				$publicColumns=array('question','id');
+				
+				foreach($rowData as $customEntry) {
+					 if(in_array($customEntry->getColumnName(),$publicColumns))$previousWinner[ $customEntry->getColumnName() ]=$customEntry->getText();
+				}
+			}
+	
+			
+			if(isset($_COOKIE['CURIOUS_CITY'])){
+				$canvote=0;
+				$yourvote=$_COOKIE['CURIOUS_CITY'];
+			}
+			else{
+				$canvote=1;
+				$yourvote=-1;
+			}
+			
+		?>
+		
+		var voteData =<?php	echo json_encode(array("questions"=>$questions, "votingperiod"=>$currentTitle,"nextperiod"=>$nextPeriod,"previousperiod"=>$previousPeriod,"canvote"=>$canvote,"yourvote"=>$yourvote,"previousWinner"=>$previousWinner)); ?>
+	</script>
 </head>
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -130,6 +246,47 @@
 							<div class="sub">
 								<h5></h5>
 							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="questions"></div>
+				<div id="questions-order" class="hide"></div>
+			</div>
+				
+			<div id="previous-vote-page" class="hide focus">
+				<div id="flash">
+					<div class="row">
+						<div class="span5">
+							
+							
+				
+							<br><br><br>
+							<div id="voting-date" class="clearfix">
+									<a href="#"><i class="arrow left"></i> Voting for May 04 - May 11 / 2012</a>
+							</div>
+					
+						</div>
+						<div class="span7 right-col">
+							<div class="super">
+								<h1></h1>
+							</div>
+							<div class="sub">
+								<h5></h5>
+							</div>
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="span5"></div>
+						<div class="span7 right-col">
+							<div class="super">
+								<h1></h1>
+							</div>
+							<div class="sub">
+								<h5>Runner-Ups</h5>
+							</div>
+							
 						</div>
 					</div>
 				</div>

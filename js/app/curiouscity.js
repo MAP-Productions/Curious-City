@@ -23,7 +23,9 @@ this.curiouscity = {
 			this.archive = new Array();
 			this.loadDisqus();
 			this.startRouter();
-			this.isLoaded = true
+			this.isLoaded = true;
+			
+			
 		},
 		
 		startRouter: function(){
@@ -396,6 +398,8 @@ this.curiouscity = {
 				DISQUS.dtpl.actions.fire('thread.sort', 'newest');
 			});
 		},
+		
+		
 		
 		disqusCommentInserted: function(){
 			if(this.questionID!=-1) $.post('php/comment.php?new=true&questionid='+this.questionID, function(data){}); 

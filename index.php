@@ -149,6 +149,14 @@
 			}
 			
 		?>
+		var firstTime = <?php
+			
+					if(isset($_COOKIE['CURIOUS_CITY_DEV'])) echo "false";
+					else { 
+						echo "true"
+						setcookie(CURIOUS_CITY_DEV, $questionid, time()+60*2,'/','.wbez.org'); 
+					}
+					?>;
 		
 		var voteData =<?php	echo json_encode( array("questions"=>$questions, 
 								"current"=>array("id"=>$currentId,"title"=>$currentTitle),

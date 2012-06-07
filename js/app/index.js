@@ -4,8 +4,8 @@ jQuery(function($)
 	// Shorthand the application namespace
 	var Curiouscity	 = curiouscity.app;
 	
-	Curiouscity.init();
-
+	
+	
 	$('#how-it-works-expander').click(function(){
 		$('#how-it-works-expander i').toggleClass('down');
 		$('#how-it-works').toggleClass('open');
@@ -14,6 +14,8 @@ jQuery(function($)
 		else $('#how-it-works').hide('blind',{direction:'vertical'},500);
 		return false;
 	})
-
+	
+	if(firstTime) _.delay(function(){ $('#how-it-works-expander').trigger('click');},1000);
+	Curiouscity.init();
 	
 });

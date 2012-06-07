@@ -30,12 +30,12 @@ this.curiouscity = {
 			var _this = this;
 			var Router = Backbone.Router.extend({
 				routes: {
-					""								:	'loadMain',
-					'!/:page'							:	'loadPage',
-					'!/archive/question/:questionID'	:	'goToArchiveQuestion',
-					'!/vote'	:	'goToVoting',
-					'!/previous/:id'	:	'goToPrevious',
-					'!/archive/:order'	:	'goToArchive'
+					""														:	'loadMain',
+					'!/:page'											:	'loadPage',
+					'!/archive/question/:questionID'		:	'goToArchiveQuestion',
+					'!/vote/current'									:	'goToVoting',
+					'!/previous/:id'									:	'goToPrevious',
+					'!/archive/:order'								:	'goToArchive'
 				},
 				
 				loadMain: function(){ this.navigate('!/vote/current',{trigger:true}) },
@@ -44,7 +44,7 @@ this.curiouscity = {
 				goToArchiveQuestion : function(questionID){ _this.loadSingleQuestion(questionID) },
 				goToArchive : function(order){ _this.loadArchiveQuestions(order) },
 				goToVoting : function(){ _this.loadVoteQuestions() },
-				goToPrevious : function(){ _this.loadPrevious(id) }
+				goToPrevious : function(id){ _this.loadPrevious(id) }
 			
 			});
 	
@@ -87,6 +87,7 @@ this.curiouscity = {
 		/******* VOTE PAGE **********/
 		
 		loadVoteQuestions : function(){
+			this.router.navigate("!/vote/current");
 			this.questionID=-1;
 			$('#discussion-headline').html("What people are saying about this round:");
 			$('.focus').hide().removeClass('focus');
@@ -102,7 +103,8 @@ this.curiouscity = {
 					}
 				});
 				this.questionsCollection.canvote=voteData.canvote;
-				this.questionsCollection.votingperiod=voteData.votingperiod;
+				this.questionsCollection.current=voteData.current;
+				this.questionsCollection.previous=voteData.previous;
 				this.questionsCollection.yourvote=voteData.yourvote;
 				this.questionsCollection.previousWinner=voteData.previousWinner;
 	
@@ -111,7 +113,7 @@ this.curiouscity = {
 						DISQUS.reset({
 							reload: true,
 							config: function () {  
-								this.page.identifier = _this.questionsCollection.votingperiod;
+								this.page.identifier = _this.questionsCollection.current.title;
 							}
 						});
 						
@@ -129,7 +131,7 @@ this.curiouscity = {
 						$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
 						
 						console.log(this.questionsCollection);
-						$('#previous-winner').find('h5').html('<a href ="#!/archive/question/'+this.questionsCollection.previousWinner.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
+						$('#previous-winner').find('h5').html('<a href ="#!/previous/'+this.questionsCollection.previous.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
 				
 				
 				
@@ -184,55 +186,77 @@ this.curiouscity = {
 	
 		/********** PREVIOUS VOTE PAGE ***********/
 		
+		loadPrevious : function(id){	
+			this.router.navigate("!/previous/"+id);	
+			this.questionID=-1;
+			var _this=this;
+			$('#previous-winner-question').empty();
+			$('#previous-questions').empty();
 			
-		this.questionID=-1;
-		$('#discussion-headline').html("What people are saying about this round:");
-		$('.focus').hide().removeClass('focus');
-		$('#previous-vote-page').addClass('focus').show();
-		$('#discussion').show();
-
-
-		var Questions = curiouscity.module("questions");
-		this.previousCollection = new Questions.Collection(voteData.questions,{
-			comparator : function(question){
-				return question.get('rank')
-			}
-		});
-		this.questionsCollection.canvote=voteData.canvote;
-		this.questionsCollection.votingperiod=voteData.votingperiod;
-		this.questionsCollection.yourvote=voteData.yourvote;
-		this.questionsCollection.previousWinner=voteData.previousWinner;
-
-
+			$('#discussion-headline').html("What people are saying about this round:");
+			$('.focus').hide().removeClass('focus');
+			$('#previous-vote-page').addClass('focus').show();
+			$('#discussion').show();
 			
-				DISQUS.reset({
-					reload: true,
-					config: function () {  
-						this.page.identifier = _this.questionsCollection.votingperiod;
-					}
-				});
-				
-
-				this.displayVoteQuestions();
-				if(this.questionsCollection.canvote==0){
-					$('#vote-page .super h1').html("Thanks for voting! ");
-					$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Follow our investigations via <a target='blank' href='http://facebook.com/curiouscityproject' >Facebook</a> and <a target='blank' href='https://twitter.com/#!/WBEZCuriousCity'>Twitter</a>. Here’s how the votes are stacking up so far:<br>");
+	
+			var Questions = curiouscity.module("questions");
+			this.previousCollection = new Questions.Collection({votingperiod:id},{
+				comparator : function(question){
+					return question.get('rank')
 				}
-				else{
-						$('#vote-page .super h1').html("Which should we investigate next? ");
-						$('#vote-page .sub h5').html("Select the question you’d most like answered.");
+			});
+			
+			$('#previous-vote-page').spin();
+			this.previousCollection.reset();
+			this.previousCollection.fetch({
+				success:function(collection,response)
+				{
 				
+					DISQUS.reset({
+						reload: true,
+						config: function () {  
+							this.page.identifier = _this.previousCollection.votingperiod;
+						}
+					});
+					
+					$('#previous-vote-page').spin(false);
+					_this.displayPreviousQuestions();
 				}
-				$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
-				
-				console.log(this.questionsCollection);
-				$('#previous-winner').find('h5').html('<a href ="#!/archive/question/'+this.questionsCollection.previousWinner.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
-		
-			
-				
-			
+			});
 		},
 		
+		displayPreviousQuestions : function(){
+			
+			
+			var Questions = curiouscity.module("questions");
+			var _this=this;
+				_.each( _.toArray( this.previousCollection ),function(question){
+					var questionView = new Questions.Views.Previous({model:question});
+					if( question.get('winner')==1) {
+						console.log('we have a winner');
+						$('#previous-winner-question').append(questionView.render().el);
+						console.log($('#previous-winner-question'));
+					}
+					else $('#previous-questions').append(questionView.render().el);
+					
+				});
+				console.log(this.previousCollection);
+				$('#previous-period-title').html("Week of "+this.previousCollection.current.title);
+				
+				$('#voting-date-next').html("Voting for "+this.previousCollection.next.title+" <i class='arrow right'></i>"  ).unbind().click(function(){
+					 if(_this.previousCollection.next.id=='current') _this.loadVoteQuestions();
+					 else _this.loadPrevious(_this.previousCollection.next.id);
+					return false;
+				});
+				
+		
+				
+				
+				if(this.previousCollection.previous.id != -1){
+					$('#voting-date-previous').html("<i class='arrow left'></i>  Voting for "+this.previousCollection.previous.title).attr('href','#!/previous/'+this.previousCollection.previous.id);
+				}
+				else $('#voting-date-previous').empty();
+		},
 		
 		/******* ASK A QUESTION PAGE **********/
 		

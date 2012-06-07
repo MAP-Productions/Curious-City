@@ -22,7 +22,9 @@
 			console.log(data)
 			this.canvote = data.canvote;
 			this.yourvote = data.yourvote;
-			this.previousWinner=data.previousWinner;
+			this.current=data.current;
+			this.previous=data.previous;
+			this.next=data.next;
 			return data.questions;
 		}
 	});

@@ -42,6 +42,7 @@ var loadFiles = [
 	
 	//views
 	'order!app/views/view.question.vote',
+	'order!app/views/view.question.previous',
 	'order!app/views/view.question.ask',
 	'order!app/views/view.question.single',
 	'order!app/views/view.page.about',

@@ -71,7 +71,7 @@
 			if(isset($feed->entries[$wkshtIndex+1])){
 				$wkshtId = explode('/', $feed->entries[$wkshtIndex+1]->id->text);
 				$previousId=$wkshtId[8];
-				$previousPeriod=$feed->entries[$wkshtIndex+1]->title->text;
+				$previousTitle=$feed->entries[$wkshtIndex+1]->title->text;
 			}
 			else $previousPeriod=-1;
 		
@@ -150,7 +150,15 @@
 			
 		?>
 		
-		var voteData =<?php	echo json_encode(array("questions"=>$questions, "votingperiod"=>$currentTitle,"nextperiod"=>$nextPeriod,"previousperiod"=>$previousPeriod,"canvote"=>$canvote,"yourvote"=>$yourvote,"previousWinner"=>$previousWinner)); ?>
+		var voteData =<?php	echo json_encode( array("questions"=>$questions, 
+								"current"=>array("id"=>$currentId,"title"=>$currentTitle),
+								"previous"=>array("id"=>$previousId,"title"=>$previousTitle),
+								"canvote"=>$canvote,
+								"yourvote"=>$yourvote,
+								"previousWinner"=>$previousWinner
+							)); ?>
+	
+	
 	</script>
 </head>
 <body>
@@ -262,23 +270,39 @@
 							
 				
 							<br><br><br>
-							<div id="voting-date" class="clearfix">
-									<a href="#"><i class="arrow left"></i> Voting for May 04 - May 11 / 2012</a>
-							</div>
+							
 					
 						</div>
 						<div class="span7 right-col">
 							<div class="super">
-								<h1></h1>
+								<h1>Winning Question</h1>
 							</div>
 							<div class="sub">
-								<h5></h5>
+								<h5 id="previous-period-title">Week of blah</h5>
 							</div>
+					
 							
 						</div>
 					</div>
-					<div class="row">
-						<div class="span5"></div>
+				
+				</div>
+				<div class="row">
+						<div class="span5">
+							<br>
+							<div  class="clearfix">
+								<a id="voting-date-previous" href="#"><i class="arrow left"></i></a>
+							</div>
+						</div>
+						<div class="span7 right-col">
+							<br>
+							<div  class="clearfix">
+								<a id="voting-date-next" href="#"><i class="arrow right"></i> </a>
+							</div>
+						</div>
+				</div>
+					<div id="previous-winner-question"></div>
+					<div id="flash" class="row">
+						<div class="span5" style="height=5px"><br></div>
 						<div class="span7 right-col">
 							<div class="super">
 								<h1></h1>
@@ -289,10 +313,9 @@
 							
 						</div>
 					</div>
-				</div>
+				<div id="previous-questions"></div>
+				<br><br>
 				
-				<div id="questions"></div>
-				<div id="questions-order" class="hide"></div>
 			</div>
 			
 			<div id="ask-page" class="hide">
@@ -431,7 +454,8 @@
 
 	
 		<div id="discussion">
-		<div >
+
+			<div >
 				<div class="row">
 					<div class="span5">
 						<h2 class="twitter-headline">Twitter Updates</h2>
@@ -478,8 +502,9 @@
   								<button id="disqus-add-comment" class="btn">Add a comment</button>
   							</div>
 		
-		
-			<div id="disqus_thread"></div>
+<!-- DISQUS -->
+
+				<div id="disqus_thread"></div>
 				<script type="text/javascript">
 					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 					var disqus_shortname = 'curiouscity'; // required: replace example with your forum shortname
@@ -491,19 +516,17 @@
 						(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 					})();
 				</script>
-					
+				
+<!-- END DISQUS -->
+				
 					</div>
 				</div>
 				
 		</div>
-		
-		
 	
-		
-		
-		
 		</div>
 
+	
 		
 		<div class="modal" id="guidelines-modal">
 		  <div class="modal-header">

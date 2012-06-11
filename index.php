@@ -22,9 +22,10 @@
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<script src="js/lib/modernizr-2.5.3.min.js"></script>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-369047-1']);
+			 _gaq.push(['_setDomainName', '.wbez.org']); 
 			_gaq.push(['_trackPageview']);
 			(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -347,7 +348,7 @@
 				<div id="ask-form"></div>
 			</div>
 			
-			<div id="stories-page" >
+			<div id="stories-page" class="hide">
 			 <iframe src='http://embed.verite.co/timeline/?source=0An_OJm0YASWadHlQQ1ZDamRyazJVWXM2ekNDMlBlYkE&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>
     
     

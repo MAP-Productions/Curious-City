@@ -347,9 +347,11 @@
 				<div id="ask-form"></div>
 			</div>
 			
-			<div id="stories-page" class="hide">
-				<iframe src='http://embed.verite.co/timeline/?source=0An_OJm0YASWadHlQQ1ZDamRyazJVWXM2ekNDMlBlYkE#gid&font=Bevan-PotanoSans&maptype=toner&lang=en&width=800&height=650' width='800' height='650' frameborder='0'></iframe>
-			</div>
+			<div id="stories-page" >
+			 <iframe src='http://embed.verite.co/timeline/?source=0An_OJm0YASWadHlQQ1ZDamRyazJVWXM2ekNDMlBlYkE&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>
+    
+    
+    </div>
 			
 			<div id="archive-page" class="hide">
 				<div id="archive-flash">

@@ -194,14 +194,12 @@
 			
 			<div id="cc-nav">
 				<div class="row">
-					<div class="span5">
-						<a href="http://curiouscity.wbez.org" ><img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="380px"/></a>
-					</div>
-					<div class="span7">
-						<ul>
+					<div class="span12">
+						<a href="http://curiouscity.wbez.org"class='pull-left' ><img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="310px"/></a>
+						<ul class='pull-right'>
 							<li><a href="#!/vote">vote</a></li>
 							<li><a href="#!/ask">ask a<br />question</a></li>
-							<li><a href="#!/stories">investigations</a></li>
+							<li><a href="#!/investigations">investigations</a></li>
 							<li><a href="#!/archive/recent">question<br />archive</a></li>
 							<li><a href="#!/about">about</a></li>
 						</ul>
@@ -349,11 +347,28 @@
 				<div id="ask-form"></div>
 			</div>
 			
-			<div id="stories-page" class="hide">
-			 <iframe src='http://embed.verite.co/timeline/?source=0An_OJm0YASWadHlQQ1ZDamRyazJVWXM2ekNDMlBlYkE&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>
-    
-    
-    </div>
+			<div id="investigations-page" class="hide">
+				
+				<ul id='investigate-list' class='unstyled clearfix'>
+					
+					<li>
+						<div><h4>This is some kind of awesome story title!!!</h4></div>
+						<div style='background-image:url()'>
+							<div class='investigation-overlay'>
+								<div class="pull-right">5 updates</div>
+								<div class="">Asked by: Kate Conrad / Reporting with: Alex Keefe</div>
+								<div class="">June 25, 2012</div>
+							</div>
+						</div>
+					</li>	
+					
+					
+				</ul>
+				
+				<!--
+				<iframe src='http://embed.verite.co/timeline/?source=0An_OJm0YASWadHlQQ1ZDamRyazJVWXM2ekNDMlBlYkE&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>
+				-->
+			</div>
 			
 			<div id="archive-page" class="hide">
 				<div id="archive-flash">

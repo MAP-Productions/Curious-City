@@ -16,11 +16,12 @@
 			
 			_.extend(this,this.options);
 			
-
+			
 		},
 
 		render : function( )
 		{
+			
 		 	//console.log(this);
 			this.$el.html( _.template( this.getTemplate(), this.model.attributes ) );
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");

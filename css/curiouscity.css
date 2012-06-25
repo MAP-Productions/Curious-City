@@ -60,7 +60,7 @@ ul.horizontal li+li
 	font-size:16px;
 	border-left:2px dotted #808184;
 	height:30px;
-	width:94px;
+	width:112px;
 	display:inline-block;
 	padding:25px 5px;
 	color: #666666;
@@ -210,6 +210,7 @@ outline: solid 3px rgba(0, 136, 204, 0.5);
 	background:no-repeat;
 	background-size: 310px;
 	background-position: 0 50%;
+	overflow:hidden;
 }
 
 .image-preview {
@@ -220,13 +221,19 @@ outline: solid 3px rgba(0, 136, 204, 0.5);
 
 }
 
-.image-credits {
-
+.image-credits
+{
 	position: absolute;
 	bottom: 0px;
-	right: 2px;
-
+	padding:0 5px;
+	width:100%;
+	background:rgba(0,0,0,0.5);
 }
+
+.image-credits a:link,
+.image-credits a:visited,
+.image-credits a:hover
+{color:white;}
 
 
 .logo {
@@ -663,3 +670,57 @@ width:270px;
 
 .faq-list .faq-question{ font-weight:bold; }
 .faq-list p{ color: #999;}
+
+/****** INVESTIGATIONS ********/
+
+li.investigation-story:nth-child(even){float:left;}
+li.investigation-story:nth-child(odd){float:right;}
+
+li.investigation-story:first-child
+{
+	width:100%;
+	padding-right:0;
+	float:none;
+}
+
+li.investigation-story
+{
+	width:49.5%;
+	margin-bottom:10px;
+	float:left;
+}
+
+#investigate-list>li
+{
+	background:white;
+	height:350px;
+	position:relative;
+}
+
+#investigate-list .investigation-question
+{
+	padding:10px;
+}
+
+.investigation-overlay .investigation-info-left,
+.investigation-overlay .investigation-comments
+{ padding:10px; }
+
+#investigate-list .investigation-image
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 275px;
+	background-size:100%;
+	background-position: center;
+}
+.investigation-image .investigation-overlay
+{
+	background-color: 
+	rgba(0, 0, 0, .5);
+	color: white;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}

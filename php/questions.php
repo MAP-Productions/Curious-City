@@ -35,6 +35,10 @@
 		if(isset($_GET['votingperiod'])) $query->setOrderBy('column:votes');
 		else $query->setSpreadsheetQuery('approved=1');
 	//	if(isset($_GET['searchquery'])) $query->setSpreadsheetQuery('question contains '.htmlspecialchars ($_GET['searchquery']));
+		
+		
+		if(isset($_GET['investigated'])) $query->setSpreadsheetQuery('investigated=1');
+		
 		$query->setReverse(true);
 		$query->setReverse('true');
 		$listFeed = $spreadsheetService->getListFeed($query);
@@ -48,7 +52,7 @@
 		$ids=array();
 		
 		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner');
-		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey");
 		
 		
 		foreach($rowData as $customEntry) {

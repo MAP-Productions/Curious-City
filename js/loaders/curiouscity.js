@@ -33,12 +33,13 @@ var loadFiles = [
 	//models
 	
 	'order!app/models/model.question',
-		'order!app/models/model.question.ask',
+	'order!app/models/model.question.ask',
 		
 	//collections
 	
 	'order!app/collections/collection.question',
 	'order!app/collections/collection.flickr',
+	'order!app/collections/collection.investigation',
 	
 	//views
 	'order!app/views/view.question.vote',
@@ -48,6 +49,7 @@ var loadFiles = [
 	'order!app/views/view.page.about',
 	'order!app/views/view.page.archive',
 	'order!app/views/view.page.stories',
+	'order!app/views/view.investigation.single',
 
 	'order!lib/spin',	
 

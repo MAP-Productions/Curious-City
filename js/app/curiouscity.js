@@ -74,8 +74,8 @@ this.curiouscity = {
 					$('#discussion').fadeIn();
 					this.loadVoteQuestions();
 					break;
-				case 'stories':
-				
+				case 'investigations':
+					this.loadInvestigations();
 					break;
 				case 'ask':
 					this.loadAsk();
@@ -89,6 +89,18 @@ this.curiouscity = {
 				default :
 			}
 					
+		},
+	
+	
+		/******* INVESTIGATIONS PAGE **********/
+		loadInvestigations : function()
+		{
+			if( _.isUndefined( this.investigations) )
+			{
+				var Inv = curiouscity.module('investigation');
+				this.investigations = new Inv.Collection();
+				console.log(this.investigations)
+			}
 		},
 	
 	

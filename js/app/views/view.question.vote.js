@@ -23,23 +23,22 @@
 		render : function( )
 		{
 		 	//console.log(this);
+			var q = this.model.get('question');
+			console.log('	RENDER',q,q.length)
+			if( q.length > 20 ) this.model.set({'question': q.substring(0,20)+'…'});
+
 			this.$el.html( _.template( this.getTemplate(), this.model.attributes ) );
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
 			
 			return this;
 		},
-
 		
-				
 		sorted : function()
 		{
 			var _this = this;
 			this.voted = true;
 			$(this.el).removeClass('hover');
 			$('#questions').find('[data-id='+ this.model.id +']').after(this.render().el).remove();
-			
-		
-
 		},
 		
 		events : {
@@ -102,9 +101,9 @@
 			//console.log('you have not voted template');
 				html +=
 				"<div class='row' data-id='"+ this.model.id +"' data-rank='<%= rank %>'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
+					"<div class='span4 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
 					"<a href='#' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Vote\", \"\"]);' ><i class='vote'></i></a>"+
-					"<div class='span7 question-text'>"+
+					"<div class='span8 question-text'>"+
 						"<h2><%= question %></h2>"+
 					"</div>"+
 				"</div>";
@@ -114,12 +113,12 @@
 			//console.log('you HAVE voted template');
 				html +=
 				"<div class='row'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+
+					"<div class='span4 question-image' style='background-image:url(<%= imageurl %>)'>"+
 						"<div class='rank-corner'></div>"+
 						"<h2 class='rank-number'><%= rank_string %></h2>"+
 					"</div>";
 				if(this.voted_this) html += "<a href='#'><i class='vote hover'></i></a>";
-				html += "<div class='span7 question-text'>"+
+				html += "<div class='span8 question-text'>"+
 						"<h2><a class='question-link' href='#!/archive/question/"+this.model.id+"' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Click on Question\", \"\"]);'><%= question %></a></h2>"+
 						"<div class='comment-count'><a href='#!/archive/question/"+this.model.id+"' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Click on Discuss\", \"\"]);' class='question-link'>Discuss <i class='icon-comment'></i></a></div>"+
 					"</div>"+

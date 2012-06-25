@@ -33,6 +33,7 @@ this.curiouscity = {
 			var Router = Backbone.Router.extend({
 				routes: {
 					""														:	'loadMain',
+					'!/about/:hash'											:	'loadPageLocation',
 					'!/:page'											:	'loadPage',
 					'!/archive/question/:questionID'		:	'goToArchiveQuestion',
 					'!/vote/current'									:	'goToVoting',
@@ -41,8 +42,14 @@ this.curiouscity = {
 				},
 				
 				loadMain: function(){ this.navigate('!/vote/current',{trigger:true}) },
-				loadPage : function(page){ _this.loadPage(page) },
-				
+				loadPage : function(page){console.log(page),_this.loadPage(page) },
+				loadPageLocation : function(hash)
+				{
+					var r = this;
+					_this.loadPage('about');
+					window.location.hash=hash;
+					_.delay( function(){r.navigate('!/about/faq')}, 1000);
+				},
 				goToArchiveQuestion : function(questionID){ _this.loadSingleQuestion(questionID) },
 				goToArchive : function(order){ _this.loadArchiveQuestions(order) },
 				goToVoting : function(){ _this.loadVoteQuestions() },

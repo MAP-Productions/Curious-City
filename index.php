@@ -180,7 +180,8 @@
 		<div class="container">
 			<div class="header-logo pull-left"><a onClick='_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on WBEZ logo\", \"\"]);' href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
 			<div class="social pull-right">
-				<div class="header-icon-social"><span class='st_facebook' displayText='Facebook' '></span></div>
+				<a href='#!/about/faq' style='margin-right:10px'>FAQ</a>
+				<div class="header-icon-social"><span class='st_facebook' displayText='Facebook'></span></div>
 				<div class="header-icon-social" ><a href="https://twitter.com/wbezcuriouscity" target="_blank"><img class='twitter-icon' src="images/twitter_16.png"/></a></div>
 				<a class="header-email-link" href="mailto:curiouscity@wbez.org" onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Mail curiouscity@wbez.org\", \"\"]);" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
 			</div>
@@ -457,6 +458,48 @@
 							</div>
 							
 						</div>
+						
+						<div id='faq'>
+							<h3>FAQ</h3>
+							<ul class='faq-list unstyled'>
+								<li>
+									<div class='faq-question'>How do you collect questions?</div>
+									<p>
+										We use several tools to collect questions. One is a web page where you can submit questions  as well as select related photos from flickr’s creative commons. We also take questions through a toll-free phone number: 1-888-789-7752. Curious City producers also visit various neighborhoods in Chicago, the suburbs and Northwest Indiana, collecting questions from everyday folks as they walk by. We announce such visits through Twitter and our Facebook page. All questions asked make it to the question archive, unless they don’t meet the website’s guidelines for decorum and fairness. If you submitted a question recently by phone or in person, it may take us a few days to post it. We appreciate your patience! We do not accept questions posed by WBEZ staff. 
+									</p>
+								</li>
+								<li>
+									<div class='faq-question'>How do you pick the questions for voting rounds?</div>
+									<p>
+										Every week or so, the Curious City staff read through recent entries in the question archive and select a few questions for a round of voting, which can last up to two weeks. We look for different qualities in questions each time. Did we just have a round of hard-hitting, investigative questions? For the next round, we may go with lighter fare or narrow selections by theme (e.g. history). Production time is another factor. Did the last questions have a broad scope and take weeks to report out? If so, we may select questions for the next round that are more specific or bite-sized. We’re especially looking for questions WBEZ hasn’t answered recently or, perhaps, ever. We like to think of question curation as something like creating a mix-tape or music playlist: We start with a rationale, but let tone enter the equation, too. 
+									</p>
+								</li>
+								<li>
+									<div class='faq-question'>What happens if my question is in a voting round?</div>
+									<p>
+										Well first off, congratulations! We typically keep votes open for anywhere from a week to two week, a range that allows us to juggle schedules for reporters, producers and show hosts. We notify question submitters about when we intend to close voting on a round of questions; usually we will do so at least one day ahead of time. So you’ll have time to ask friends, family and your social networks for their support. 
+									</p><p>
+										If your question does win a vote ‒ double congratulations! WBEZ will be in touch with you about next steps. You’ll may have the opportunity to tag along with us in some capacity while we find answers to your questions. Participation opportunities largely depend on your interest, your schedule and the schedule of our reporters. The public at large will also be able to keep up with the investigation as it unfolds via our Facebook page and Twitter feed, as well as website. 
+									</p>
+								</li>
+								<li>
+									<div class='faq-question'>What happens if my question is in a voting round and doesn’t win? Will it still get answered?</div>
+									<p>
+										Questions that don’t get picked for one voting round could still make into other rounds down the line. We’ll be in touch if and when that happens. But WBEZ editors keep an eye on our question archive, too, so some questions might inspire independent stories or segments on our locally-produced programs such as 848, Worldview or The Afternoon Shift. When that happens, we’ll be in touch and post the content we create to your question’s page. Similarly, sometimes our reporters may have answered your question in WBEZ’s coverage before you even asked it! For example, Jake asked, “What happened to all of the people who lived in Cabrini Green?” and earlier in that same week, WBEZ devoted an hour of coverage to this very question. We’ll post content that relates to your question as we find it in the comments section of your question. 
+									</p><p>
+										And there’s another way your question may be answered ‒ by the public! Anyone is able to comment on the questions in the archive. So if you know the answer to someone else’s question, don’t be shy! Let them know the information you have, and whenever possible, cite your sources. 
+									</p>
+								</li>
+								<li>
+									<div class='faq-question'>Why do you change the wording of some questions when they enter a voting round?</div>
+									<p>
+										WBEZ reserves the right to edit questions for clarity and brevity. A person may ask a great question but it might be four sentences long when the same idea could come across in one. And sometimes a question may have information in it we can’t verify or may be incorrect. We also attempt to edit submissions to keep them within the space allotted by our website’s design, which aims to keep the look clean and uniform. We always attempt to edit questions so that the broadest audience will read them in their entirety and consider them.
+									</p>
+								</li>
+							</ul>
+						</div>
+						
+						
 						
 					</div>
 				</div>

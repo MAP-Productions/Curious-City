@@ -660,3 +660,6 @@ width:270px;
 {
 	min-height:300px;
 }
+
+.faq-list .faq-question{ font-weight:bold; }
+.faq-list p{ color: #999;}

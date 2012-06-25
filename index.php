@@ -201,7 +201,7 @@
 						<ul>
 							<li><a href="#!/vote">vote</a></li>
 							<li><a href="#!/ask">ask a<br />question</a></li>
-							<li><a href="#!/stories">stories</a></li>
+							<li><a href="#!/stories">investigations</a></li>
 							<li><a href="#!/archive/recent">question<br />archive</a></li>
 							<li><a href="#!/about">about</a></li>
 						</ul>

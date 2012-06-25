@@ -104,7 +104,6 @@
 			if(empty($question['imageattribution']))unset($question['imageattribution']);
 			unset($question['anonymous']);
 			$questions[]=$question;
-			$ids[]=$question['id'];
 		}
 		
 		$totalVotes=0;
@@ -114,7 +113,7 @@
 
 
 		for($i=0;$i<sizeof($questions);$i++){
-		
+			array_push($ids,$questions[$i]['id']);
 			$questions[$i]['percent']=round($questions[$i]['votes']*100/$totalVotes)."%";
 			$questions[$i]['rank']=$i+1;
 			$questions[$i]['wkshtId']=$currentId;

@@ -109,10 +109,10 @@
 				if(empty($question['imageattribution']))unset($question['imageattribution']);
 				unset($question['anonymous']);
 				$questions[]=$question;
-				$ids[]=$question['id'];
 			}
 	
 			for($i=0;$i<sizeof($questions);$i++){
+				array_push($ids,$questions[$i]['id']);
 				$questions[$i]['rank']=$i+1;
 				$questions[$i]['wkshtId']=$currentId;
 			}
@@ -140,14 +140,14 @@
 			}
 	
 			
-			if(isset($_COOKIE['CURIOUS_CITY'])){
-				$canvote=0;
-				$yourvote=$_COOKIE['CURIOUS_CITY'];
-			}
-			else{
-				$canvote=1;
-				$yourvote=-1;
-			}
+		if(isset($_COOKIE['CURIOUS_CITY_VOTED'])&&in_array($_COOKIE['CURIOUS_CITY_VOTED'],$ids)){
+			$canvote=0;
+			$yourvote=$_COOKIE['CURIOUS_CITY_VOTED'];
+		}
+		else{
+			$canvote=1;
+			$yourvote=-1;
+		}
 			
 		?>
 		var firstTime = <?php

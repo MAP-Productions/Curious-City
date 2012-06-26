@@ -51,8 +51,8 @@
 		$question =array();
 		$ids=array();
 		
-		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner');
-		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey");
+		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner', 'badge');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey", 'badge');
 		
 		
 		foreach($rowData as $customEntry) {

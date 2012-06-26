@@ -52,12 +52,12 @@
 
 				html +=
 				"<div class='row'>"+
-					"<div class='span5 question-image' style='background-image:url(<%= imageurl %>)'>"+
+					"<div class='span4 question-image' style='background-image:url(<%= imageurl %>)'>"+
 						"<div class='rank-corner'></div>"+
 						"<h2 class='rank-number'><%= percent %></h2>"+
 					"</div>";
 				
-				html += "<div class='span7 question-text'>"+
+				html += "<div class='span8 question-text'>"+
 						"<h2><a class='question-link' href='#!/archive/question/"+this.model.id+"' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Click on Question\", \"\"]);'><%= question %></a></h2>"+
 						"<div class='comment-count'><a href='#!/archive/question/"+this.model.id+"' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Click on Discuss\", \"\"]);' class='question-link'>Discuss <i class='icon-comment'></i></a></div>"+
 					"</div>"+

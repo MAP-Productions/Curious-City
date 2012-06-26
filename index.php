@@ -241,7 +241,7 @@
 			<div id="vote-page" class="hide focus">
 				<div id="flash">
 					<div class="row">
-						<div class="span5">
+						<div class="span4">
 							
 							<div id="previous-winner">
 								<h2></h2>
@@ -256,7 +256,7 @@
 							</div>
 							-->
 						</div>
-						<div class="span7 right-col">
+						<div class="span8 right-col">
 							<div class="super">
 								<h1></h1>
 							</div>
@@ -274,15 +274,8 @@
 			<div id="previous-vote-page" class="hide focus">
 				<div id="flash">
 					<div class="row">
-						<div class="span5">
-							
-							
-				
-							<br><br><br>
-							
-					
-						</div>
-						<div class="span7 right-col">
+						<div class="span4">&nbsp;</div>
+						<div class="span8 right-col">
 							<div class="super">
 								<h1>Winning Question</h1>
 							</div>

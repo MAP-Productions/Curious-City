@@ -4,6 +4,11 @@ h5
 	font-size:11px;
 }
 
+@-moz-document url-prefix()
+{ 
+  	h5{ font-weight:normal }
+}
+
 h1,h2
 {
 	font-weight:400;
@@ -517,11 +522,7 @@ padding-top:2px;
 
 
 
-#voting-date-next
-{
-	float: right;
-	margin-right: -68px;
-}
+#voting-date-next{ float: right }
 
 #guidelines-modal{
 	display:none;

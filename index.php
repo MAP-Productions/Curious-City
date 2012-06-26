@@ -349,25 +349,8 @@
 			
 			<div id="investigations-page" class="hide">
 				
-				<ul id='investigate-list' class='unstyled clearfix'>
-					
-					<li>
-						<div><h4>This is some kind of awesome story title!!!</h4></div>
-						<div style='background-image:url()'>
-							<div class='investigation-overlay'>
-								<div class="pull-right">5 updates</div>
-								<div class="">Asked by: Kate Conrad / Reporting with: Alex Keefe</div>
-								<div class="">June 25, 2012</div>
-							</div>
-						</div>
-					</li>	
-					
-					
-				</ul>
-				
-				<!--
-				<iframe src='http://embed.verite.co/timeline/?source=0An_OJm0YASWadHlQQ1ZDamRyazJVWXM2ekNDMlBlYkE&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>
-				-->
+				<ul id='investigate-list' class='unstyled clearfix'></ul>
+
 			</div>
 			
 			<div id="archive-page" class="hide">

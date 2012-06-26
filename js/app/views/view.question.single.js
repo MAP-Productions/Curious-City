@@ -15,11 +15,9 @@
 		
 		render : function( )
 		{
+			if(this.model.get('timelinekey') == '' ) $(this.el).html( _.template(this.getTemplate(),this.model.attributes));
+			else $(this.el).html( _.template(this.getTimelineTemplate(),this.model.attributes));
 
-			//use template to clone the database items into
-			var template = _.template( this.getTemplate() );
-			//copy the cloned item into the el
-			$(this.el).html( template( this.model.attributes ) );
 			if(this.model.get('previous')==-1)$(this.el).find('.previous').hide();
 			if(this.model.get('next')==-1)$(this.el).find('.next').hide();
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
@@ -43,6 +41,16 @@
 			console.log('nexxxxxt')
 			curiouscity.app.goToNextInArchive();
 			return false
+		},
+	
+		getTimelineTemplate : function()
+		{
+			var html =
+			"<ul  class='pager'><li class='previous'><a href='#!/archive/question/<%= previous %>'  onClick='_gaq.push([\"_trackEvent\", \"CC-Question\", \"Click Previous\", \"\"]);'  ><i class='arrow left'></i> Previous Question</a></li><li class='next'><a href='#!/archive/question/<%= next %>'  onClick='_gaq.push([\"_trackEvent\", \"CC-Question\", \"Click Next\", \"\"]);' >Next Question <i class='arrow right'></i></a></ul>"+
+		
+			"<iframe src='http://embed.verite.co/timeline/?source=<%= timelinekey %>&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>";
+			
+			return html;
 		},
 	
 		getTemplate : function()

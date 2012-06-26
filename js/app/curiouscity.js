@@ -97,6 +97,7 @@ this.curiouscity = {
 		{
 			if( _.isUndefined( this.investigations) )
 			{
+				$('#investigate-list').spin();
 				var Inv = curiouscity.module('investigation');
 				this.investigations = new Inv.Collection();
 				console.log(this.investigations)

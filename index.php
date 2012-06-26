@@ -196,7 +196,7 @@
 				<div class="row">
 					<div class="span12">
 						<a href="http://curiouscity.wbez.org"class='pull-left' ><img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="310px"/></a>
-						<ul class='pull-right'>
+						<ul class='pull-right cc-nav'>
 							<li><a href="#!/vote">vote</a></li>
 							<li><a href="#!/ask">ask a<br />question</a></li>
 							<li><a href="#!/investigations">investigations</a></li>

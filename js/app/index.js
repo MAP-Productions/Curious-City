@@ -15,6 +15,19 @@ jQuery(function($)
 		return false;
 	})
 	
+	
+	$('.archive-key a').click(function(){
+		console.log( $(this).data('filter') )
+		var filter = $(this).data('filter');
+		
+		$('#archive-questions').find('.question:not(.question-status-'+filter+')').hide();
+		$('#archive-questions .question-status-'+filter).show();
+		
+		
+		return false;
+	})
+	
+	
 	if(firstTime) _.delay(function(){ $('#how-it-works-expander').trigger('click');},1000);
 	Curiouscity.init();
 	

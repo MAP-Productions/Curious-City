@@ -360,9 +360,9 @@
 							
 							<ul class='unstyled archive-key'>
 
-								<li><i class='badge-voting'></i> Questions that are currently in a voting round</li>
-								<li><i class='badge-investigated'></i> Questions that are being investigated</li>
-								<li><i class='badge-answered'></i> Questions that have been sufficiently answered</li>
+								<li><a href='#' data-filter='current'><i class='badge-current'></i> Questions that are currently in a voting round</a></li>
+								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i> Questions that are being investigated</a></li>
+								<li><a href='#' data-filter='answered'><i class='badge-answered'></i> Questions that have been sufficiently answered</a></li>
 
 							</ul>
 							

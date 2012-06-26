@@ -30,10 +30,8 @@
 			})
 		},
 		
-		parse: function(data)
-		{
-			return data.questions;
-		}
+		parse: function(data){ return data.questions; },
+		comparator : function(question) { return question.get('investigated') }
 
 	});
 

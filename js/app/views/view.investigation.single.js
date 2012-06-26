@@ -9,7 +9,11 @@
 	
 		render : function()
 		{
-			$(this.el).append( _.template(this.getTemplate(), this.model.attributes) )
+			var utc = parseInt(this.model.get('dateuploaded')) *1000;
+			var date = new Date( utc );
+			console.log(this.model.get('dateuploaded'),date)
+			 
+			$(this.el).append( _.template(this.getTemplate(), _.extend(this.model.attributes,{date:date.toLocaleDateString() }) ) )
 			return this;
 		},
 		
@@ -31,10 +35,10 @@
 				'<div class="investigation-question"><h4><a href="#"><%= question %></a></h4></div>'+
 				'<div class="investigation-image" style="background-image:url(<%= imageurl %>)">'+
 					'<div class="investigation-overlay">'+
-						'<div class="pull-right investigation-comments"><%= comments %> updates</div>'+
+						'<div class="pull-right investigation-comments"><%= updatecount %> updates</div>'+
 						'<div class="investigation-info-left">'+
-							'<div class="">Asked by: <%= name %> / Reporting with: someone</div>'+
-							'<div class="">June 25, 2012</div>'+
+							'<div class="">Asked by: <%= name %> / Reporting with: <%= reporter %></div>'+
+							'<div class=""><%= date %></div>'+
 						'</div>'
 					'</div>'+
 				'</div>';

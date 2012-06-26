@@ -37,7 +37,7 @@
 	//	if(isset($_GET['searchquery'])) $query->setSpreadsheetQuery('question contains '.htmlspecialchars ($_GET['searchquery']));
 		
 		
-		if(isset($_GET['investigated'])) $query->setSpreadsheetQuery('investigated=1');
+		if(isset($_GET['investigated'])) $query->setSpreadsheetQuery('investigated>0');
 		
 		$query->setReverse(true);
 		$query->setReverse('true');
@@ -51,8 +51,8 @@
 		$question =array();
 		$ids=array();
 		
-		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner', 'badge');
-		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey", 'badge');
+		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner', 'badge', 'investigated', 'reporter', 'updatecount', 'dateuploaded');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey", 'badge', 'investigated', 'reporter', 'updatecount', 'dateuploaded');
 		
 		
 		foreach($rowData as $customEntry) {

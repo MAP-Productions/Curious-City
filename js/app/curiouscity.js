@@ -71,24 +71,36 @@ this.curiouscity = {
 			{
 				case 'vote':
 					$('#discussion-headline').html("What people are saying about this round:");
-					$('#discussion').fadeIn();
+					this.showDiscussion();
 					this.loadVoteQuestions();
 					break;
 				case 'investigations':
+					this.showDiscussion();
 					this.loadInvestigations();
 					break;
 				case 'ask':
+					this.showDiscussion();
 					this.loadAsk();
 					break;
 				case 'archive':
-					$('#discussion').fadeOut();
+					this.hideDiscussion();
 					this.loadArchiveQuestions('recent');
 					break;
 				case 'about':
+					this.hideDiscussion();
 					break;
 				default :
 			}
 					
+		},
+		
+		hideDiscussion : function()
+		{
+			//if( $("#discussion").is(':visible') ) $('#discussion').fadeOut();
+		},
+		showDiscussion : function()
+		{
+			//if( $("#discussion").is(':hidden') ) $('#discussion').fadeIn();
 		},
 	
 	

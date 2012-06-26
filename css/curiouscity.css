@@ -442,7 +442,7 @@ padding-top:2px;
 	overflow:hidden;
 	position: absolute;
 	top: 25px;
-	left: 285px;
+	left: 275px;
 }
 .vote.hover{background-position:-50px 0;}
 .vote.active{background-position:-100px 0;}

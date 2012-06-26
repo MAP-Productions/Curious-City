@@ -448,6 +448,32 @@ padding-top:2px;
 .arrow.down{background-position:-30px 0;}
 .arrow.images/sample1.jpg{background-position:-45px 0;}
 
+[class^="badge-"]
+{
+	background-image:url(../images/sprites.png);
+	height:50px;
+	width:50px;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align: text-top;
+	background-repeat:no-repeat;
+	float:left;
+	margin-right:10px;
+}
+}
+.badge-voting{ background-position: -50px 0;}
+.badge-investigated{ background-position: -100px 0;}
+.badge-answered{ background-position: -150px 0;}
+
+
+.archive-key
+{
+	background:white;
+	padding:10px;
+	color:#999;
+}
+.archive-key>li{ height:50px;}
+
 [class^="number-"]
 {
 	background-image:url(../images/numbers.png);

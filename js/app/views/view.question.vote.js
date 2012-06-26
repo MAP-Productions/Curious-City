@@ -22,11 +22,6 @@
 
 		render : function( )
 		{
-		 	//console.log(this);
-			var q = this.model.get('question');
-			console.log('	RENDER',q,q.length)
-			if( q.length > 20 ) this.model.set({'question': q.substring(0,20)+'…'});
-
 			this.$el.html( _.template( this.getTemplate(), this.model.attributes ) );
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
 			

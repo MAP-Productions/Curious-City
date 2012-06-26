@@ -356,8 +356,19 @@
 			<div id="archive-page" class="hide">
 				<div id="archive-flash">
 					<div class="row">
-						<div class="span5 left-col">&nbsp;</div>
-						<div class="span7 right-col">
+						<div class="span4 left-col">
+							
+							<ul class='unstyled archive-key'>
+
+								<li><i class='badge-voting'></i> Questions that are currently in a voting round</li>
+								<li><i class='badge-investigated'></i> Questions that are being investigated</li>
+								<li><i class='badge-answered'></i> Questions that have been sufficiently answered</li>
+
+							</ul>
+							
+							
+						</div>
+						<div class="span8 right-col">
 							<div class="super">
 								<h1>See what people are curious about:</h1>
 							</div>

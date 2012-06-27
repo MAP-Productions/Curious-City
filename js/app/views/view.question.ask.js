@@ -215,7 +215,7 @@
 				"<div class='span8'>"+
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							"<div class='control-group'><textarea class='submit-question-text span7'></textarea></div>"+
+							"<div class='control-group'><textarea class='submit-question-text span8'></textarea></div>"+
 							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></label></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Select Anonymous\", \"\"]);' > <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+

@@ -769,3 +769,8 @@ li.investigation-story
 }
 .archive-key>li{ height:50px;}
 .badge-column{padding-top:15px;}
+
+.single-question-content>div
+{
+	margin-bottom:20px;
+}

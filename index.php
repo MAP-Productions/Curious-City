@@ -353,9 +353,9 @@
 							
 							<ul class='unstyled archive-key'>
 
-								<li><a href='#' data-filter='current'><i class='badge-current'></i> in a voting round/a></li>
-								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i> being investigated</a></li>
-								<li><a href='#' data-filter='answered'><i class='badge-answered'></i> sufficiently answered</a></li>
+								<li><a href='#' data-filter='current'><i class='badge-current'></i></br> in a voting round</a></li>
+								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i></br> being investigated</a></li>
+								<li><a href='#' data-filter='answered'><i class='badge-answered'></i></br> sufficiently answered</a></li>
 
 							</ul>
 							
@@ -513,7 +513,7 @@
 
 			<div >
 				<div class="row">
-					<div class="span5">
+					<div class="span4">
 						<h2 class="twitter-headline">Twitter Updates</h2>
 							<div class='twitter-wrapper'>
 	
@@ -549,7 +549,7 @@
 									</script>
 								</div>
 					</div>
-					<div class="span7">
+					<div class="span8">
 						<h2 id="discussion-headline"></h2>
 							<div id="disqus-controls">
 								<div class="disqus-sort-tab disqus-sort-selected" id="disqus-sort-popular"><a>Popular</a></div>

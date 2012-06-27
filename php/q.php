@@ -75,17 +75,18 @@
 		foreach ($listFeed->entries as $entry){
 		
 		$rowData = $entry->getCustom();
-		$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername','soundcloud','timelinekey');
+		$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername','soundcloud','timelinekey', 'responseembed', 'responselnkurl', 'responselinktext');
 		
 		
 		foreach($rowData as $customEntry) {
 		 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
 		}
-		
+		/*
 			if($question['anonymous']==1)$question['name']='Anonymous';
 			if(empty($question['imageurl']))unset($question['imageurl']);
 			if(empty($question['soundcloud']))unset($question['soundcloud']);
 			unset($question['anonymous']);
+			*/
 		}
 		
 		if($rowCount>$question['id']+1) $question['previous']=$question['id']+1;

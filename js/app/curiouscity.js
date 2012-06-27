@@ -41,7 +41,11 @@ this.curiouscity = {
 					'!/archive/:order'								:	'goToArchive'
 				},
 				
-				loadMain: function(){ this.navigate('!/vote/current',{trigger:true}) },
+				loadMain: function()
+				{
+					$('#nav-vote').addClass('nav-focus');
+					this.navigate('!/vote/current',{trigger:true})
+				},
 				loadPage : function(page){console.log(page),_this.loadPage(page) },
 				loadPageLocation : function(hash)
 				{
@@ -50,9 +54,24 @@ this.curiouscity = {
 					window.location.hash=hash;
 					_.delay( function(){r.navigate('!/about/faq')}, 1000);
 				},
-				goToArchiveQuestion : function(questionID){ _this.loadSingleQuestion(questionID) },
-				goToArchive : function(order){ _this.loadArchiveQuestions(order) },
-				goToVoting : function(){ _this.loadVoteQuestions() },
+				goToArchiveQuestion : function(questionID)
+				{
+					$('.nav-focus').removeClass('nav-focus');
+					$('#nav-archive').addClass('nav-focus');
+					_this.loadSingleQuestion(questionID)
+				},
+				goToArchive : function(order)
+				{
+					$('.nav-focus').removeClass('nav-focus');
+					$('#nav-archive').addClass('nav-focus');
+					_this.loadArchiveQuestions(order)
+				},
+				goToVoting : function()
+				{
+					$('.nav-focus').removeClass('nav-focus');
+					$('#nav-vote').addClass('nav-focus');
+					_this.loadVoteQuestions()
+				},
 				goToPrevious : function(id){ _this.loadPrevious(id) }
 			
 			});
@@ -67,26 +86,32 @@ this.curiouscity = {
 			$('.focus').hide();
 			$('.focus').removeClass('focus');
 			$('#'+page+'-page').addClass('focus').show();
+			$('.nav-focus').removeClass('nav-focus');
 			switch(page)
 			{
 				case 'vote':
+					$('#nav-vote').addClass('nav-focus');
 					$('#discussion-headline').html("What people are saying about this round:");
 					this.showDiscussion();
 					this.loadVoteQuestions();
 					break;
 				case 'investigations':
-					this.showDiscussion();
+					$('#nav-investigations').addClass('nav-focus');
+					this.hideDiscussion();
 					this.loadInvestigations();
 					break;
 				case 'ask':
+					$('#nav-ask').addClass('nav-focus');
 					this.showDiscussion();
 					this.loadAsk();
 					break;
 				case 'archive':
+					$('#nav-archive').addClass('nav-focus');
 					this.hideDiscussion();
 					this.loadArchiveQuestions('recent');
 					break;
 				case 'about':
+					$('#nav-about').addClass('nav-focus');
 					this.hideDiscussion();
 					break;
 				default :

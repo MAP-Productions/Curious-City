@@ -180,7 +180,7 @@
 		<div class="container">
 			<div class="header-logo pull-left"><a onClick='_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on WBEZ logo\", \"\"]);' href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
 			<div class="social pull-right">
-				<a href='#!/about/faq' style='margin-right:10px'>FAQ</a>
+				<a href='#!/about/faq' style='margin-right:10px; font-weight:bold'>FAQ</a>
 				<div class="header-icon-social"><span class='st_facebook' displayText='Facebook'></span></div>
 				<div class="header-icon-social" ><a href="https://twitter.com/wbezcuriouscity" target="_blank"><img class='twitter-icon' src="images/twitter_16.png"/></a></div>
 				<a class="header-email-link" href="mailto:curiouscity@wbez.org" onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Mail curiouscity@wbez.org\", \"\"]);" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
@@ -197,11 +197,11 @@
 					<div class="span12">
 						<a href="http://curiouscity.wbez.org"class='pull-left' ><img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="310px"/></a>
 						<ul class='pull-right cc-nav'>
-							<li><a href="#!/vote">vote</a></li>
-							<li><a href="#!/ask">ask a<br />question</a></li>
-							<li><a href="#!/investigations">investigations</a></li>
-							<li><a href="#!/archive/recent">question<br />archive</a></li>
-							<li><a href="#!/about">about</a></li>
+							<li><a href="#!/vote" id='nav-vote'>vote</a></li>
+							<li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li>
+							<li><a href="#!/investigations" id='nav-investigations'>investigations</a></li>
+							<li><a href="#!/archive/recent" id='nav-archive'>question<br />archive</a></li>
+							<li><a href="#!/about" id='nav-about'>about</a></li>
 						</ul>
 					</div>
 				</div>
@@ -353,12 +353,11 @@
 							
 							<ul class='unstyled archive-key'>
 
-								<li><a href='#' data-filter='current'><i class='badge-current'></i> Questions that are currently in a voting round</a></li>
-								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i> Questions that are being investigated</a></li>
-								<li><a href='#' data-filter='answered'><i class='badge-answered'></i> Questions that have been sufficiently answered</a></li>
+								<li><a href='#' data-filter='current'><i class='badge-current'></i> in a voting round/a></li>
+								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i> being investigated</a></li>
+								<li><a href='#' data-filter='answered'><i class='badge-answered'></i> sufficiently answered</a></li>
 
 							</ul>
-							
 							
 						</div>
 						<div class="span8 right-col">
@@ -373,7 +372,7 @@
 								<ul class="unstyled horizontal">
 									<li><a href="#!/archive/popular">Popular</a></li>
 									<li><a href="#!/archive/recent">Most Recent</a></li>
-									<li><a href="#!/vote">Up for Voting</a></li>
+									<!--<li><a href="#!/vote">Up for Voting</a></li>-->
 									<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
 								
 								</ul>

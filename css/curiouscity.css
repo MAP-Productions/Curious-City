@@ -73,7 +73,9 @@ ul.horizontal li+li
 	color: #666666;
 }
 
-#cc-nav ul li a:hover
+#cc-nav ul li a:hover,
+#cc-nav ul li a.nav-focus:link,
+#cc-nav ul li a.nav-focus:visited
 {
 	color: #08C;
 	text-decoration:none;

@@ -41,7 +41,7 @@ app: _.extend({
 		var _this = this;
 		var Questions = curiouscity.module("questions");
 	
-		this.questionsCollection = new Questions.Collection({'votingperiod':'od7',
+		this.questionsCollection = new Questions.Collection({'votingperiod':'current',
 			comparator : function(question)
 		{
 			return Math.random();

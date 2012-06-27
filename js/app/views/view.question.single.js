@@ -74,9 +74,11 @@
 				"<div class='span8 single-question-content'>"+
 					"<h1><%= question %></h1>"+
 					"<p>posted by <%= name %></p>"+
-					"<div class='response-embed'><%= responseembed %></div>"+
-					"<div class='response-link'><h2><a href='<%= responselinkurl %>' target='blank'><%= responselinktext %></a></h2></div>"+
 					"<div class='soundcloud'><%= soundcloud %></div>"+
+					"<div><h3>The Answer:</h3></div>"+
+					"<div class='response-embed'><%= responseembed %></div>"+
+					"<div class='response-link'><h3><a href='<%= responselinkurl %>' target='blank'><%= responselinktext %></a></h3></div>"+
+					
 					"<div class='question-discussion'></div>"+
 				"</div>"+
 			

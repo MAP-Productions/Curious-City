@@ -289,13 +289,13 @@
 				
 				</div>
 				<div class="row">
-						<div class="span5">
+						<div class="span4">
 							<br>
 							<div  class="clearfix">
 								<a id="voting-date-previous" href="#"><i class="arrow left"></i></a>
 							</div>
 						</div>
-						<div class="span7 right-col">
+						<div class="span8 right-col">
 							<br>
 							<div  class="clearfix">
 								<a id="voting-date-next" href="#"><i class="arrow right"></i> </a>
@@ -304,8 +304,8 @@
 				</div>
 					<div id="previous-winner-question"></div>
 					<div id="flash" class="row">
-						<div class="span5" style="height=5px"><br></div>
-						<div class="span7 right-col">
+						<div class="span4" style="height=5px"><br></div>
+						<div class="span8 right-col">
 							<div class="super">
 								<h1></h1>
 							</div>
@@ -323,11 +323,11 @@
 			<div id="ask-page" class="hide">
 				<div id="ask-flash">
 					<div class="row">
-						<div class="span5 top-left-corner-info">
+						<div class="span4 top-left-corner-info">
 							<h5>Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target="blank">The Afternoon Shift</a> on <a href="http://www.wbez.org" target="blank">WBEZ 91.5</a><br />
 							to hear updates and find out final results.</h5>
 						</div>
-						<div class="span7 right-col">
+						<div class="span8 right-col">
 							<div class="super">
 								<h1>What do you wonder about Chicago, the region, or the people who live here?</h1>
 							</div>

@@ -194,7 +194,7 @@
 			var html = 
 			
 			"<div class='row'>"+
-				"<div class='span5 submit-sequence'>"+
+				"<div class='span4 submit-sequence'>"+
 					"<div id='left-col1'>"+
 						"<ul class='unstyled'>"+
 							"<li class='step1 active'>Step 1: Question</li>"+
@@ -212,7 +212,7 @@
 					"</div>"+
 				
 				"</div>"+
-				"<div class='span7'>"+
+				"<div class='span8'>"+
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
 							"<div class='control-group'><textarea class='submit-question-text span7'></textarea></div>"+

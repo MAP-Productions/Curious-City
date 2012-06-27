@@ -55,7 +55,7 @@
 			<div id="ballot">
 				<div id="left-ballot"></div>
 				<div id="right-ballot"></div>
-				<div id="follow-up"><div class="link link-1" >Check out <a href="www.wbez.org/curiouscity" target='blank'>earlier investigations</a></div><div class="link link-2" >Shape stories as they unfold <span class="link-icons"><a class="link-icon" target="blank" href="http://www.facebook.com/curiouscityproject"><img src="images/facebook_sm.png"/></a><a class="link-icon" target="blank" href="http://twitter.com/#!/WBEZCuriousCity"><img src="images/twitter_sm.png"/></a></span></div><div class="link link-3" >Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target='blank'>The Afternoon Shift</a> on WBEZ for winners + updates.</div>
+				<div id="follow-up"><div class="link link-1" >Check out <a href="http://www.wbez.org/curiouscity" target='blank'>earlier investigations</a></div><div class="link link-2" >Shape stories as they unfold <span class="link-icons"><a class="link-icon" target="blank" href="http://www.facebook.com/curiouscityproject"><img src="images/facebook_sm.png"/></a><a class="link-icon" target="blank" href="http://twitter.com/#!/WBEZCuriousCity"><img src="images/twitter_sm.png"/></a></span></div><div class="link link-3" >Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target='blank'>The Afternoon Shift</a> on WBEZ for winners + updates.</div>
 				</div>
 			</div>
 			

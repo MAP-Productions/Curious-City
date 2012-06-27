@@ -121,11 +121,11 @@ this.curiouscity = {
 		
 		hideDiscussion : function()
 		{
-			//if( $("#discussion").is(':visible') ) $('#discussion').fadeOut();
+			if( $("#discussion").is(':visible') ) $('#discussion').fadeOut();
 		},
 		showDiscussion : function()
 		{
-			//if( $("#discussion").is(':hidden') ) $('#discussion').fadeIn();
+			if( $("#discussion").is(':hidden') ) $('#discussion').fadeIn();
 		},
 	
 	

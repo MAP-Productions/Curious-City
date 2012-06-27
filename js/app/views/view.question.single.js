@@ -75,7 +75,7 @@
 					"<h1><%= question %></h1>"+
 					"<p>posted by <%= name %></p>"+
 					"<div class='response-embed'><%= responseembed %></div>"+
-					"<div class='response-link'><h2><a href='responselinkurl' target='blank'><%= responselinktext %></a></h2></div>"+
+					"<div class='response-link'><h2><a href='<%= responselinkurl %>' target='blank'><%= responselinktext %></a></h2></div>"+
 					"<div class='soundcloud'><%= soundcloud %></div>"+
 					"<div class='question-discussion'></div>"+
 				"</div>"+

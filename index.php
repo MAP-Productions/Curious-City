@@ -33,8 +33,11 @@
 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
 			})();
 </script>
-	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	
+	<!--
+	script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 	<script type="text/javascript">stLight.options({publisher: "c09036ef-5691-4751-b69d-288d40fa03f7"}); </script>
+	-->
 	
 	<script type="text/javascript">
 		<?php

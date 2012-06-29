@@ -57,6 +57,7 @@
 	
 		getTemplate : function()
 		{
+			console.log(this.model)
 			var html =
 		
 			"<ul  class='pager'>"+
@@ -74,11 +75,16 @@
 				"<div class='span8 single-question-content'>"+
 					"<h1><%= question %></h1>"+
 					"<p>posted by <%= name %></p>"+
-					"<div class='soundcloud'><%= soundcloud %></div>"+
+					"<div class='soundcloud'><%= soundcloud %></div>";
+					
+			if( this.model.get('responseembed') != '' || this.model.get('responselinkurl') != '' )
+			{
+				html +=		
 					"<div><h3>The Answer:</h3></div>"+
 					"<div class='response-embed'><%= responseembed %></div>"+
-					"<div class='response-link'><h3><a href='<%= responselinkurl %>' target='blank'><%= responselinktext %></a></h3></div>"+
-					
+					"<div class='response-link'><h3><a href='<%= responselinkurl %>' target='blank'><%= responselinktext %></a></h3></div>";
+			}
+			html +=
 					"<div class='question-discussion'></div>"+
 				"</div>"+
 			

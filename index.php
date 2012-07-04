@@ -673,8 +673,10 @@
 	
 	</div><!-- .container -->
 	
-	<!-- Application source -->
-	<script data-main="js/loaders/curiouscity.js" src="js/lib/require.js"></script>
+	<!-- Application source DEV-->
+	<script data-main="js/loaders/index.js" src="js/lib/require.js"></script> 
+	<!-- Production -->
+	<!--  <script data-main="js_min/index.js" src="js/lib/require.js"></script> -->
 	
 </body>
 </html>

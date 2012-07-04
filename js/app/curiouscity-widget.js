@@ -28,8 +28,7 @@ app: _.extend({
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
-		console.log('cc widget init')
-		
+		//console.log('cc widget init')
 		this.loadQuestionCollection();
 	},
 

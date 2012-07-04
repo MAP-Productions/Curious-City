@@ -8,7 +8,7 @@
 		initialize : function(options)
 		{
 			_.extend(this,options);
-			console.log('questions collection init')
+
 		},
 		
 		url: function()
@@ -19,7 +19,7 @@
 		
 		parse: function(data)
 		{
-			console.log(data)
+		
 			this.canvote = data.canvote;
 			this.yourvote = data.yourvote;
 			this.current=data.current;

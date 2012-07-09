@@ -155,7 +155,7 @@
 		?>
 		var firstTime = <?php
 			
-					if(isset($_COOKIE['CURIOUS_CITY_VOTED'])) echo "false";
+					if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "false";
 					else {
 						echo "true";
 					}

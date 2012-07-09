@@ -34,40 +34,29 @@ app: _.extend({
 
 	loadQuestionCollection : function()
 	{
-		
-		if(window.vote==-1){
-		
-		var _this = this;
-		var Questions = curiouscity.module("questions");
-	
-		this.questionsCollection = new Questions.Collection({'votingperiod':'current',
-			comparator : function(question)
-		{
-			return Math.random();
-		}
-		});
-		$('#ballot>div').spin('small');
-		this.questionsCollection.fetch({
-			success:function(collection,response)
-			{
-				
-				$('#ballot>div').spin(false);
-				//_this.makePairs();
-				//_this.parseData();
-				$('#questions-count').html(_.size(collection));
-				$('#tagline').fadeTo(100,1);
-				_this.displayPair(0,1);
+
+		if(voteData.canvote==1){
+			var _this = this;
+			var Questions = curiouscity.module("questions");
 			
-				
-			}
-		});
+			this.questionsCollection = new Questions.Collection(voteData.questions,{
+					comparator : function(question){
+						return Math.random();
+					}
+				});
+			this.questionsCollection.canvote=voteData.canvote;
+			this.questionsCollection.current=voteData.current;
+			this.questionsCollection.previous=voteData.previous;
+			this.questionsCollection.yourvote=voteData.yourvote;
+			this.questionsCollection.previousWinner=voteData.previousWinner;
+
 		
+			$('#questions-count').html(_.size(this.questionsCollection));
+			$('#tagline').fadeTo(100,1);
+			_this.displayPair(0,1);
 		}
 		else{
-		
-			this.displayFollowUp();
-		
-		
+			this.displayFollowUp();	
 		}
 	},
 	
@@ -160,7 +149,7 @@ app: _.extend({
 		});
 		}
 		else{
-			$.post('php/vote.php?questionid='+ this.questionsCollection.at(this.currentVote).id, function(data){});
+			$.post('php/vote.php?votingperiod='+this.questionsCollection.current.id+'&questionid='+ this.questionsCollection.at(this.currentVote).id, function(data){});
 			this.displayFollowUp();
 		}
 		

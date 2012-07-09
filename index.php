@@ -155,10 +155,8 @@
 		?>
 		var firstTime = <?php
 			
-					if(isset($_COOKIE['CURIOUS_CITY_DEV'])) echo "false";
-					else { 
-						
-						setcookie(CURIOUS_CITY_DEV, '1', time()+60*2,'/','.wbez.org'); 
+					if(isset($_COOKIE['CURIOUS_CITY_VOTED'])) echo "false";
+					else {
 						echo "true";
 					}
 				?> ;
@@ -674,9 +672,9 @@
 	</div><!-- .container -->
 	
 	<!-- Application source DEV-->
-	<script data-main="js/loaders/index.js" src="js/lib/require.js"></script> 
+	<!--  <script data-main="js/loaders/index.js" src="js/lib/require.js"></script> -->
 	<!-- Production -->
-	<!--  <script data-main="js_min/index.js" src="js/lib/require.js"></script> -->
+	 <script data-main="js_min/index.js" src="js/lib/require.js"></script> 
 	
 </body>
 </html>

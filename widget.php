@@ -130,9 +130,9 @@
 			}
 	
 			
-		if(isset($_COOKIE['CURIOUS_CITY_VOTED'])&&in_array($_COOKIE['CURIOUS_CITY_VOTED'],$ids)){
+		if(isset($_COOKIE['CURIOUS_CITY_VOTE'])&&in_array($_COOKIE['CURIOUS_CITY_VOTE'],$ids)){
 			$canvote=0;
-			$yourvote=$_COOKIE['CURIOUS_CITY_VOTED'];
+			$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
 		}
 		else{
 			$canvote=1;

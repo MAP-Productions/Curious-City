@@ -40,6 +40,7 @@
 	$defaults=array(
 				'votingperiod'=>'none',
 				'dateuploaded'=>time(),
+				'date'=> date('F jS, Y h:i:s A'),
 				'id'=>$rowCount,
 				'comments'=>'0',
 				'votes'=>'0',

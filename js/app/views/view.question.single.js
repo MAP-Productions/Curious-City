@@ -50,7 +50,7 @@
 				"<li class='previous'><a href='#!/archive/question/<%= previous %>'  onClick='_gaq.push([\"_trackEvent\", \"CC-Question\", \"Click Previous\", \"\"]);'  ><i class='arrow left'></i> Previous Question</a></li>"+
 				"<li class='next'><a href='#!/archive/question/<%= next %>'  onClick='_gaq.push([\"_trackEvent\", \"CC-Question\", \"Click Next\", \"\"]);' >Next Question <i class='arrow right'></i></a>"+
 			"</ul>"+
-			"<iframe src='http://embed.verite.co/timeline/?source=<%= timelinekey %>&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>";
+			"<iframe src='http://embed.verite.co/timeline/?source=<%= timelinekey %>&font=Bevan-PotanoSans&maptype=toner&lang=en&start_at_end=true&width=940&height=650' width='940' height='650' frameborder='0'></iframe>";
 			
 			return html;
 		},

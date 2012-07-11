@@ -643,6 +643,9 @@
 				<li>try to raise money</li>
 				<li>show bias</li>
 			</ul>
+			
+			<p>Please direct any questions about WBEZ here: <a href="http://www.wbez.org/contact" target="blank" >www.wbez.org/contact</a><p>
+			
 		  </div>
 		  <div class="modal-footer">
 			<a data-dismiss="modal" href="#" class="btn">Close</a>

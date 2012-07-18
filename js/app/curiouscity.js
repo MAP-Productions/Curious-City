@@ -47,7 +47,7 @@ this.curiouscity = {
 				  _trackPageview: function() {
 					var url;
 					url = Backbone.history.getFragment();
-					return _gaq.push(['_trackPageview', "http/curiouscity.wbez.org/" + url]);
+					return _gaq.push(['_trackPageview', "/" + url]);
 				  },
 				
 				loadMain: function()

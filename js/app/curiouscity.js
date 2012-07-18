@@ -33,7 +33,7 @@ this.curiouscity = {
 			var Router = Backbone.Router.extend({
 				routes: {
 					""														:	'loadMain',
-					'!/about/:hash'											:	'loadPageLocation',
+					'!/about/:hash'									:	'loadPageLocation',
 					'!/:page'											:	'loadPage',
 					'!/archive/question/:questionID'		:	'goToArchiveQuestion',
 					'!/vote/current'									:	'goToVoting',
@@ -41,10 +41,20 @@ this.curiouscity = {
 					'!/archive/:order'								:	'goToArchive'
 				},
 				
+				initialize: function() {
+					return this.bind('all', this._trackPageview);
+				  },
+				  _trackPageview: function() {
+					var url;
+					url = Backbone.history.getFragment();
+					return _gaq.push(['_trackPageview', "http/curiouscity.wbez.org/" + url]);
+				  },
+				
 				loadMain: function()
 				{
 					$('#nav-vote').addClass('nav-focus');
-					this.navigate('!/vote/current',{trigger:true})
+					this.navigate('!/vote/current',{trigger:false});
+					this.goToVoting();
 				},
 				loadPage : function(page){console.log(page),_this.loadPage(page) },
 				loadPageLocation : function(hash)

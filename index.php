@@ -281,7 +281,7 @@
 								<h1>Winning Question</h1>
 							</div>
 							<div class="sub">
-								<h5 id="previous-period-title">Week of blah</h5>
+								<h5 id="previous-period-title"></h5>
 							</div>
 					
 							

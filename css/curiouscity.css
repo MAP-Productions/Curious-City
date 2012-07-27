@@ -534,9 +534,14 @@ padding-top:2px;
 	display:none;
 }
 .good-question-link{
+	text-align:right;
 	position: absolute;
 	right: 0px;
-	bottom: 0px;
+	bottom: -28px;
+}
+
+.good-question-link p{
+	font-size:11px;
 }
 #discussion
 {

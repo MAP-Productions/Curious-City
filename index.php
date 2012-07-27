@@ -333,7 +333,9 @@
 								<h1>What do you wonder about Chicago, the region, or the people who live here?</h1>
 							</div>
 							<div class="sub" style="position:relative">
-								<h5>Please type your question below:</h5><span class='good-question-link' ><a data-toggle="modal" href="#good-question-modal" >Show me some good examples</a></span>
+								<h5>Please type your question below:</h5><span class='good-question-link' ><a data-toggle="modal" href="#good-question-modal" >Show me some good examples</a>
+									<p>Please direct any questions about WBEZ here: <a href="http://www.wbez.org/contact" target="blank" >www.wbez.org/contact</a><p>
+								</span>
 							</div>
 						</div>
 					</div>

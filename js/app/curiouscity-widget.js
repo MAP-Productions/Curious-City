@@ -47,7 +47,7 @@ app: _.extend({
 						return Math.random();
 					}
 				});
-				
+			console.log(this.questionsCollection.get(voteData.yourvote));	
 			if(!_.isUndefined(this.questionsCollection.get(voteData.yourvote))) {
 			
 			console.log(this.questionsCollection.get(voteData.yourvote));

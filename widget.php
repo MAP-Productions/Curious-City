@@ -98,10 +98,10 @@
 
 	<!-- Application source -->
 	
-		<script data-main="js/loaders/widget.js" src="js/lib/require.js"></script> 
+	<!-- 	<script data-main="js/loaders/widget.js" src="js/lib/require.js"></script> -->
 	
 	<!-- Production -->
-<!-- <script data-main="js_min/widget.js" src="js/lib/require.js"></script>-->
+<script data-main="js_min/widget.js" src="js/lib/require.js"></script>
 	
 </body>
 </html>

@@ -50,7 +50,7 @@ app: _.extend({
 				
 			if(_.isUndefined(this.questionsCollection.get(voteData.yourvote))) {
 			
-			console.log(this.questionsCollection.get(voteData.yourvote));
+			
 			this.questionsCollection.canvote=true;
 			this.questionsCollection.current=voteData.current;
 			this.questionsCollection.previous=voteData.previous;

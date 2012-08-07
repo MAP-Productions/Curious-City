@@ -38,7 +38,7 @@ app: _.extend({
 	loadQuestionCollection : function()
 	{
 
-		if(voteData.canvote==1){
+
 			var _this = this;
 			var Questions = curiouscity.module("questions");
 			
@@ -47,8 +47,8 @@ app: _.extend({
 						return Math.random();
 					}
 				});
-			console.log(this.questionsCollection.get(voteData.yourvote));	
-			if(!_.isUndefined(this.questionsCollection.get(voteData.yourvote))) {
+				
+			if(_.isUndefined(this.questionsCollection.get(voteData.yourvote))) {
 			
 			console.log(this.questionsCollection.get(voteData.yourvote));
 			this.questionsCollection.canvote=true;
@@ -65,10 +65,7 @@ app: _.extend({
 			else{
 				this.displayFollowUp();	
 			}
-		}
-		else{
-			this.displayFollowUp();	
-		}
+
 	},
 	
 	makePairs : function()

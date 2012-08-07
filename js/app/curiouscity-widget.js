@@ -47,7 +47,8 @@ app: _.extend({
 						return Math.random();
 					}
 				});
-			this.questionsCollection.canvote=voteData.canvote;
+			if(_.isUndefined(this.questionsCollection.get(voteData.yourvote))) {
+			this.questionsCollection.canvote=true;
 			this.questionsCollection.current=voteData.current;
 			this.questionsCollection.previous=voteData.previous;
 			this.questionsCollection.yourvote=voteData.yourvote;
@@ -57,6 +58,10 @@ app: _.extend({
 			$('#questions-count').html(_.size(this.questionsCollection));
 			$('#tagline').fadeTo(100,1);
 			_this.displayPair(0,1);
+			}
+			else{
+				this.displayFollowUp();	
+			}
 		}
 		else{
 			this.displayFollowUp();	

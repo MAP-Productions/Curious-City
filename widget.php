@@ -30,19 +30,16 @@
 		
 		<?php
 		
-			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])&&in_array($_COOKIE['CURIOUS_CITY_VOTE'],$ids)){
-			$canvote=0;
+		if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
 			$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
 		}
 		else{
-			$canvote=1;
 			$yourvote=-1;
 		}
 			
 		?>
 
 	var cookie={
-		canvote: <?php echo $canvote ?>,
 		yourvote: <?php echo $yourvote ?>,
 	};
 	
@@ -101,10 +98,10 @@
 
 	<!-- Application source -->
 	
-	<!-- 	<script data-main="js/loaders/widget.js" src="js/lib/require.js"></script> -->
+		<script data-main="js/loaders/widget.js" src="js/lib/require.js"></script> 
 	
 	<!-- Production -->
-<script data-main="js_min/widget.js" src="js/lib/require.js"></script>
+<!-- <script data-main="js_min/widget.js" src="js/lib/require.js"></script>-->
 	
 </body>
 </html>

@@ -47,10 +47,22 @@
 	var vote = -1;
 	
 	
-
+ 	<?php
+		$handle = @fopen("js/data/questions.js", "r");
+		if ($handle) {
+			while (($buffer = fgets($handle, 4096)) !== false) {
+				echo $buffer;
+			}
+			fclose($handle);
+		}
+	?>
+	
+	
+	
 	
 	</script>
-	<script src="js/data/questions.js"></script>
+
+
 
 
 

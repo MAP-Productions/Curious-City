@@ -22,10 +22,10 @@ this.curiouscity = {
 		init : function(){
 			this.archive = new Array();
 			this.loadDisqus();
+			voteData.yourvote=cookie.yourvote;
+			voteData.canvote=cookie.canvote;
 			this.startRouter();
 			this.isLoaded = true;
-			
-			
 		},
 		
 		startRouter: function(){

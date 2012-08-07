@@ -29,7 +29,10 @@ app: _.extend({
 	init : function()
 	{
 		//console.log('cc widget init')
+		voteData.yourvote=cookie.yourvote;
+		voteData.canvote=cookie.canvote;
 		this.loadQuestionCollection();
+		
 	},
 
 	loadQuestionCollection : function()

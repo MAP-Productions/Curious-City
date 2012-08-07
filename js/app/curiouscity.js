@@ -171,9 +171,8 @@ this.curiouscity = {
 						return question.get('rank')
 					}
 				});
-				console.log(voteData.yourvote);
-				console.log(this.questionsCollection.get(voteData.yourvote));
-				if(!_.isUndefined(this.questionsCollection.get(voteData.yourvote))) this.questionsCollection.canvote=true;
+				
+				if(_.isUndefined(this.questionsCollection.get(voteData.yourvote))) this.questionsCollection.canvote=true;
 				else this.questionsCollection.canvote=false;
 				
 				

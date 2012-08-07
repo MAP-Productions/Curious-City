@@ -43,28 +43,25 @@
 		
 		<?php
 		
-			if(isset($_COOKIE['CURIOUS_CITY_VOTE'])&&in_array($_COOKIE['CURIOUS_CITY_VOTE'],$ids)){
-			$canvote=0;
+		if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
 			$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
 		}
 		else{
-			$canvote=1;
 			$yourvote=-1;
 		}
 			
 		?>
 		
 		
-				var firstTime = <?php
-			
-					if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "false";
-					else {
-						echo "true";
-					}
-				?> ;
+			var firstTime = <?php
+		
+				if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "false";
+				else {
+					echo "true";
+				}
+			?> ;
 
 	var cookie={
-		canvote: <?php echo $canvote ?>,
 		yourvote: <?php echo $yourvote ?>,
 	};
 	

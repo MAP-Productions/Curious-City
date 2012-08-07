@@ -23,7 +23,7 @@ this.curiouscity = {
 			this.archive = new Array();
 			this.loadDisqus();
 			voteData.yourvote=cookie.yourvote;
-			voteData.canvote=cookie.canvote;
+			
 			this.startRouter();
 			this.isLoaded = true;
 		},
@@ -171,7 +171,11 @@ this.curiouscity = {
 						return question.get('rank')
 					}
 				});
-				this.questionsCollection.canvote=voteData.canvote;
+				
+				if(!_.isUndefined(this.questionsCollection.get(voteData.yourvote))) this.questionsCollection.canvote=true;
+				else this.questionsCollection.canvote=false;
+				
+				
 				this.questionsCollection.current=voteData.current;
 				this.questionsCollection.previous=voteData.previous;
 				this.questionsCollection.yourvote=voteData.yourvote;

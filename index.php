@@ -26,11 +26,9 @@
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-369047-1']);
 			 _gaq.push(['_setDomainName', '.wbez.org']); 
-<<<<<<< HEAD
+
 			_gaq.push(['_trackPageview']);
-=======
-			//_gaq.push(['_trackPageview']);
->>>>>>> 38f7b0a18924335f75a80b03af47632e757f7faa
+
 			(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';

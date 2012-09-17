@@ -22,16 +22,16 @@ this.curiouscity = {
 		init : function(){
 			this.archive = new Array();
 			this.loadDisqus();
-			voteData.yourvote=cookie.yourvote;
+			questionData.yourvote=cookie.yourvote;
 			
 			var Questions = curiouscity.module("questions");
-			this.popularArchive = new Questions.Collection(archive.questions,{
+			this.popularArchive = new Questions.Collection(questionData.archive,{
 				comparator : function(question){
 					return 100-question.get('comments')
 				}
 			});
 			
-			this.recentArchive = new Questions.Collection(archive.questions,{
+			this.recentArchive = new Questions.Collection(questionData.archive,{
 				comparator : function(question){
 					return 100-question.get('dateuploaded')
 				}
@@ -180,20 +180,20 @@ this.curiouscity = {
 			//only load once per visit
 			if( !this.questionsCollection){
 				var Questions = curiouscity.module("questions");
-				this.questionsCollection = new Questions.Collection(voteData.questions,{
+				this.questionsCollection = new Questions.Collection(questionData.questions,{
 					comparator : function(question){
 						return question.get('rank')
 					}
 				});
 				
-				if(_.isUndefined(this.questionsCollection.get(voteData.yourvote))) this.questionsCollection.canvote=true;
+				if(_.isUndefined(this.questionsCollection.get(questionData.yourvote))) this.questionsCollection.canvote=true;
 				else this.questionsCollection.canvote=false;
 				
 				
-				this.questionsCollection.current=voteData.current;
-				this.questionsCollection.previous=voteData.previous;
-				this.questionsCollection.yourvote=voteData.yourvote;
-				this.questionsCollection.previousWinner=voteData.previousWinner;
+				this.questionsCollection.current=questionData.current;
+				this.questionsCollection.previous=questionData.previous;
+				this.questionsCollection.yourvote=questionData.yourvote;
+				this.questionsCollection.previousWinner=questionData.previousWinner;
 	
 	
 					

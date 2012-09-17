@@ -113,7 +113,7 @@
 				$archiveId="od6";
 				$query = new Zend_Gdata_Spreadsheets_ListQuery();
 				$query->setSpreadsheetKey($spreadsheetKey);
-				$query->setWorksheetId($previousId);
+				$query->setWorksheetId($archiveId);
 				//$query->setSpreadsheetQuery('approved=1');
 				$listFeed = $spreadsheetService->getListFeed($query);
 				
@@ -153,8 +153,8 @@
 				
 				
 				
-				//$questionsData = 'var voteData='.json_encode( array(
-				echo	json_encode( array(
+				$questionsData = 'var questionData='.json_encode( array(
+			
 								"questions"=>$questions, 
 								"archive"=>$archiveQuestions,
 								"current"=>array("id"=>$currentId,"title"=>$currentTitle),
@@ -164,14 +164,14 @@
 								"previousWinner"=>$previousWinner
 							)); 	
 
-				/*
+			
 				
 				$file = "../js/data/questions.js";
 				$fh = fopen($file, 'w') or die("can't open file");
 				fwrite($fh, $questionsData);
 				fclose($fh);
 
-				*/
+				
 				
 				}catch (Zend_Gdata_App_AuthException $ae) {
 				exit("Error Connecting");

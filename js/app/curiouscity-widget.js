@@ -29,8 +29,8 @@ app: _.extend({
 	init : function()
 	{
 		//console.log('cc widget init')
-		voteData.yourvote=cookie.yourvote;
-		voteData.canvote=cookie.canvote;
+		questionData.yourvote=cookie.yourvote;
+		questionData.canvote=cookie.canvote;
 		this.loadQuestionCollection();
 		
 	},
@@ -42,20 +42,20 @@ app: _.extend({
 			var _this = this;
 			var Questions = curiouscity.module("questions");
 			
-			this.questionsCollection = new Questions.Collection(voteData.questions,{
+			this.questionsCollection = new Questions.Collection(questionData.questions,{
 					comparator : function(question){
 						return Math.random();
 					}
 				});
 				
-			if(_.isUndefined(this.questionsCollection.get(voteData.yourvote))) {
+			if(_.isUndefined(this.questionsCollection.get(questionData.yourvote))) {
 			
 			
 			this.questionsCollection.canvote=true;
-			this.questionsCollection.current=voteData.current;
-			this.questionsCollection.previous=voteData.previous;
-			this.questionsCollection.yourvote=voteData.yourvote;
-			this.questionsCollection.previousWinner=voteData.previousWinner;
+			this.questionsCollection.current=questionData.current;
+			this.questionsCollection.previous=questionData.previous;
+			this.questionsCollection.yourvote=questionData.yourvote;
+			this.questionsCollection.previousWinner=questionData.previousWinner;
 
 		
 			$('#questions-count').html(_.size(this.questionsCollection));

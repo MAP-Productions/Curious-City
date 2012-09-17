@@ -24,8 +24,22 @@ this.curiouscity = {
 			this.loadDisqus();
 			voteData.yourvote=cookie.yourvote;
 			
+			var Questions = curiouscity.module("questions");
+			this.popularArchive = new Questions.Collection(archive.questions,{
+				comparator : function(question){
+					return 100-question.get('comments')
+				}
+			});
+			
+			this.recentArchive = new Questions.Collection(archive.questions,{
+				comparator : function(question){
+					return 100-question.get('dateuploaded')
+				}
+			});
+			
 			this.startRouter();
 			this.isLoaded = true;
+					
 		},
 		
 		startRouter: function(){
@@ -359,41 +373,12 @@ this.curiouscity = {
 	
 			var _this = this;
 			if(order=='popular'){
-				if(!this.popularArchive||true){
-					var Questions = curiouscity.module("questions");
-					this.popularArchive = new Questions.Collection({'votingperiod':false,"order":order});
-					$('#archive-page #archive-questions').empty();
-					$('#archive-page #archive-questions').spin();
-					this.popularArchive.fetch({
-						success:function(collection,response){
-							$('#archive-page #archive-questions').spin(false);
-							_this.displayArchiveQuestions(collection);
-						}	
-					});
-				}
-				else {
 					$('#archive-page #archive-questions').empty();
 					this.displayArchiveQuestions(this.popularArchive);
-				}
-			
 			}
 			else{
-				if(!this.recentArchive||true){
-					var Questions = curiouscity.module("questions");
-					this.recentArchive = new Questions.Collection({'votingperiod':false,"order":order});
-					$('#archive-page #archive-questions').empty();
-					$('#archive-page #archive-questions').spin();
-					this.recentArchive.fetch({
-						success:function(collection,response){
-							$('#archive-page #archive-questions').spin(false);
-							_this.displayArchiveQuestions(collection);
-						}	
-					});
-				}
-				else {
 					$('#archive-page #archive-questions').empty();
 					this.displayArchiveQuestions(this.recentArchive);
-				}
 			}
 			
 		},

@@ -18,10 +18,11 @@ require([
 	'order!../lib/backbone',
 	'order!../lib/jquery-ui.min',	
 	'order!../lib/quicksand',	
-
+	'order!../lib/bootstrap',
+	
 	//core
 	'order!../app/curiouscity',
-	'order!../lib/bootstrap',
+
 
 	//models
 	'order!../app/models/model.question',

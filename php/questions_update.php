@@ -1,10 +1,9 @@
 
 		<?php
 			
-			header('Content-type: application/json');
 			$votingPeriod = "current";
-			require_once 'config.php';
-			set_include_path("../gdata/library");
+			require_once "/var/www/vhosts/localore.zeega.org/curiouscity/php/config.php";
+			set_include_path("/var/www/vhosts/localore.zeega.org/curiouscity/gdata/library");
 
 			require_once 'Zend/Loader.php';
 			Zend_Loader::loadClass('Zend_Gdata');
@@ -166,7 +165,7 @@
 
 			
 				
-				$file = "../js/data/questions.js";
+				$file = "/var/www/vhosts/localore.zeega.org/curiouscity/js/data/questions.js";
 				$fh = fopen($file, 'w') or die("can't open file");
 				fwrite($fh, $questionsData);
 				fclose($fh);

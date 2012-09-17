@@ -1,41 +1,22 @@
 <?php
-	header('Content-type: application/json');
-	if(isset($_GET['votingperiod'])) $worksheetId = htmlspecialchars ($_GET['votingperiod']);
-	else $worksheetId ="od6";
+		header('Content-type: application/json');
+		
+		
+		
+		if(isset($_GET['votingperiod'])) $worksheetId = htmlspecialchars ($_GET['votingperiod']);
+		else $worksheetId ="od6";
+		
+	
+		require_once 'config.php';
+		set_include_path("../gdata/library");
 	
 
-	require_once 'config.php';
-	set_include_path("../gdata/library");
-	
-/**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Gdata
- * @subpackage Demos
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- */
-
-/**
- * @see Zend_Loader
- */
-require_once 'Zend/Loader.php';
-Zend_Loader::loadClass('Zend_Gdata');
-Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
-Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
-Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
-Zend_Loader::loadClass('Zend_Http_Client');
+		require_once 'Zend/Loader.php';
+		Zend_Loader::loadClass('Zend_Gdata');
+		Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
+		Zend_Loader::loadClass('Zend_Gdata_Spreadsheets');
+		Zend_Loader::loadClass('Zend_Gdata_App_AuthException');
+		Zend_Loader::loadClass('Zend_Http_Client');
 
 		
 		try{
@@ -54,6 +35,10 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		if(isset($_GET['votingperiod'])) $query->setOrderBy('column:votes');
 		else $query->setSpreadsheetQuery('approved=1');
 	//	if(isset($_GET['searchquery'])) $query->setSpreadsheetQuery('question contains '.htmlspecialchars ($_GET['searchquery']));
+		
+		
+		if(isset($_GET['investigated'])) $query->setSpreadsheetQuery('investigated>0');
+		
 		$query->setReverse(true);
 		$query->setReverse('true');
 		$listFeed = $spreadsheetService->getListFeed($query);
@@ -66,8 +51,8 @@ Zend_Loader::loadClass('Zend_Http_Client');
 		$question =array();
 		$ids=array();
 		
-		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner');
-		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments');
+		if(isset($_GET['votingperiod'])) $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','votes','winner', 'badge', 'investigated', 'reporter', 'updatecount', 'dateuploaded');
+		else  $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey", 'badge', 'investigated', 'reporter', 'updatecount', 'dateuploaded');
 		
 		
 		foreach($rowData as $customEntry) {

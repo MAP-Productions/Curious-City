@@ -57,7 +57,6 @@
 		$feed = $spreadsheetService->getWorksheetFeed($query);
 		$rowCount=0;
 		foreach($feed->entries as $entry){
-			
 			$wkshtId = explode('/', $entry->id->text);
 			if($wkshtId[8]==$worksheetId) $rowCount=$entry->getRowCount()->getText();
 		}
@@ -70,29 +69,51 @@
 		$query->setSpreadsheetQuery('id='.$questionid);
 		
 		$listFeed = $spreadsheetService->getListFeed($query);
-
 		
 		foreach ($listFeed->entries as $entry){
-		
-		$rowData = $entry->getCustom();
-		$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername','soundcloud');
-		
-		
-		foreach($rowData as $customEntry) {
-		 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
+			$rowData = $entry->getCustom();
+			$publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername','soundcloud','timelinekey', 'responseembed', 'responselinkurl', 'responselinktext');
+			foreach($rowData as $customEntry) {
+				 if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
+			}
 		}
 		
-			if($question['anonymous']==1)$question['name']='Anonymous';
-			if(empty($question['imageurl']))unset($question['imageurl']);
-			if(empty($question['soundcloud']))unset($question['soundcloud']);
-			unset($question['anonymous']);
+		$question['next']=-1;
+		if($question['id']>1) {
+			//$question['next']=$question['id']-1;
+			$tempId=$question['id'];
+			while(	$question['next']==-1&& $tempId>1){
+				$tempId--;
+				$query = new Zend_Gdata_Spreadsheets_ListQuery();
+				$query->setSpreadsheetKey($spreadsheetKey);
+				$query->setWorksheetId($worksheetId);$query->setSpreadsheetQuery('approved=1&id='.$tempId);
+				$listFeed = $spreadsheetService->getListFeed($query);
+			
+				if(sizeof($listFeed->entries)>0) $question['next']=$tempId;
+			}
+			
 		}
 		
-		if($rowCount>$question['id']+1) $question['previous']=$question['id']+1;
-		else $question['previous']=-1;
 		
-		if($question['id']>1) $question['next']=$question['id']-1;
-		else $question['next']=-1;
+		
+		$question['previous']=-1;
+		if($question['id']<$rowCount) {
+			//$question['next']=$question['id']-1;
+			$tempId=$question['id'];
+			while(	$question['previous']==-1&& $tempId<$rowCount){
+				$tempId++;
+				$query = new Zend_Gdata_Spreadsheets_ListQuery();
+				$query->setSpreadsheetKey($spreadsheetKey);
+				$query->setWorksheetId($worksheetId);$query->setSpreadsheetQuery('approved=1&id='.$tempId);
+				$listFeed = $spreadsheetService->getListFeed($query);
+			
+				if(sizeof($listFeed->entries)>0) $question['previous']=$tempId;
+			}
+			
+		}
+		
+		
+		
 		
 		echo json_encode($question);
 		

@@ -8,45 +8,32 @@
 
 
 *********************************************/
-require.config({
-	baseUrl :'js/',
-	paths : {
-		'order' : 'lib/order',
-		'text' : 'lib/text'
-	}
-})
-
-var loadFiles = [
-	'order!lib/jquery-1.7.1.min',
+require([
+	'order!../lib/jquery-1.7.1.min',
 
 	//libraries
-	'order!lib/underscore',
-	'order!lib/backbone',
-	'order!lib/jquery-ui.min',	
+	'order!../lib/underscore',
+	'order!../lib/backbone',
+	'order!../lib/jquery-ui.min',	
 
 	//core
-	'order!app/curiouscity-widget',
-	'order!lib/bootstrap',
+	'order!../app/curiouscity-widget',
+	'order!../lib/bootstrap',
 
 	//models
-	'order!app/models/model.question',
+	'order!../app/models/model.question',
 	//collections
 	
-	'order!app/collections/collection.question',
+	'order!../app/collections/collection.question',
 	
 	//views
-	'order!app/views/view.widget.single',
-	'order!app/views/view.widget.thanks',
+	'order!../app/views/view.widget.single',
+	'order!../app/views/view.widget.thanks',
 
-	'order!lib/spin',	
+	'order!../lib/spin',	
 
 	//app
 		
-	'order!app/index-widget'
+	'order!../app/index-widget'
 
-	];
-
-require(loadFiles, function(jquery)
-{
-    console.log('ALL JS LOADED')
-});
+	], function(){});

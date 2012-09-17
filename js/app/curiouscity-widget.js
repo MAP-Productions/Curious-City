@@ -28,48 +28,44 @@ app: _.extend({
 	//this function is called once all the js files are sucessfully loaded
 	init : function()
 	{
-		console.log('cc widget init')
-		
+		//console.log('cc widget init')
+		questionData.yourvote=cookie.yourvote;
+		questionData.canvote=cookie.canvote;
 		this.loadQuestionCollection();
+		
 	},
 
 	loadQuestionCollection : function()
 	{
-		
-		if(window.vote==-1){
-		
-		var _this = this;
-		var Questions = curiouscity.module("questions");
-	
-		this.questionsCollection = new Questions.Collection({'votingperiod':'od7',
-			comparator : function(question)
-		{
-			return Math.random();
-		}
-		});
-		$('#ballot>div').spin('small');
-		this.questionsCollection.fetch({
-			success:function(collection,response)
-			{
-				
-				$('#ballot>div').spin(false);
-				//_this.makePairs();
-				//_this.parseData();
-				$('#questions-count').html(_.size(collection));
-				$('#tagline').fadeTo(100,1);
-				_this.displayPair(0,1);
+
+
+			var _this = this;
+			var Questions = curiouscity.module("questions");
 			
+			this.questionsCollection = new Questions.Collection(questionData.questions,{
+					comparator : function(question){
+						return Math.random();
+					}
+				});
 				
+			if(_.isUndefined(this.questionsCollection.get(questionData.yourvote))) {
+			
+			
+			this.questionsCollection.canvote=true;
+			this.questionsCollection.current=questionData.current;
+			this.questionsCollection.previous=questionData.previous;
+			this.questionsCollection.yourvote=questionData.yourvote;
+			this.questionsCollection.previousWinner=questionData.previousWinner;
+
+		
+			$('#questions-count').html(_.size(this.questionsCollection));
+			$('#tagline').fadeTo(100,1);
+			_this.displayPair(0,1);
 			}
-		});
-		
-		}
-		else{
-		
-			this.displayFollowUp();
-		
-		
-		}
+			else{
+				this.displayFollowUp();	
+			}
+
 	},
 	
 	makePairs : function()
@@ -161,7 +157,7 @@ app: _.extend({
 		});
 		}
 		else{
-			$.post('php/vote.php?questionid='+ this.questionsCollection.at(this.currentVote).id, function(data){});
+			$.post('php/vote.php?votingperiod='+this.questionsCollection.current.id+'&questionid='+ this.questionsCollection.at(this.currentVote).id, function(data){});
 			this.displayFollowUp();
 		}
 		

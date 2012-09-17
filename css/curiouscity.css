@@ -4,6 +4,11 @@ h5
 	font-size:11px;
 }
 
+@-moz-document url-prefix()
+{ 
+  	h5{ font-weight:normal }
+}
+
 h1,h2
 {
 	font-weight:400;
@@ -42,6 +47,8 @@ ul.horizontal li+li
 	top:25px;
 }
 
+.cc-nav{ text-align:center;}
+
 #cc-nav{ margin:10px 0;}
 #cc-nav ul
 {
@@ -60,13 +67,15 @@ ul.horizontal li+li
 	font-size:16px;
 	border-left:2px dotted #808184;
 	height:30px;
-	width:97px;
+	width:112px;
 	display:inline-block;
 	padding:25px 5px;
 	color: #666666;
 }
 
-#cc-nav ul li a:hover
+#cc-nav ul li a:hover,
+#cc-nav ul li a.nav-focus:link,
+#cc-nav ul li a.nav-focus:visited
 {
 	color: #08C;
 	text-decoration:none;
@@ -105,7 +114,7 @@ width:100%;
 
 
 #vote-page{}
-#ask-page{ height: 700px;}
+#ask-page{ height: 720px;}
 #stories-page{}
 #archive-page{}
 
@@ -187,6 +196,11 @@ footer li
 	margin:0;
 }
 
+.winner{
+
+outline: solid 3px rgba(0, 136, 204, 0.5);
+}
+
 .question
 {
 	height:100px;
@@ -195,8 +209,22 @@ footer li
 	 transition: color,background-color .25s linear;
 	background-color:white;
 	position:relative;
+	transition: outline 0.5s;
+	-moz-transition: outline 0.5s; /* Firefox 4 */
+	-webkit-transition: outline 0.5s; /* Safari and Chrome */
+	-o-transition: outline 0.5s; /* Opera */
+	outline: 2px solid transparent;
 }
 .question + .question{ margin-top:2px;}
+
+.question.hoverstate
+{
+	transition: outline 0.5s;
+	-moz-transition: outline 0.5s; /* Firefox 4 */
+	-webkit-transition: outline 0.5s; /* Safari and Chrome */
+	-o-transition: outline 0.5s; /* Opera */
+	outline: 2px solid #08c;
+}
 
 .question-image
 {
@@ -205,6 +233,7 @@ footer li
 	background:no-repeat;
 	background-size: 310px;
 	background-position: 0 50%;
+	overflow:hidden;
 }
 
 .image-preview {
@@ -215,13 +244,19 @@ footer li
 
 }
 
-.image-credits {
-
+.image-credits
+{
 	position: absolute;
 	bottom: 0px;
-	right: 2px;
-
+	padding:0 5px;
+	width:100%;
+	background:rgba(0,0,0,0.5);
 }
+
+.image-credits a:link,
+.image-credits a:visited,
+.image-credits a:hover
+{color:white;}
 
 
 .logo {
@@ -274,6 +309,11 @@ padding-top:2px;
 
 }
 
+
+#previous-winner-question{
+	padding-bottom: 90px;
+
+}
 
 
 .logo-wyncote {
@@ -411,7 +451,7 @@ padding-top:2px;
 	overflow:hidden;
 	position: absolute;
 	top: 25px;
-	left: 285px;
+	left: 275px;
 }
 .vote.hover{background-position:-50px 0;}
 .vote.active{background-position:-100px 0;}
@@ -430,6 +470,23 @@ padding-top:2px;
 .arrow.right{background-position:-15px 0;}
 .arrow.down{background-position:-30px 0;}
 .arrow.images/sample1.jpg{background-position:-45px 0;}
+
+[class^="badge-"]
+{
+	background-image:url(../images/sprites.png);
+	height:50px;
+	width:50px;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align: text-top;
+	background-repeat:no-repeat;
+	float:left;
+	margin-right:10px;
+}
+
+.badge-current{ background-position: -50px 0;}
+.badge-investigated{ background-position: -150px 0;}
+.badge-answered{ background-position: -100px 0;}
 
 [class^="number-"]
 {
@@ -465,12 +522,9 @@ padding-top:2px;
 
 .social{ margin-left: 2px;}
 
-#voting-date a
-{
-	border-bottom: 2px dotted #808184;
-	float:left;
-	display:none;
-}
+
+
+#voting-date-next{ float: right }
 
 #guidelines-modal{
 	display:none;
@@ -480,9 +534,14 @@ padding-top:2px;
 	display:none;
 }
 .good-question-link{
+	text-align:right;
 	position: absolute;
 	right: 0px;
-	bottom: 0px;
+	bottom: -28px;
+}
+
+.good-question-link p{
+	font-size:11px;
 }
 #discussion
 {
@@ -649,3 +708,76 @@ width:270px;
 {
 	min-height:300px;
 }
+
+.faq-list .faq-question{ font-weight:bold; }
+.faq-list p{ color: #999;}
+
+/****** INVESTIGATIONS ********/
+
+li.investigation-story:nth-child(even){float:left;}
+li.investigation-story:nth-child(odd){float:right;}
+
+li.investigation-story:first-child
+{
+	width:100%;
+	padding-right:0;
+	float:none;
+}
+
+li.investigation-story
+{
+	width:49.5%;
+	margin-bottom:10px;
+	float:left;
+}
+
+#investigate-list>li
+{
+	background:white;
+	height:350px;
+	position:relative;
+}
+
+#investigate-list .investigation-question
+{
+	padding:10px;
+}
+
+.investigation-overlay .investigation-info-left,
+.investigation-overlay .investigation-comments
+{ padding:10px; }
+
+#investigate-list .investigation-image
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 275px;
+	background-size:100%;
+	background-position: center;
+}
+.investigation-image .investigation-overlay
+{
+	background-color: 
+	rgba(0, 0, 0, .5);
+	color: white;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.archive-key
+{
+	background:white;
+	padding:10px;
+	color:#999;
+}
+.archive-key>li{ height:50px;}
+.badge-column{padding-top:15px;}
+
+.single-question-content>div
+{
+	margin-bottom:20px;
+}
+
+.twtr-img img{max-width:none;}

@@ -191,10 +191,8 @@
 	
 		getTemplate : function()
 		{
-			var html = 
-			
-			"<div class='row'>"+
-				"<div class='span5 submit-sequence'>"+
+			var html = "<div class='row'>"+
+				"<div class='span4 submit-sequence'>"+
 					"<div id='left-col1'>"+
 						"<ul class='unstyled'>"+
 							"<li class='step1 active'>Step 1: Question</li>"+
@@ -212,15 +210,15 @@
 					"</div>"+
 				
 				"</div>"+
-				"<div class='span7'>"+
+				"<div class='span8'>"+
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							"<div class='control-group'><textarea class='submit-question-text span7'></textarea></div>"+
-							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?<input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></label></div>"+
-							"<div class='control-group name-text'><label for='submit-name-text'>Name<input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></label></div>"+
+							"<div class='control-group'><textarea class='submit-question-text span8'></textarea></div>"+
+							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?</label><input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></div>"+
+							"<div class='control-group name-text'><label for='submit-name-text'>Name</label><input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Select Anonymous\", \"\"]);' > <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+
-							"<div class='control-group email-main'><label for='submit-email-text'>Email<input id = 'submit-email-text' class = 'short-input submit-email-text' type='email'/></label></div>"+
-							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email<input id = 'submit-email-confirm-text' class = 'short-input submit-email-confirm-text' type='email'/></label></div>"+
+							"<div class='control-group email-main'><label for='submit-email-text'>Email</label><input id = 'submit-email-text' class = 'short-input submit-email-text' type='email'/></div>"+
+							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email</label><input id = 'submit-email-confirm-text' class = 'short-input submit-email-confirm-text' type='email'/></div>"+
 							
 							"<button class='btn submit-next btn-primary'>Next</button>"+
 						"</div>"+

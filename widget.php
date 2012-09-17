@@ -19,17 +19,51 @@
 <script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-369047-1']);
-			_gaq.push(['_trackPageview']);
+			//_gaq.push(['_trackPageview']);
 			(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
 			})();
 </script>
+	<script type="text/javascript">
+		
+		<?php
+		
+		if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
+			$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
+		}
+		else{
+			$yourvote=-1;
+		}
+			
+		?>
 
-<script>
-			var vote= <?php	if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo $_COOKIE['CURIOUS_CITY_VOTE']; else echo -1; ?>
-</script>
+	var cookie={
+		yourvote: <?php echo $yourvote ?>,
+	};
+	
+	
+	var vote = -1;
+	
+	
+ 	<?php
+		$handle = @fopen("js/data/questions.js", "r");
+		if ($handle) {
+			while (($buffer = fgets($handle, 4096)) !== false) {
+				echo $buffer;
+			}
+			fclose($handle);
+		}
+	?>
+	
+	
+	
+	
+	</script>
+
+
+
 
 
 </head>
@@ -38,7 +72,7 @@
 	
 	<div class="wrapper">
 		<header>
-			<a href="http://curiouscity.wbez.org" ><img src="images/cc-logo.png"/></a>
+			<a href="http://curiouscity.wbez.org" target='blank'><img src="images/cc-logo.png"/></a>
 		</header>
 	
 		<div class="main">
@@ -55,7 +89,7 @@
 			<div id="ballot">
 				<div id="left-ballot"></div>
 				<div id="right-ballot"></div>
-				<div id="follow-up"><div class="link link-1" >Check out <a href="www.wbez.org/curiouscity" >earlier investigations</a></div><div class="link link-2" >Shape stories as they unfold <span class="link-icons"><a class="link-icon" target="blank" href="http://www.facebook.com/curiouscityproject"><img src="images/facebook_sm.png"/></a><a class="link-icon" target="blank" href="http://twitter.com/#!/WBEZCuriousCity"><img src="images/twitter_sm.png"/></a></span></div><div class="link link-3" >Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" >The Afternoon Shift</a> on WBEZ for winners + updates.</div>
+				<div id="follow-up"><div class="link link-1" >Check out <a href="http://curiouscity.wbez.org/#!/investigations" target='blank'>earlier investigations</a></div><div class="link link-2" >Shape stories as they unfold <span class="link-icons"><a class="link-icon" target="blank" href="http://www.facebook.com/curiouscityproject"><img src="images/facebook_sm.png"/></a><a class="link-icon" target="blank" href="http://twitter.com/#!/WBEZCuriousCity"><img src="images/twitter_sm.png"/></a></span></div><div class="link link-3" >Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target='blank'>The Afternoon Shift</a> on WBEZ for winners + updates.</div>
 				</div>
 			</div>
 			
@@ -75,6 +109,11 @@
 	</div><!-- .wrapper -->
 
 	<!-- Application source -->
-	<script data-main="js/loaders/widget.js" src="js/lib/require.js"></script>
+	
+	<!-- 	<script data-main="js/loaders/widget.js" src="js/lib/require.js"></script> -->
+	
+	<!-- Production -->
+<script data-main="js_min/widget.js" src="js/lib/require.js"></script>
+	
 </body>
 </html>

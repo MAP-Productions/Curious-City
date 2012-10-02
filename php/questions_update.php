@@ -49,7 +49,6 @@
 				$query->setWorksheetId($currentId);
 				$query->setOrderBy('column:votes');
 				$query->setReverse('true');
-				$query->setSpreadsheetQuery('approved=1');
 				$listFeed = $spreadsheetService->getListFeed($query);
 			
 				$questions=array();
@@ -114,7 +113,7 @@
 				$query = new Zend_Gdata_Spreadsheets_ListQuery();
 				$query->setSpreadsheetKey($spreadsheetKey);
 				$query->setWorksheetId($archiveId);
-				//$query->setSpreadsheetQuery('approved=1');
+				$query->setSpreadsheetQuery('approved=1');
 				$listFeed = $spreadsheetService->getListFeed($query);
 				
 			

@@ -49,6 +49,7 @@
 				$query->setWorksheetId($currentId);
 				$query->setOrderBy('column:votes');
 				$query->setReverse('true');
+				$query->setSpreadsheetQuery('approved=1');
 				$listFeed = $spreadsheetService->getListFeed($query);
 			
 				$questions=array();

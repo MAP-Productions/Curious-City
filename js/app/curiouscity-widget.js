@@ -29,8 +29,7 @@ app: _.extend({
 	init : function()
 	{
 		//console.log('cc widget init')
-		questionData.yourvote=cookie.yourvote;
-		questionData.canvote=cookie.canvote;
+		questionData.yourvote=this.vote;
 		this.loadQuestionCollection();
 		
 	},

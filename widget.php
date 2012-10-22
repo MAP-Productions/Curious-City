@@ -28,38 +28,15 @@
 </script>
 	<script type="text/javascript">
 		
-		<?php
-		
-		if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
-			$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
-		}
-		else{
-			$yourvote=-1;
-		}
-			
-		?>
-
-	var cookie={
-		yourvote: <?php echo $yourvote ?>,
-	};
-	
-	
-	var vote = -1;
-	
-	
- 	<?php
-		$handle = @fopen("js/data/questions.js", "r");
-		if ($handle) {
-			while (($buffer = fgets($handle, 4096)) !== false) {
-				echo $buffer;
+	 	<?php
+			$handle = @fopen("js/data/questions.js", "r");
+			if ($handle) {
+				while (($buffer = fgets($handle, 4096)) !== false) {
+					echo $buffer;
+				}
+				fclose($handle);
 			}
-			fclose($handle);
-		}
-	?>
-	
-	
-	
-	
+		?>
 	</script>
 
 

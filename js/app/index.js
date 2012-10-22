@@ -47,14 +47,14 @@ jQuery(function($)
 		}
 	}
 	
-	if(!_.isNull(getCookie('CURIOUS_CITY_VOTE'))){
+	if(_.isInteger(getCookie('CURIOUS_CITY_VOTE'))){
 		Curiouscity.vote=getCookie('CURIOUS_CITY_VOTE');
 
 	}
 	else{
 		Curiouscity.vote=-1;
 	}
-	if(_.isNull(getCookie('CURIOUS_CITY'))){
+	if(_.isUndefined(getCookie('CURIOUS_CITY'))){
 		_.delay(function(){ $('#how-it-works-expander').trigger('click');},1000);
 		setCookie('CURIOUS_CITY',1,365);
 	}else{

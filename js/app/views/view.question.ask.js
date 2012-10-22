@@ -19,10 +19,7 @@
 			this.model.on('error', this.validationError, this);
 			
 			_.extend(this,options);
-			var blanks = {
-				ask:ask
-			};
-			console.log(window.ask)
+			var blanks = {ask: decodeURIComponent(this.ask)		};
 			this.step = 1;
 			$(this.el).append( _.template( this.getTemplate(), blanks ) );
 		},

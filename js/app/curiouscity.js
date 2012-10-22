@@ -47,6 +47,7 @@ this.curiouscity = {
 				routes: {
 					""														:	'loadMain',
 					'!/about/:hash'									:	'loadPageLocation',
+					'!/ask/:ask'									:	'loadAskPage',
 					'!/:page'											:	'loadPage',
 					'!/archive/question/:questionID'		:	'goToArchiveQuestion',
 					'!/vote/current'									:	'goToVoting',
@@ -69,7 +70,8 @@ this.curiouscity = {
 					this.navigate('!/vote/current',{trigger:false});
 					this.goToVoting();
 				},
-				loadPage : function(page){console.log(page),_this.loadPage(page) },
+				loadAskPage : function(ask){_this.loadPage('ask',ask);},
+				loadPage : function(page){_this.loadPage(page) },
 				loadPageLocation : function(hash)
 				{
 					var r = this;
@@ -103,7 +105,7 @@ this.curiouscity = {
 			Backbone.history.start();
 		},
 		
-		loadPage : function(page){
+		loadPage : function(page,options){
 		
 			
 			$('.focus').hide();
@@ -126,7 +128,7 @@ this.curiouscity = {
 				case 'ask':
 					$('#nav-ask').addClass('nav-focus');
 					this.showDiscussion();
-					this.loadAsk();
+					this.loadAsk(options);
 					break;
 				case 'archive':
 					$('#nav-archive').addClass('nav-focus');
@@ -160,7 +162,7 @@ this.curiouscity = {
 				$('#investigate-list').spin();
 				var Inv = curiouscity.module('investigation');
 				this.investigations = new Inv.Collection();
-				console.log(this.investigations)
+				
 			}
 		},
 	
@@ -185,7 +187,7 @@ this.curiouscity = {
 					}
 				});
 				
-				console.log('Checking the following vote:',this.vote,this);
+				
 				if(_.isUndefined(this.questionsCollection.get(this.vote))) this.questionsCollection.canvote=true;
 				else this.questionsCollection.canvote=false;
 				
@@ -217,7 +219,7 @@ this.curiouscity = {
 						}
 						$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
 						
-						console.log(this.questionsCollection);
+						
 						$('#previous-winner').find('h5').html('<a href ="#!/previous/'+this.questionsCollection.previous.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
 				
 				
@@ -320,14 +322,14 @@ this.curiouscity = {
 				_.each( _.toArray( this.previousCollection ),function(question){
 					var questionView = new Questions.Views.Previous({model:question});
 					if( question.get('winner')==1) {
-						console.log('we have a winner');
+						
 						$('#previous-winner-question').append(questionView.render().el);
-						console.log($('#previous-winner-question'));
+						
 					}
 					else $('#previous-questions').append(questionView.render().el);
 					
 				});
-				console.log(this.previousCollection);
+				
 				$('#previous-period-title').html("Week of "+this.previousCollection.current.title);
 				
 				$('#voting-date-next').html("Voting for "+this.previousCollection.next.title+" <i class='arrow right'></i>"  ).unbind().click(function(){
@@ -347,12 +349,13 @@ this.curiouscity = {
 		
 		/******* ASK A QUESTION PAGE **********/
 		
-		loadAsk : function(  ){
-			console.log('curious eh?: submitttt');
+		loadAsk : function(options){
+			
 			$('#discussion').fadeOut();
 			var Questions = curiouscity.module("questions");
 			
-			this.askView = new Questions.Views.Ask();
+			this.askView = new Questions.Views.Ask({"ask":options});
+			console.log(options);
 			$('#ask-form').html(this.askView.render().el);
 		},
 		
@@ -363,7 +366,7 @@ this.curiouscity = {
 		loadArchiveQuestions : function(order){
 			
 			// reload archive each time the page is loaded
-			console.log('load archive: '+order)
+			
 			
 	
 			$('.focus').hide().removeClass('focus');
@@ -384,7 +387,7 @@ this.curiouscity = {
 		},
 		
 		displayArchiveQuestions : function(archive){
-			console.log('display vote questions')
+			
 			var Pages = curiouscity.module('pages');
 			_.each( _.toArray(archive) ,function(question){
 				var questionView = new Pages.Views.archive({model:question});

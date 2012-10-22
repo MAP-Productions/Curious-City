@@ -52,6 +52,7 @@ jQuery(function($)
 
 	}
 	else{
+		console.log('PreviousVote',getCookie('CURIOUS_CITY_VOTE'));
 		Curiouscity.vote=-1;
 	}
 	if(_.isUndefined(getCookie('CURIOUS_CITY'))){

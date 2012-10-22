@@ -49,6 +49,7 @@ jQuery(function($)
 	
 	if(!_.isNull(getCookie('CURIOUS_CITY_VOTE'))){
 		Curiouscity.vote=getCookie('CURIOUS_CITY_VOTE');
+
 	}
 	else{
 		Curiouscity.vote=-1;
@@ -56,7 +57,12 @@ jQuery(function($)
 	if(_.isNull(getCookie('CURIOUS_CITY'))){
 		_.delay(function(){ $('#how-it-works-expander').trigger('click');},1000);
 		setCookie('CURIOUS_CITY',1,365);
+	}else{
+		console.log ("MAlready Visited",getCookie('CURIOUS_CITY'));
 	} 
+
+	console.log ("Most recent vote:",Curiouscity.vote);
+
 	Curiouscity.init();
 	
 });

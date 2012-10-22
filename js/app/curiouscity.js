@@ -22,7 +22,6 @@ this.curiouscity = {
 		init : function(){
 			this.archive = new Array();
 			this.loadDisqus();
-			questionData.yourvote=cookie.yourvote;
 			
 			var Questions = curiouscity.module("questions");
 			this.popularArchive = new Questions.Collection(questionData.archive,{
@@ -186,13 +185,13 @@ this.curiouscity = {
 					}
 				});
 				
-				if(_.isUndefined(this.questionsCollection.get(questionData.yourvote))) this.questionsCollection.canvote=true;
+				if(_.isUndefined(this.questionsCollection.get(this.vote))) this.questionsCollection.canvote=true;
 				else this.questionsCollection.canvote=false;
 				
 				
 				this.questionsCollection.current=questionData.current;
 				this.questionsCollection.previous=questionData.previous;
-				this.questionsCollection.yourvote=questionData.yourvote;
+				this.questionsCollection.yourvote=this.vote;
 				this.questionsCollection.previousWinner=questionData.previousWinner;
 	
 	
@@ -264,7 +263,7 @@ this.curiouscity = {
 		},
 		
 		voteOnQuestion : function(){
-			console.log('voted!!!!!')
+			
 			$('#vote-page .super h1').html("Thanks for voting! ");
 			$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Follow our investigations via <a target='blank' href='http://facebook.com/http://www.facebook.com/curiouscityproject' >Facebook</a> and <a target='blank' href='https://twitter.com/#!/WBEZCuriousCity'>Twitter</a>. Here’s how the votes are stacking up so far:<br>");
 			

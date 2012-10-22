@@ -8,13 +8,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Curious City</title>
 	<meta name="description" content="">
- <meta property="og:title" content="Curious City"/>
-    <meta property="og:type" content="movie"/>
-    <meta property="og:url" content="http://curiouscity.wbez.org/"/>
-   
-	    <meta property="og:image" content="http://curiouscity.wbez.org/images/about.png"/>
-    <meta property="og:image" content="http://curiouscity.wbez.org/images/cc-logo-fb-2.png"/>
-    <meta property="og:site_name" content="Curious City"/>
+	<meta property="og:title" content="Curious City"/>
+	<meta property="og:type" content="movie"/>
+	<meta property="og:url" content="http://curiouscity.wbez.org/"/>
+
+	<meta property="og:image" content="http://curiouscity.wbez.org/images/about.png"/>
+	<meta property="og:image" content="http://curiouscity.wbez.org/images/cc-logo-fb-2.png"/>
+	<meta property="og:site_name" content="Curious City"/>
 	<meta name="viewport" content="width=device-width">
 	<!-- Application styles -->
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -22,79 +22,55 @@
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<script src="js/lib/modernizr-2.5.3.min.js"></script>
 
-<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-369047-1']);
-			 _gaq.push(['_setDomainName', '.wbez.org']); 
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-369047-1']);
+		_gaq.push(['_setDomainName', '.wbez.org']); 
 
-			_gaq.push(['_trackPageview']);
+		_gaq.push(['_trackPageview']);
 
-			(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-			})();
-</script>
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+		})();
+	</script>
 	
 	<!--
 	script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 	<script type="text/javascript">stLight.options({publisher: "c09036ef-5691-4751-b69d-288d40fa03f7"}); </script>
 	-->
 	
-		<script type="text/javascript">
+	<script type="text/javascript">
+		
+	
+
 		
 		<?php
-		
-		if(isset($_COOKIE['CURIOUS_CITY_VOTE'])){
-			$yourvote=$_COOKIE['CURIOUS_CITY_VOTE'];
-		}
-		else{
-			$yourvote=-1;
-		}
-			
+			$handle = @fopen("js/data/questions.js", "r");
+			if ($handle) {
+				while (($buffer = fgets($handle, 4096)) !== false) {
+					echo $buffer;
+				}
+				fclose($handle);
+			}
 		?>
 		
 		
-			var firstTime = <?php
-		
-				if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "false";
-				else {
-					echo "true";
+		<?php
+			$handle = @fopen("js/data/archive.js", "r");
+			if ($handle) {
+				while (($buffer = fgets($handle, 4096)) !== false) {
+					echo $buffer;
 				}
-			?> ;
-
-	var cookie={
-		yourvote: <?php echo $yourvote ?>,
-	};
-	
-	
-	<?php
-		$handle = @fopen("js/data/questions.js", "r");
-		if ($handle) {
-			while (($buffer = fgets($handle, 4096)) !== false) {
-				echo $buffer;
+				fclose($handle);
 			}
-			fclose($handle);
-		}
-	?>
-	
-	
-	<?php
-		$handle = @fopen("js/data/archive.js", "r");
-		if ($handle) {
-			while (($buffer = fgets($handle, 4096)) !== false) {
-				echo $buffer;
-			}
-			fclose($handle);
-		}
-	?>
-	
-	
-	var vote = -1;
-	
-	
+		?>
+		var vote = -1;
 
-	
+
+
+
 	</script>
 	
 </head>

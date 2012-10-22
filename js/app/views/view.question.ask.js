@@ -19,7 +19,10 @@
 			this.model.on('error', this.validationError, this);
 			
 			_.extend(this,options);
-			var blanks = {};
+			var blanks = {
+				ask:ask
+			};
+			console.log(window.ask)
 			this.step = 1;
 			$(this.el).append( _.template( this.getTemplate(), blanks ) );
 		},
@@ -213,7 +216,7 @@
 				"<div class='span8'>"+
 					"<div class='question-form-wrapper'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							"<div class='control-group'><textarea class='submit-question-text span8'></textarea></div>"+
+							"<div class='control-group'><textarea class='submit-question-text span8'><%=ask%></textarea></div>"+
 							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?</label><input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name</label><input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Select Anonymous\", \"\"]);' > <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+

@@ -17,6 +17,9 @@
 	<script src="js/lib/modernizr-2.5.3.min.js"></script>
 
 <script type="text/javascript">
+			if (!window.console) console = {log: function() {}};
+
+
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-369047-1']);
 			//_gaq.push(['_trackPageview']);

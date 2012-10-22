@@ -47,7 +47,7 @@ jQuery(function($)
 		}
 	}
 	
-	if(_.isInteger(getCookie('CURIOUS_CITY_VOTE'))){
+	if(_.isNumber(getCookie('CURIOUS_CITY_VOTE'))){
 		Curiouscity.vote=getCookie('CURIOUS_CITY_VOTE');
 
 	}

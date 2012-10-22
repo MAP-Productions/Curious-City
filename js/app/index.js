@@ -47,12 +47,12 @@ jQuery(function($)
 		}
 	}
 	
-	if(_.isNumber(getCookie('CURIOUS_CITY_VOTE'))){
+	if(!_.isUndefined(getCookie('CURIOUS_CITY_VOTE'))){
 		Curiouscity.vote=getCookie('CURIOUS_CITY_VOTE');
-
+		console.log('PreviousVote',getCookie('CURIOUS_CITY_VOTE'));
 	}
 	else{
-		console.log('PreviousVote',getCookie('CURIOUS_CITY_VOTE'));
+		
 		Curiouscity.vote=-1;
 	}
 	if(_.isUndefined(getCookie('CURIOUS_CITY'))){

@@ -22,7 +22,7 @@ jQuery(function($)
 		}
 	}
 	
-	if(_.isNumber(getCookie('CURIOUS_CITY_VOTE'))){
+	if(!_.isUndefined(getCookie('CURIOUS_CITY_VOTE'))){
 		Curiouscity.vote=getCookie('CURIOUS_CITY_VOTE');
 
 	}
@@ -32,9 +32,7 @@ jQuery(function($)
 	if(_.isUndefined(getCookie('CURIOUS_CITY'))){
 		_.delay(function(){ $('#how-it-works-expander').trigger('click');},1000);
 		setCookie('CURIOUS_CITY',1,365);
-	}else{
-		console.log ("MAlready Visited",getCookie('CURIOUS_CITY'));
-	} 
+	}
 	Curiouscity.init();
 	
 });

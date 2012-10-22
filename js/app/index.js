@@ -49,7 +49,6 @@ jQuery(function($)
 	
 	if(!_.isUndefined(getCookie('CURIOUS_CITY_VOTE'))){
 		Curiouscity.vote=getCookie('CURIOUS_CITY_VOTE');
-		console.log('PreviousVote',getCookie('CURIOUS_CITY_VOTE'));
 	}
 	else{
 		

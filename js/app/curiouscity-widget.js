@@ -47,8 +47,9 @@ app: _.extend({
 					}
 				});
 				
-			if(_.isUndefined(this.questionsCollection.get(questionData.yourvote))) {
+			if(_.isUndefined(this.questionsCollection.get(this.vote))) {
 			
+			console.log(this.questionsCollection,this.vote)
 			
 			this.questionsCollection.canvote=true;
 			this.questionsCollection.current=questionData.current;

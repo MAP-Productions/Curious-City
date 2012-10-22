@@ -185,6 +185,7 @@ this.curiouscity = {
 					}
 				});
 				
+				console.log('Checking the following vote:',this.vote,this);
 				if(_.isUndefined(this.questionsCollection.get(this.vote))) this.questionsCollection.canvote=true;
 				else this.questionsCollection.canvote=false;
 				

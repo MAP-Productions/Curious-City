@@ -1,0 +1,10 @@
+#cc-nav ul li a,
+#how-it-works ul li,
+.vote,
+.arrow,
+[class^="badge-"],
+[class^="number-"],
+[class^="social-"], [class*=" social-"] {
+	display: inline;
+	zoom: 1;
+}

@@ -20,8 +20,17 @@ this.curiouscity = {
 	app: _.extend({
 		
 		init : function(){
+			/*roman: 
+			wasn't sure where to put this...
+			works here but clearly not where it's supposed to be.
+			please move to appropriate spot*/
+			$('input, textarea').placeholder();
+
 			this.archive = new Array();
-			this.loadDisqus();
+			/*roman: 
+			since disqus was scratched i either commended it out or, perhaps, deleted its lines altogether. 
+			please check history to find out...*/
+			/*this.loadDisqus();*/
 			
 			var Questions = curiouscity.module("questions");
 			this.popularArchive = new Questions.Collection(questionData.archive,{
@@ -106,8 +115,6 @@ this.curiouscity = {
 		},
 		
 		loadPage : function(page,options){
-		
-			
 			$('.focus').hide();
 			$('.focus').removeClass('focus');
 			$('#'+page+'-page').addClass('focus').show();
@@ -116,7 +123,7 @@ this.curiouscity = {
 			{
 				case 'vote':
 					$('#nav-vote').addClass('nav-focus');
-					$('#discussion-headline').html("What people are saying about this round:");
+					$('#discussion-headline').html("What people are saying this round:");
 					this.showDiscussion();
 					this.loadVoteQuestions();
 					break;
@@ -173,7 +180,7 @@ this.curiouscity = {
 		loadVoteQuestions : function(){
 			this.router.navigate("!/vote/current");
 			this.questionID=-1;
-			$('#discussion-headline').html("What people are saying about this round:");
+			$('#discussion-headline').html("What people are saying this round:");
 			$('.focus').hide().removeClass('focus');
 			$('#vote-page').addClass('focus').show();
 			$('#discussion').show();
@@ -198,13 +205,6 @@ this.curiouscity = {
 				this.questionsCollection.previousWinner=questionData.previousWinner;
 	
 	
-					
-						DISQUS.reset({
-							reload: true,
-							config: function () {  
-								this.page.identifier = _this.questionsCollection.current.title;
-							}
-						});
 						
 	
 						this.displayVoteQuestions();
@@ -224,14 +224,6 @@ this.curiouscity = {
 				
 				
 				
-			}
-			else{
-				DISQUS.reset({
-					reload: true,
-					config: function () {  
-						this.page.identifier = _this.questionsCollection.votingperiod;
-					}
-				});					
 			}
 		},
 		
@@ -282,7 +274,7 @@ this.curiouscity = {
 			$('#previous-winner-question').empty();
 			$('#previous-questions').empty();
 			
-			$('#discussion-headline').html("What people are saying about this round:");
+			$('#discussion-headline').html("What people are saying this round:");
 			$('.focus').hide().removeClass('focus');
 			$('#previous-vote-page').addClass('focus').show();
 			$('#discussion').show();
@@ -444,7 +436,7 @@ this.curiouscity = {
 		
 		/****** DISQUS *********/
 		
-		loadDisqus : function(){
+		/*loadDisqus : function(){
 			$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
 			$('#disqus-sort-popular').click(function(){ 
 				$('#disqus-sort-newest').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
@@ -456,7 +448,7 @@ this.curiouscity = {
 				$('#disqus-sort-newest').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
 				DISQUS.dtpl.actions.fire('thread.sort', 'newest');
 			});
-		},
+		},*/
 		
 		
 		

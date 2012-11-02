@@ -19,6 +19,7 @@
 	<!-- Application styles -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/curiouscity.css">
+	<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css"><![endif]-->
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<script src="js/lib/modernizr-2.5.3.min.js"></script>
 
@@ -46,9 +47,7 @@
 	-->
 	
 	<script type="text/javascript">
-		
 	
-
 		
 		<?php
 			$handle = @fopen("js/data/questions.js", "r");
@@ -85,12 +84,21 @@
 	
 	<div id="wbez-header">
 		<div class="container">
-			<div class="header-logo pull-left"><a onClick='_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on WBEZ logo\", \"\"]);' href="http://wbez.org" target="blank"><img src="images/wbez.png" alt="WBEZ91.5" height="20px"/></a></div>
+			<div class="header-logo pull-left">
+				<a onClick='_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on WBEZ logo\", \"\"]);' href="http://wbez.org" target="blank">
+					<img src="images/wbez.png" alt="WBEZ91.5" height="20px"/>
+				</a>
+			</div>
 			<div class="social pull-right">
-				<a href='#!/about/faq' style='margin-right:10px; font-weight:bold'>FAQ</a>
-				<div class="header-icon-social"><span class='st_facebook' displayText='Facebook'></span></div>
-				<div class="header-icon-social" ><a href="https://twitter.com/wbezcuriouscity" target="_blank"><img class='twitter-icon' src="images/twitter_16.png"/></a></div>
-				<a class="header-email-link" href="mailto:curiouscity@wbez.org" onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Mail curiouscity@wbez.org\", \"\"]);" target="blank"><i class="icon-envelope icon-white"></i> curiouscity@wbez.org</a>
+				<div class="header-icon-social">
+					<a href="https://twitter.com/wbezcuriouscity" target="_blank"><img class='twitter-icon' src="images/twitter_16.png"/></a>
+					<a href="http://www.wbez.org/programs/afternoon-shift" target="_blank"><img class='radio-icon' src="images/icon_radio.png"/></a>
+					<a href="#" target="_blank"><img class='rss-icon' src="images/icon_rss.png"/></a>
+				</div>
+				<a href="#!/about" id='how-it-works-expander' onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on \'How it Works\' ', '']);">How it Works</a> | 
+				<a href="#!/about" id='nav-about'>About</a> | 
+				<a href='#!/about/faq'>FAQ</a> | 
+				<a href="mailto:curiouscity@wbez.org" onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Mail curiouscity@wbez.org\", \"\"]);" target="blank"><img class='email-icon' src="images/icon_email.png"/></a>
 			</div>
 		</div>
 	</div>
@@ -102,13 +110,47 @@
 			<div id="cc-nav">
 				<div class="row">
 					<div class="span12">
-						<a href="http://curiouscity.wbez.org"class='pull-left' ><img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="310px"/></a>
+						<a href="http://curiouscity.wbez.org" class='cs-logo pull-left' >
+							<img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="310px" />
+						</a>
+						
+						<div class="question-form">	
+							<div class="control-group">
+								<div class="submit-wrap">
+									<div class="carrot"></div>
+									<textarea class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region, or the people who live here?"></textarea>
+									<div class="clear"></div>
+									<a href="#!/ask" class="btn submit-next btn-primary">Submit</a>
+								</div>
+							</div>	
+						</div>
 						<ul class='pull-right cc-nav'>
-							<li><a href="#!/vote" id='nav-vote'>vote</a></li>
-							<li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li>
-							<li><a href="#!/investigations" id='nav-investigations'>investigations</a></li>
-							<li><a href="#!/archive/recent" id='nav-archive'>question<br />archive</a></li>
-							<li><a href="#!/about" id='nav-about'>about</a></li>
+							<li><a href="#!/vote" id='nav-vote'>Up for Voting</a></li>
+							<!--li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li-->
+							<li><a href="#!/investigations" id='nav-investigations'><span class="arrow down grey"></span> Answered &amp; Investigating</a>
+								<ul>
+									<li class="carrot"></li>
+									<li><a href="#!/vote/how-we-live">How We Live</a></li>
+									<li><a href="#!/vote/history">History</a></li>
+									<li><a href="#!/vote/environment">Environment</a></li>
+									<li><a href="#!/vote/money">Money</a></li>
+									<li><a href="#!/vote/governance">Governance</a></li>
+									<li><a href="#!/vote/urban-planning">Urban Planning</a></li>
+									<li><a href="#!/vote/whats-it-like">What's it Like to...</a></li>
+								</ul>
+							</li>
+							<li><a href="#!/archive/recent" id='nav-archive'><span class="arrow down grey"></span> New and Unanswered</a>
+								<ul>
+									<li class="carrot"></li>
+									<li><a href="#!/vote/how-we-live">How We Live</a></li>
+									<li><a href="#!/vote/history">History</a></li>
+									<li><a href="#!/vote/environment">Environment</a></li>
+									<li><a href="#!/vote/money">Money</a></li>
+									<li><a href="#!/vote/governance">Governance</a></li>
+									<li><a href="#!/vote/urban-planning">Urban Planning</a></li>
+									<li><a href="#!/vote/whats-it-like">What's it Like to...</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -138,8 +180,6 @@
 					</li>
 				</ul>
 			</div>
-			<div id="how-it-works-expander" class="clearfix"><a onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on \'How it Works\' ', '']);" href="#" class="pull-left cc-nav">how it works <i class="arrow down"></i></a></div>
-
 		
 		</header>
 		
@@ -149,19 +189,20 @@
 				<div id="flash">
 					<div class="row">
 						<div class="span4">
-							
+							<div class="side-link">
+								<a href="#!/previous/od0"><span class="arrow left grey"></span> Previous Voting Round</a>
+							</div>
+							<?php /*
 							<div id="previous-winner">
 								<h2></h2>
 								<h5></h5>
 							</div>
 							
-							
-							<!--
 							<br><br><br>
 							<div id="voting-date" class="clearfix">
 									<a href="#"><i class="arrow left"></i> Voting for May 04 - May 11 / 2012</a>
 							</div>
-							-->
+							*/ ?>
 						</div>
 						<div class="span8 right-col">
 							<div class="super">
@@ -234,6 +275,7 @@
 							<h5>Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target="blank">The Afternoon Shift</a> on <a href="http://www.wbez.org" target="blank">WBEZ 91.5</a><br />
 							to hear updates and find out final results.</h5>
 						</div>
+						<?php /*
 						<div class="span8 right-col">
 							<div class="super">
 								<h1>What do you wonder about Chicago, the region, or the people who live here?</h1>
@@ -244,6 +286,7 @@
 								</span>
 							</div>
 						</div>
+						*/ ?>
 					</div>
 				</div>
 				<div id="ask-form"></div>
@@ -259,7 +302,7 @@
 				<div id="archive-flash">
 					<div class="row">
 						<div class="span4 left-col">
-							
+							<?php /*
 							<ul class='unstyled archive-key'>
 
 								<li><a href='#' data-filter='current'><i class='badge-current'></i></br> in a voting round</a></li>
@@ -267,27 +310,29 @@
 								<li><a href='#' data-filter='answered'><i class='badge-answered'></i></br> sufficiently answered</a></li>
 
 							</ul>
-							
+							*/ ?>
 						</div>
-						<div class="span8 right-col">
-							<div class="super">
-								<h1>See what people are curious about:</h1>
-							</div>
-							<div class="sub">
-								<h5>Check out what others are asking and add to the conversation! Maybe you even know answers to some of these questions? WBEZ’s Curious City selects questions for voting rounds from this archive. Winning questions are investigated by WBEZ reporters in real-time via Facebook and Twitter and broadcast Wednesdays on The Afternoon Shift with Steve Edwards. If you asked a question and don’t see it posted here, we’re processing it or it violated a guideline of our site. <i>WBEZ reserves the right to edit questions that go for voting for clarity and brevity.</i></h5>
-							</div>
 							
-							<div class="archive-search">
-								<ul class="unstyled horizontal">
-									<li><a href="#!/archive/popular">Popular</a></li>
-									<li><a href="#!/archive/recent">Most Recent</a></li>
-									<!--<li><a href="#!/vote">Up for Voting</a></li>-->
-									<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
-								
-								</ul>
-							</div>
-							
+						<div class="archive-search">
+							<ul class="unstyled horizontal left">
+								<li><a href="#!/archive/recent">Recently Updated</a></li>
+								<li><a href="#!/archive/popular">Most Popular</a></li>
+								<li><a href="#!/vote" class="thumb-mini">Up for Voting</a></li>
+								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
+							</ul>
+							<ul class="unstyled horizontal right">
+								<li><a href="#!/vote/how-we-live">How We Live</a></li>
+								<li><a href="#!/vote/history">History</a></li>
+								<li><a href="#!/vote/environment">Environment</a></li>
+								<li><a href="#!/vote/money">Money</a></li>
+								<li><a href="#!/vote/governance">Governance</a></li>
+								<li><a href="#!/vote/urban-planning">Urban Planning</a></li>
+								<li><a href="#!/vote/whats-it-like">What's it Like to...</a></li>
+								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
+							</ul>
+							<div class="clear"></div>
 						</div>
+							
 					</div>
 				</div>
 				<div id="archive-questions"></div>
@@ -423,67 +468,50 @@
 			<div >
 				<div class="row">
 					<div class="span4">
-						<h2 class="twitter-headline">Twitter Updates</h2>
-							<div class='twitter-wrapper'>
-	
-									<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-									<script>
-									new TWTR.Widget({
-									  version: 2,
-									  type: 'search',
-									  search: 'WBEZCuriousCity',
-									  interval: 30000,
-									  title: '',
-									  subject: '',
-									  width: 'auto',
-									  height: 300,
-									  theme: {
-										shell: {
-										  background: '#ffffff',
-										  color: '#ffffff'
-										},
-										tweets: {
-										  background: '#ffffff',
-										  color: '#000000',
-										  links: '#08C;'
-										}
-									  },
-									  features: {
-										scrollbar: false,
-										loop: true,
-										live: true,
-										behavior: 'default'
-									  }
-									}).render().start();
-									</script>
-								</div>
+						<div class="side-link">
+							<a href="#!/investigations"><span class="arrow left grey"></span> Current Investigations</a>
+						</div>
+						<img src="images/filler.jpg" alt="" />
+						<?php /*
+						*/ ?>
 					</div>
 					<div class="span8">
-						<h2 id="discussion-headline"></h2>
-							<div id="disqus-controls">
-								<div class="disqus-sort-tab disqus-sort-selected" id="disqus-sort-popular"><a>Popular</a></div>
-  								<div class="disqus-sort-tab disqus-sort-unselected" id="disqus-sort-newest"><a >Most Recent</a></div>
-  								<div class="disqus-guidelines" id="disqus-guidelines"><a data-toggle="modal" href="#guidelines-modal" >Guidelines</a></div>
-  								<button id="disqus-add-comment" class="btn">Add a comment</button>
-  							</div>
-		
-<!-- DISQUS -->
+	
+						<h2>What People are saying this round:</h2>
+						<div class='twitter-wrapper'>
 
-				<div id="disqus_thread"></div>
-				<script type="text/javascript">
-					/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-					var disqus_shortname = 'curiouscity'; // required: replace example with your forum shortname
-					var disqus_developer = 1;
-					/* * * DON'T EDIT BELOW THIS LINE * * */
-					(function() {
-						var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-						dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-						(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-					})();
-				</script>
-				
-<!-- END DISQUS -->
-				
+							<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+							<script>
+							new TWTR.Widget({
+							  version: 2,
+							  type: 'search',
+							  search: 'WBEZCuriousCity',
+							  interval: 30000,
+							  title: '',
+							  subject: '',
+							  width: 'auto',
+							  height: 300,
+							  theme: {
+								shell: {
+								  background: '#ffffff',
+								  color: '#ffffff'
+								},
+								tweets: {
+								  background: '#ffffff',
+								  color: '#000000',
+								  links: '#08C;'
+								}
+							  },
+							  features: {
+								scrollbar: false,
+								loop: true,
+								live: true,
+								hashtags: false,
+								behavior: 'default'
+							  }
+							}).render().start();
+							</script>
+						</div>
 					</div>
 				</div>
 				
@@ -588,6 +616,6 @@
 
 	<!-- Production 
  	<script data-main="js_min/index.js" src="js/lib/require.js"></script>  -->
-	
+
 </body>
 </html>

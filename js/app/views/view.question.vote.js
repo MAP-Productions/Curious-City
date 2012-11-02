@@ -96,10 +96,11 @@
 			//console.log('you have not voted template');
 				html +=
 				"<div class='row' data-id='"+ this.model.id +"' data-rank='<%= rank %>'>"+
-					"<div class='span4 question-image' style='background-image:url(<%= imageurl %>)'></div>"+
+					"<div class='span4 question-image'><img src='<%= imageurl %>' alt='question image'/></div>"+
 					"<a href='#' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Vote\", \"\"]);' ><i class='vote'></i></a>"+
 					"<div class='span8 question-text'>"+
 						"<h2><%= question %></h2>"+
+						"<p>Asked by Justin Bieber</p>"+
 					"</div>"+
 				"</div>";
 			}
@@ -108,7 +109,7 @@
 			//console.log('you HAVE voted template');
 				html +=
 				"<div class='row'>"+
-					"<div class='span4 question-image' style='background-image:url(<%= imageurl %>)'>"+
+					"<div class='span4 question-image'><img src='<%= imageurl %>' alt='question image'/>"+
 						"<div class='rank-corner'></div>"+
 						"<h2 class='rank-number'><%= rank_string %></h2>"+
 					"</div>";

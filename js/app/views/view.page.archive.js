@@ -55,7 +55,7 @@
 			var html =
 		
 				"<div class='row'>"+
-					"<div class='span4 question-image' style='background-image:url(<%= imageurl %>)'>"+
+					"<div class='span4 question-image'><img src='<%= imageurl %>' alt='question image'/>"+
 					"</div>"+
 					"<div class='span7 question-text'>"+
 						"<h2><a class='question-link' href='#'><%= question %></a></h2>"+

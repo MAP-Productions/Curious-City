@@ -19,6 +19,7 @@ require([
 	'order!../lib/jquery-ui.min',	
 	'order!../lib/quicksand',	
 	'order!../lib/bootstrap',
+	'order!../lib/jquery.placeholder.min',
 	
 	//core
 	'order!../app/curiouscity',

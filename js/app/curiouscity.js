@@ -396,13 +396,13 @@ this.curiouscity = {
 			this.questionID=questionID;
 			var _this = this;
 			
-			DISQUS.reset({
+			/*DISQUS.reset({
 				reload: true,
 				config: function () {  
 				this.page.identifier = "question-"+questionID;  
 				this.page.url = "http://example.com/#!/question/"+questionID;
 				}
-			});
+			});*/
 			window.scroll(0,0); 
 			$('#discussion').fadeIn();
 			$('#discussion-headline').html("What are people saying about this question");
@@ -452,13 +452,13 @@ this.curiouscity = {
 		
 		
 		
-		disqusCommentInserted: function(){
+		/*disqusCommentInserted: function(){
 			if(this.questionID!=-1) $.post('php/comment.php?new=true&questionid='+this.questionID, function(data){}); 
 		},
 		
 		disqusCommentDeleted: function(){
 			if(this.questionID!=-1)$.post('php/vote.php?questionid='+this.questionID, function(data){});
-		},
+		},*/
 		
 		}, Backbone.Events)
 

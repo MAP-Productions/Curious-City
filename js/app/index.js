@@ -2,7 +2,7 @@ jQuery(function($)
 {
 	
 	// Shorthand the application namespace
-	var Curiouscity	 = curiouscity.app;
+	var Curiouscity = curiouscity.app;
 	
 	
 	
@@ -13,11 +13,10 @@ jQuery(function($)
 		if( $('#how-it-works').hasClass('open') ) $('#how-it-works').show('blind',{direction:'vertical'},500);
 		else $('#how-it-works').hide('blind',{direction:'vertical'},500);
 		return false;
-	})
+	});
 	
 	
 	$('.archive-key a').click(function(){
-		console.log( $(this).data('filter') )
 		var filter = $(this).data('filter');
 		
 		$('#archive-questions').find('.question:not(.question-status-'+filter+')').hide();
@@ -25,13 +24,13 @@ jQuery(function($)
 		
 		
 		return false;
-	})
+	});
 	
 	function setCookie(c_name,value,exdays)
 	{
 		var exdate=new Date();
 		exdate.setDate(exdate.getDate() + exdays);
-		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		var c_value=escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
 		document.cookie=c_name + "=" + c_value;
 	}
 	function getCookie(c_name)

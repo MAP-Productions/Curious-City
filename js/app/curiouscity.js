@@ -7,7 +7,7 @@ this.curiouscity = {
 		var modules = {};
 
 		// Create a new module reference scaffold or load an existing module.
-		return function(name) 
+		return function(name)
 		{
 			// If this module has already been created, return it.
 			if (modules[name]) return modules[name];
@@ -20,28 +20,31 @@ this.curiouscity = {
 	app: _.extend({
 		
 		init : function(){
-			/*roman: 
-			wasn't sure where to put this...
-			works here but clearly not where it's supposed to be.
-			please move to appropriate spot*/
+			// roman:
+			// wasn't sure where to put this...
+			// works here but clearly not where it's supposed to be.
+			// please move to appropriate spot
+
 			$('input, textarea').placeholder();
 
-			this.archive = new Array();
-			/*roman: 
-			since disqus was scratched i either commended it out or, perhaps, deleted its lines altogether. 
-			please check history to find out...*/
+			// this.archive = new Array();
+			// roman:
+			// since disqus was scratched i either commended it out or, perhaps, deleted its lines altogether.
+			// please check history to find out...
+			
+
 			/*this.loadDisqus();*/
 			
 			var Questions = curiouscity.module("questions");
 			this.popularArchive = new Questions.Collection(questionData.archive,{
 				comparator : function(question){
-					return 100-question.get('comments')
+					return 100-question.get('comments');
 				}
 			});
 			
 			this.recentArchive = new Questions.Collection(questionData.archive,{
 				comparator : function(question){
-					return 100-question.get('dateuploaded')
+					return 100-question.get('dateuploaded');
 				}
 			});
 			
@@ -66,12 +69,12 @@ this.curiouscity = {
 				
 				initialize: function() {
 					return this.bind('all', this._trackPageview);
-				  },
-				  _trackPageview: function() {
+				},
+				_trackPageview: function() {
 					var url;
 					url = Backbone.history.getFragment();
 					return _gaq.push(['_trackPageview', "/" + url]);
-				  },
+				},
 				
 				loadMain: function()
 				{
@@ -80,33 +83,33 @@ this.curiouscity = {
 					this.goToVoting();
 				},
 				loadAskPage : function(ask){_this.loadPage('ask',ask);},
-				loadPage : function(page){_this.loadPage(page) },
+				loadPage : function(page){_this.loadPage(page);},
 				loadPageLocation : function(hash)
 				{
 					var r = this;
 					_this.loadPage('about');
 					window.location.hash=hash;
-					_.delay( function(){r.navigate('!/about/faq')}, 1000);
+					_.delay( function(){r.navigate('!/about/faq');}, 1000);
 				},
 				goToArchiveQuestion : function(questionID)
 				{
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
-					_this.loadSingleQuestion(questionID)
+					_this.loadSingleQuestion(questionID);
 				},
 				goToArchive : function(order)
 				{
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
-					_this.loadArchiveQuestions(order)
+					_this.loadArchiveQuestions(order);
 				},
 				goToVoting : function()
 				{
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-vote').addClass('nav-focus');
-					_this.loadVoteQuestions()
+					_this.loadVoteQuestions();
 				},
-				goToPrevious : function(id){ _this.loadPrevious(id) }
+				goToPrevious : function(id){ _this.loadPrevious(id); }
 			
 			});
 	
@@ -168,8 +171,8 @@ this.curiouscity = {
 			{
 				$('#investigate-list').spin();
 				var Inv = curiouscity.module('investigation');
-				this.investigations = new Inv.Collection();
-				
+				this.investigations = new Inv.Collection(investigationData.questions);
+				this.investigations.renderCollection();
 			}
 		},
 	
@@ -190,7 +193,7 @@ this.curiouscity = {
 				var Questions = curiouscity.module("questions");
 				this.questionsCollection = new Questions.Collection(questionData.questions,{
 					comparator : function(question){
-						return question.get('rank')
+						return question.get('rank');
 					}
 				});
 				
@@ -208,7 +211,7 @@ this.curiouscity = {
 						
 	
 						this.displayVoteQuestions();
-						if(this.questionsCollection.canvote==0){
+						if(this.questionsCollection.canvote===0){
 							$('#vote-page .super h1').html("Thanks for voting! ");
 							$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Follow our investigations via <a target='blank' href='http://facebook.com/curiouscityproject' >Facebook</a> and <a target='blank' href='https://twitter.com/#!/WBEZCuriousCity'>Twitter</a>. Here’s how the votes are stacking up so far:<br>");
 						}
@@ -232,7 +235,7 @@ this.curiouscity = {
 			var Questions = curiouscity.module("questions");
 			if( this.questionsCollection.canvote )
 			{
-				console.log('--you can vote! :)')
+				console.log('--you can vote! :)');
 				_.each( _.shuffle( _.toArray( this.questionsCollection ) ),function(question){
 					
 					var questionView = new Questions.Views.Vote({model:question,voted:false, attributes:{'data-id':question.id,'data-rank':question.get('rank')}});
@@ -267,8 +270,8 @@ this.curiouscity = {
 	
 		/********** PREVIOUS VOTE PAGE ***********/
 		
-		loadPrevious : function(id){	
-			this.router.navigate("!/previous/"+id);	
+		loadPrevious : function(id){
+			this.router.navigate("!/previous/"+id);
 			this.questionID=-1;
 			var _this=this;
 			$('#previous-winner-question').empty();
@@ -283,7 +286,7 @@ this.curiouscity = {
 			var Questions = curiouscity.module("questions");
 			this.previousCollection = new Questions.Collection({votingperiod:id},{
 				comparator : function(question){
-					return question.get('rank')
+					return question.get('rank');
 				}
 			});
 			
@@ -295,7 +298,7 @@ this.curiouscity = {
 				
 					DISQUS.reset({
 						reload: true,
-						config: function () {  
+						config: function () {
 							this.page.identifier = _this.previousCollection.votingperiod;
 						}
 					});
@@ -325,8 +328,8 @@ this.curiouscity = {
 				$('#previous-period-title').html("Week of "+this.previousCollection.current.title);
 				
 				$('#voting-date-next').html("Voting for "+this.previousCollection.next.title+" <i class='arrow right'></i>"  ).unbind().click(function(){
-					 if(_this.previousCollection.next.id=='current') _this.loadVoteQuestions();
-					 else _this.loadPrevious(_this.previousCollection.next.id);
+					if(_this.previousCollection.next.id=='current') _this.loadVoteQuestions();
+					else _this.loadPrevious(_this.previousCollection.next.id);
 					return false;
 				});
 				
@@ -395,15 +398,7 @@ this.curiouscity = {
 		
 			this.questionID=questionID;
 			var _this = this;
-			
-			/*DISQUS.reset({
-				reload: true,
-				config: function () {  
-				this.page.identifier = "question-"+questionID;  
-				this.page.url = "http://example.com/#!/question/"+questionID;
-				}
-			});*/
-			window.scroll(0,0); 
+			window.scroll(0,0);
 			$('#discussion').fadeIn();
 			$('#discussion-headline').html("What are people saying about this question");
 			
@@ -429,21 +424,21 @@ this.curiouscity = {
 		displaySingleQuestion : function( model ){
 			$('#question-page').spin(false);
 			var Questions = curiouscity.module("questions");
-			var questionView = new Questions.Views.Single({model:model})
-			$('#question-page').html(questionView.render().el)
-		},
+			var questionView = new Questions.Views.Single({model:model});
+			$('#question-page').html(questionView.render().el);
+		}
 		
 		
 		/****** DISQUS *********/
 		
 		/*loadDisqus : function(){
 			$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
-			$('#disqus-sort-popular').click(function(){ 
+			$('#disqus-sort-popular').click(function(){
 				$('#disqus-sort-newest').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
 				$('#disqus-sort-popular').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');;
 				DISQUS.dtpl.actions.fire('thread.sort', 'best');
 			});
-			$('#disqus-sort-newest').click(function(){ 
+			$('#disqus-sort-newest').click(function(){
 				$('#disqus-sort-popular').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
 				$('#disqus-sort-newest').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
 				DISQUS.dtpl.actions.fire('thread.sort', 'newest');
@@ -453,7 +448,7 @@ this.curiouscity = {
 		
 		
 		/*disqusCommentInserted: function(){
-			if(this.questionID!=-1) $.post('php/comment.php?new=true&questionid='+this.questionID, function(data){}); 
+			if(this.questionID!=-1) $.post('php/comment.php?new=true&questionid='+this.questionID, function(data){});
 		},
 		
 		disqusCommentDeleted: function(){

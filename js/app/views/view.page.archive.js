@@ -19,7 +19,7 @@
 			
 			if(this.model.get('imageattribution')) $($(this.el).find('.question-image')[0]).append("<span class='image-credits' ><a target='blank' href='"+this.model.get('imageattribution')+"'>"+this.model.get('imageusername')+"</a></span>");
 		
-			if(this.model.get('badge') != '')
+			if(this.model.get('badge') !== '')
 			{
 				$(this.el).addClass( 'question-status-'+this.model.get('badge') );
 				$(this.el).find('.badge-column').html('<i class="badge-'+ this.model.get('badge')+'"></i>');

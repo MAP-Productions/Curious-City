@@ -17,7 +17,6 @@
 			_.extend(this,this.options);
 			
 			if(this.voted) this.events={};
-			//console.log(this.voted_this);
 		},
 
 		render : function( )
@@ -77,11 +76,11 @@
 			
 			//sort divs
 			var newOrder = $('#questions>div').clone();
-			newOrder = _.sortBy( newOrder, function(div){ return $(div).data('rank') })
+			newOrder = _.sortBy( newOrder, function(div){ return $(div).data('rank'); });
 			//console.log(newOrder);
 			
 			$('#questions').quicksand( newOrder, function(){
-				curiouscity.app.questionsCollection.trigger('sorted')
+				curiouscity.app.questionsCollection.trigger('sorted');
 			});
 			
 			return false;

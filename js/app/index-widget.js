@@ -1,12 +1,12 @@
 jQuery(function($)
 {
 	// Shorthand the application namespace
-	var Curiouscity	 = curiouscity.app;
+	var Curiouscity	= curiouscity.app;
 	function setCookie(c_name,value,exdays)
 	{
 		var exdate=new Date();
 		exdate.setDate(exdate.getDate() + exdays);
-		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		var c_value=escape(value) + ((exdays===null) ? "" : "; expires="+exdate.toUTCString());
 		document.cookie=c_name + "=" + c_value;
 	}
 	function getCookie(c_name)

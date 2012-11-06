@@ -9,11 +9,10 @@
 	
 		render : function()
 		{
-			var utc = parseInt(this.model.get('dateuploaded')) *1000;
+			var utc = parseInt(this.model.get('dateuploaded'),10) *1000;
 			var date = new Date( utc );
-			console.log(this.model.get('dateuploaded'),date)
 			 
-			$(this.el).append( _.template(this.getTemplate(), _.extend(this.model.attributes,{date:date.toLocaleDateString() }) ) )
+			$(this.el).append( _.template(this.getTemplate(), _.extend(this.model.attributes,{date:date.toLocaleDateString() }) ) );
 			return this;
 		},
 		
@@ -30,19 +29,16 @@
 		
 		getTemplate : function()
 		{
-			html = 
-			
-				'<div class="investigation-question"><h4><a href="#"><%= question %></a></h4></div>'+
-				'<div class="investigation-image" style="background-image:url(<%= imageurl %>)">'+
-					'<div class="investigation-overlay">'+
-						'<div class="pull-right investigation-comments"><%= updatecount %> updates</div>'+
-						'<div class="investigation-info-left">'+
-							'<div class="">Asked by: <%= name %> / Reporting with: <%= reporter %></div>'+
-							'<div class=""><%= date %></div>'+
-						'</div>'
-					'</div>'+
-				'</div>';
-			
+			html = '<div class="investigation-question"><h4><a href="#"><%= question %></a></h4></div>'+
+					'<div class="investigation-image" style="background-image:url(<%= imageurl %>)">'+
+						'<div class="investigation-overlay">'+
+							'<div class="pull-right investigation-comments"><%= updatecount %> updates</div>'+
+							'<div class="investigation-info-left">'+
+								'<div class="">Asked by: <%= name %> / Reporting with: <%= reporter %></div>'+
+								'<div class=""><%= date %></div>'+
+							'</div>'+
+						'</div>'+
+					'</div>';
 			return html;
 		}
 	

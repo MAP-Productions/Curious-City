@@ -10,7 +10,7 @@
 		
 		initialize : function(options)
 		{
-			console.log('question view init')
+
 			this.model= new Questions.Model.Ask();
 			$('.good-question-link').show();
 			$('#ask-flash .super h1').html('What do you wonder about Chicago, the region, or the people who live here?');
@@ -19,7 +19,7 @@
 			this.model.on('error', this.validationError, this);
 			
 			_.extend(this,options);
-			var blanks = {ask: decodeURIComponent(this.ask)		};
+			var blanks = {ask: decodeURIComponent(this.ask)	};
 			this.step = 1;
 			$(this.el).append( _.template( this.getTemplate(), blanks ) );
 		},
@@ -42,17 +42,15 @@
 			$('#flickr-search').spin('small');
 			this.collection = new Questions.Collection.Flickr({query:$(this.el).find('.submit-flickr-query')[0].value});
 			this.collection.fetch({success:function(collection,response){
-				$('#flickr-search').spin(false);
+			$('#flickr-search').spin(false);
 				
-				 $('#flickr-search').fadeOut('fast').empty().fadeIn();
-				_.each(_.toArray(collection),function(model){
-					
-					var url=	"http://farm"+model.get('farm')+".staticflickr.com/"+model.get('server')+"/"+model.get('id')+"_"+model.get('secret')+"_m.jpg";
-				    var attribution = "http://www.flickr.com/photos/"+model.get('owner')+"/"+model.get('id');
-				    var username = model.get('ownername');
-				   
-				   $('#flickr-search').append('<li><a href="#" class="thumbnail"><img  data-username="'+username+'"  data-attribution="'+attribution+'" class="flickr-image" src="'+url+'" /></a></li>');
-				});
+			$('#flickr-search').fadeOut('fast').empty().fadeIn();
+			_.each(_.toArray(collection),function(model){
+				var url = "http://farm"+model.get('farm')+".staticflickr.com/"+model.get('server')+"/"+model.get('id')+"_"+model.get('secret')+"_m.jpg";
+				var attribution = "http://www.flickr.com/photos/"+model.get('owner')+"/"+model.get('id');
+				var username = model.get('ownername');
+				$('#flickr-search').append('<li><a href="#" class="thumbnail"><img  data-username="'+username+'"  data-attribution="'+attribution+'" class="flickr-image" src="'+url+'" /></a></li>');
+			});
 				
 				
 				$('#flickr-search').find('.thumbnail').click(function(){
@@ -100,7 +98,7 @@
 			
 			$('.step'+(this.step+1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
-			window.scroll(0,0); 
+			window.scroll(0,0);
 			return false;
 		},
 		
@@ -112,17 +110,15 @@
 			if(this.step == 1)
 			{
 				$('.good-question-link').hide();
-				console.log('validate this')
-				console.log('advance: '+ this.advance)
 				this.model.set({
-					question:$(this.el).find('.submit-question-text')[0].value,
+					question:$('.submit-question-text')[0].value,
 					name:$(this.el).find('.submit-name-text')[0].value,
 					email:$(this.el).find('.submit-email-text')[0].value,
 					email_confirm:$(this.el).find('.submit-email-confirm-text')[0].value,
 					neighborhood:$(this.el).find('.submit-neighborhood-text')[0].value,
 					anonymous : $('#anonymous').is(':checked') ? 1 : 0
 				});
-				console.log('advance: '+ this.advance)
+				
 				
 				if(this.advance)
 				{
@@ -136,8 +132,6 @@
 			}
 			else if (this.step==2)
 			{
-				console.log(this.model)
-			
 				$(this.el).find('#submit-question-preview').html(this.model.get('question'));
 				$(this.el).find('#submit-name-preview').html('posted by '+ ((this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name')));
 				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')');
@@ -153,13 +147,13 @@
 			
 			$('.step'+(this.step-1)).removeClass('active');
 			$('.step'+this.step).addClass('active');
-			window.scroll(0,0); 
+			window.scroll(0,0);
 			return false;
 		},
 		
 		removeErrors : function(el)
 		{
-			$(el.target).closest('.error').removeClass('error')
+			$(el.target).closest('.error').removeClass('error');
 		},
 		
 		post: function()
@@ -170,7 +164,7 @@
 			this.model.save();
 			$('#question-form-3').fadeOut('fast',function(){
 				$('#ask-flash .super h1').html('Thanks! Your question was submitted.');
-				$('#question-form-4').fadeIn('fast');	
+				$('#question-form-4').fadeIn('fast');
 				$('#left-col1').fadeOut('fast', function(){
 					$('#left-col2').fadeIn();
 				});
@@ -180,9 +174,9 @@
 
 		validationError : function(model, error)
 		{
-			console.log('validation error')
-			console.log(model)
-			console.log(error)
+			console.log('validation error');
+			console.log(model);
+			console.log(error);
 			
 			$(error).addClass('error');
 			
@@ -249,7 +243,7 @@
 									"<li>Your question will now live in the <a href='#!/archive/recent'> question archive</a>. Anyone can comment on, or maybe even answer your question there.</li><br>"+
 									"<li>WBEZ is constantly mining the question archive and selecting questions for voting. If your question makes it into a <a href='#!/vote'>voting round</a>, we'll contact you via the email address you provided.</li><br>"+
 									"<li>Winning questions are investigated by WBEZ reporters online and on air at WBEZ 91.5fm each Wednesday on <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' onclick='window.open(this.href); return false;'  >The Afternoon Shift</a>.</li>"+
-									"</ul>"+	
+								"</ul>"+
 						"</div>"+
 					"</div>"+
 				"</div>"+

@@ -11,8 +11,9 @@
 		initialize : function()
 		{
 			var _this = this;
-			this.on('reset', this.renderCollection, this);
-			this.fetch();
+			//this.on('reset', this.renderCollection, this);
+			//this.fetch();
+			//this.renderCollection();
 		},
 		
 		renderCollection : function()
@@ -23,15 +24,14 @@
 			this.isLoaded = true;
 			$(this.target).empty();
 			_.each(_.toArray(this), function(question){
-				console.log(question)
 				var v = new Investigation.Views.Single({model:question});
 				_this.views.push(v);
 				$(_this.target).append(v.render().el);
-			})
+			});
 		},
 		
 		parse: function(data){ return data.questions; },
-		comparator : function(question) { return question.get('investigated') }
+		comparator : function(question) { return question.get('investigated'); }
 
 	});
 

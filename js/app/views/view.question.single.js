@@ -10,12 +10,12 @@
 		
 		initialize : function()
 		{
-			console.log('question',this.model)
+			console.log('question',this.model);
 		},
 		
 		render : function( )
 		{
-			if(this.model.get('timelinekey') == '' ) $(this.el).html( _.template(this.getTemplate(),this.model.attributes));
+			if(this.model.get('timelinekey') === '' ) $(this.el).html( _.template(this.getTemplate(),this.model.attributes));
 			else $(this.el).html( _.template(this.getTimelineTemplate(),this.model.attributes));
 
 			if(this.model.get('previous')==-1)$(this.el).find('.previous').hide();
@@ -30,16 +30,15 @@
 		
 		goToPrev : function()
 		{
-			console.log('prevvvvv')
+
 			curiouscity.app.goToPrevInArchive();
 			return false;
 		},
 		
 		goToNext : function()
 		{
-			console.log('nexxxxxt')
 			curiouscity.app.goToNextInArchive();
-			return false
+			return false;
 		},
 	
 		getTimelineTemplate : function()
@@ -57,7 +56,6 @@
 	
 		getTemplate : function()
 		{
-			console.log(this.model)
 			var html =
 		
 			"<ul  class='pager'>"+
@@ -77,10 +75,9 @@
 					"<p>posted by <%= name %></p>"+
 					"<div class='soundcloud'><%= soundcloud %></div>";
 					
-			if( this.model.get('responseembed') != '' || this.model.get('responselinkurl') != '' )
+			if( this.model.get('responseembed') !== '' || this.model.get('responselinkurl') !== '' )
 			{
-				html +=		
-					"<div><h3>The Answer:</h3></div>"+
+				html +=	"<div><h3>The Answer:</h3></div>"+
 					"<div class='response-embed'><%= responseembed %></div>"+
 					"<div class='response-link'><h3><a href='<%= responselinkurl %>' target='blank'><%= responselinktext %></a></h3></div>";
 			}

@@ -818,9 +818,9 @@ footer
 .submit-question-text
 {
 	height:60px;
-	background: white;
+	background: #fffbfe;
 	width: 580px !important;
-	border: 2px solid black !important;
+	border: 2px solid #f00ed3 !important;
 	font-size: 20px;
 	font-weight: normal;
 	line-height: 28px;
@@ -829,16 +829,16 @@ footer
 	border-radius: 12px;
 }
 ::-webkit-input-placeholder {
-   	color: #ffa800;
+   	color: #b7a6b5;
 	font-style: italic;
 }
 :-moz-placeholder {  
-   	color: #ffa800;  
+   	color: #b7a6b5;  
 	font-style: italic;
 }
 /*for ie7/8 */
 .placeholder {
-   	color: #ffa800;  
+   	color: #b7a6b5;  
 	font-style: italic;
 }
 .submit-sequence

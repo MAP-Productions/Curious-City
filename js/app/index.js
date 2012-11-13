@@ -15,6 +15,12 @@ jQuery(function($)
 		return false;
 	});
 	
+	$('#how-it-works .close').click(function(e){
+		e.preventDefault();
+		$('#how-it-works').removeClass('open').hide('blind',{direction:'vertical'},500);
+		return false;
+	});
+	
 	
 	$('.archive-key a').click(function(){
 		var filter = $(this).data('filter');

@@ -81,6 +81,12 @@
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	
 	
+	<div id="how-it-works" class="clearfix hide">
+		<div class="container">
+			<h2>Curious City is a news-gathering experiment housed at Chicago Public Media - WBEZ 91.5fm. You ask us the questions you’ve always wondered about Chicago, the region or its people, vote for your favorites and together we track down answers. It’s your Curious City.</h2>
+			<a href="#" class="close"><img src="images/close.png" alt="close" /></a>
+		</div>
+	</div>
 	
 	<div id="wbez-header">
 		<div class="container">
@@ -155,30 +161,6 @@
 					</div>
 				</div>
 				
-			</div>
-			<div id="how-it-works" class="clearfix hide">
-				<ul>
-					<li class="step-1">
-						<i class="number-1"></i>
-						Questions come from the community
-					</li>
-					<li class="step-2">
-						<i class="number-2"></i>
-						You vote for your favorites 
-					</li>
-					<li class="step-3">
-						<i class="number-3"></i>
-						WBEZ investigates, posting updates in real time 
-					</li>
-					<li class="step-4">
-						<i class="number-4"></i>
-						Followers help shape the investigation
-					</li>
-					<li class="step-5">
-						<i class="number-5"></i>
-						We discover the answers together!
-					</li>
-				</ul>
 			</div>
 		
 		</header>

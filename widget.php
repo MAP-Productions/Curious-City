@@ -51,40 +51,59 @@
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	
 	<div class="wrapper">
-		<header>
-			<a href="http://curiouscity.wbez.org" target='blank'><img src="images/cc-logo.png"/></a>
-		</header>
-	
-		<div class="main">
-			<div id="tagline" style="opacity:0">
-				<span id="questions-count">10</span> questions, 1 will remain
-			</div>
-			<div id="headline" class="">
-					<h3><?php	if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "Thanks for Voting!!"; else echo "Which would you rather know?"; ?></h3>
-			</div>
-			
-			
-			
-			
-			<div id="ballot">
-				<div id="left-ballot"></div>
-				<div id="right-ballot"></div>
-				<div id="follow-up"><div class="link link-1" >Check out <a href="http://curiouscity.wbez.org/#!/investigations" target='blank'>earlier investigations</a></div><div class="link link-2" >Shape stories as they unfold <span class="link-icons"><a class="link-icon" target="blank" href="http://www.facebook.com/curiouscityproject"><img src="images/facebook_sm.png"/></a><a class="link-icon" target="blank" href="http://twitter.com/#!/WBEZCuriousCity"><img src="images/twitter_sm.png"/></a></span></div><div class="link link-3" >Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target='blank'>The Afternoon Shift</a> on WBEZ for winners + updates.</div>
+		<div class="border">
+			<header>
+				<a href="http://curiouscity.wbez.org" target='blank'><img src="images/cc-logo.png"/></a>
+			</header>
+		
+			<div class="main">
+				<div id="tagline" style="opacity:0">
+					<span id="questions-count">10</span> questions, 1 will remain
 				</div>
-			</div>
-			
-			
-			
-			<footer>
-				<div id="submit-question">
-					<a href="http://curiouscity.wbez.org/#!/ask" target="blank">Submit a Question</a> | <a href="http://curiouscity.wbez.org/#!/archive" target="blank">Browse Questions</a>
+				<div id="headline" class="">
+						<h3><?php	if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "Thanks for Voting!!"; else echo "Which would you rather know?"; ?></h3>
 				</div>
-	
 				
-			</footer>
-			
+				
+				
+				
+				<div id="ballot">
+					<div id="left-ballot"></div>
+					<div id="right-ballot"></div>
+					<div id="follow-up">
+						<div class="question-form">
+							<div class="submit-wrap">
+								<div class="carrot"></div>
+								<textarea class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region, or the people who live here?"></textarea>
+								<div class="clear"></div>
+								<a href="#!/ask" class="btn submit-next btn-primary">Submit</a>
+							</div>
+							<h3>Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target='blank'>The Afternoon Shift</a> on WBEZ for winners + updates.</h3>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<footer>
+					<div id="submit-question">
+						<a href="http://curiouscity.wbez.org/#!/archive" target="blank">Browse Questions</a> | <a href="http://curiouscity.wbez.org/#!/ask" target="blank">Submit a Question</a>
+					</div>
+					<ul class="unstyled">
+						<li><a target="blank" href="http://www.zeega.org/"><img src="images/logos/zeega_bw.png" /></a></li>
+						<li><a target="blank" href="http://www.wyncotefoundation.org/"><img src="images/logos/wyncote_bw.png" /></a></li>
+						<li><a target="blank" href="http://www.arts.gov/artworks/"><img src="images/logos/art-works_bw.png" /></a></li>
+						<li><a target="blank" href="http://www.macfound.org/"><img src="images/logos/macarthur_bw.gif" /></a></li>
+						<li><a target="blank" href="http://www.cpb.org/"><img src="images/logos/cpb_bw.png" /></a></li>
+						<li><a target="blank" href="http://www.airmedia.org/"><img src="images/logos/air_bw.png" /></a></li>
+						<li><a target="blank" href="http://airmediaworks.org/localore"><img src="images/logos/localore_bw.png" /></a></li>
+					</ul>
+		
+					
+				</footer>
+				
+			</div>
 		</div>
-	
 	
 	</div><!-- .wrapper -->
 

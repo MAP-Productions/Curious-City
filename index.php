@@ -91,7 +91,7 @@
 	<div id="wbez-header">
 		<div class="container">
 			<div class="header-logo pull-left">
-				<a onClick='_gaq.push([\"_trackEvent\", \"CC-General\", \"Click on WBEZ logo\", \"\"]);' href="http://wbez.org" target="blank">
+				<a onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on WBEZ logo']);" href="http://wbez.org" target="blank">
 					<img src="images/wbez.png" alt="WBEZ91.5" height="20px"/>
 				</a>
 			</div>
@@ -101,10 +101,10 @@
 					<a href="http://www.wbez.org/programs/afternoon-shift" target="_blank"><img class='radio-icon' src="images/icon_radio.png"/></a>
 					<a href="#" target="_blank"><img class='rss-icon' src="images/icon_rss.png"/></a>
 				</div>
-				<a href="#!/about" id='how-it-works-expander' onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on \'How it Works\' ', '']);">How it Works</a> | 
+				<a href="#!/about" id='how-it-works-expander' onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on How it Works', '']);">How it Works</a> | 
 				<a href="#!/about" id='nav-about'>About</a> | 
 				<a href='#!/about/faq'>FAQ</a> | 
-				<a href="mailto:curiouscity@wbez.org" onClick="_gaq.push([\"_trackEvent\", \"CC-General\", \"Mail curiouscity@wbez.org\", \"\"]);" target="blank"><img class='email-icon' src="images/icon_email.png"/></a>
+				<a href="mailto:curiouscity@wbez.org" onClick="_gaq.push(['_trackEvent', 'CC-General', 'Mail curiouscity@wbez.org']);" target="blank"><img class='email-icon' src="images/icon_email.png"/></a>
 			</div>
 		</div>
 	</div>
@@ -282,6 +282,21 @@
 			
 			<div id="archive-page" class="hide">
 				<div id="archive-flash">
+					<div class="carousel-wrap">
+						<div class="carousel">
+							<a href="#" class="slide-left">slide left</a>
+							<a href="#" class="slide-right">slide right</a>
+							<div class="slide">
+								<div class="slide-text">
+									<h1>What's the story behind coach houses in Chicago?<br />
+										What was their purpose?</h1>
+									<h2>Asked by Justin Beiber | Reported by Carrie Shepard</h2>
+									<p><em>Last updated Thursday, June 21, 2012</em></p>
+								</div>
+								<img src="images/default_old.jpg" alt="" />
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="span4 left-col">
 							<?php /*

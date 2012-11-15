@@ -19,12 +19,6 @@
 			if( r == 2 ) this.set('rank_string', '2nd');
 			else if( r == 3 ) this.set('rank_string', '3rd');
 			else if( r > 3 ) this.set('rank_string', r+'th');
-			
-		},
-
-
+		}
 	});
-	
-	
-
 })(curiouscity.module("questions"));

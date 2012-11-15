@@ -90,6 +90,7 @@ ul.horizontal li a.focus
 	list-style:none;
 	margin:0;
 	border-bottom: 1px dotted #44C8F5;
+	width: 607px;
 }
 
 #cc-nav ul li
@@ -282,7 +283,7 @@ footer li
 #questions,
 #archive-questions
 {
-	padding:4px 0;
+	padding:5px 0;
 	border-bottom: 1px dotted #808184;
 	min-height:200px;
 	margin-bottom: 26px;
@@ -326,6 +327,8 @@ outline: solid 3px rgba(0, 136, 204, 0.5);
 	-o-transition: outline 0.5s; /* Opera */
 	outline: 2px solid white;
 	border-top: 1px dotted #808184; 
+	padding-bottom: 3px;
+	margin-bottom: -3px;
 }
 .question + .question{ margin-top:5px;}
 
@@ -529,7 +532,7 @@ padding-top:2px;
 	right:0;
 	opacity:0.8;
 }
-.rank-number
+.question h2.rank-number
 {
 	color:white;
 	float:right;
@@ -547,9 +550,11 @@ padding-top:2px;
 	padding-top: 0; 
 }
 #flash .right-col .sub h5{ 
-	padding-top: 0; 
-	color: #a7a7a7; 
-	font-weight: 600;
+	padding-top: 0;
+	color: #662D91;
+	font-weight: 500;
+	line-height: 15px;
+	font-size: 12px;
 }
 
 #ask-form {
@@ -601,6 +606,7 @@ padding-top:2px;
 	position: absolute;
 	top: 25px;
 	left: 275px;
+	cursor: pointer;
 }
 .vote.hover{background-position:-50px 0;}
 .vote.active{background-position:-100px 0;}
@@ -625,6 +631,13 @@ padding-top:2px;
 .cc-nav a:hover .arrow.grey,
 .side-link a:hover .arrow.grey {
 	background-image:url(../images/arrows.png);
+}
+.pager .arrow {
+	position: relative;
+	top: 3px;
+}
+.pager .next a {
+min-width: 105px;
 }
 
 [class^="badge-"]
@@ -676,7 +689,7 @@ padding-top:2px;
 .social-rss{background-position:-30px 0;}
 .social-googleplus{background-position:-45px 0;}
 
-.social{ margin-left: 2px;width: 263px;}
+.social{ margin-left: 2px;width: 266px;}
 .social a { 
 	color: #44C8F5;
 	font-size: 12px;
@@ -839,6 +852,7 @@ footer
 	color: black;
 	padding: 10px 15px;
 	border-radius: 12px;
+	-webkit-box-shadow: none !important;
 }
 ::-webkit-input-placeholder {
    	color: #b7a6b5;
@@ -986,7 +1000,7 @@ li.investigation-story
 .question-form { 
 	position: relative;
 }
-.question-form .btn {
+#cc-nav .question-form .btn {
 	position: absolute;
 	bottom: 18px;
 	right: 8px;
@@ -1047,4 +1061,73 @@ extra random styles*/
 
 #archive-flash .row {
 	margin-left: 0;
+}
+
+
+
+.carousel-wrap {
+	border-top: 1px dotted #808184;
+	border-bottom: 1px dotted #808184;
+	padding: 5px 0;
+	margin: 22px 0 -7px;
+}
+.carousel {
+	margin: 0;
+	min-height: 334px;
+	overflow: hidden;
+	position: relative;
+}
+.carousel .slide {
+	padding: 0 38px;
+}
+.carousel img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+}
+.carousel .slide-text {
+	position: relative;
+	z-index: 1;
+}
+.carousel h1 {
+	line-height: 34px;
+	border-bottom: 1px dotted white;
+	padding-bottom: 6px;
+	font-size: 30px;
+	margin-top: 24px;
+}
+.carousel h2 {
+	font-size: 13px;
+	margin: 8px 0 2px;
+	line-height: 16px;
+}
+.carousel h1,
+.carousel h2,
+.carousel p {
+	color: white;
+	text-shadow: 2px 2px 4px #333;
+	filter: progid:DXImageTransform.Microsoft.Glow(color=#333333, strength=2);
+}
+.carousel .slide-left,
+.carousel .slide-right {
+	display: block;
+	width: 41px;
+	height: 44px;
+	position: absolute;
+	top: 48%;
+	z-index: 1;
+	text-indent: -999px;
+	overflow: hidden;
+}
+.carousel .slide-left {
+	background: url(../images/slide-left.png) no-repeat;
+	left: 0;
+}
+.carousel .slide-right {
+	background: url(../images/slide-right.png) no-repeat;
+	right: 0;
 }

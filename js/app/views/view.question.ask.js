@@ -238,7 +238,7 @@
 							"<button class='submit-final btn btn-primary'>Looks good!</button>"+
 						"</form>"+
 						"<div id='question-form-4'  class='question-form hide'>"+
-							"<span><h3>What happens now?</h3></span><br><br>"+
+							"<span><h2>What happens now?</h2></span><br>"+
 								"<ul>"+
 									"<li>Your question will now live in the <a href='#!/archive/recent'> question archive</a>. Anyone can comment on, or maybe even answer your question there.</li><br>"+
 									"<li>WBEZ is constantly mining the question archive and selecting questions for voting. If your question makes it into a <a href='#!/vote'>voting round</a>, we'll contact you via the email address you provided.</li><br>"+

@@ -186,6 +186,7 @@ header img {
 	color: black;
 	padding: 10px 15px;
 	border-radius: 12px;
+	-webkit-box-shadow: none !important;
 }
 ::-webkit-input-placeholder {
    	color: #b7a6b5;

@@ -26,7 +26,7 @@
 		events : {
 			'click .vote' : 'voteThis',
 			'mouseover .vote' : 'voteOver',
-			'mouseout .vote' : 'voteOut',
+			'mouseout .vote' : 'voteOut'
 		},
 		
 		voteOver : function()

@@ -1131,3 +1131,86 @@ extra random styles*/
 	background: url(../images/slide-right.png) no-repeat;
 	right: 0;
 }
+
+#disqus-controls{
+
+height: 28px;
+padding-top:20px;
+}
+
+#disqus_thread{
+
+background:white;
+padding-top:20px;
+padding-left:20px;
+padding-right:20px;
+width:570px;
+
+}
+
+.disqus-sort-unselected{
+
+background-color:#E6E6E6;
+
+}
+
+.disqus-sort-selected{
+
+background-color:white;
+
+}
+
+#disqus-sort-popular{
+
+width:70px;
+position:absolute;
+left:455px;
+
+}
+
+#disqus-sort-newest{
+position:absolute;
+left:350px;
+width:90px;
+
+}
+
+
+
+#disqus-guidelines{
+position:absolute;
+left:750px;
+padding-top:5px;
+width:90px;
+
+}
+
+
+
+.disqus-sort-tab{
+
+-moz-border-radius-top: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+padding:5px;
+text-align:center;
+cursor:pointer;
+}
+
+
+#disqus-add-comment{
+
+position:absolute;
+left:832px;
+width:115px;
+margin:-7px;
+
+
+}
+
+
+.category-selected {
+	color: #44C8F5 !important;
+}
+
+

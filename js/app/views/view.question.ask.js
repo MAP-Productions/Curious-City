@@ -26,6 +26,7 @@
 		
 		render : function()
 		{
+			//$('#ask-submit').fadeOut('fast');
 			return this;
 		},
 		events : {

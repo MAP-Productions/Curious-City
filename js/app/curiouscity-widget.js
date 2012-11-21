@@ -31,6 +31,11 @@ app: _.extend({
 		//console.log('cc widget init')
 		questionData.yourvote=this.vote;
 		this.loadQuestionCollection();
+		$('#submit-question').click(function(){
+			console.log('submit');
+			window.open("http://curiouscity.wbez.org/#!/ask/"+$('.submit-question-text').val(),"_blank");
+			return false;
+		});
 		
 	},
 

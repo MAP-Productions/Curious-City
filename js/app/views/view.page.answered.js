@@ -1,6 +1,6 @@
 (function(Pages) {
 
-	Pages.Views.archive = Backbone.View.extend({
+	Pages.Views.answered = Backbone.View.extend({
 		
 		className : 'question',
 		

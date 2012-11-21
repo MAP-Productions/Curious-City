@@ -81,13 +81,38 @@
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	
 	
-	<div id="how-it-works" class="clearfix hide">
+	<div id="site-intro" class="clearfix hide">
 		<div class="container">
 			<h2>Curious City is a news-gathering experiment housed at Chicago Public Media - WBEZ 91.5fm. You ask us the questions you’ve always wondered about Chicago, the region or its people, vote for your favorites and together we track down answers. It’s your Curious City.</h2>
 			<a href="#" class="close"><img src="images/close.png" alt="close" /></a>
 		</div>
 	</div>
 	
+
+	<div id="how-it-works" class="clearfix hide closed" style="display: none;">
+				<ul style="margin:auto">
+					<li class="step-1">
+						<i class="number-1"></i>
+						Questions come from the community
+					</li>
+					<li class="step-2">
+						<i class="number-2"></i>
+						You vote for your favorites 
+					</li>
+					<li class="step-3">
+						<i class="number-3"></i>
+						WBEZ investigates, posting updates in real time 
+					</li>
+					<li class="step-4">
+						<i class="number-4"></i>
+						Followers help shape the investigation
+					</li>
+					<li class="step-5">
+						<i class="number-5"></i>
+						We discover the answers together!
+					</li>
+				</ul>
+	</div>
 	<div id="wbez-header">
 		<div class="container">
 			<div class="header-logo pull-left">
@@ -116,7 +141,7 @@
 			<div id="cc-nav">
 				<div class="row">
 					<div class="span12">
-						<a href="http://curiouscity.wbez.org" class='cs-logo pull-left' >
+						<a href="#" class='cs-logo pull-left' >
 							<img src="images/cc-logo.gif" alt="curiouscity" height="75px" width="310px" />
 						</a>
 						
@@ -126,35 +151,35 @@
 									<div class="carrot"></div>
 									<textarea class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region, or the people who live here?"></textarea>
 									<div class="clear"></div>
-									<a href="#!/ask" class="btn submit-next btn-primary">Submit</a>
+									<a id="ask-submit" href="#!/ask" class="btn submit-next btn-primary">Submit</a>
 								</div>
 							</div>	
 						</div>
 						<ul class='pull-right cc-nav'>
-							<li><a href="#!/vote" id='nav-vote'>Up for Voting</a></li>
+							<li><a href="#!/vote/current" id='nav-vote'>Up for Voting</a></li>
 							<!--li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li-->
-							<li><a href="#!/investigations" id='nav-investigations'><span class="arrow down grey"></span> Answered &amp; Investigating</a>
+							<li><a href="#!/answered/recent" id='nav-answered'><span class="arrow down grey"></span> Answered &amp; Investigating</a>
 								<ul>
 									<li class="carrot"></li>
-									<li><a href="#!/vote/how-we-live">How We Live</a></li>
-									<li><a href="#!/vote/history">History</a></li>
-									<li><a href="#!/vote/environment">Environment</a></li>
-									<li><a href="#!/vote/money">Money</a></li>
-									<li><a href="#!/vote/governance">Governance</a></li>
-									<li><a href="#!/vote/urban-planning">Urban Planning</a></li>
-									<li><a href="#!/vote/whats-it-like">What's it Like to...</a></li>
+									<li><a href="#!/answered/how-we-live">How We Live</a></li>
+									<li><a href="#!/answered/history">History</a></li>
+									<li><a href="#!/answered/environment">Environment</a></li>
+									<li><a href="#!/answered/money">Money</a></li>
+									<li><a href="#!/answered/governance">Governance</a></li>
+									<li><a href="#!/answered/urban-planning">Urban Planning</a></li>
+									<li><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
 								</ul>
 							</li>
 							<li><a href="#!/archive/recent" id='nav-archive'><span class="arrow down grey"></span> New and Unanswered</a>
 								<ul>
 									<li class="carrot"></li>
-									<li><a href="#!/vote/how-we-live">How We Live</a></li>
-									<li><a href="#!/vote/history">History</a></li>
-									<li><a href="#!/vote/environment">Environment</a></li>
-									<li><a href="#!/vote/money">Money</a></li>
-									<li><a href="#!/vote/governance">Governance</a></li>
-									<li><a href="#!/vote/urban-planning">Urban Planning</a></li>
-									<li><a href="#!/vote/whats-it-like">What's it Like to...</a></li>
+									<li><a href="#!/archive/how-we-live">How We Live</a></li>
+									<li><a href="#!/archive/history">History</a></li>
+									<li><a href="#!/archive/environment">Environment</a></li>
+									<li><a href="#!/archive/money">Money</a></li>
+									<li><a href="#!/archive/governance">Governance</a></li>
+									<li><a href="#!/archive/urban-planning">Urban Planning</a></li>
+									<li><a href="#!/archive/whats-it-like">What's it Like to...</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -274,13 +299,7 @@
 				<div id="ask-form"></div>
 			</div>
 			
-			<div id="investigations-page" class="hide">
-				
-				<ul id='investigate-list' class='unstyled clearfix'></ul>
-
-			</div>
-			
-			<div id="archive-page" class="hide">
+			<div id="answered-page" class="hide">
 				<div id="archive-flash">
 					<div class="carousel-wrap">
 						<div class="carousel">
@@ -312,19 +331,60 @@
 							
 						<div class="archive-search">
 							<ul class="unstyled horizontal left">
-								<li><a href="#!/archive/recent">Recently Updated</a></li>
-								<li><a href="#!/archive/popular">Most Popular</a></li>
-								<li><a href="#!/vote" class="thumb-mini">Up for Voting</a></li>
+								<li id="recent"><a href="#!/answered/recent">Recently Updated</a></li>
+								<li id="popular"><a href="#!/answered/popular">Most Popular</a></li>
+								<!--<li><a href="#!/vote" class="thumb-mini">Up for Voting</a></li>-->
 								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
 							</ul>
 							<ul class="unstyled horizontal right">
-								<li><a href="#!/vote/how-we-live">How We Live</a></li>
-								<li><a href="#!/vote/history">History</a></li>
-								<li><a href="#!/vote/environment">Environment</a></li>
-								<li><a href="#!/vote/money">Money</a></li>
-								<li><a href="#!/vote/governance">Governance</a></li>
-								<li><a href="#!/vote/urban-planning">Urban Planning</a></li>
-								<li><a href="#!/vote/whats-it-like">What's it Like to...</a></li>
+								<li id="how-we-live"><a href="#!/answered/how-we-live">How We Live</a></li>
+								<li id="history"><a href="#!/answered/history">History</a></li>
+								<li id="environment"><a href="#!/answered/environment">Environment</a></li>
+								<li id="money"><a href="#!/answered/money">Money</a></li>
+								<li id="governance"><a href="#!/answered/governance">Governance</a></li>
+								<li id="urban-planning"><a href="#!/answered/urban-planning">Urban Planning</a></li>
+								<li id="whats-it-like"><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
+								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
+							</ul>
+							<div class="clear"></div>
+						</div>
+							
+					</div>
+				</div>
+				<div id="archive-questions"></div>
+			</div>
+
+
+			<div id="archive-page" class="hide">
+				<div id="archive-flash">
+					<div class="row">
+						<div class="span4 left-col">
+							<?php /*
+							<ul class='unstyled archive-key'>
+
+								<li><a href='#' data-filter='current'><i class='badge-current'></i></br> in a voting round</a></li>
+								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i></br> being investigated</a></li>
+								<li><a href='#' data-filter='answered'><i class='badge-answered'></i></br> sufficiently answered</a></li>
+
+							</ul>
+							*/ ?>
+						</div>
+							
+						<div class="archive-search">
+							<ul class="unstyled horizontal left">
+								<li id="recent"><a href="#!/archive/recent">Recently Updated</a></li>
+								<li id="popular"><a href="#!/archive/popular">Most Popular</a></li>
+								<!--<li><a href="#!/vote" class="thumb-mini">Up for Voting</a></li>-->
+								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
+							</ul>
+							<ul class="unstyled horizontal right">
+								<li id="how-we-live"><a href="#!/archive/how-we-live">How We Live</a></li>
+								<li id="history"><a href="#!/archive/history">History</a></li>
+								<li id="environment"><a href="#!/archive/environment">Environment</a></li>
+								<li id="money"><a href="#!/archive/money">Money</a></li>
+								<li id="governance"><a href="#!/archive/governance">Governance</a></li>
+								<li id="urban-planning"><a href="#!/archive/urban-planning">Urban Planning</a></li>
+								<li id="whats-it-like"><a href="#!/archive/whats-it-like">What's it Like to...</a></li>
 								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
 							</ul>
 							<div class="clear"></div>
@@ -474,7 +534,7 @@
 					</div>
 					<div class="span8">
 	
-						<h2>What People are saying this round:</h2>
+						<h2 id="conversation-headline">What People are saying:</h2>
 						<div class='twitter-wrapper'>
 
 							<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
@@ -509,6 +569,36 @@
 							}).render().start();
 							</script>
 						</div>
+						
+							<div id="disqus-controls" class='disqus-wrapper'>
+								<div class="disqus-sort-tab disqus-sort-selected" id="disqus-sort-popular"><a>Popular</a></div>
+  								<div class="disqus-sort-tab disqus-sort-unselected" id="disqus-sort-newest"><a >Most Recent</a></div>
+  								<div class="disqus-guidelines" id="disqus-guidelines"><a data-toggle="modal" href="#guidelines-modal" >Guidelines</a></div>
+  								<button id="disqus-add-comment" class="btn">Add a comment</button>
+  							</div>
+		
+		
+
+							<div id="disqus_thread" class='disqus-wrapper'>
+
+									<!-- DISQUS -->
+								<script type="text/javascript">
+									/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+									var disqus_shortname = 'curiouscity'; // required: replace example with your forum shortname
+									var disqus_developer = 1;
+									/* * * DON'T EDIT BELOW THIS LINE * * */
+									(function() {
+										var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+										dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+										(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+									})();
+								</script>
+									<!-- END DISQUS -->
+
+							</div>
+	
+
+
 					</div>
 				</div>
 				

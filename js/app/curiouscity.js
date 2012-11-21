@@ -33,7 +33,7 @@ this.curiouscity = {
 			// please check history to find out...
 			
 
-			/*this.loadDisqus();*/
+			this.loadDisqus();
 			
 			var Questions = curiouscity.module("questions");
 			this.popularArchive = new Questions.Collection(questionData.archive,{
@@ -57,14 +57,15 @@ this.curiouscity = {
 			var _this = this;
 			var Router = Backbone.Router.extend({
 				routes: {
-					""														:	'loadMain',
-					'!/about/:hash'									:	'loadPageLocation',
-					'!/ask/:ask'									:	'loadAskPage',
+					""													:	'loadMain',
+					'!/about/:hash'										:	'loadPageLocation',
+					'!/ask/:ask'										:	'loadAskPage',
 					'!/:page'											:	'loadPage',
-					'!/archive/question/:questionID'		:	'goToArchiveQuestion',
+					'!/archive/question/:questionID'					:	'goToArchiveQuestion',
 					'!/vote/current'									:	'goToVoting',
 					'!/previous/:id'									:	'goToPrevious',
-					'!/archive/:order'								:	'goToArchive'
+					'!/archive/:category'								:	'goToArchive',
+					'!/answered/:category'								:	'goToAnswered'
 				},
 				
 				initialize: function() {
@@ -93,15 +94,23 @@ this.curiouscity = {
 				},
 				goToArchiveQuestion : function(questionID)
 				{
+					
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
 					_this.loadSingleQuestion(questionID);
+					
 				},
-				goToArchive : function(order)
+				goToArchive : function(category)
 				{
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
-					_this.loadArchiveQuestions(order);
+					_this.loadArchiveQuestions(category);
+				},
+				goToAnswered : function(category)
+				{
+					$('.nav-focus').removeClass('nav-focus');
+					$('#nav-answered').addClass('nav-focus');
+					_this.loadAnsweredQuestions(category);
 				},
 				goToVoting : function()
 				{
@@ -126,55 +135,58 @@ this.curiouscity = {
 			{
 				case 'vote':
 					$('#nav-vote').addClass('nav-focus');
-					$('#discussion-headline').html("What people are saying this round:");
-					this.showDiscussion();
+					this.showTwitter();
 					this.loadVoteQuestions();
-					break;
-				case 'investigations':
-					$('#nav-investigations').addClass('nav-focus');
-					this.hideDiscussion();
-					this.loadInvestigations();
 					break;
 				case 'ask':
 					$('#nav-ask').addClass('nav-focus');
-					this.showDiscussion();
+					this.showTwitter();
 					this.loadAsk(options);
 					break;
 				case 'archive':
 					$('#nav-archive').addClass('nav-focus');
-					this.hideDiscussion();
+					this.hideConversation();
 					this.loadArchiveQuestions('recent');
 					break;
 				case 'about':
 					$('#nav-about').addClass('nav-focus');
-					this.hideDiscussion();
+					this.hideConversation();
+					this.hideDisqus();
 					break;
 				default :
 			}
 					
 		},
 		
-		hideDiscussion : function()
+		hideTwitter : function()
 		{
-			if( $("#discussion").is(':visible') ) $('#discussion').fadeOut();
+			console.log('hide twitter');
+			if( $(".twitter-wrapper").is(':visible') ) $('.twitter-wrapper').hide();
 		},
-		showDiscussion : function()
+		showTwitter : function()
 		{
-			if( $("#discussion").is(':hidden') ) $('#discussion').fadeIn();
+			console.log('show twitter');
+			$('#conversation-headline').html('What people are saying:');
+			this.hideDisqus();
+			if( $(".twitter-wrapper").is(':hidden') ) $('.twitter-wrapper').fadeIn();
 		},
-	
-	
-		/******* INVESTIGATIONS PAGE **********/
-		loadInvestigations : function()
+
+		hideDisqus : function()
 		{
-			if( _.isUndefined( this.investigations) )
-			{
-				$('#investigate-list').spin();
-				var Inv = curiouscity.module('investigation');
-				this.investigations = new Inv.Collection(investigationData.questions);
-				this.investigations.renderCollection();
-			}
+			console.log('hide disqus');
+			if( $(".disqus-wrapper").is(':visible') ) $('.disqus-wrapper').hide();
 		},
+		showDisqus : function()
+		{
+			console.log('show disqus');
+			this.hideTwitter();
+			if( $(".disqus-wrapper").is(':hidden') ) $('.disqus-wrapper').fadeIn();
+		},
+		hideConversation : function(){
+			this.hideTwitter();
+			this.hideDisqus();
+		},
+
 	
 	
 	
@@ -183,7 +195,7 @@ this.curiouscity = {
 		loadVoteQuestions : function(){
 			this.router.navigate("!/vote/current");
 			this.questionID=-1;
-			$('#discussion-headline').html("What people are saying this round:");
+			$('#discussion-headline').html("What people are saying:");
 			$('.focus').hide().removeClass('focus');
 			$('#vote-page').addClass('focus').show();
 			$('#discussion').show();
@@ -210,21 +222,22 @@ this.curiouscity = {
 	
 						
 	
-						this.displayVoteQuestions();
-						if(this.questionsCollection.canvote===0){
-							$('#vote-page .super h1').html("Thanks for voting! ");
-							$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Follow our investigations via <a target='blank' href='http://facebook.com/curiouscityproject' >Facebook</a> and <a target='blank' href='https://twitter.com/#!/WBEZCuriousCity'>Twitter</a>. Here’s how the votes are stacking up so far:<br>");
-						}
-						else{
-								$('#vote-page .super h1').html("Which should we investigate next? ");
-								$('#vote-page .sub h5').html("Select the question you’d most like answered.");
-						
-						}
-						$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
-						
-						
-						$('#previous-winner').find('h5').html('<a href ="#!/previous/'+this.questionsCollection.previous.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
+				this.displayVoteQuestions();
+				if(this.questionsCollection.canvote===0){
+					$('#vote-page .super h1').html("Thanks for voting! ");
+					$('#vote-page .sub h5').html("Tune in Wednesdays to <a href='http://www.wbez.org/programs/afternoon-shift-steve-edwards' target='blank'>The Afternoon Shift</a> on <a href='http://www.wbez.org' target='blank'>WBEZ 91.5</a> to hear updates and find out final results. Follow our investigations via <a target='blank' href='http://facebook.com/curiouscityproject' >Facebook</a> and <a target='blank' href='https://twitter.com/#!/WBEZCuriousCity'>Twitter</a>. Here’s how the votes are stacking up so far:<br>");
+				}
+
+				else{
+						$('#vote-page .super h1').html("Which should we investigate next? ");
+						$('#vote-page .sub h5').html("Select the question you’d most like answered.");
 				
+				}
+				$('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
+				
+				
+				$('#previous-winner').find('h5').html('<a href ="#!/previous/'+this.questionsCollection.previous.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
+		
 				
 				
 			}
@@ -241,12 +254,6 @@ this.curiouscity = {
 					var questionView = new Questions.Views.Vote({model:question,voted:false, attributes:{'data-id':question.id,'data-rank':question.get('rank')}});
 					$('#questions').append(questionView.render().el);
 				});
-				/*
-				_.each( _.toArray( this.questionsCollection ),function(question){
-					var questionView = new Questions.Views.Vote({model:question,vote:true, linked:true});
-					$('#questions-order').append(questionView.render().el);
-				});
-				*/
 			}
 			else
 			{
@@ -277,10 +284,10 @@ this.curiouscity = {
 			$('#previous-winner-question').empty();
 			$('#previous-questions').empty();
 			
-			$('#discussion-headline').html("What people are saying this round:");
+			$('#discussion-headline').html("What people are saying:");
 			$('.focus').hide().removeClass('focus');
 			$('#previous-vote-page').addClass('focus').show();
-			$('#discussion').show();
+		
 			
 	
 			var Questions = curiouscity.module("questions");
@@ -346,11 +353,11 @@ this.curiouscity = {
 		
 		loadAsk : function(options){
 			
-			$('#discussion').fadeOut();
+			$('.submit-question-text').attr('value',options);
 			var Questions = curiouscity.module("questions");
 			
-			this.askView = new Questions.Views.Ask({"ask":options});
-			console.log(options);
+			this.askView = new Questions.Views.Ask();
+			
 			$('#ask-form').html(this.askView.render().el);
 		},
 		
@@ -358,36 +365,104 @@ this.curiouscity = {
 		
 		/******* QUESTION ARCHIVE PAGE **********/
 		
-		loadArchiveQuestions : function(order){
+		loadArchiveQuestions : function(category){
 			
 			// reload archive each time the page is loaded
 			
 			
-	
+			this.hideConversation();
 			$('.focus').hide().removeClass('focus');
-			$('#discussion').hide();
 			$('#archive-page').addClass('focus').show();
 	
-	
-			var _this = this;
-			if(order=='popular'){
-					$('#archive-page #archive-questions').empty();
-					this.displayArchiveQuestions(this.popularArchive);
-			}
-			else{
-					$('#archive-page #archive-questions').empty();
-					this.displayArchiveQuestions(this.recentArchive);
-			}
+
+			var Questions = curiouscity.module("questions"),
+				archiveQuestions,
+				unansweredQuestionData=_.filter(questionData.archive,function(item){
+					return (item.badge!="answered"&&item.badge!="investigated");
+				});
 			
-		},
-		
-		displayArchiveQuestions : function(archive){
-			
+			if(category=='popular'){
+				archiveQuestions = new Questions.Collection(unansweredQuestionData,{
+					comparator : function(question){
+						return 100-question.get('comments');
+					}
+				});
+			}
+			else if (category=='recent'){
+				archiveQuestions = new Questions.Collection(unansweredQuestionData,{
+					comparator : function(question){
+						return 100-question.get('dateuploaded');
+					}
+				});
+			}
+			else {
+				archiveQuestions = new Questions.Collection(unansweredQuestionData,{
+					comparator : function(question){
+						return 100-Math.floor(Math.random()*100);
+					}
+				});
+			}
+
+			$('#archive-page a').removeClass('category-selected');
+			$('#archive-page #'+category).find('a').addClass('category-selected');
+
+
+			$('#archive-page #archive-questions').empty();
 			var Pages = curiouscity.module('pages');
-			_.each( _.toArray(archive) ,function(question){
+			_.each( _.toArray(archiveQuestions) ,function(question){
 				var questionView = new Pages.Views.archive({model:question});
 				$('#archive-page #archive-questions').append(questionView.render().el);
 			});
+			
+		},
+		
+		loadAnsweredQuestions : function(category){
+			$('.focus').hide().removeClass('focus');
+			$('#discussion').hide();
+			$('#answered-page').addClass('focus').show();
+	
+			var Questions = curiouscity.module("questions"),
+				archiveQuestions;
+			
+			var answeredQuestionData=_.filter(questionData.archive,function(item){
+					return (item.badge=="answered"||item.badge=="investigated");
+				});
+
+
+			if(category=='popular'){
+				
+				archiveQuestions = new Questions.Collection(answeredQuestionData,{
+					comparator : function(question){
+						return 100-question.get('comments');
+					}
+				});
+			}
+			else if (category=='recent'){
+				archiveQuestions = new Questions.Collection(answeredQuestionData,{
+					comparator : function(question){
+						return 100-question.get('dateuploaded');
+					}
+				});
+			}
+			else {
+				archiveQuestions = new Questions.Collection(answeredQuestionData,{
+					comparator : function(question){
+						return 100-Math.floor(Math.random()*100);
+					}
+				});
+			}
+
+			$('#answered-page a').removeClass('category-selected');
+			$('#answered-page #'+category).find('a').addClass('category-selected');
+
+
+			$('#answered-page #archive-questions').empty();
+			var Pages = curiouscity.module('pages');
+			_.each( _.toArray(archiveQuestions) ,function(question){
+				var questionView = new Pages.Views.archive({model:question});
+				$('#answered-page #archive-questions').append(questionView.render().el);
+			});
+			
 		},
 		
 		
@@ -399,10 +474,21 @@ this.curiouscity = {
 			this.questionID=questionID;
 			var _this = this;
 			window.scroll(0,0);
-			$('#discussion').fadeIn();
-			$('#discussion-headline').html("What are people saying about this question");
-			
-			
+			/* replace when disqus showing up properly on single question page
+			DISQUS.reset({
+				reload: true,
+				config: function () {
+					this.page.identifier = "question-"+questionID;
+					this.page.url = "http://curiouscity.wbez.org/#!/question/"+questionID;
+				}
+			});
+			*/
+			console.log('loading single page');
+			this.showDisqus();
+
+
+			$('#conversation-headline').html('What people are saying about this question:');
+
 			$('.focus').removeClass('focus').hide();
 			
 			$('#question-page').empty();
@@ -426,16 +512,15 @@ this.curiouscity = {
 			var Questions = curiouscity.module("questions");
 			var questionView = new Questions.Views.Single({model:model});
 			$('#question-page').html(questionView.render().el);
-		}
+		},
 		
 		
 		/****** DISQUS *********/
-		
-		/*loadDisqus : function(){
+		loadDisqus : function(){
 			$('#disqus-add-comment').click(function(){ $('#dsq-reply').fadeIn();});
 			$('#disqus-sort-popular').click(function(){
 				$('#disqus-sort-newest').addClass('disqus-sort-unselected').removeClass('disqus-sort-selected');
-				$('#disqus-sort-popular').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');;
+				$('#disqus-sort-popular').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
 				DISQUS.dtpl.actions.fire('thread.sort', 'best');
 			});
 			$('#disqus-sort-newest').click(function(){
@@ -443,17 +528,15 @@ this.curiouscity = {
 				$('#disqus-sort-newest').removeClass('disqus-sort-unselected').addClass('disqus-sort-selected');
 				DISQUS.dtpl.actions.fire('thread.sort', 'newest');
 			});
-		},*/
+		},
 		
-		
-		
-		/*disqusCommentInserted: function(){
+		disqusCommentInserted: function(){
 			if(this.questionID!=-1) $.post('php/comment.php?new=true&questionid='+this.questionID, function(data){});
 		},
 		
 		disqusCommentDeleted: function(){
 			if(this.questionID!=-1)$.post('php/vote.php?questionid='+this.questionID, function(data){});
-		},*/
+		}
 		
 		}, Backbone.Events)
 

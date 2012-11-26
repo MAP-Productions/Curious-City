@@ -80,38 +80,37 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	
-	
-	<div id="site-intro" class="clearfix hide">
-		<div class="container">
-			<h2>Curious City is a news-gathering experiment housed at Chicago Public Media - WBEZ 91.5fm. You ask us the questions you’ve always wondered about Chicago, the region or its people, vote for your favorites and together we track down answers. It’s your Curious City.</h2>
-			<a href="#" class="close"><img src="images/close.png" alt="close" /></a>
-		</div>
-	</div>
-	
 
 	<div id="how-it-works" class="clearfix hide closed" style="display: none;">
-				<ul style="margin:auto">
-					<li class="step-1">
-						<i class="number-1"></i>
-						Questions come from the community
-					</li>
-					<li class="step-2">
-						<i class="number-2"></i>
-						You vote for your favorites 
-					</li>
-					<li class="step-3">
-						<i class="number-3"></i>
-						WBEZ investigates, posting updates in real time 
-					</li>
-					<li class="step-4">
-						<i class="number-4"></i>
-						Followers help shape the investigation
-					</li>
-					<li class="step-5">
-						<i class="number-5"></i>
-						We discover the answers together!
-					</li>
-				</ul>
+ 		<div class="container">
+			<div id="intro">
+				<h2>Curious City is a news-gathering experiment housed at Chicago Public Media - WBEZ 91.5fm. You ask us the questions you’ve always wondered about Chicago, the region or its people, vote for your favorites and together we track down answers. It’s your Curious City.</h2>
+			</div>
+			<ul id="instructions">
+				<li class="step-1">
+					<i class="number-1"></i>
+					Questions come from the community
+				</li>
+				<li class="step-2">
+					<i class="number-2"></i>
+					You vote for your favorites 
+				</li>
+				<li class="step-3">
+					<i class="number-3"></i>
+					WBEZ investigates, posting updates in real time 
+				</li>
+				<li class="step-4">
+					<i class="number-4"></i>
+					Followers help shape the investigation
+				</li>
+				<li class="step-5">
+					<i class="number-5"></i>
+					We discover the answers together!
+				</li>
+			</ul>				
+			<a href="#" class="close"><img src="images/close.png" alt="close" /></a>
+		</div>
+
 	</div>
 	<div id="wbez-header">
 		<div class="container">
@@ -528,7 +527,18 @@
 						<div class="side-link">
 							<a href="#!/investigations"><span class="arrow left grey"></span> Current Investigations</a>
 						</div>
-						<img src="images/filler.jpg" alt="" />
+						<div class="carousel-wrap">
+							<div class="carousel lite">
+								<div class="slide">
+									<div class="slide-text">
+										<h1>What's the story behind coach houses in Chicago?<br />
+										What was their purpose?</h1>
+										<h2>Asked by Justin Beiber | Reported by Carrie Shepard</h2>
+									</div>
+									<img src="images/default_old.jpg" alt="" />
+								</div>
+							</div>
+						</div>
 						<?php /*
 						*/ ?>
 					</div>

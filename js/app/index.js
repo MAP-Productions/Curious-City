@@ -9,6 +9,8 @@ jQuery(function($)
 	$('#how-it-works-expander').click(function(){
 		$('#how-it-works-expander i').toggleClass('down');
 		$('#how-it-works').toggleClass('open');
+		$('#how-it-works #instructions').show();
+		$('#how-it-works #intro').hide();
 		
 		if( $('#how-it-works').hasClass('open') ) $('#how-it-works').show('blind',{direction:'vertical'},500);
 		else $('#how-it-works').hide('blind',{direction:'vertical'},500);

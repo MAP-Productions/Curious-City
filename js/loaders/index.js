@@ -16,8 +16,8 @@ require([
 	//libraries
 	'order!../lib/underscore',
 	'order!../lib/backbone',
-	'order!../lib/jquery-ui.min',	
-	'order!../lib/quicksand',	
+	'order!../lib/jquery-ui.min',
+	'order!../lib/quicksand',
 	'order!../lib/bootstrap',
 	'order!../lib/jquery.placeholder.min',
 	
@@ -35,16 +35,21 @@ require([
 	'order!../app/collections/collection.investigation',
 	
 	//views
+
+	'order!../app/views/view.page.stories',
+	'order!../app/views/view.page.about',
+
+
 	'order!../app/views/view.question.vote',
 	'order!../app/views/view.question.previous',
 	'order!../app/views/view.question.ask',
 	'order!../app/views/view.question.single',
-	'order!../app/views/view.page.about',
-	'order!../app/views/view.page.archive',
-	'order!../app/views/view.page.stories',
-	'order!../app/views/view.investigation.single',
+	'order!../app/views/view.question.archive',
+	'order!../app/views/view.question.investigated',
+	'order!../app/views/view.question.feature',
 
-	'order!../lib/spin',	
+	'order!../lib/spin',
+
 
 	//app
 		

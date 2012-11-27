@@ -1,6 +1,6 @@
-(function(Pages) {
+(function(Questions) {
 
-	Pages.Views.archive = Backbone.View.extend({
+	Questions.Views.archive = Backbone.View.extend({
 		
 		className : 'question',
 		
@@ -71,4 +71,4 @@
 
 	});
 
-})(curiouscity.module("pages"));
+})(curiouscity.module("questions"));

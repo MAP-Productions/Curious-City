@@ -188,12 +188,27 @@ this.curiouscity = {
 		},
 
 	
-	
+		loadFeatured :function(){
+			console.log('loading featured');
+			var Questions = curiouscity.module("questions"),
+				archiveQuestions,
+				investigatedQuestionData=_.filter(questionData.archive,function(item){
+					return (item.badge!="answered"&&item.badge!="investigated");
+				});
+			archiveQuestions = new Questions.Collection(investigatedQuestionData,{
+				comparator : function(question){
+					return 100-Math.floor(Math.random()*100);
+				}
+			});
+			var investigatedView = new Questions.Views.Investigated({model:archiveQuestions.at(0)});
+			$('.carousel.lite').empty().append(investigatedView.render().el);
+		},
 	
 		/******* VOTE PAGE **********/
 		
 		loadVoteQuestions : function(){
 			this.router.navigate("!/vote/current");
+			this.loadFeatured();
 			this.questionID=-1;
 			$('#discussion-headline').html("What people are saying:");
 			$('.focus').hide().removeClass('focus');
@@ -279,6 +294,7 @@ this.curiouscity = {
 		
 		loadPrevious : function(id){
 			this.router.navigate("!/previous/"+id);
+			this.loadFeatured();
 			this.questionID=-1;
 			var _this=this;
 			$('#previous-winner-question').empty();
@@ -408,9 +424,8 @@ this.curiouscity = {
 
 
 			$('#archive-page #archive-questions').empty();
-			var Pages = curiouscity.module('pages');
 			_.each( _.toArray(archiveQuestions) ,function(question){
-				var questionView = new Pages.Views.archive({model:question});
+				var questionView = new Questions.Views.archive({model:question});
 				$('#archive-page #archive-questions').append(questionView.render().el);
 			});
 			
@@ -457,11 +472,17 @@ this.curiouscity = {
 
 
 			$('#answered-page #archive-questions').empty();
-			var Pages = curiouscity.module('pages');
+			$('.slide-wrapper').empty();
 			_.each( _.toArray(archiveQuestions) ,function(question){
-				var questionView = new Pages.Views.archive({model:question});
+				var questionView = new Questions.Views.archive({model:question});
 				$('#answered-page #archive-questions').append(questionView.render().el);
+			
 			});
+
+			var investigatedView = new Questions.Views.Investigated({model:archiveQuestions.at(0)});
+			$('.slide-wrapper').empty().append(investigatedView.render().el);
+			
+
 			
 		},
 		

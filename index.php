@@ -304,14 +304,8 @@
 						<div class="carousel">
 							<a href="#" class="slide-left">slide left</a>
 							<a href="#" class="slide-right">slide right</a>
-							<div class="slide">
-								<div class="slide-text">
-									<h1>What's the story behind coach houses in Chicago?<br />
-										What was their purpose?</h1>
-									<h2>Asked by Justin Beiber | Reported by Carrie Shepard</h2>
-									<p><em>Last updated Thursday, June 21, 2012</em></p>
-								</div>
-								<img src="images/default_old.jpg" alt="" />
+							<div class="slide-wrapper">
+								
 							</div>
 						</div>
 					</div>
@@ -525,7 +519,7 @@
 				<div class="row">
 					<div class="span4">
 						<div class="side-link">
-							<a href="#!/investigations"><span class="arrow left grey"></span> Current Investigations</a>
+							<a href="#!/answered/recent"><span class="arrow left grey"></span> Current Investigations</a>
 						</div>
 						<div class="carousel-wrap">
 							<div class="carousel lite">

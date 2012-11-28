@@ -96,7 +96,7 @@
 				<div class="header-icon-social">
 					<a href="https://twitter.com/wbezcuriouscity" target="_blank"><img class='twitter-icon' src="images/twitter_16.png"/></a>
 					<a href="http://www.wbez.org/programs/afternoon-shift" target="_blank"><img class='radio-icon' src="images/icon_radio.png"/></a>
-					<a href="#" target="_blank"><img class='rss-icon' src="images/icon_rss.png"/></a>
+					<!--<a href="#" target="_blank"><img class='rss-icon' src="images/icon_rss.png"/></a>-->
 				</div>
 				<a href="#!/about" id='how-it-works-expander' onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on How it Works', '']);">How it Works</a> | 
 				<a href="#!/about" id='nav-about'>About</a> | 

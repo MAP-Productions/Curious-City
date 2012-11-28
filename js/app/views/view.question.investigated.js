@@ -4,7 +4,7 @@
 
 	Questions.Views.Investigated = Backbone.View.extend({
 	
-		tagName : 'div',
+		tagName : 'li',
 		className : 'slide',
 	
 		render : function()

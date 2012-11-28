@@ -1096,6 +1096,8 @@ extra random styles*/
 }
 .carousel .slide {
 	padding: 0 38px;
+	cursor: pointer;
+	list-style: none;
 }
 .carousel.lite .slide {
 	padding: 0 12px;

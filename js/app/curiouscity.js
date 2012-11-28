@@ -174,7 +174,7 @@ this.curiouscity = {
 		hideDisqus : function()
 		{
 			console.log('hide disqus');
-			if( $(".disqus-wrapper").is(':visible') ) $('.disqus-wrapper').hide();
+			$('.disqus-wrapper').hide();
 		},
 		showDisqus : function()
 		{
@@ -208,6 +208,7 @@ this.curiouscity = {
 		
 		loadVoteQuestions : function(){
 			this.router.navigate("!/vote/current");
+			this.hideDisqus();
 			this.loadFeatured();
 			this.questionID=-1;
 			$('#discussion-headline').html("What people are saying:");
@@ -495,7 +496,7 @@ this.curiouscity = {
 			this.questionID=questionID;
 			var _this = this;
 			window.scroll(0,0);
-			/* replace when disqus showing up properly on single question page
+			
 			DISQUS.reset({
 				reload: true,
 				config: function () {
@@ -503,8 +504,7 @@ this.curiouscity = {
 					this.page.url = "http://curiouscity.wbez.org/#!/question/"+questionID;
 				}
 			});
-			*/
-			console.log('loading single page');
+	
 			this.showDisqus();
 
 

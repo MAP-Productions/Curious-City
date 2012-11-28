@@ -49,10 +49,11 @@ require([
 	'order!../app/views/view.question.feature',
 
 	'order!../lib/spin',
+	'order!../lib/jquery.carousel.min',
 
 
 	//app
 		
-	'order!../app/index',
+	'order!../app/index'
 	
 	], function(){});

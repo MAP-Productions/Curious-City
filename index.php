@@ -46,35 +46,8 @@
 	<script type="text/javascript">stLight.options({publisher: "c09036ef-5691-4751-b69d-288d40fa03f7"}); </script>
 	-->
 	
-	<script type="text/javascript">
+
 	
-		
-		<?php
-			$handle = @fopen("js/data/questions.js", "r");
-			if ($handle) {
-				while (($buffer = fgets($handle, 4096)) !== false) {
-					echo $buffer;
-				}
-				fclose($handle);
-			}
-		?>
-		
-		
-		<?php
-			$handle = @fopen("js/data/archive.js", "r");
-			if ($handle) {
-				while (($buffer = fgets($handle, 4096)) !== false) {
-					echo $buffer;
-				}
-				fclose($handle);
-			}
-		?>
-		var vote = -1;
-
-
-
-
-	</script>
 	
 </head>
 <body>
@@ -198,17 +171,6 @@
 							<div class="side-link">
 								<a href="#!/previous/od0"><span class="arrow left grey"></span> Previous Voting Round</a>
 							</div>
-							<?php /*
-							<div id="previous-winner">
-								<h2></h2>
-								<h5></h5>
-							</div>
-							
-							<br><br><br>
-							<div id="voting-date" class="clearfix">
-									<a href="#"><i class="arrow left"></i> Voting for May 04 - May 11 / 2012</a>
-							</div>
-							*/ ?>
 						</div>
 						<div class="span8 right-col">
 							<div class="super">
@@ -281,18 +243,7 @@
 							<h5>Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target="blank">The Afternoon Shift</a> on <a href="http://www.wbez.org" target="blank">WBEZ 91.5</a><br />
 							to hear updates and find out final results.</h5>
 						</div>
-						<?php /*
-						<div class="span8 right-col">
-							<div class="super">
-								<h1>What do you wonder about Chicago, the region, or the people who live here?</h1>
-							</div>
-							<div class="sub" style="position:relative">
-								<h5>Please type your question below:</h5><span class='good-question-link' ><a data-toggle="modal" href="#good-question-modal" >Show me some good examples</a>
-									<p>Please direct any questions about WBEZ here: <a href="http://www.wbez.org/contact" target="blank" >www.wbez.org/contact</a><p>
-								</span>
-							</div>
-						</div>
-						*/ ?>
+					
 					</div>
 				</div>
 				<div id="ask-form"></div>
@@ -301,25 +252,17 @@
 			<div id="answered-page" class="hide">
 				<div id="archive-flash">
 					<div class="carousel-wrap">
-						<div class="carousel">
+						<div id="main-carousel" class="carousel">
 							<a href="#" class="slide-left">slide left</a>
 							<a href="#" class="slide-right">slide right</a>
-							<div class="slide-wrapper">
+							<ul class="slide-wrapper">
 								
-							</div>
+							</ul>
 						</div>
 					</div>
 					<div class="row">
 						<div class="span4 left-col">
-							<?php /*
-							<ul class='unstyled archive-key'>
 
-								<li><a href='#' data-filter='current'><i class='badge-current'></i></br> in a voting round</a></li>
-								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i></br> being investigated</a></li>
-								<li><a href='#' data-filter='answered'><i class='badge-answered'></i></br> sufficiently answered</a></li>
-
-							</ul>
-							*/ ?>
 						</div>
 							
 						<div class="archive-search">
@@ -352,15 +295,7 @@
 				<div id="archive-flash">
 					<div class="row">
 						<div class="span4 left-col">
-							<?php /*
-							<ul class='unstyled archive-key'>
 
-								<li><a href='#' data-filter='current'><i class='badge-current'></i></br> in a voting round</a></li>
-								<li><a href='#' data-filter='investigated'><i class='badge-investigated'></i></br> being investigated</a></li>
-								<li><a href='#' data-filter='answered'><i class='badge-answered'></i></br> sufficiently answered</a></li>
-
-							</ul>
-							*/ ?>
 						</div>
 							
 						<div class="archive-search">
@@ -533,8 +468,7 @@
 								</div>
 							</div>
 						</div>
-						<?php /*
-						*/ ?>
+						
 					</div>
 					<div class="span8">
 	
@@ -703,10 +637,12 @@
 	
 	<!-- Application source DEV -->
 		<script src="js/data/questions-dist.js" ></script> 
-	   <script data-main="js/loaders/index.js" src="js/lib/require.js"></script>
+		<script data-main="js/loaders/index.js" src="js/lib/require.js"></script>
 
 	<!-- Production 
- 	<script data-main="js_min/index.js" src="js/lib/require.js"></script>  -->
+
+		<script src="js/data/questions.js#<?php echo rand(0,1000000);?>" ></script> 
+ 		<script data-main="js_min/index.js" src="js/lib/require.js"></script>  -->
 
 </body>
 </html>

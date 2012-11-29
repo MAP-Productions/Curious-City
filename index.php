@@ -253,7 +253,7 @@
 				<div id="archive-flash">
 					<div class="carousel-wrap">
 						<div id="main-carousel" class="carousel">
-							<a href="#" class="slide-left">slide left</a>
+							<a href="#" class="slide-left fuzzy">slide left</a>
 							<a href="#" class="slide-right">slide right</a>
 							<ul class="slide-wrapper">
 								

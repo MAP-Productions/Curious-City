@@ -1159,6 +1159,10 @@ extra random styles*/
 	text-indent: -999px;
 	overflow: hidden;
 }
+.carousel .slide-left.fuzzy {
+	opacity: .3;
+	cursor: default;
+}
 .carousel .slide-left {
 	background: url(../images/slide-left.png) no-repeat;
 	left: 0;

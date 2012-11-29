@@ -1097,9 +1097,15 @@ extra random styles*/
 	padding: 0 38px;
 	cursor: pointer;
 	list-style: none;
+	display: inline-block;
+	width: 864px;
 }
 .carousel.lite .slide {
 	padding: 0 12px;
+}
+.carousel ul {
+	margin: 0;
+	width: 10000px;
 }
 .carousel img {
 	position: absolute;

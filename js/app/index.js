@@ -9,9 +9,8 @@ jQuery(function($)
 	$('#how-it-works-expander').click(function(){
 		$('#how-it-works-expander i').toggleClass('down');
 		$('#how-it-works').toggleClass('open');
-		$('#how-it-works #instructions').show();
-		$('#how-it-works #intro').hide();
 		
+		$('#instructions').show(); $('#intro').hide();
 		if( $('#how-it-works').hasClass('open') ) $('#how-it-works').show('blind',{direction:'vertical'},500);
 		else $('#how-it-works').hide('blind',{direction:'vertical'},500);
 		return false;
@@ -19,7 +18,9 @@ jQuery(function($)
 	
 	$('#how-it-works .close').click(function(e){
 		e.preventDefault();
-		$('#how-it-works').removeClass('open').hide('blind',{direction:'vertical'},500);
+		$('#how-it-works').removeClass('open').hide('blind',{direction:'vertical'},500,function(){
+			$('#instructions').show(); $('#intro').hide();
+		});
 		return false;
 	});
 	
@@ -87,7 +88,17 @@ jQuery(function($)
 		Curiouscity.vote=-1;
 	}
 	if(_.isUndefined(getCookie('CURIOUS_CITY'))){
-		_.delay(function(){ $('#how-it-works-expander').trigger('click');},1000);
+		
+		
+
+		_.delay(function(){
+			$('#intro').show();
+			$('#instructions').hide();
+			$('#how-it-works-expander i').toggleClass('down');
+			$('#how-it-works').toggleClass('open');
+			$('#how-it-works').show('blind',{direction:'vertical'},500);
+			
+		},1000);
 		setCookie('CURIOUS_CITY',1,365);
 	}
 

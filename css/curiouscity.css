@@ -237,6 +237,14 @@ footer li
 	padding:5px;
 }
 
+#how-it-works-intro
+{
+	background:transparent url(../images/bg_dots.png);
+	padding:10px 0;
+	position: relative;
+}
+
+
 #how-it-works
 {
 	background:transparent url(../images/bg_dots.png);

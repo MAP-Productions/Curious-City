@@ -33,6 +33,31 @@ jQuery(function($)
 		
 		return false;
 	});
+
+	var sliderReady=true;
+
+	$('.slide-right').click(function(){
+		if(sliderReady){
+			sliderReady=false;
+			$('.slide-wrapper ').animate({'left':'-=940'},1000,function(){
+				var last = $('.slide-wrapper li:nth-child(1)').appendTo($('.slide-wrapper '));
+				$('.slide-wrapper ').css({'left':'+=940'});
+				sliderReady=true;
+			});
+		}
+		return false;
+	});
+
+	$('.slide-left').click(function(){
+		if(sliderReady){
+			$('.slide-wrapper ').animate({'left':'+=940'},1000,function(){
+				var last = $('.slide-wrapper li:nth-child('+$(".slide-wrapper  li").length+')').prependTo($('.slide-wrapper '));
+				$('.slide-wrapper ').css({'left':'-=940'});
+				sliderReady=true;
+			});
+		}
+		return false;
+	});
 	
 	function setCookie(c_name,value,exdays)
 	{

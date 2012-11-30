@@ -486,31 +486,6 @@ this.curiouscity = {
 				
 			});
 
-			$('.slide-right').click(function(){
-
-				$('.slide-wrapper ').animate({'left':'-=940'},1000,function(){
-					//var last = $('.slide-wrapper li:nth-child('+$("ul li").length+')').prependTo($('.slide-wrapper '));
-					var last = $('.slide-wrapper li:nth-child(1)').appendTo($('.slide-wrapper '));
-					$('.slide-wrapper ').css({'left':'+=940'});
-
-				});
-
-				return false;
-			});
-
-			$('.slide-left').click(function(){
-
-				$('.slide-wrapper ').animate({'left':'+=940'},1000,function(){
-					var last = $('.slide-wrapper li:nth-child('+$(".slide-wrapper  li").length+')').prependTo($('.slide-wrapper '));
-					//var last = $('.slide-wrapper li:nth-child(1)').appendTo($('.slide-wrapper '));
-					$('.slide-wrapper ').css({'left':'-=940'});
-
-				});
-
-				return false;
-			});
-		
-			
 
 			
 		},

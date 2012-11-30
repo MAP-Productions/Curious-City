@@ -1094,29 +1094,40 @@ extra random styles*/
 	min-height: 274px;
 }
 .carousel .slide {
-	padding: 0 38px;
+	
 	cursor: pointer;
 	list-style: none;
 	display: inline-block;
-	width: 864px;
+	width: 940px;
+	height:334px;
+	overflow:hidden;
+
 }
+.carousel .slide-contents{
+	position:relative;
+}
+
+
+
+
+
 .carousel.lite .slide {
 	padding: 0 12px;
 }
 .carousel ul {
 	margin: 0;
-	width: 10000px;
+	width: 50000px;
+	position: absolute;
 }
 .carousel img {
 	position: absolute;
-	top: 0;
+	top: -24px;
 	left: 0;
-	min-width: 100%;
-	min-height: 100%;
-	width: auto;
+	width: 980px;
 	height: auto;
 }
 .carousel .slide-text {
+	padding: 0 38px;
 	position: relative;
 	z-index: 1;
 }
@@ -1126,6 +1137,7 @@ extra random styles*/
 	padding-bottom: 6px;
 	font-size: 30px;
 	margin-top: 24px;
+	min-height:75px;
 }
 .carousel.lite h1 {
 	font-size: 13px;
@@ -1148,6 +1160,9 @@ extra random styles*/
 	text-shadow: 2px 2px 4px #333;
 	filter: progid:DXImageTransform.Microsoft.Glow(color=#333333, strength=2);
 }
+.carousel .slide-wrapper{
+	left:-940px;
+}
 .carousel .slide-left,
 .carousel .slide-right {
 	display: block;
@@ -1158,11 +1173,16 @@ extra random styles*/
 	z-index: 1;
 	text-indent: -999px;
 	overflow: hidden;
+	opacity: .5;
 }
-.carousel .slide-left.fuzzy {
-	opacity: .3;
-	cursor: default;
+.carousel .slide-left:hover{
+	opacity:1;
 }
+
+.carousel .slide-right:hover{
+	opacity:1;
+}
+
 .carousel .slide-left {
 	background: url(../images/slide-left.png) no-repeat;
 	left: 0;

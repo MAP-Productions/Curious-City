@@ -474,14 +474,42 @@ this.curiouscity = {
 
 			$('#answered-page #archive-questions').empty();
 			$('.slide-wrapper').empty();
+			var counter=0;
 			_.each( _.toArray(archiveQuestions) ,function(question){
 				var questionView = new Questions.Views.archive({model:question});
 				$('#answered-page #archive-questions').append(questionView.render().el);
-			
+				if(counter<5){
+					counter++;
+					var investigatedView = new Questions.Views.Investigated({model:question});
+					$('.slide-wrapper').append(investigatedView.render().el);
+				}
+				
 			});
 
-			var investigatedView = new Questions.Views.Investigated({model:archiveQuestions.at(0)});
-			$('.slide-wrapper').empty().append(investigatedView.render().el);
+			$('.slide-right').click(function(){
+
+				$('.slide-wrapper ').animate({'left':'-=940'},1000,function(){
+					//var last = $('.slide-wrapper li:nth-child('+$("ul li").length+')').prependTo($('.slide-wrapper '));
+					var last = $('.slide-wrapper li:nth-child(1)').appendTo($('.slide-wrapper '));
+					$('.slide-wrapper ').css({'left':'+=940'});
+
+				});
+
+				return false;
+			});
+
+			$('.slide-left').click(function(){
+
+				$('.slide-wrapper ').animate({'left':'+=940'},1000,function(){
+					var last = $('.slide-wrapper li:nth-child('+$(".slide-wrapper  li").length+')').prependTo($('.slide-wrapper '));
+					//var last = $('.slide-wrapper li:nth-child(1)').appendTo($('.slide-wrapper '));
+					$('.slide-wrapper ').css({'left':'-=940'});
+
+				});
+
+				return false;
+			});
+		
 			
 
 			

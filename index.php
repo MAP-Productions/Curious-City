@@ -253,10 +253,12 @@
 				<div id="archive-flash">
 					<div class="carousel-wrap">
 						<div id="main-carousel" class="carousel">
-							<a href="#" class="slide-left fuzzy">slide left</a>
-							<a href="#" class="slide-right">slide right</a>
+							<a href="#" class="slide-left ">slide left</a>
+							<a href="#" class="slide-right ">slide right</a>
 							<ul class="slide-wrapper">
-								
+								<li class="slide"><div class="slide-text"><h1>What's one thing you can get in Chicago that you can't get anywhere else?</h1><h2>Asked by Brenda | Reported by </h2><p><em>Last updated Friday, September 21, 2012</em></p></div><img src="http://farm4.staticflickr.com/3042/3010568050_f7f6ccf3e6.jpg" alt=""></li>
+								<li class="slide"><div class="slide-text"><h1>What's one thing you can get in Chicago that you can't get anywhere else?</h1><h2>Asked by Brenda | Reported by </h2><p><em>Last updated Friday, September 21, 2012</em></p></div><img src="http://farm4.staticflickr.com/3042/3010568050_f7f6ccf3e6.jpg" alt=""></li>
+								<li class="slide"><div class="slide-text"><h1>What's one thing you can get in Chicago that you can't get anywhere else?</h1><h2>Asked by Brenda | Reported by </h2><p><em>Last updated Friday, September 21, 2012</em></p></div><img src="http://farm4.staticflickr.com/3042/3010568050_f7f6ccf3e6.jpg" alt=""></li>	
 							</ul>
 						</div>
 					</div>

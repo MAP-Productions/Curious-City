@@ -112,7 +112,7 @@
 				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')');
 
 			}else if(this.step==4){
-
+				$('#ask-modal').find('h3').html("Thanks for submitting your question!");
 				var cats="";
 				_.each($('#category-choices input'),function(el){
 					if($(el).is(':checked')){
@@ -129,6 +129,7 @@
 				$('#ask-next').html("Close");
 
 			}else if(this.step==5){
+
 				$('#ask-modal').modal('hide');
 				$('#submit-question-text').attr('value','');
 			}

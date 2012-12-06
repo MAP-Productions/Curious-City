@@ -1109,6 +1109,12 @@ extra random styles*/
 .carousel.lite {
 	min-height: 274px;
 }
+
+.carousel.lite .slide {
+	width:100%;
+}
+
+
 .carousel .slide {
 	
 	cursor: pointer;
@@ -1127,13 +1133,20 @@ extra random styles*/
 
 
 
-.carousel.lite .slide {
-	padding: 0 12px;
-}
+
 .carousel ul {
 	margin: 0;
 	position: absolute;
 }
+.carousel.lite img {
+	position: absolute;
+	top: -24px;
+	left: 0;
+	width: 100%;
+	height:100%;
+	height: auto;
+}
+
 .carousel img {
 	position: absolute;
 	top: -24px;

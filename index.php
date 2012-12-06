@@ -455,7 +455,7 @@
 				<div class="row">
 					<div class="span4">
 						<div class="side-link">
-							<a href="#!/answered/recent"><span class="arrow left grey"></span> Current Investigations</a>
+							<a href="#!/answered/all"><span class="arrow left grey"></span> Current Investigations</a>
 						</div>
 						<div class="carousel-wrap">
 							<div class="carousel lite">

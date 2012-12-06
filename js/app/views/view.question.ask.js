@@ -25,7 +25,6 @@
 			else blanks ={ask:$('.submit-question-text')[0].value};
 			$(this.el).append( _.template( this.getTemplate(), blanks ) );
 			this.step=1;
-			this.flickrSearch('chicago');
 
 		},
 		
@@ -45,11 +44,8 @@
 			var searchQuery;
 			var _this=this;
 
-			if($(this.el).find('.submit-flickr-query')[0].value==="") searchQuery="chicago";
-			else searchQuery=$(this.el).find('.submit-flickr-query')[0].value;
-
 			$('#flickr-search').spin('small');
-			this.collection = new Questions.Collection.Flickr({query:searchQuery});
+			this.collection = new Questions.Collection.Flickr({query:$(this.el).find('.submit-flickr-query')[0].value});
 			this.collection.fetch({success:function(collection,response){
 			$('#flickr-search').spin(false);
 				

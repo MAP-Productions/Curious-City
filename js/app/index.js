@@ -4,7 +4,14 @@ jQuery(function($)
 	// Shorthand the application namespace
 	var Curiouscity = curiouscity.app;
 	
-	
+
+	$('input, textarea').placeholder();
+
+	$('.sort').click(function(){
+		var sort = $(this).parent().attr('id');
+		Curiouscity.router.navigate('!/'+Curiouscity.page+'/'+Curiouscity.category+'/'+sort,{'trigger':true});
+		return false;
+	});
 	
 	$('#how-it-works-expander').click(function(){
 		$('#how-it-works-expander i').toggleClass('down');

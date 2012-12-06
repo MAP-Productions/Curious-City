@@ -20,34 +20,8 @@ this.curiouscity = {
 	app: _.extend({
 		
 		init : function(){
-			// roman:
-			// wasn't sure where to put this...
-			// works here but clearly not where it's supposed to be.
-			// please move to appropriate spot
-
-			$('input, textarea').placeholder();
-
-			// this.archive = new Array();
-			// roman:
-			// since disqus was scratched i either commended it out or, perhaps, deleted its lines altogether.
-			// please check history to find out...
-			
 
 			this.loadDisqus();
-			
-			var Questions = curiouscity.module("questions");
-			this.popularArchive = new Questions.Collection(questionData.archive,{
-				comparator : function(question){
-					return 100-question.get('comments');
-				}
-			});
-			
-			this.recentArchive = new Questions.Collection(questionData.archive,{
-				comparator : function(question){
-					return 100-question.get('dateuploaded');
-				}
-			});
-			
 			this.startRouter();
 			this.isLoaded = true;
 					
@@ -64,8 +38,11 @@ this.curiouscity = {
 					'!/archive/question/:questionID'					:	'goToArchiveQuestion',
 					'!/vote/current'									:	'goToVoting',
 					'!/previous/:id'									:	'goToPrevious',
+					
 					'!/archive/:category'								:	'goToArchive',
-					'!/answered/:category'								:	'goToAnswered'
+					'!/archive/:category/:sort'							:	'goToArchive',
+					'!/answered/:category'								:	'goToAnswered',
+					'!/answered/:category/:sort'						:	'goToAnswered'
 				},
 				
 				initialize: function() {
@@ -100,17 +77,19 @@ this.curiouscity = {
 					_this.loadSingleQuestion(questionID);
 					
 				},
-				goToArchive : function(category)
+				goToArchive : function(category, sort)
 				{
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
-					_this.loadArchiveQuestions(category);
+					_this.loadArchiveQuestions('archive',category,sort);
 				},
-				goToAnswered : function(category)
+				goToAnswered : function(category,sort)
 				{
+					
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-answered').addClass('nav-focus');
-					_this.loadAnsweredQuestions(category);
+					_this.loadCarousel();
+					_this.loadArchiveQuestions('answered',category,sort);
 				},
 				goToVoting : function()
 				{
@@ -382,114 +361,91 @@ this.curiouscity = {
 		
 		/******* QUESTION ARCHIVE PAGE **********/
 		
-		loadArchiveQuestions : function(category){
+		loadArchiveQuestions : function(page,category,sort){
 			
 			// reload archive each time the page is loaded
 			
-			
+			console.log(page,category,sort,category.replace(/-/g," "));
+			this.page=page;
+			this.category=category;
+			this.sort = _.isUndefined(sort)? "recent":sort;
+
 			this.hideConversation();
 			$('.focus').hide().removeClass('focus');
-			$('#archive-page').addClass('focus').show();
+			$('#'+page+'-page').addClass('focus').show();
 	
 
 			var Questions = curiouscity.module("questions"),
-				archiveQuestions,
-				unansweredQuestionData=_.filter(questionData.archive,function(item){
-					return (item.badge!="answered"&&item.badge!="investigated");
+				questionsCollection,
+				filteredQuestions;
+
+			if(page=='archive')	{
+				filteredQuestions=_.filter(questionData.archive,function(item){
+					
+					if(category=='all') return item.badge!="answered"&&item.badge!="investigated";
+					else return item.badge!="answered"&&item.badge!="investigated"&&item.categories.indexOf(category.replace(/-/g," "))>-1;
 				});
-			
-			if(category=='popular'){
-				archiveQuestions = new Questions.Collection(unansweredQuestionData,{
+			}else{
+				filteredQuestions=_.filter(questionData.archive,function(item){
+					
+					if(category=='all') return item.badge=="answered"||item.badge=="investigated";
+					else return (item.badge=="answered"||item.badge=="investigated")&&item.categories.indexOf(category.replace(/-/g," "))>-1;
+				});
+			}
+			if(sort=='popular'){
+				questionsCollection = new Questions.Collection(filteredQuestions,{
 					comparator : function(question){
 						return 100-question.get('comments');
 					}
 				});
+				
+
 			}
-			else if (category=='recent'){
-				archiveQuestions = new Questions.Collection(unansweredQuestionData,{
+			else{
+				questionsCollection = new Questions.Collection(filteredQuestions,{
 					comparator : function(question){
 						return 100-question.get('dateuploaded');
 					}
 				});
 			}
-			else {
-				archiveQuestions = new Questions.Collection(unansweredQuestionData,{
-					comparator : function(question){
-						return 100-Math.floor(Math.random()*100);
-					}
-				});
-			}
 
-			$('#archive-page a').removeClass('category-selected');
-			$('#archive-page #'+category).find('a').addClass('category-selected');
+			$('#'+page+'-page').find('a').removeClass('category-selected');
+			$('#'+page+'-page #'+this.sort).find('a').addClass('category-selected');
+			$('#'+page+'-page #'+category).find('a').addClass('category-selected');
 
-
-			$('#archive-page #archive-questions').empty();
-			_.each( _.toArray(archiveQuestions) ,function(question){
+		
+			$('#'+page+'-page #archive-questions').empty();
+			_.each( _.toArray(questionsCollection) ,function(question){
 				var questionView = new Questions.Views.archive({model:question});
-				$('#archive-page #archive-questions').append(questionView.render().el);
+				$('#'+page+'-page #archive-questions').append(questionView.render().el);
 			});
 			
 		},
 		
-		loadAnsweredQuestions : function(category){
-			$('.focus').hide().removeClass('focus');
-			$('#discussion').hide();
-			$('#answered-page').addClass('focus').show();
-	
-			var Questions = curiouscity.module("questions"),
-				archiveQuestions;
-			
-			var answeredQuestionData=_.filter(questionData.archive,function(item){
-					return (item.badge=="answered"||item.badge=="investigated");
-				});
 
-
-			if(category=='popular'){
-				
-				archiveQuestions = new Questions.Collection(answeredQuestionData,{
-					comparator : function(question){
-						return 100-question.get('comments');
-					}
-				});
-			}
-			else if (category=='recent'){
-				archiveQuestions = new Questions.Collection(answeredQuestionData,{
-					comparator : function(question){
-						return 100-question.get('dateuploaded');
-					}
-				});
-			}
-			else {
-				archiveQuestions = new Questions.Collection(answeredQuestionData,{
-					comparator : function(question){
-						return 100-Math.floor(Math.random()*100);
-					}
-				});
-			}
-
-			$('#answered-page a').removeClass('category-selected');
-			$('#answered-page #'+category).find('a').addClass('category-selected');
-
-
-			$('#answered-page #archive-questions').empty();
+		loadCarousel :function(){
 			$('.slide-wrapper').empty();
-			var counter=0;
-			_.each( _.toArray(archiveQuestions) ,function(question){
-				var questionView = new Questions.Views.archive({model:question});
-				$('#answered-page #archive-questions').append(questionView.render().el);
-				if(counter<5){
-					counter++;
-					var investigatedView = new Questions.Views.Investigated({model:question});
-					$('.slide-wrapper').append(investigatedView.render().el);
-				}
-				
+			var Questions = curiouscity.module("questions"),
+				questionsCollection,
+				filteredQuestions;
+
+			filteredQuestions=_.filter(questionData.archive,function(item){
+					return parseInt(item.investigated,10)>0;
+				});
+			console.log(filteredQuestions.length);
+			questionsCollection = new Questions.Collection(filteredQuestions,{
+					comparator : function(question){
+						return Math.random();
+						//return 100-question.get('dateuploaded');
+					}
+				});
+
+			_.each( _.toArray(questionsCollection) ,function(question){
+				var investigatedView = new Questions.Views.Investigated({model:question});
+				$('.slide-wrapper').append(investigatedView.render().el);
 			});
-
-
-			
 		},
-		
+
 		
 		
 		/******* SINGLE QUESTION PAGE **********/

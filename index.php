@@ -130,7 +130,7 @@
 						<ul class='pull-right cc-nav'>
 							<li><a href="#!/vote/current" id='nav-vote'>Up for Voting</a></li>
 							<!--li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li-->
-							<li><a href="#!/answered/recent" id='nav-answered'><span class="arrow down grey"></span> Answered &amp; Investigating</a>
+							<li><a href="#!/answered/all" id='nav-answered'><span class="arrow down grey"></span> Answered &amp; Investigating</a>
 								<ul>
 									<li class="carrot"></li>
 									<li><a href="#!/answered/how-we-live">How We Live</a></li>
@@ -142,7 +142,7 @@
 									<li><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
 								</ul>
 							</li>
-							<li><a href="#!/archive/recent" id='nav-archive'><span class="arrow down grey"></span> New and Unanswered</a>
+							<li><a href="#!/archive/all" id='nav-archive'><span class="arrow down grey"></span> New and Unanswered</a>
 								<ul>
 									<li class="carrot"></li>
 									<li><a href="#!/archive/how-we-live">How We Live</a></li>
@@ -269,12 +269,13 @@
 							
 						<div class="archive-search">
 							<ul class="unstyled horizontal left">
-								<li id="recent"><a href="#!/answered/recent">Recently Updated</a></li>
-								<li id="popular"><a href="#!/answered/popular">Most Popular</a></li>
+								<li id="recent"><a class="sort" href="#">Recently Updated</a></li>
+								<li id="popular"><a class="sort" href="#">Most Popular</a></li>
 								<!--<li><a href="#!/vote" class="thumb-mini">Up for Voting</a></li>-->
 								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
 							</ul>
 							<ul class="unstyled horizontal right">
+								<li id="all"><a href="#!/answered/all">All</a></li>
 								<li id="how-we-live"><a href="#!/answered/how-we-live">How We Live</a></li>
 								<li id="history"><a href="#!/answered/history">History</a></li>
 								<li id="environment"><a href="#!/answered/environment">Environment</a></li>
@@ -302,12 +303,13 @@
 							
 						<div class="archive-search">
 							<ul class="unstyled horizontal left">
-								<li id="recent"><a href="#!/archive/recent">Recently Updated</a></li>
-								<li id="popular"><a href="#!/archive/popular">Most Popular</a></li>
+								<li id="recent"><a class="sort" href="#">Recently Updated</a></li>
+								<li id="popular"><a class="sort" href="#">Most Popular</a></li>
 								<!--<li><a href="#!/vote" class="thumb-mini">Up for Voting</a></li>-->
 								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
 							</ul>
 							<ul class="unstyled horizontal right">
+								<li id="how-we-live"><a href="#!/archive/all">All</a></li>
 								<li id="how-we-live"><a href="#!/archive/how-we-live">How We Live</a></li>
 								<li id="history"><a href="#!/archive/history">History</a></li>
 								<li id="environment"><a href="#!/archive/environment">Environment</a></li>

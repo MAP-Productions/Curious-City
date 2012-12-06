@@ -184,7 +184,7 @@
 					"</div>"+
 					"<div class='modal-body'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							"<div class='control-group'><label for='ask-text'>Your question</label><textarea class='ask-text' placeholder='What do you wonder about Chicago, the region, or the people who live here?'><%=ask%></textarea></div>"+
+							"<div class='control-group'><label for='ask-text'>Your question</label><textarea class='ask-text' placeholder='What do you wonder about Chicago, the region or its people that you want WBEZ to investigate?'><%=ask%></textarea></div>"+
 							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?</label><input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name</label><input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Select Anonymous\", \"\"]);' > <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+

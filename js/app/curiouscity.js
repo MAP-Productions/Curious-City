@@ -141,14 +141,14 @@ this.curiouscity = {
 		hideTwitter : function()
 		{
 			console.log('hide twitter');
-			if( $(".twitter-wrapper").is(':visible') ) $('.twitter-wrapper').hide();
+			$('.twitter-wrapper').hide();
 		},
 		showTwitter : function()
 		{
 			console.log('show twitter');
 			$('#conversation-headline').html('What people are saying:');
 			this.hideDisqus();
-			if( $(".twitter-wrapper").is(':hidden') ) $('.twitter-wrapper').fadeIn();
+			$('.twitter-wrapper').show();
 		},
 
 		hideDisqus : function()
@@ -158,9 +158,10 @@ this.curiouscity = {
 		},
 		showDisqus : function()
 		{
+			$('#cnversation-headline').html("If WBEZ investigates this question, what should we consider? What's your experience with this?");
 			console.log('show disqus');
 			this.hideTwitter();
-			if( $(".disqus-wrapper").is(':hidden') ) $('.disqus-wrapper').fadeIn();
+			$('.disqus-wrapper').show();
 		},
 		hideConversation : function(){
 			this.hideTwitter();

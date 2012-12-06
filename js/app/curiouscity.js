@@ -88,8 +88,8 @@ this.curiouscity = {
 					
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-answered').addClass('nav-focus');
-					_this.loadCarousel();
-					_this.loadArchiveQuestions('answered',category,sort);
+					//_this.loadCarousel();
+					 _this.loadArchiveQuestions('answered',category,sort);
 				},
 				goToVoting : function()
 				{
@@ -118,8 +118,9 @@ this.curiouscity = {
 					this.loadVoteQuestions();
 					break;
 				case 'ask':
-					$('#nav-ask').addClass('nav-focus');
+					$('#nav-vote').addClass('nav-focus');
 					this.showTwitter();
+					this.loadVoteQuestions();
 					this.loadAsk(options);
 					break;
 				case 'archive':
@@ -349,12 +350,13 @@ this.curiouscity = {
 		
 		loadAsk : function(options){
 			
+			
 			$('.submit-question-text').attr('value',options);
 			var Questions = curiouscity.module("questions");
-			
 			this.askView = new Questions.Views.Ask();
 			
-			$('#ask-form').html(this.askView.render().el);
+			$('#ask-modal').html(this.askView.render().el);
+			$("#ask-modal").modal('show');
 		},
 		
 		
@@ -365,7 +367,7 @@ this.curiouscity = {
 			
 			// reload archive each time the page is loaded
 			
-			console.log(page,category,sort,category.replace(/-/g," "));
+			
 			this.page=page;
 			this.category=category;
 			this.sort = _.isUndefined(sort)? "recent":sort;
@@ -379,6 +381,10 @@ this.curiouscity = {
 				questionsCollection,
 				filteredQuestions;
 
+
+
+
+				
 			if(page=='archive')	{
 				filteredQuestions=_.filter(questionData.archive,function(item){
 					
@@ -392,6 +398,10 @@ this.curiouscity = {
 					else return (item.badge=="answered"||item.badge=="investigated")&&item.categories.indexOf(category.replace(/-/g," "))>-1;
 				});
 			}
+
+
+
+
 			if(sort=='popular'){
 				questionsCollection = new Questions.Collection(filteredQuestions,{
 					comparator : function(question){
@@ -418,25 +428,28 @@ this.curiouscity = {
 			_.each( _.toArray(questionsCollection) ,function(question){
 				var questionView = new Questions.Views.archive({model:question});
 				$('#'+page+'-page #archive-questions').append(questionView.render().el);
+
 			});
-			
+		
+			//this.loadCarousel();
+			_.each( _.toArray(questionsCollection),function(question){
+				var investigatedView = new Questions.Views.Investigated({model:question});
+				$('.slide-wrapper').append(investigatedView.render().el);
+			});
 		},
 		
 
 		loadCarousel :function(){
-			$('.slide-wrapper').empty();
+			$('#main-carousel .slide-wrapper').empty();
 			var Questions = curiouscity.module("questions"),
 				questionsCollection,
 				filteredQuestions;
 
-			filteredQuestions=_.filter(questionData.archive,function(item){
-					return parseInt(item.investigated,10)>0;
-				});
-			console.log(filteredQuestions.length);
+			
+		
 			questionsCollection = new Questions.Collection(filteredQuestions,{
 					comparator : function(question){
-						return Math.random();
-						//return 100-question.get('dateuploaded');
+						return 100-question.get('dateuploaded');
 					}
 				});
 

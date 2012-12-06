@@ -594,7 +594,7 @@ padding-top:2px;
 
 #ask-flash .right-col .super h1{ padding-top: 0;}
 
-#flickr-search{ margin:0; margin-bottom:10px;}
+#flickr-search{ margin:0; margin-bottom:10px; height:300px;overflow-y:auto;}
 #flickr-search a
 {
 	height:90px;
@@ -725,6 +725,10 @@ min-width: 105px;
 #good-question-modal{
 	display:none;
 }
+
+#ask-modal{
+	display:none;
+}
 .good-question-link{
 	text-align:right;
 	position: absolute;
@@ -732,6 +736,10 @@ min-width: 105px;
 	bottom: -28px;
 }
 
+.ask-text{
+	width: 520px;
+	height: 50px;
+}
 .good-question-link p{
 	font-size:11px;
 }
@@ -1169,6 +1177,8 @@ extra random styles*/
 }
 .carousel .slide-wrapper{
 	left:-940px;
+	width:500000px;
+	height:334px;
 }
 .carousel .slide-left,
 .carousel .slide-right {

@@ -46,7 +46,8 @@
 				'votes'=>'0',
 				'approved'=>'1',
 				'anonymous'=>$post_data['anonymous'],
-				'orginialquestion'=>$post_data['question']
+				'orginialquestion'=>$post_data['question'],
+				'categories'=>$post_data['categories']
 			);    
 	
 	$question=array_merge($post_data,$defaults);

@@ -10,7 +10,7 @@
 		
 		initialize : function(options)
 		{
-
+			var _this=this;
 			this.model= new Questions.Model.Ask();
 			$('.good-question-link').show();
 			$('#ask-flash .super h1').html('What do you wonder about Chicago, the region, or the people who live here?');
@@ -19,9 +19,14 @@
 			this.model.on('error', this.validationError, this);
 			
 			_.extend(this,options);
-			var blanks = {ask: decodeURIComponent(this.ask)	};
-			this.step = 1;
+			
+			var blanks;
+			if(!_.isUndefined(this.ask)) blanks = {ask: decodeURIComponent(this.ask)	};
+			else blanks ={ask:$('.submit-question-text')[0].value};
 			$(this.el).append( _.template( this.getTemplate(), blanks ) );
+			this.step=1;
+			this.flickrSearch('chicago');
+
 		},
 		
 		render : function()
@@ -30,18 +35,21 @@
 			return this;
 		},
 		events : {
-			
-			'click .submit-next': 'next',
-			'click .submit-final': 'post',
-			'click .submit-back': 'back',
+			'click #ask-next':'next',
+			'click #ask-back':'back',
 			'click .submit-flickr-search': 'flickrSearch',
 			'focus #question-form-1 input, #question-form-1 textarea' : 'removeErrors'
 		},
 		flickrSearch: function(){
 			
+			var searchQuery;
 			var _this=this;
+
+			if($(this.el).find('.submit-flickr-query')[0].value==="") searchQuery="chicago";
+			else searchQuery=$(this.el).find('.submit-flickr-query')[0].value;
+
 			$('#flickr-search').spin('small');
-			this.collection = new Questions.Collection.Flickr({query:$(this.el).find('.submit-flickr-query')[0].value});
+			this.collection = new Questions.Collection.Flickr({query:searchQuery});
 			this.collection.fetch({success:function(collection,response){
 			$('#flickr-search').spin(false);
 				
@@ -67,88 +75,93 @@
 				
 				
 				
-				console.log(response);
-				console.log(collection);
+				
 			}});
 			return false;
 		},
+
+
+		loadStep:function(){
+			if(this.step==1){
+		
+				$('#ask-back').hide();
+				$('#ask-next').html('Next');
+				$('#ask-modal').find('h3').html("We need a few details to add your question...");
+
+			}
+			else if(this.step==2){
+				this.advance=true;
+				this.model.set({
+						question:$('.ask-text')[0].value,
+						name:$(this.el).find('.submit-name-text')[0].value,
+						email:$(this.el).find('.submit-email-text')[0].value,
+						email_confirm:$(this.el).find('.submit-email-confirm-text')[0].value,
+						neighborhood:$(this.el).find('.submit-neighborhood-text')[0].value,
+						anonymous : $('#anonymous').is(':checked') ? 1 : 0
+				});
+				if(this.advance){
+					$('#ask-back').fadeIn('fast');
+					$('#ask-modal').find('h3').html("Illustrate your question with an image from flickr...");
+
+				}
+				else this.step--;
+
+
+			}else if(this.step==3){
+				$('#ask-next').html('Looks good!');
+				$('#ask-modal').find('h3').html("Check to make sure everything looks good!");
+
+				$(this.el).find('#submit-question-preview').html(this.model.get('question'));
+				$(this.el).find('#submit-name-preview').html('posted by '+ ((this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name')));
+				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')');
+
+			}else if(this.step==4){
+
+				var cats="";
+				_.each($('#category-choices input'),function(el){
+					if($(el).is(':checked')){
+						if(cats==="") cats = $(el).data('title').replace(/-/g," ");
+						else cats = cats+","+$(el).data('title').replace(/-/g," ");
+					}
+				});
+
+				this.model.set({'categories':cats});
+				
+
+				this.model.save();
+				$('#ask-back').hide();
+				$('#ask-next').html("Close");
+
+			}else if(this.step==5){
+				$('#ask-modal').modal('hide');
+				$('#submit-question-text').attr('value','');
+			}
+			return false;
+
+		},
+
+
 		back: function()
 		{
-			
-			if(this.step==2){
-				this.model.set({text:$(this.el).find('.submit-question-text')[0].value});
-				$('#question-form-2').fadeOut('fast',function(){
-					$('#question-form-1').fadeIn('fast');
-					$('#ask-flash .super h1').html('What do you wonder about Chicago,the region, or the people who live here?');
-					$('#ask-flash .sub h5').html('Please write your question');
-					$('.good-question-link').show();
-				});
-				this.step--;
-				
-			}
-			if(this.step==3){
-				this.model.set({text:$(this.el).find('.submit-question-text')[0].value});
-				$('#question-form-3').fadeOut('fast',function(){
-					$('#question-form-2').fadeIn('fast');
-					$('#ask-flash .super h1').html('Add a photo to your question!');
-					$('#ask-flash .sub h5').empty();
-				});
-				this.step--;
-			}
-			
-			
-			$('.step'+(this.step+1)).removeClass('active');
-			$('.step'+this.step).addClass('active');
-			window.scroll(0,0);
+			$('#question-form-'+this.step).addClass('hide');
+			this.step--;
+			$('#question-form-'+this.step).removeClass('hide');
+			this.loadStep();
 			return false;
 		},
 		
 		next: function()
 		{
-			
-			this.advance = true;
 			$('.error').removeClass('error');
-			if(this.step == 1)
-			{
-				$('.good-question-link').hide();
-				this.model.set({
-					question:$('.submit-question-text')[0].value,
-					name:$(this.el).find('.submit-name-text')[0].value,
-					email:$(this.el).find('.submit-email-text')[0].value,
-					email_confirm:$(this.el).find('.submit-email-confirm-text')[0].value,
-					neighborhood:$(this.el).find('.submit-neighborhood-text')[0].value,
-					anonymous : $('#anonymous').is(':checked') ? 1 : 0
-				});
-				
-				
-				if(this.advance)
-				{
-					$('#question-form-1').fadeOut('fast',function(){
-						$('#question-form-2').fadeIn('fast');
-						$('#ask-flash .super h1').html('Add a photo to your question!');
-						$('#ask-flash .sub h5').empty();
-					});
-					this.step++;
-				}
-			}
-			else if (this.step==2)
-			{
-				$(this.el).find('#submit-question-preview').html(this.model.get('question'));
-				$(this.el).find('#submit-name-preview').html('posted by '+ ((this.model.get('anonymous') == 1) ? 'anonymous' : this.model.get('name')));
-				$(this.el).find('.image-preview').css('background-image','url('+ this.model.get('imageurl')+')');
-				
-				$('#question-form-2').fadeOut('fast',function(){
-					$('#question-form-3').fadeIn('fast');
-					$('#ask-flash .super h1').html('Double check your question:');
-					$('#ask-flash .sub h5').empty();
-				});
-				this.step++;
+			this.step++;
+			this.loadStep();
+			if(this.advance){
+				var lastStep=this.step-1;
+				$('#question-form-'+lastStep).addClass('hide');
+				$('#question-form-'+this.step).removeClass('hide');
 			}
 			
 			
-			$('.step'+(this.step-1)).removeClass('active');
-			$('.step'+this.step).addClass('active');
-			window.scroll(0,0);
 			return false;
 		},
 		
@@ -156,28 +169,9 @@
 		{
 			$(el.target).closest('.error').removeClass('error');
 		},
-		
-		post: function()
-		{
-		
-			console.log('posting questions');
-			
-			this.model.save();
-			$('#question-form-3').fadeOut('fast',function(){
-				$('#ask-flash .super h1').html('Thanks! Your question was submitted.');
-				$('#question-form-4').fadeIn('fast');
-				$('#left-col1').fadeOut('fast', function(){
-					$('#left-col2').fadeIn();
-				});
-			});
-			return false;
-		},
 
 		validationError : function(model, error)
 		{
-			console.log('validation error');
-			console.log(model);
-			console.log(error);
 			
 			$(error).addClass('error');
 			
@@ -186,44 +180,26 @@
 	
 		getTemplate : function()
 		{
-			var html = "<div class='row'>"+
-				"<div class='span4 submit-sequence'>"+
-					"<div id='left-col1'>"+
-						"<ul class='unstyled'>"+
-							"<li class='step1 active'>Step 1: Question</li>"+
-							"<li class='step2'>Step 2: Add Image</li>"+
-							"<li class='step3'>Step 3: Preview</li>"+
-						"</ul>"+
-						"<div class='phone-submit'><img class='submit-cell' src='images/cell.png'/>Submit with your phone!<br />Call Curious City 1.888.789.7752</div>"+
+			var html =
+					"<div class='modal-header'>"+
+						"<button class='close' data-dismiss='modal'>×</button>"+
+						"<h3>We just need a few more details...</h3>"+
 					"</div>"+
-				
-					"<div id='left-col2' class='hide'>"+
-						"<ul class='unstyled'>"+
-							"<li><a href='#!/vote'>See the Questions up for Voting now <i class='arrow right'></i></a></li>"+
-							"<li><a href='#!/archive'>Browse Other Questions <i class='arrow right'></i></a></li>"+
-						"</ul>"+
-					"</div>"+
-				
-				"</div>"+
-				"<div class='span8'>"+
-					"<div class='question-form-wrapper'>"+
+					"<div class='modal-body'>"+
 						"<div id='question-form-1' class='question-form'>"+
-							/*"<div class='control-group'><textarea class='submit-question-text span8'><%=ask%></textarea></div>"+*/
+							"<div class='control-group'><label for='ask-text'>Your question</label><textarea class='ask-text' placeholder='What do you wonder about Chicago, the region, or the people who live here?'><%=ask%></textarea></div>"+
 							"<div class='control-group neighborhood'><label for='submit-neighborhood-text'>What Chicago neighborhood (e.g. Pilsen) or town (e.g. Berwyn) do you live in?</label><input id = 'submit-neighborhood-text' class = 'short-input submit-neighborhood-text' type='text'/></div>"+
 							"<div class='control-group name-text'><label for='submit-name-text'>Name</label><input id = 'submit-name-text' class = 'short-input submit-name-text' type='text'/></div>"+
 							"<label class='checkbox'><input type='checkbox' id='anonymous'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Select Anonymous\", \"\"]);' > <i class='icon-user'></i> remain anonymous? <i>Your contact information and email are never shared</i></label>"+
 							"<div class='control-group email-main'><label for='submit-email-text'>Email</label><input id = 'submit-email-text' class = 'short-input submit-email-text' type='email'/></div>"+
 							"<div class='control-group email-confirm'><label for='submit-email-confirm-text'>Confirm Email</label><input id = 'submit-email-confirm-text' class = 'short-input submit-email-confirm-text' type='email'/></div>"+
-							
-							"<button class='btn submit-next btn-primary'>Next</button>"+
 						"</div>"+
 						"<form id='question-form-2'  class='question-form hide'>"+
 							"<div class='input-append'>"+
 								"<input id = 'submit-flickr-query' class = 'submit-flickr-query' type='tel'/><button class='submit-flickr-search btn'  onClick='_gaq.push([\"_trackEvent\", \"CC-Submission\", \"Search Flickr\", \"\"]);' >Search Flickr</button>"+
 							"</div>"+
 							"<ul id='flickr-search' class='well thumbnails'></ul>"+
-							"<a class='submit-back'>Back</a>"+
-							"<button class='submit-next btn btn-primary'>Next</button>"+
+						
 						"</form>"+
 						"<form id='question-form-3' class='question-form hide'>"+
 							"<div class='row'>"+
@@ -234,9 +210,18 @@
 									"<h2 id='submit-question-preview'></h2>"+
 									"<div id='submit-name-preview'></div>"+
 								"</div>"+
-							"</div><br><br>"+
-							"<a class='submit-back'>Back</a>"+
-							"<button class='submit-final btn btn-primary'>Looks good!</button>"+
+
+							"</div><br>"+
+							"<h4>And add some tags to your question to make it easier to find:</h4><br>"+
+							"<div id='category-choices'>"+
+								"<label class='checkbox' title='Human Behavior / Human Relations / Culture / Arts / Education / Sports'><input type='checkbox' data-title='how-we-live'  ><b>How we live</b></label>"+
+								"<label class='checkbox' title='Past Events / Past People / Past Places / Historical Myths'><input type='checkbox' data-title='history' ><b>History</b></label>"+
+								"<label class='checkbox' title='Nature / Animals / Sustainability / Science'><input type='checkbox' data-title='environment' ><b>Environment</b></label>"+
+								"<label class='checkbox' title='Money / Business'><input type='checkbox' data-title='economy' ><b>Economy</b></label>"+
+								"<label class='checkbox' title='Politics / Government / Law'><input type='checkbox' data-title='governance' ><b>Governance</b></label>"+
+								"<label class='checkbox' title='Transportation / Infrastructure / Technology'><input type='checkbox' data-title='urban-planning' ><b>Urban Planning</b></label>"+
+								"<label class='checkbox' title='Experiential / Day in the life' ><input type='checkbox' data-title='whats-it-like-to'><b>What's it like to... </b></label>"+
+							"</div>"+
 						"</form>"+
 						"<div id='question-form-4'  class='question-form hide'>"+
 							"<span><h2>What happens now?</h2></span><br>"+
@@ -247,9 +232,10 @@
 								"</ul>"+
 						"</div>"+
 					"</div>"+
-				"</div>"+
-			"</div>";
-			
+					"<div class='modal-footer'>"+
+						"<a id='ask-back' href='#' class='btn' style='display:none;'>Back</a>"+
+						"<a id='ask-next' href='#' class='submit-next btn btn-primary'>Next</a>"+
+					"</div>";
 			return html;
 		}
 		

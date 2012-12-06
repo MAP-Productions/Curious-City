@@ -9,14 +9,13 @@
 
 		url: function()
 		{
-			return 'php/task.php';
+			return 'php/ttask.php';
 		},
 
 		initialize : function()
 		{
-		}
+		},
 
-/*
 		validate : function(attrs)
 		{
 
@@ -29,7 +28,7 @@
 			
 			return errors;
 		}
-*/
+
 
 	});
 	

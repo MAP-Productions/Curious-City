@@ -4,6 +4,10 @@ jQuery(function($)
 	// Shorthand the application namespace
 	var Curiouscity = curiouscity.app;
 	
+	$('#ask-submit').click(function(){
+		Curiouscity.loadAsk();
+		return false;
+	});
 
 	$('input, textarea').placeholder();
 

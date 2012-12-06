@@ -121,9 +121,9 @@
 							<div class="control-group">
 								<div class="submit-wrap">
 									<div class="carrot"></div>
-									<textarea class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region, or the people who live here?"></textarea>
+									<textarea id="submit-question-text" class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region, or the people who live here?"></textarea>
 									<div class="clear"></div>
-									<a id="ask-submit" href="#!/ask" class="btn submit-next btn-primary">Submit</a>
+									<a id="ask-submit" href="#" class="btn submit-next btn-primary">Ask</a>
 								</div>
 							</div>	
 						</div>
@@ -256,9 +256,6 @@
 							<a href="#" class="slide-left ">slide left</a>
 							<a href="#" class="slide-right ">slide right</a>
 							<ul class="slide-wrapper">
-								<li class="slide"><div class="slide-text"><h1>What's one thing you can get in Chicago that you can't get anywhere else?</h1><h2>Asked by Brenda | Reported by </h2><p><em>Last updated Friday, September 21, 2012</em></p></div><img src="http://farm4.staticflickr.com/3042/3010568050_f7f6ccf3e6.jpg" alt=""></li>
-								<li class="slide"><div class="slide-text"><h1>What's one thing you can get in Chicago that you can't get anywhere else?</h1><h2>Asked by Brenda | Reported by </h2><p><em>Last updated Friday, September 21, 2012</em></p></div><img src="http://farm4.staticflickr.com/3042/3010568050_f7f6ccf3e6.jpg" alt=""></li>
-								<li class="slide"><div class="slide-text"><h1>What's one thing you can get in Chicago that you can't get anywhere else?</h1><h2>Asked by Brenda | Reported by </h2><p><em>Last updated Friday, September 21, 2012</em></p></div><img src="http://farm4.staticflickr.com/3042/3010568050_f7f6ccf3e6.jpg" alt=""></li>	
 							</ul>
 						</div>
 					</div>
@@ -309,7 +306,7 @@
 								<!--<li><form class="form-search"><input type="text" class="input-large search-query" placeholder="search"/></form></li>-->
 							</ul>
 							<ul class="unstyled horizontal right">
-								<li id="how-we-live"><a href="#!/archive/all">All</a></li>
+								<li id="all"><a href="#!/archive/all">All</a></li>
 								<li id="how-we-live"><a href="#!/archive/how-we-live">How We Live</a></li>
 								<li id="history"><a href="#!/archive/history">History</a></li>
 								<li id="environment"><a href="#!/archive/environment">Environment</a></li>
@@ -616,6 +613,8 @@
 			<a data-dismiss="modal" href="#" class="btn">Close</a>
 		  </div>
 		</div>
+
+		<div class="modal" id="ask-modal"></div>
 		
 		
 		

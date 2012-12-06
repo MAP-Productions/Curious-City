@@ -745,6 +745,7 @@ min-width: 105px;
 }
 #discussion
 {
+	display:none;
 	min-height:300px;
 	margin:10px 0;
 }
@@ -1153,6 +1154,9 @@ extra random styles*/
 	left: 0;
 	width: 980px;
 	height: auto;
+}
+.carousel.lite .slide-text {
+	padding: 0 20px;
 }
 .carousel .slide-text {
 	padding: 0 38px;

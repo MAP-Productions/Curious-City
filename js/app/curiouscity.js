@@ -71,7 +71,7 @@ this.curiouscity = {
 				},
 				goToArchiveQuestion : function(questionID)
 				{
-					
+					_this.showDisqus();
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
 					_this.loadSingleQuestion(questionID);
@@ -79,23 +79,26 @@ this.curiouscity = {
 				},
 				goToArchive : function(category, sort)
 				{
+					_this.hideDiscussion();
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-archive').addClass('nav-focus');
 					_this.loadArchiveQuestions('archive',category,sort);
 				},
 				goToAnswered : function(category,sort)
 				{
-					
+					_this.hideDiscussion();
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-answered').addClass('nav-focus');
 					//_this.loadCarousel();
-					 _this.loadArchiveQuestions('answered',category,sort);
+					_this.loadArchiveQuestions('answered',category,sort);
 				},
 				goToVoting : function()
 				{
+					_this.showTwitter();
 					$('.nav-focus').removeClass('nav-focus');
 					$('#nav-vote').addClass('nav-focus');
 					_this.loadVoteQuestions();
+					
 				},
 				goToPrevious : function(id){ _this.loadPrevious(id); }
 			
@@ -119,18 +122,18 @@ this.curiouscity = {
 					break;
 				case 'ask':
 					$('#nav-vote').addClass('nav-focus');
-					this.showTwitter();
+					this.hideDiscussion();
 					this.loadVoteQuestions();
 					this.loadAsk(options);
 					break;
 				case 'archive':
 					$('#nav-archive').addClass('nav-focus');
-					this.hideConversation();
+					this.hideDiscussion();
 					this.loadArchiveQuestions('recent');
 					break;
 				case 'about':
 					$('#nav-about').addClass('nav-focus');
-					this.hideConversation();
+					this.hideDiscussion();
 					this.hideDisqus();
 					break;
 				default :
@@ -144,7 +147,8 @@ this.curiouscity = {
 			$('.twitter-wrapper').hide();
 		},
 		showTwitter : function()
-		{
+		{	
+			$('#discussion').show();
 			console.log('show twitter');
 			$('#conversation-headline').html('What people are saying:');
 			this.hideDisqus();
@@ -158,14 +162,14 @@ this.curiouscity = {
 		},
 		showDisqus : function()
 		{
-			$('#cnversation-headline').html("If WBEZ investigates this question, what should we consider? What's your experience with this?");
+			$('#discussion').show();
+			$('#conversation-headline').html("If WBEZ investigates this question, what should we consider? What's your experience with this?");
 			console.log('show disqus');
 			this.hideTwitter();
 			$('.disqus-wrapper').show();
 		},
-		hideConversation : function(){
-			this.hideTwitter();
-			this.hideDisqus();
+		hideDiscussion : function(){
+			$('#discussion').hide();
 		},
 
 	
@@ -372,8 +376,6 @@ this.curiouscity = {
 			this.page=page;
 			this.category=category;
 			this.sort = _.isUndefined(sort)? "recent":sort;
-
-			this.hideConversation();
 			$('.focus').hide().removeClass('focus');
 			$('#'+page+'-page').addClass('focus').show();
 	
@@ -479,9 +481,6 @@ this.curiouscity = {
 			});
 	
 			this.showDisqus();
-
-
-			$('#conversation-headline').html('What people are saying about this question:');
 
 			$('.focus').removeClass('focus').hide();
 			

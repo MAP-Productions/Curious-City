@@ -1112,9 +1112,19 @@ extra random styles*/
 }
 
 .carousel.lite .slide {
-	width:100%;
+	width:300px;
+	height:280px;
+	cursor: pointer;
+	list-style: none;
+	display: inline-block;
+	overflow:hidden;
 }
+.carousel .slide-wrapper-lite{
+	left:-300px;
+	width:500000px;
+	height:280px;
 
+}
 
 .carousel .slide {
 	
@@ -1142,10 +1152,12 @@ extra random styles*/
 .carousel.lite img {
 	position: absolute;
 	top: -24px;
-	left: 0;
-	width: 100%;
-	height:100%;
+	left: -100px;
+	max-width: 500px !important;
+	width:500px;
+	min-height:300px;
 	height: auto;
+
 }
 
 .carousel img {
@@ -1197,6 +1209,16 @@ extra random styles*/
 	width:500000px;
 	height:334px;
 }
+
+.carousel.lite .slide-left,
+.carousel.lite .slide-right {
+	top:48%;
+
+}
+
+
+
+
 .carousel .slide-left,
 .carousel .slide-right {
 	display: block;
@@ -1321,4 +1343,9 @@ margin:-7px;
 	color: #44C8F5 !important;
 }
 
+.current-investigations{
+	font-size: 14px;
+	color: #969696;
+	font-weight: 600;
+}
 

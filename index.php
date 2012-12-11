@@ -456,17 +456,15 @@
 				<div class="row">
 					<div class="span4">
 						<div class="side-link">
-							<a href="#!/answered/all"><span class="arrow left grey"></span> Current Investigations</a>
+							 <span class="current-investigations">Current Investigations</span>
 						</div>
 						<div class="carousel-wrap">
 							<div class="carousel lite">
-								<div class="slide">
-									<div class="slide-text">
-										<h1>What's the story behind coach houses in Chicago?<br />
-										What was their purpose?</h1>
-										<h2>Asked by Justin Beiber | Reported by Carrie Shepard</h2>
-									</div>
-									<img src="images/default_old.jpg" alt="" />
+								<div class="carousel-wrap">
+									<a href="#" class="slide-left ">slide left</a>
+									<a href="#" class="slide-right ">slide right</a>
+									<ul class="slide-wrapper-lite">
+									</ul>
 								</div>
 							</div>
 						</div>

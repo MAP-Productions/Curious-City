@@ -428,22 +428,25 @@ this.curiouscity = {
 
 		
 			$('#'+page+'-page #archive-questions').empty();
+			$('#main-carousel .slide-wrapper').empty();
 			_.each( _.toArray(questionsCollection) ,function(question){
 				var questionView = new Questions.Views.archive({model:question});
 				$('#'+page+'-page #archive-questions').append(questionView.render().el);
-
+				if(question.get('investigated')>0){
+					var investigatedView = new Questions.Views.Investigated({model:question});
+					$('.slide-wrapper').append(investigatedView.render().el);
+				}
 			});
 		
 			//this.loadCarousel();
 			_.each( _.toArray(questionsCollection),function(question){
-				var investigatedView = new Questions.Views.Investigated({model:question});
-				$('.slide-wrapper').append(investigatedView.render().el);
+				
 			});
 		},
 		
 
 		loadCarousel :function(){
-			$('#main-carousel .slide-wrapper').empty();
+			
 			var Questions = curiouscity.module("questions"),
 				questionsCollection,
 				filteredQuestions;

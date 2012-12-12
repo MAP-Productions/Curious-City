@@ -24,25 +24,28 @@ this.curiouscity = {
             this.loadDisqus();
             this.startRouter();
             this.isLoaded = true;
-                    
+            this.loadInvestigated();
         },
         
         startRouter: function(){
             var _this = this;
             var Router = Backbone.Router.extend({
                 routes: {
-                    ""                                                    :    'loadMain',
-                    '!/about/:hash'                                        :    'loadPageLocation',
-                    '!/ask/:ask'                                        :    'loadAskPage',
-                    '!/:page'                                            :    'loadPage',
-                    '!/archive/question/:questionID'                    :    'goToArchiveQuestion',
-                    '!/vote/current'                                    :    'goToVoting',
-                    '!/previous/:id'                                    :    'goToPrevious',
+                    ""                                              :    'loadMain',
+                    '!/about/:hash'                                 :    'loadPageLocation',
+                    '!/ask/:ask'                                    :    'loadAskPage',
+                    '!/:page'                                       :    'loadPage',
+                    '!/archive/question/:questionID'                :    'goToArchiveQuestion',
+                    '!/vote/current'                                :    'goToVoting',
+                    '!/previous/:id'                                :    'goToPrevious',
                     
-                    '!/archive/:category'                                :    'goToArchive',
-                    '!/archive/:category/:sort'                            :    'goToArchive',
-                    '!/answered/:category'                                :    'goToAnswered',
-                    '!/answered/:category/:sort'                        :    'goToAnswered'
+                    '!/archive'                                     :    'goToArchive',
+                    '!/answered'                                    :    'goToAnswered',
+
+                    '!/archive/:category'                           :    'goToArchive',
+                    '!/archive/:category/:sort'                     :    'goToArchive',
+                    '!/answered/:category'                          :    'goToAnswered',
+                    '!/answered/:category/:sort'                    :    'goToAnswered'
                 },
                 
                 initialize: function() {
@@ -172,13 +175,16 @@ this.curiouscity = {
         },
 
     
-        loadFeatured :function(){
+        loadInvestigated:function(){
             console.log('loading featured');
             var Questions = curiouscity.module("questions"),
                 questionsCollection,
-                investigatedQuestionData=_.filter(questionData.archive,function(item){
+                investigatedQuestionData;
+
+            investigatedQuestionData =_.filter(questionData.archive,function(item){
                     return (item.investigated>0);
                 });
+
             questionsCollection = new Questions.Collection(investigatedQuestionData,{
                 comparator : function(question){
                     return 100-Math.floor(Math.random()*100);
@@ -195,9 +201,10 @@ this.curiouscity = {
         /******* VOTE PAGE **********/
         
         loadVoteQuestions : function(){
+            var Questions = curiouscity.module("questions");
+                
             this.router.navigate("!/vote/current");
             this.hideDisqus();
-            this.loadFeatured();
             this.questionID=-1;
             $('#discussion-headline').html("What people are saying:");
             $('.focus').hide().removeClass('focus');
@@ -206,7 +213,7 @@ this.curiouscity = {
 
             //only load once per visit
             if( !this.questionsCollection){
-                var Questions = curiouscity.module("questions");
+                
                 this.questionsCollection = new Questions.Collection(questionData.questions,{
                     comparator : function(question){
                         return question.get('rank');
@@ -223,9 +230,6 @@ this.curiouscity = {
                 this.questionsCollection.yourvote=this.vote;
                 this.questionsCollection.previousWinner=questionData.previousWinner;
     
-    
-                        
-    
                 this.displayVoteQuestions();
                 if(this.questionsCollection.canvote===0){
                     $('#vote-page .super h1').html("Thanks for voting! ");
@@ -238,18 +242,13 @@ this.curiouscity = {
                 
                 }
                 $('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
-                
-                
                 $('#previous-winner').find('h5').html('<a href ="#!/previous/'+this.questionsCollection.previous.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
-        
-                
-                
             }
         },
         
         displayVoteQuestions : function(){
-    
-            var Questions = curiouscity.module("questions");
+            var _this = this,
+                Questions = curiouscity.module("questions");
             if( this.questionsCollection.canvote )
             {
                 console.log('--you can vote! :)');
@@ -258,11 +257,8 @@ this.curiouscity = {
                     var questionView = new Questions.Views.Vote({model:question,voted:false, attributes:{'data-id':question.id,'data-rank':question.get('rank')}});
                     $('#questions').append(questionView.render().el);
                 });
-            }
-            else
-            {
+            } else {
                 console.log('--you cannot vote :(');
-                var _this = this;
                 _.each( _.toArray( this.questionsCollection ),function(question){
                     var questionView = new Questions.Views.Vote({model:question,voted:true, voted_this: _this.questionsCollection.yourvote==question.id });
                     $('#questions').append(questionView.render().el);
@@ -282,10 +278,13 @@ this.curiouscity = {
         /********** PREVIOUS VOTE PAGE ***********/
         
         loadPrevious : function(id){
+            var _this=this,
+                Questions = curiouscity.module("questions");
+
             this.router.navigate("!/previous/"+id);
             this.loadFeatured();
             this.questionID=-1;
-            var _this=this;
+           
             $('#previous-winner-question').empty();
             $('#previous-questions').empty();
             
@@ -293,9 +292,6 @@ this.curiouscity = {
             $('.focus').hide().removeClass('focus');
             $('#previous-vote-page').addClass('focus').show();
         
-            
-    
-            var Questions = curiouscity.module("questions");
             this.previousCollection = new Questions.Collection({votingperiod:id},{
                 comparator : function(question){
                     return question.get('rank');
@@ -305,8 +301,7 @@ this.curiouscity = {
             $('#previous-vote-page').spin();
             this.previousCollection.reset();
             this.previousCollection.fetch({
-                success:function(collection,response)
-                {
+                success:function(collection,response){
                 
                     DISQUS.reset({
                         reload: true,
@@ -323,17 +318,16 @@ this.curiouscity = {
         
         displayPreviousQuestions : function(){
             
+            var _this=this,
+                questionView,
+                Questions = curiouscity.module( "questions" );
             
-            var Questions = curiouscity.module("questions");
-            var _this=this;
-                _.each( _.toArray( this.previousCollection ),function(question){
-                    var questionView = new Questions.Views.Previous({model:question});
+                _.each( _.toArray( this.previousCollection ),function( question ){
+                    questionView = new Questions.Views.Previous({ model: question });
                     if( question.get('winner')==1) {
-                        
-                        $('#previous-winner-question').append(questionView.render().el);
-                        
+                        $('#previous-winner-question').append( questionView.render().el );
                     }
-                    else $('#previous-questions').append(questionView.render().el);
+                    else $('#previous-questions').append( questionView.render().el );
                     
                 });
                 
@@ -345,9 +339,6 @@ this.curiouscity = {
                     return false;
                 });
                 
-        
-                
-                
                 if(this.previousCollection.previous.id != -1){
                     $('#voting-date-previous').html("<i class='arrow left'></i>  Voting for "+this.previousCollection.previous.title).attr('href','#!/previous/'+this.previousCollection.previous.id);
                 }
@@ -357,10 +348,9 @@ this.curiouscity = {
         /******* ASK A QUESTION PAGE **********/
         
         loadAsk : function(options){
-            
-            
-            $('.submit-question-text').attr('value',options);
             var Questions = curiouscity.module("questions");
+
+            $('.submit-question-text').attr('value',options);
             this.askView = new Questions.Views.Ask();
             
             $('#ask-modal').html(this.askView.render().el);
@@ -373,21 +363,18 @@ this.curiouscity = {
         
         loadArchiveQuestions : function(page,category,sort){
             
-            // reload archive each time the page is loaded
-            
-            
+            var Questions = curiouscity.module("questions"),
+                questionsCollection,
+                filteredQuestions,
+                questionView,
+                investigatedView;
+
             this.page=page;
-            this.category=category;
-            this.sort = _.isUndefined(sort)? "recent":sort;
+            this.category = _.isUndefined(category) ? "all" :category;
+            this.sort = _.isUndefined(sort) ? "recent" : sort;
             $('.focus').hide().removeClass('focus');
             $('#'+page+'-page').addClass('focus').show();
     
-
-            var Questions = curiouscity.module("questions"),
-                questionsCollection,
-                filteredQuestions;
-
-
 
 
                 
@@ -397,7 +384,7 @@ this.curiouscity = {
                     if(category=='all') return item.badge!="answered"&&item.badge!="investigated";
                     else return item.badge!="answered"&&item.badge!="investigated"&&item.categories.indexOf(category.replace(/-/g," "))>-1;
                 });
-            }else{
+            } else {
                 filteredQuestions=_.filter(questionData.archive,function(item){
                     
                     if(category=='all') return item.badge=="answered"||item.badge=="investigated";
@@ -406,18 +393,13 @@ this.curiouscity = {
             }
 
 
-
-
             if(sort=='popular'){
                 questionsCollection = new Questions.Collection(filteredQuestions,{
                     comparator : function(question){
                         return 100-question.get('comments');
                     }
                 });
-                
-
-            }
-            else{
+            } else {
                 questionsCollection = new Questions.Collection(filteredQuestions,{
                     comparator : function(question){
                         return 100-question.get('dateuploaded');
@@ -433,10 +415,10 @@ this.curiouscity = {
             $('#'+page+'-page #archive-questions').empty();
             $('#main-carousel .slide-wrapper').empty();
             _.each( _.toArray(questionsCollection) ,function(question){
-                var questionView = new Questions.Views.archive({model:question});
+                questionView = new Questions.Views.archive({model:question});
                 $('#'+page+'-page #archive-questions').append(questionView.render().el);
                 if(question.get('investigated')>0){
-                    var investigatedView = new Questions.Views.Investigated({model:question});
+                    investigatedView = new Questions.Views.Investigated({model:question});
                     $('.slide-wrapper').append(investigatedView.render().el);
                 }
             });
@@ -453,42 +435,41 @@ this.curiouscity = {
             
         loadSingleQuestion : function( questionID ){
         
-            this.questionID=questionID;
-            var _this = this;
-            window.scroll(0,0);
             
+            var _this = this,
+                Questions = curiouscity.module("questions"),
+                question = new Questions.Model({id:questionID});
+            
+
+            window.scroll(0,0);
+            this.questionID=questionID;
             DISQUS.reset({
                 reload: true,
                 config: function () {
                     this.page.identifier = "question-"+questionID;
-                    this.page.url = "http://curiouscity.wbez.org/#!/question/"+questionID;
+                    this.page.url = "http://curiouscity.wbez.org/#!/archive/question/"+questionID;
                 }
             });
     
             this.showDisqus();
 
             $('.focus').removeClass('focus').hide();
-            
             $('#question-page').empty();
-            
             $('#question-page').addClass('focus').show().spin();
-            var Questions = curiouscity.module("questions");
-            var question = new Questions.Model({id:questionID});
+          
             question.fetch({
-                success : function()
-                {
+                success : function(){
                     _this.displaySingleQuestion( question );
                 }
             });
-                    
-        
             return false;
         },
         
         displaySingleQuestion : function( model ){
-            $('#question-page').spin(false);
             var Questions = curiouscity.module("questions");
             var questionView = new Questions.Views.Single({model:model});
+
+            $('#question-page').spin(false);
             $('#question-page').html(questionView.render().el);
         },
         

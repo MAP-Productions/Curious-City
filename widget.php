@@ -61,7 +61,7 @@
                     <span id="questions-count">10</span> questions, 1 will remain
                 </div>
                 <div id="headline" class="">
-                        <h3><?php    if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "Thanks for Voting!!"; else echo "Which would you rather know?"; ?></h3>
+                        <h3><?php    if(isset($_COOKIE['CURIOUS_CITY_VOTE'])) echo "Thanks for voting! Ask your question below."; else echo "Which would you rather know?"; ?></h3>
                 </div>
                 
                 
@@ -87,7 +87,7 @@
                 
                 <footer>
                     <div id="submit-question">
-                        <a href="http://curiouscity.wbez.org/#!/archive" target="blank">Browse Questions</a> | <a href="http://curiouscity.wbez.org/#!/ask" target="blank">Submit a Question</a>
+                        <a href="http://curiouscity.wbez.org/#!/archive" target="blank">Browse Questions</a> | <a href="http://curiouscity.wbez.org/#!/answered/all" target="blank">Browse Answers</a>
                     </div>
                     <ul class="unstyled">
                         <li><a target="blank" href="http://www.zeega.org/"><img src="images/logos/zeega_bw.png" /></a></li>

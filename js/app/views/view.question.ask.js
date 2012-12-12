@@ -131,7 +131,7 @@
                 $('#ask-next').html("Close");
 
             }else if(this.step==5){
-                DISQUS.dtpl.actions.fire( 'thread.subscribe', model.get( 'email' ) );
+                DISQUS.dtpl.actions.fire( 'thread.subscribe', this.model.get( 'email' ) );
                 $( '#ask-modal' ).modal( 'hide' );
                 $( '#submit-question-text' ).attr( 'value', '' );
             }

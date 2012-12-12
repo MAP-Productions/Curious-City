@@ -5,6 +5,6 @@
 [class^="badge-"],
 [class^="number-"],
 [class^="social-"], [class*=" social-"] {
-	display: inline;
-	zoom: 1;
+    display: inline;
+    zoom: 1;
 }

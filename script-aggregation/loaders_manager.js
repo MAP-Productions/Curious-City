@@ -1,6 +1,6 @@
 var Path = require('path'),
-	requirejs = require(__dirname + '/node/node_modules/requirejs'),
-	fs = require('fs'),
+    requirejs = require(__dirname + '/node/node_modules/requirejs'),
+    fs = require('fs'),
     createLoaders = function(config)
     {
         for(var ci in config.convert)

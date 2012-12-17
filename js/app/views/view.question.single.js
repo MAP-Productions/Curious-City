@@ -15,8 +15,8 @@
         
         render : function( )
         {
-            if(this.model.get('timelinekey') === '' ) $(this.el).html( _.template(this.getTemplate(),this.model.attributes));
-            else $(this.el).html( _.template(this.getTimelineTemplate(),this.model.attributes));
+            if(this.model.get('timelinekey') !== '' && this.model.get('answered')!=1 ) $(this.el).html( _.template(this.getTimelineTemplate(),this.model.attributes));
+            else $(this.el).html( _.template(this.getTemplate(),this.model.attributes));
 
             if(this.model.get('previous')==-1)$(this.el).find('.previous').hide();
             if(this.model.get('next')==-1)$(this.el).find('.next').hide();
@@ -25,9 +25,16 @@
         },
         
         events : {
-        
+            "click .notebook": "showTimeline"
         },
         
+        showTimeline: function(){
+            var timeline ="<iframe src='http://embed.verite.co/timeline/?source="+this.model.get('timelinekey')+"&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>";
+            $("#timeline-modal .modal-body").html(timeline);
+            $("#timeline-modal").modal('show');
+            return false;
+        },
+
         goToPrev : function()
         {
 
@@ -67,8 +74,13 @@
                 "<div class='span4'>"+
                     "<div class='question-image' style='background-image:url(<%= imageurl %>)'>"+
                         "<span class='image-credits' ><a target='blank' href='<%= imageattribution %>'><%= imageusername %></a></span>"+
-                    "</div>"+
-                "</div>"+
+                    "</div>";
+             if(this.model.get('timelinekey') !== ""&&this.model.get('answered')==1 ){
+                html +="<div class='reporters-notebook'><h2>Reporter's Notebook</h2><a href='#' class='notebook'> <img src = 'images/reporter_notebook.png'/></a></div>";
+             }
+
+
+            html+=    "</div>"+
 
                 "<div class='span8 single-question-content'>"+
                     "<h1><%= question %></h1>"+

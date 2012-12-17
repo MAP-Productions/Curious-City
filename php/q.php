@@ -72,7 +72,7 @@
         
         foreach ($listFeed->entries as $entry){
             $rowData = $entry->getCustom();
-            $publicColumns=array('index','id','name','question','anonymous','imageurl','imageattribution','imageusername','soundcloud','timelinekey', 'responseembed', 'responselinkurl', 'responselinktext');
+            $publicColumns=array('index','id','name',"answered",'question','anonymous','imageurl','imageattribution','imageusername','soundcloud','timelinekey', 'responseembed', 'responselinkurl', 'responselinktext');
             foreach($rowData as $customEntry) {
                  if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
             }

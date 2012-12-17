@@ -545,6 +545,16 @@
         </div>
 
     
+        <div class="modal cc-modal" id="timeline-modal">
+          <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <h3></h3>
+          </div>
+          <div class="modal-body">
+          </div>
+
+        </div>
+
         <div class="modal cc-modal" id="listen-modal">
           <div class="modal-header">
             <button class="close" data-dismiss="modal">×</button>

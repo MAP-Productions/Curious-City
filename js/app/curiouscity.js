@@ -384,15 +384,17 @@ this.curiouscity = {
                 
             if(page=='archive')    {
                 filteredQuestions=_.filter(questionData.archive,function(item){
-                    
-                    if(category=='all') return item.badge!="answered"&&item.badge!="investigated";
-                    else return item.badge!="answered"&&item.badge!="investigated"&&item.categories.indexOf(category.replace(/-/g," "))>-1;
+                    var isA = item.badge=="answered"||item.badge=="investigated"||item.answered ==1 ||item.timelinekey !=="";
+
+                    if(category=='all') return !isA;
+                    else return !isA && item.categories.indexOf(category.replace(/-/g," "))>-1;
                 });
             } else {
                 filteredQuestions=_.filter(questionData.archive,function(item){
-                    
-                    if(category=='all') return item.badge=="answered"||item.badge=="investigated";
-                    else return (item.badge=="answered"||item.badge=="investigated")&&item.categories.indexOf(category.replace(/-/g," "))>-1;
+                    var isA = item.badge=="answered"||item.badge=="investigated"||item.answered ==1 ||item.timelinekey !=="";
+
+                    if(category=='all') return isA;
+                    else return isA && item.categories.indexOf(category.replace(/-/g," "))>-1;
                 });
             }
 

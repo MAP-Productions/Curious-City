@@ -421,7 +421,8 @@ this.curiouscity = {
             _.each( _.toArray(questionsCollection) ,function(question){
                 questionView = new Questions.Views.archive({model:question});
                 $('#'+page+'-page #archive-questions').append(questionView.render().el);
-                if(question.get('investigated')>0){
+                if(question.get('featured')>0){
+                    console.log(question);
                     investigatedView = new Questions.Views.Investigated({model:question});
                     $('.slide-wrapper').append(investigatedView.render().el);
                 }

@@ -95,7 +95,7 @@
             <div class="social pull-right">
                 <div class="header-icon-social">
                     <a href="https://twitter.com/wbezcuriouscity" target="_blank"><img class='twitter-icon' src="images/twitter_16.png"/></a>
-                    <a href="http://www.wbez.org/programs/afternoon-shift" target="_blank"><img class='radio-icon' src="images/icon_radio.png"/></a>
+                    <a data-toggle="modal" href="#listen-modal" target="_blank"><img class='radio-icon' src="images/icon_radio.png"/></a>
                     <!--<a href="#" target="_blank"><img class='rss-icon' src="images/icon_rss.png"/></a>-->
                 </div>
                 <a href="#!/about" id='how-it-works-expander' onClick="_gaq.push(['_trackEvent', 'CC-General', 'Click on How it Works', '']);">How it Works</a> | 
@@ -545,8 +545,24 @@
         </div>
 
     
-        
-        <div class="modal" id="guidelines-modal">
+        <div class="modal cc-modal" id="listen-modal">
+          <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <h3>Listen to Curious City!</h3>
+          </div>
+          <div class="modal-body">
+          
+            <p>You can also listen in to satisfy your curiosity!</p>
+            <p></p>
+            <p>Tune in to Curious City segments on <a href ="http://www.wbez.org/player" target="_blank">WBEZ 91.5fm</a> each Wednesday on <a href ="http://www.wbez.org/programs/afternoon-shift" target="_blank">The Afternoon Shift</a>.</p>
+            <p></p>
+            <p>And <a href ="https://itunes.apple.com/us/podcast/curious-city/id568409161" target="_blank">subscribe</a> to the Curious City podcast.</p>
+
+          </div>
+
+        </div>
+
+        <div class="modal cc-modal" id="guidelines-modal">
           <div class="modal-header">
             <button class="close" data-dismiss="modal">×</button>
             <h3>Guidelines</h3>
@@ -576,7 +592,7 @@
           </div>
         </div>
         
-        <div class="modal" id="good-question-modal">
+        <div class="modal cc-modal" id="good-question-modal">
           <div class="modal-header">
             <button class="close" data-dismiss="modal">×</button>
             <h3>What makes a good Curious City question?</h3>
@@ -613,7 +629,7 @@
           </div>
         </div>
 
-        <div class="modal" id="ask-modal"></div>
+        <div class="modal cc-modal" id="ask-modal"></div>
         
         
         

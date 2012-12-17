@@ -718,21 +718,17 @@ min-width: 105px;
 
 #voting-date-next{ float: right }
 
-#guidelines-modal{
+
+
+.cc-modal{
     display:none;
 }
 
-#good-question-modal{
-    display:none;
-}
 
-#ask-modal{
-    display:none;
-}
 .good-question-link{
     text-align:right;
     position: absolute;
-    right: 0px;
+    right: 0;
     bottom: -28px;
 }
 

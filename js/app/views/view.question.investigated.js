@@ -35,7 +35,7 @@
         {
             html = '<div class="slide-contents">'+
                         '<div class="slide-text">'+
-                            '<h1><%= question %></h1>'+
+                           // '<h1><%= question %></h1>'+
                             '<h2>Asked by <%= name %> | Reported by <%= reporter %></h2>'+
                             '<p><em>Last updated <%= date %></em></p>'+
                         '</div>'+

@@ -182,7 +182,11 @@ this.curiouscity = {
                 investigatedQuestionData;
 
             investigatedQuestionData =_.filter(questionData.archive,function(item){
-                    return (item.investigated>0);
+                    if(item.answered===""&&item.timelinekey!==""){
+                        return true;
+                    } else {
+                        return false;
+                    }
                 });
 
             questionsCollection = new Questions.Collection(investigatedQuestionData,{

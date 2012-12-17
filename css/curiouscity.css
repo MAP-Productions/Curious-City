@@ -719,29 +719,30 @@ min-width: 105px;
 #voting-date-next{ float: right }
 
 
-
-.cc-modal{
+.cc-modal {
     display:none;
+}
+.timeline-modal {
     width:971px;
     margin: -342px 0 0 -485px;
     height:684px;
      overflow:hidden;
 }
 
-.cc-modal .modal-body {
+.timeline-modal .modal-body {
 
     max-height:700px;
     overflow:hidden;
     padding-top:0;
 }
 
-.cc-modal .modal-header {
+.timeline-modal .modal-header {
 
     border-bottom:none;
 
 }
 
-.cc-modal .modal-header .close{
+.timeline-modal .modal-header .close{
     margin-top: -10px;
 margin-right: -10px;
 }

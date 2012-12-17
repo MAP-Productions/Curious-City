@@ -30,8 +30,8 @@
         
         showTimeline: function(){
             var timeline ="<iframe src='http://embed.verite.co/timeline/?source="+this.model.get('timelinekey')+"&font=Bevan-PotanoSans&maptype=toner&lang=en&width=940&height=650' width='940' height='650' frameborder='0'></iframe>";
-            $("#timeline-modal .modal-body").html(timeline);
-            $("#timeline-modal").modal('show');
+            $(".timeline-modal .modal-body").html(timeline);
+            $(".timeline-modal").modal('show');
             return false;
         },
 

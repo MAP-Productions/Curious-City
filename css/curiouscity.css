@@ -306,6 +306,12 @@ footer li
     float :right;
     padding:5px;
 }
+#instructions,
+#footer-head,
+#sponsor-branding {
+    width: 940px;
+    margin: 0 auto;
+}
 
 #how-it-works-intro
 {
@@ -344,7 +350,6 @@ footer li
 #how-it-works ul
 {
     list-style:none;
-    margin:0;
     display: none;
 }
 
@@ -838,7 +843,7 @@ margin-right: -10px;
 {
     display:none;
     min-height:300px;
-
+    position: relative;
     width: 940px;
     margin: 10px auto;
 }
@@ -1274,7 +1279,8 @@ extra random styles*/
     height: auto;
 }
 .carousel.lite .slide-text {
-    padding: 0 20px;
+    padding: 0 0px;
+    margin: 0 33px;
 }
 .carousel .slide-text {
     padding: 0 38px;

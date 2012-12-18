@@ -15,7 +15,7 @@ h5
 
 h1,
 h2{
-    color: #662d91; 
+    color: #000000; 
     font-weight: 600;
     font-size: 26px;
 }
@@ -648,7 +648,7 @@ padding-top:2px;
 }
 #flash .right-col .sub h5{ 
     padding-top: 0;
-    color: #662D91;
+    color: #000000;
     font-weight: 500;
     line-height: 15px;
     font-size: 12px;
@@ -1190,11 +1190,11 @@ extra random styles*/
     color: black;
     font-size: 24px;
 }
-.single-question-content h3 { 
-    color: #662D91;
+.single-question-content h3 {
+    color: #000000;
     font-size: 24px;
 }
-.single-question-content h3 a { 
+.single-question-content h3 a {
     color: #999;
     font-size: 16px;
 }

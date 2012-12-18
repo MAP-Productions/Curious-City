@@ -282,11 +282,11 @@ this.curiouscity = {
         /********** PREVIOUS VOTE PAGE ***********/
         
         loadPrevious : function(id){
+            console.log('loading previous?');
             var _this=this,
                 Questions = curiouscity.module("questions");
 
             this.router.navigate("!/previous/"+id);
-            this.loadFeatured();
             this.questionID=-1;
            
             $('#previous-winner-question').empty();

@@ -143,7 +143,7 @@
                         <li><a href="#!/answered/how-we-live">How We Live</a></li>
                         <li><a href="#!/answered/history">History</a></li>
                         <li><a href="#!/answered/environment">Environment</a></li>
-                        <li><a href="#!/answered/money">Money</a></li>
+                        <li><a href="#!/answered/economy">Economy</a></li>
                         <li><a href="#!/answered/governance">Governance</a></li>
                         <li><a href="#!/answered/urban-planning">Urban Planning</a></li>
                         <li><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
@@ -156,7 +156,7 @@
                         <li><a href="#!/archive/how-we-live">How We Live</a></li>
                         <li><a href="#!/archive/history">History</a></li>
                         <li><a href="#!/archive/environment">Environment</a></li>
-                        <li><a href="#!/archive/money">Money</a></li>
+                        <li><a href="#!/archive/economy">Economy</a></li>
                         <li><a href="#!/archive/governance">Governance</a></li>
                         <li><a href="#!/archive/urban-planning">Urban Planning</a></li>
                         <li><a href="#!/archive/whats-it-like">What's it Like to...</a></li>
@@ -256,8 +256,8 @@
                 <div id="archive-flash">
                     <div class="carousel-wrap">
                         <div id="main-carousel" class="carousel">
-                            <a href="#" class="slide-left ">slide left</a>
-                            <a href="#" class="slide-right ">slide right</a>
+                            <a href="#" class="slide-arrow slide-left ">slide left</a>
+                            <a href="#" class="slide-arrow slide-right ">slide right</a>
                             <ul class="slide-wrapper">
                             </ul>
                         </div>
@@ -279,7 +279,7 @@
                                 <li id="how-we-live"><a href="#!/answered/how-we-live">How We Live</a></li>
                                 <li id="history"><a href="#!/answered/history">History</a></li>
                                 <li id="environment"><a href="#!/answered/environment">Environment</a></li>
-                                <li id="money"><a href="#!/answered/money">Money</a></li>
+                                <li id="economy"><a href="#!/answered/economy">Economy</a></li>
                                 <li id="governance"><a href="#!/answered/governance">Governance</a></li>
                                 <li id="urban-planning"><a href="#!/answered/urban-planning">Urban Planning</a></li>
                                 <li id="whats-it-like"><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
@@ -313,7 +313,7 @@
                                 <li id="how-we-live"><a href="#!/archive/how-we-live">How We Live</a></li>
                                 <li id="history"><a href="#!/archive/history">History</a></li>
                                 <li id="environment"><a href="#!/archive/environment">Environment</a></li>
-                                <li id="money"><a href="#!/archive/money">Money</a></li>
+                                <li id="economy"><a href="#!/archive/economy">Economy</a></li>
                                 <li id="governance"><a href="#!/archive/governance">Governance</a></li>
                                 <li id="urban-planning"><a href="#!/archive/urban-planning">Urban Planning</a></li>
                                 <li id="whats-it-like"><a href="#!/archive/whats-it-like">What's it Like to...</a></li>

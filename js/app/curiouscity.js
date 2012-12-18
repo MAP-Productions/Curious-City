@@ -368,6 +368,7 @@ this.curiouscity = {
         loadArchiveQuestions : function(page,category,sort){
             
             var Questions = curiouscity.module("questions"),
+                numFeatured,
                 questionsCollection,
                 filteredQuestions,
                 questionView,
@@ -417,6 +418,8 @@ this.curiouscity = {
             $('#'+page+'-page #'+this.sort).find('a').addClass('category-selected');
             $('#'+page+'-page #'+category).find('a').addClass('category-selected');
 
+
+
         
             $('#'+page+'-page #archive-questions').empty();
             $('#main-carousel .slide-wrapper').empty();
@@ -424,16 +427,28 @@ this.curiouscity = {
                 questionView = new Questions.Views.archive({model:question});
                 $('#'+page+'-page #archive-questions').append(questionView.render().el);
                 if(question.get('featured')>0){
-                    console.log(question);
                     investigatedView = new Questions.Views.Investigated({model:question});
                     $('.slide-wrapper').append(investigatedView.render().el);
                 }
             });
+            console.log($('.slide-wrapper li').length+ "is no of slides");
+            numFeatured = $('.slide-wrapper li').length;
+            if(numFeatured === 0){
+                $('#main-carousel').hide();
+            }
+            else if(numFeatured==1){
+                $('#main-carousel .slide-arrow').hide();
+                $('#main-carousel .slide-wrapper').css({'left':0});
+            } else {
+                if(numFeatured==2){
+                    $('#main-carousel .slide-wrapper').append($('#main-carousel .slide-wrapper').html());
+                }
+                $('#main-carousel').show();
+                $('#main-carousel .slide-arrow').show();
+                $('#main-carousel .slide-wrapper').css({'left':-940});
+            }
         
-            //this.loadCarousel();
-            _.each( _.toArray(questionsCollection),function(question){
-                
-            });
+        
         },
 
         

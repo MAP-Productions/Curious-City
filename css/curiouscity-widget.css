@@ -4,6 +4,22 @@ body{ background-color:white;
 
 h3{ font-weight:500; color: #662d91;}
 
+
+#submit-question.btn {
+    position: absolute;
+    bottom: 18px;
+    right: 8px;
+    background: #ccc;
+    color: white;
+    font-weight: bold;
+    border: none;
+    text-shadow: none;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .wrapper
 {
     width:298px;
@@ -169,7 +185,7 @@ header img {
 .submit-wrap .carrot {
     position: absolute;
     top: 25px;
-    left: -8px;
+    left: -7px;
     width: 10px;
     height: 12px;
     background: url(../images/carrot-mini.png) no-repeat;
@@ -179,7 +195,7 @@ header img {
     height:100px;
     background: #fffbfe;
     width: 242px !important;
-    border: 2px solid #f00ed3 !important;
+    border: 3px solid #ff0066 !important;
     font-size: 20px;
     font-weight: normal;
     line-height: 28px;
@@ -189,16 +205,16 @@ header img {
     -webkit-box-shadow: none !important;
 }
 ::-webkit-input-placeholder {
-       color: #b7a6b5;
+       color: #ccc;
     font-style: italic;
 }
 :-moz-placeholder {  
-       color: #b7a6b5;  
+       color: #ccc;  
     font-style: italic;
 }
 /*for ie7/8 */
 .placeholder {
-       color: #b7a6b5;  
+       color: #ccc;  
     font-style: italic;
 }
 .submit-sequence

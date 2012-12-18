@@ -1,3 +1,7 @@
+.cc-nav li,
+.cc-nav li a,
+.carousel.lite .slide,
+.carousel .slide,
 #cc-nav ul li a,
 #how-it-works ul li,
 .vote,
@@ -7,4 +11,7 @@
 [class^="social-"], [class*=" social-"] {
     display: inline;
     zoom: 1;
+}
+.cc-nav li a {
+	margin-left: 0;
 }

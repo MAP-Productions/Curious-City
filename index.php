@@ -123,45 +123,48 @@
                                     <div class="carrot"></div>
                                     <textarea id="submit-question-text" class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region or its people that you want WBEZ to investigate?"></textarea>
                                     <div class="clear"></div>
-                                    <a id="ask-submit" href="#" class="btn submit-next btn-primary">Ask</a>
+                                    <a id="ask-submit" href="#" class="btn submit-next">Ask</a>
                                 </div>
                             </div>    
                         </div>
-                        <ul class='pull-right cc-nav'>
-                            <li><a href="#!/vote/current" id='nav-vote'>Up for Voting</a></li>
-                            <!--li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li-->
-                            <li><a href="#!/answered/all" id='nav-answered'><span class="arrow down grey"></span> Answered &amp; Investigating</a>
-                                <ul>
-                                    <li class="carrot"></li>
-                                    <li><a href="#!/answered/how-we-live">How We Live</a></li>
-                                    <li><a href="#!/answered/history">History</a></li>
-                                    <li><a href="#!/answered/environment">Environment</a></li>
-                                    <li><a href="#!/answered/money">Money</a></li>
-                                    <li><a href="#!/answered/governance">Governance</a></li>
-                                    <li><a href="#!/answered/urban-planning">Urban Planning</a></li>
-                                    <li><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#!/archive/all" id='nav-archive'><span class="arrow down grey"></span> New and Unanswered</a>
-                                <ul>
-                                    <li class="carrot"></li>
-                                    <li><a href="#!/archive/how-we-live">How We Live</a></li>
-                                    <li><a href="#!/archive/history">History</a></li>
-                                    <li><a href="#!/archive/environment">Environment</a></li>
-                                    <li><a href="#!/archive/money">Money</a></li>
-                                    <li><a href="#!/archive/governance">Governance</a></li>
-                                    <li><a href="#!/archive/urban-planning">Urban Planning</a></li>
-                                    <li><a href="#!/archive/whats-it-like">What's it Like to...</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 
             </div>
         
         </header>
-        
+        <div class="cc-nav-wrap">
+            <ul class='cc-nav'>
+                <li><a href="#!/vote/current" id='nav-vote'>Up for Voting <span></span></a></li>
+                <!--li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li-->
+                <li><a href="#!/answered/all" id='nav-answered'>Answered &amp; Investigating <span></span></a>
+                    <?php /*
+                    <ul>
+                        <li><a href="#!/answered/how-we-live">How We Live</a></li>
+                        <li><a href="#!/answered/history">History</a></li>
+                        <li><a href="#!/answered/environment">Environment</a></li>
+                        <li><a href="#!/answered/money">Money</a></li>
+                        <li><a href="#!/answered/governance">Governance</a></li>
+                        <li><a href="#!/answered/urban-planning">Urban Planning</a></li>
+                        <li><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
+                    </ul>
+                    */ ?>
+                </li>
+                <li><a href="#!/archive/all" id='nav-archive'>New and Unanswered <span></span></a>
+                    <?php /*
+                    <ul>
+                        <li><a href="#!/archive/how-we-live">How We Live</a></li>
+                        <li><a href="#!/archive/history">History</a></li>
+                        <li><a href="#!/archive/environment">Environment</a></li>
+                        <li><a href="#!/archive/money">Money</a></li>
+                        <li><a href="#!/archive/governance">Governance</a></li>
+                        <li><a href="#!/archive/urban-planning">Urban Planning</a></li>
+                        <li><a href="#!/archive/whats-it-like">What's it Like to...</a></li>
+                    </ul>
+                    */ ?>
+                </li>
+            </ul>
+        </div>
         <div id="pages">
             
             <div id="vote-page" class="hide focus">
@@ -460,12 +463,10 @@
                         </div>
                         <div class="carousel-wrap">
                             <div class="carousel lite">
-                                <div class="carousel-wrap">
-                                    <a href="#" class="slide-left ">slide left</a>
-                                    <a href="#" class="slide-right ">slide right</a>
-                                    <ul class="slide-wrapper-lite">
-                                    </ul>
-                                </div>
+                                <a href="#" class="slide-left ">slide left</a>
+                                <a href="#" class="slide-right ">slide right</a>
+                                <ul class="slide-wrapper-lite">
+                                </ul>
                             </div>
                         </div>
                         

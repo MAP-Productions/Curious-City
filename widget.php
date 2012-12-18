@@ -76,7 +76,7 @@
                                 <div class="carrot"></div>
                                 <textarea class="submit-question-text span8" placeholder="What do you wonder about Chicago, the region, or the people who live here?"></textarea>
                                 <div class="clear"></div>
-                                <a id="submit-question" href="#" class="btn submit-next btn-primary">Submit</a>
+                                <a id="submit-question" href="#" class="btn submit-next">Submit</a>
                             </div>
                             <h3>Tune in Wednesdays to <a href="http://www.wbez.org/programs/afternoon-shift-steve-edwards" target='blank'>The Afternoon Shift</a> on WBEZ for winners + updates.</h3>
                         </div>

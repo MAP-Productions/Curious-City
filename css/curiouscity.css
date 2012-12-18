@@ -1,3 +1,6 @@
+.container {
+    width: auto;
+}
 h5
 {
     font-weight:lighter;
@@ -76,15 +79,82 @@ ul.horizontal li a.focus
     height:24px;
 }
 
-.container.main
-{
-    position:relative;
-    top:25px;
+.cc-nav-wrap {
+    background: #6dcff6;
+    margin-bottom: 20px;
+}
+.cc-nav {
+    margin: 0 auto;
+    width: 940px;
+    text-align: right;
+    position: relative;
+}
+.cc-nav li {
+    list-style-type:none;
+    display: inline-block;
+    position: relative;
+}
+.cc-nav li a {
+    color: white;
+    background: #8ed8f8;
+    display: inline-block;
+    padding: 5px 40px;
+    border-right: 2px solid white;
+    margin-left: -4px;
+    text-align: center;
+}
+.cc-nav li a:hover {
+    background: #00c0f3;
+    text-decoration: none;
+}
+.cc-nav li a span {
+    height: 9px;
+    background: url(../images/arrow_cc-nav-selected.png) center center no-repeat;
+    position: absolute;
+    display: none;
+    z-index: 100;
+    top: 28px;
+    left: 0;
+    width: 100%; 
+}
+.cc-nav li a.nav-focus {
+    background: #00c0f3;
+    font-weight: bold;
+}
+.cc-nav li a.nav-focus span {
+    display: block;
+}
+.cc-nav li:first-child a {
+    border-left: 2px solid white;
+}
+.cc-nav li ul {
+    position: absolute;
+    right: 20px;
+    bottom: -53px;
+}
+.cc-nav li ul a {
+    border-right: none;
+    text-align: left;
+    margin-left: 0;
+    color: #999;
+    padding: 0;
+    background: transparent;
+    margin-left: 5px;
+    padding-left: 5px;
+    border-left: 1px solid #999;
+    font-size: 12px;
+}
+.cc-nav li ul a:hover {
+    color: #333;
+}
+.cc-nav li ul li:first-child a {
+    border-left: none;
+}
+.cc-nav li ul a:hover {
+    background: transparent;
 }
 
-.cc-nav{ text-align:center;}
-
-#cc-nav{ margin:10px 0;}
+#cc-nav{ width: 940px; margin:5px auto;}
 #cc-nav ul
 {
     list-style:none;
@@ -296,7 +366,11 @@ footer li
 #how-it-works ul li.step-5{color:#48e100;}
 
 
-#pages{ min-height: 250px;}
+#pages{ 
+    width: 940px;
+    margin: 0 auto;
+    min-height: 250px;
+}
 
 #questions,
 #archive-questions
@@ -764,7 +838,9 @@ margin-right: -10px;
 {
     display:none;
     min-height:300px;
-    margin:10px 0;
+
+    width: 940px;
+    margin: 10px auto;
 }
 /*
 #disqus-controls{
@@ -878,17 +954,17 @@ footer
 .submit-wrap .carrot {
     position: absolute;
     top: 25px;
-    left: -18px;
+    left: -17px;
     width: 20px;
     height: 24px;
     background: url(../images/carrot.png) no-repeat;
 }
 .submit-question-text
 {
-    height:60px;
+    height:56px;
     background: #fffbfe;
     width: 580px !important;
-    border: 2px solid #f00ed3 !important;
+    border: 3px solid #ff0066 !important;
     font-size: 20px;
     font-weight: normal;
     line-height: 28px;
@@ -898,16 +974,16 @@ footer
     -webkit-box-shadow: none !important;
 }
 ::-webkit-input-placeholder {
-       color: #b7a6b5;
+       color: #ccc;
     font-style: italic;
 }
 :-moz-placeholder {  
-       color: #b7a6b5;  
+       color: #ccc;  
     font-style: italic;
 }
 /*for ie7/8 */
 .placeholder {
-       color: #b7a6b5;  
+       color: #ccc;  
     font-style: italic;
 }
 .submit-sequence
@@ -1047,6 +1123,18 @@ li.investigation-story
     position: absolute;
     bottom: 18px;
     right: 8px;
+    background: #ccc;
+    color: white;
+    font-weight: bold;
+    border: none;
+    text-shadow: none;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#cc-nav .question-form .btn:hover {
+    color: #F06;
 }
 .container .btn-primary,
 #disqus-add-comment { 
@@ -1135,6 +1223,7 @@ extra random styles*/
     list-style: none;
     display: inline-block;
     overflow:hidden;
+    vertical-align: top;
 }
 .carousel .slide-wrapper-lite{
     left:-300px;
@@ -1218,7 +1307,7 @@ extra random styles*/
 .carousel h2,
 .carousel p {
     color: white;
-    text-shadow: 2px 2px 4px #333;
+    text-shadow: 1px 1px 4px #333;
     filter: progid:DXImageTransform.Microsoft.Glow(color=#333333, strength=2);
 }
 .carousel .slide-wrapper{

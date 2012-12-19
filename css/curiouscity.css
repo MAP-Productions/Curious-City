@@ -614,6 +614,12 @@ padding-top:2px;
 
 }
 
+.question-text .author{
+    position: absolute;
+    right: 0;
+    top: 70px;
+}
+
 
 
 .rank-corner

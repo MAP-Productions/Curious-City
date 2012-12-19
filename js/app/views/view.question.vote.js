@@ -98,7 +98,7 @@
                     "<a href='#' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Vote\", \"\"]);' ><i class='vote'></i></a>"+
                     "<div class='span8 question-text'>"+
                         "<h2><%= question %></h2>"+
-                        "<p>Asked by <%= name %></p>"+
+                        "<p class = 'author'>Asked by <%= name %></p>"+
                     "</div>"+
                 "</div>";
             }
@@ -114,7 +114,7 @@
                 if(this.voted_this) html += "<a href='#'><i class='vote hover'></i></a>";
                 html += "<div class='span8 question-text'>"+
                         "<h2><a class='question-link' href='#!/archive/question/"+this.model.id+"' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Click on Question\", \"\"]);'><%= question %></a></h2>"+
-                        "<p>Asked by <%= name %></p>"+
+                        "<p class='author'>Asked by <%= name %></p>"+
                         "<div class='comment-count'><a href='#!/archive/question/"+this.model.id+"' onClick='_gaq.push([\"_trackEvent\", \"CC-Vote\", \"Click on Discuss\", \"\"]);' class='question-link'>Discuss <i class='icon-comment'></i></a></div>"+
                     "</div>"+
                 "</div>";

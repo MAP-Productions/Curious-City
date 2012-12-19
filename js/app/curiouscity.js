@@ -76,7 +76,6 @@ this.curiouscity = {
                 {
                     _this.showDisqus();
                     $('.nav-focus').removeClass('nav-focus');
-                    $('#nav-archive').addClass('nav-focus');
                     _this.loadSingleQuestion(questionID);
                     
                 },
@@ -161,9 +160,11 @@ this.curiouscity = {
         {
             console.log('hide disqus');
             $('.disqus-wrapper').hide();
+            $('#current-investigations-wrapper').show();
         },
         showDisqus : function()
         {
+            $('#current-investigations-wrapper').hide();
             $('#discussion').show();
             $('#conversation-headline').html("If WBEZ investigates this question, what should we consider? What's your experience with this?");
             console.log('show disqus');
@@ -173,6 +174,7 @@ this.curiouscity = {
         hideDiscussion : function(){
             $('#discussion').hide();
         },
+        
 
     
         loadInvestigated:function(){
@@ -372,7 +374,10 @@ this.curiouscity = {
                 questionsCollection,
                 filteredQuestions,
                 questionView,
+                updateCategory,
                 investigatedView;
+
+            updateCategory = this.category != category;
 
             this.page=page;
             this.category = _.isUndefined(category) ? "all" :category;
@@ -422,31 +427,38 @@ this.curiouscity = {
 
         
             $('#'+page+'-page #archive-questions').empty();
-            $('#main-carousel .slide-wrapper').empty();
+            if(updateCategory){
+                $('#main-carousel .slide-wrapper').empty();
+            }
+            
+            
             _.each( _.toArray(questionsCollection) ,function(question){
                 questionView = new Questions.Views.archive({model:question});
                 $('#'+page+'-page #archive-questions').append(questionView.render().el);
-                if(question.get('featured')>0){
+                if(question.get('featured')>0&&updateCategory){
                     investigatedView = new Questions.Views.Investigated({model:question});
                     $('.slide-wrapper').append(investigatedView.render().el);
                 }
             });
-            console.log($('.slide-wrapper li').length+ "is no of slides");
-            numFeatured = $('.slide-wrapper li').length;
-            if(numFeatured === 0){
-                $('#main-carousel').hide();
-            }
-            else if(numFeatured==1){
-                $('#main-carousel .slide-arrow').hide();
-                $('#main-carousel .slide-wrapper').css({'left':0});
-            } else {
-                if(numFeatured==2){
-                    $('#main-carousel .slide-wrapper').append($('#main-carousel .slide-wrapper').html());
+            
+            if(updateCategory){
+                numFeatured = $('.slide-wrapper li').length;
+                if(numFeatured === 0){
+                    $('#main-carousel').hide();
                 }
-                $('#main-carousel').show();
-                $('#main-carousel .slide-arrow').show();
-                $('#main-carousel .slide-wrapper').css({'left':-940});
+                else if(numFeatured==1){
+                    $('#main-carousel .slide-arrow').hide();
+                    $('#main-carousel .slide-wrapper').css({'left':0});
+                } else {
+                    if(numFeatured==2){
+                        $('#main-carousel .slide-wrapper').append($('#main-carousel .slide-wrapper').html());
+                    }
+                    $('#main-carousel').show();
+                    $('#main-carousel .slide-arrow').show();
+                    $('#main-carousel .slide-wrapper').css({'left':-940});
+                }
             }
+            
         
         
         },
@@ -482,6 +494,13 @@ this.curiouscity = {
             question.fetch({
                 success : function(){
                     _this.displaySingleQuestion( question );
+                    var isA = question.get('badge')=="answered"||question.get('badge')=="investigated"||question.get('answered') ==1 ||question.get('timelinekey') !=="";
+
+                    if(isA){
+                        $('#nav-answered').addClass('nav-focus');
+                    } else {
+                        $('#nav-archive').addClass('nav-focus');
+                    }
                 }
             });
             return false;

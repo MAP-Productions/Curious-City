@@ -430,7 +430,7 @@
                                 <li>
                                     <div class='faq-question'>What happens if my question is in a voting round and doesn’t win? Will it still get answered?</div>
                                     <p>
-                                        Questions that don’t get picked for one voting round could still make into other rounds down the line. We’ll be in touch if and when that happens. But WBEZ editors keep an eye on our question archive, too, so some questions might inspire independent stories or segments on our locally-produced programs such as 848, Worldview or The Afternoon Shift. When that happens, we’ll be in touch and post the content we create to your question’s page. Similarly, sometimes our reporters may have answered your question in WBEZ’s coverage before you even asked it! For example, Jake asked, “What happened to all of the people who lived in Cabrini Green?” and earlier in that same week, WBEZ devoted an hour of coverage to this very question. We’ll post content that relates to your question as we find it in the comments section of your question. 
+                                        Questions that don’t get picked for one voting round could still make into other rounds down the line. We’ll be in touch if and when that happens. But WBEZ editors keep an eye on our question archive, too, so some questions might inspire independent stories or segments on our locally-produced programs such as The Morning Shift, Worldview or The Afternoon Shift. When that happens, we’ll be in touch and post the content we create to your question’s page. Similarly, sometimes our reporters may have answered your question in WBEZ’s coverage before you even asked it! For example, Jake asked, “What happened to all of the people who lived in Cabrini Green?” and earlier in that same week, WBEZ devoted an hour of coverage to this very question. We’ll post content that relates to your question as we find it in the comments section of your question. 
                                     </p><p>
                                         And there’s another way your question may be answered ‒ by the public! Anyone is able to comment on the questions in the archive. So if you know the answer to someone else’s question, don’t be shy! Let them know the information you have, and whenever possible, cite your sources. 
                                     </p>
@@ -457,7 +457,7 @@
 
             <div >
                 <div class="row">
-                    <div class="span4">
+                    <div class="span4" id="current-investigations-wrapper">
                         <div class="side-link">
                              <span class="current-investigations">Current Investigations</span>
                         </div>

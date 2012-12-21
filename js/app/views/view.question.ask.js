@@ -124,7 +124,8 @@
                 this.model.set({'categories':cats});
                 this.model.save({},{
                     success: function( model, response ){
-                        curiouscity.app.router.navigate( "!/archive/question/"+response.id, { trigger: true });
+                        console.log(model,response);
+                        curiouscity.app.router.navigate( "!/archive/question/"+model.id, { trigger: true });
                     }
                 });
                 $('#ask-back').hide();

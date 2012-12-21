@@ -144,13 +144,11 @@ this.curiouscity = {
         
         hideTwitter : function()
         {
-            console.log('hide twitter');
             $('.twitter-wrapper').hide();
         },
         showTwitter : function()
         {
             $('#discussion').show();
-            console.log('show twitter');
             $('#conversation-headline').html('What people are saying:');
             this.hideDisqus();
             $('.twitter-wrapper').show();
@@ -158,7 +156,6 @@ this.curiouscity = {
 
         hideDisqus : function()
         {
-            console.log('hide disqus');
             $('.disqus-wrapper').hide();
             $('#current-investigations-wrapper').show();
         },
@@ -167,7 +164,6 @@ this.curiouscity = {
             $('#current-investigations-wrapper').hide();
             $('#discussion').show();
             $('#conversation-headline').html("If WBEZ investigates this question, what should we consider? What's your experience with this?");
-            console.log('show disqus');
             this.hideTwitter();
             $('.disqus-wrapper').show();
         },
@@ -178,7 +174,6 @@ this.curiouscity = {
 
     
         loadInvestigated:function(){
-            console.log('loading featured');
             var Questions = curiouscity.module("questions"),
                 questionsCollection,
                 investigatedQuestionData;
@@ -284,7 +279,6 @@ this.curiouscity = {
         /********** PREVIOUS VOTE PAGE ***********/
         
         loadPrevious : function(id){
-            console.log('loading previous?');
             var _this=this,
                 Questions = curiouscity.module("questions");
 

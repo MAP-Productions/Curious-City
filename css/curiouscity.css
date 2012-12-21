@@ -818,6 +818,7 @@ min-width: 105px;
 
 .cc-modal {
     display:none;
+    z-index:20000000000;
 }
 .timeline-modal {
     width:971px;

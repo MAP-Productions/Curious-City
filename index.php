@@ -664,14 +664,14 @@
     
     </div><!-- .container -->
     
-    <!-- Application source DEV -->
+    <!-- Application source DEV 
         <script src="js/data/questions-dist.js" ></script> 
         <script data-main="js/loaders/index.js" src="js/lib/require.js"></script>
-
-    <!-- Production 
+    -->
+    <!-- Production -->
 
         <script src="js/data/questions.js#<?php echo rand(0,1000000);?>" ></script> 
-         <script data-main="js_min/index.js" src="js/lib/require.js"></script>  -->
+         <script data-main="js_min/index.js" src="js/lib/require.js"></script>  
 
 </body>
 </html>

@@ -9,7 +9,7 @@
 
         url: function()
         {
-            return 'php/ttask.php';
+            return 'php/ask.php';
         },
 
         initialize : function()

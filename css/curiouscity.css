@@ -1500,3 +1500,28 @@ margin:-7px;
     font-weight: 600;
 }
 
+
+/*reporter's notebook styles*/
+.reporters-notebook {
+    margin: 40px 15px;
+}
+.reporters-notebook h2 {
+    font-size: 13px;
+    position: absolute;
+    margin-left: 55px;
+    color: #3ec6f3;
+    margin-top: 13px;
+    width: 219px;
+}
+.reporters-notebook p {
+    position: absolute;
+    line-height: ;
+    margin: 40px 0 0 55px;
+    line-height: 14px;
+}
+.reporters-notebook a.notebook {
+    width: 283px;
+    display: block;
+    position: relative;
+    z-index: 10;
+}

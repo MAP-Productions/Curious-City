@@ -126,8 +126,7 @@
                     $ids=array();
                     
                     
-                    $publicColumns=array('id','name','question','anonymous','imageurl','imageusername','imageattribution','comments',"timelinekey", 'badge', 'investigated', 'reporter', 'updatecount', 'dateuploaded');
-                    
+                    $publicColumns=array('id','name','question','categories','anonymous','imageurl','imageusername','imageattribution','comments','timelinekey','featured','answered','badge', 'investigated', 'reporter', 'updatecount', 'dateuploaded');
                     
                     foreach($rowData as $customEntry) {
                      if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();

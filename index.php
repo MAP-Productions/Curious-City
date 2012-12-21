@@ -134,11 +134,11 @@
         
         </header>
         <div class="cc-nav-wrap">
-            <ul class='cc-nav'>
+            <ul id="cc-nav" class='cc-nav'>
                 <li><a href="#!/vote/current" id='nav-vote'>Up for Voting <span></span></a></li>
                 <!--li><a href="#!/ask" id='nav-ask'>ask a<br />question</a></li-->
                 <li><a href="#!/answered/all" id='nav-answered'>Answered &amp; Investigating <span></span></a>
-                    <?php /*
+                    
                     <ul>
                         <li><a href="#!/answered/how-we-live">How We Live</a></li>
                         <li><a href="#!/answered/history">History</a></li>
@@ -147,11 +147,11 @@
                         <li><a href="#!/answered/governance">Governance</a></li>
                         <li><a href="#!/answered/urban-planning">Urban Planning</a></li>
                         <li><a href="#!/answered/whats-it-like">What's it Like to...</a></li>
+                        <li class="carrot"></li>
                     </ul>
-                    */ ?>
                 </li>
                 <li><a href="#!/archive/all" id='nav-archive'>New and Unanswered <span></span></a>
-                    <?php /*
+                   
                     <ul>
                         <li><a href="#!/archive/how-we-live">How We Live</a></li>
                         <li><a href="#!/archive/history">History</a></li>
@@ -160,8 +160,8 @@
                         <li><a href="#!/archive/governance">Governance</a></li>
                         <li><a href="#!/archive/urban-planning">Urban Planning</a></li>
                         <li><a href="#!/archive/whats-it-like">What's it Like to...</a></li>
+                        <li class="carrot"></li>
                     </ul>
-                    */ ?>
                 </li>
             </ul>
         </div>

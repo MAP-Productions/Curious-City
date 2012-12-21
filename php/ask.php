@@ -42,6 +42,7 @@
                 'dateuploaded'=>time(),
                 'date'=> date('F jS, Y h:i:s A'),
                 'id'=>$rowCount,
+                'qid'=>$rowCount,
                 'comments'=>'0',
                 'votes'=>'0',
                 'approved'=>'1',

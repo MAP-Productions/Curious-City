@@ -125,7 +125,7 @@
                 this.model.save({},{
                     success: function( model, response ){
                         console.log(model,response);
-                        curiouscity.app.router.navigate( "!/archive/question/"+model.id, { trigger: true });
+                        curiouscity.app.router.navigate( "!/archive/question/"+response.qid, { trigger: true });
                     }
                 });
                 $('#ask-back').hide();

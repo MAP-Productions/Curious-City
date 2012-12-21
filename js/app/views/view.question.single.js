@@ -76,7 +76,7 @@
                         "<span class='image-credits' ><a target='blank' href='<%= imageattribution %>'><%= imageusername %></a></span>"+
                     "</div>";
              if(this.model.get('timelinekey') !== ""&&this.model.get('answered')==1 ){
-                html +="<div class='reporters-notebook'><h2>Reporter's Notebook</h2><a href='#' class='notebook'> <img src = 'images/reporter_notebook.png'/></a></div>";
+                html +="<div class='reporters-notebook'><h2>Reporter's Notebook</h2><p>See how the investigation unfolded!</p><a href='#' class='notebook'> <img src = 'images/reporter_notebook.png'/></a></div>";
              }
 
 

@@ -242,8 +242,7 @@ this.curiouscity = {
                         $('#vote-page .sub h5').html("Select the question you’d most like answered.");
                 
                 }
-                $('#previous-winner').find('h2').html("LAST WEEK'S WINNER!");
-                $('#previous-winner').find('h5').html('<a href ="#!/previous/'+this.questionsCollection.previous.id+'" >"'+this.questionsCollection.previousWinner.question.substr(0,100)+'..."</a>');
+		$('#previous-round').html("<i class='arrow left'></i>  Voting for "+this.questionsCollection.previous.title).attr('href','#!/previous/'+this.questionsCollection.previous.id);
             }
         },
         

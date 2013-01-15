@@ -172,7 +172,7 @@
                     <div class="row">
                         <div class="span4">
                             <div class="side-link">
-                                <a href="#!/previous/od0"><span class="arrow left grey"></span> Previous Voting Round</a>
+                                <a href="#" id="previous-round"><span class="arrow left grey"></span></a>
                             </div>
                         </div>
                         <div class="span8 right-col">

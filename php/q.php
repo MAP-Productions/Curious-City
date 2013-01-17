@@ -77,7 +77,7 @@
                  if(in_array($customEntry->getColumnName(),$publicColumns))$question[ $customEntry->getColumnName() ]=$customEntry->getText();
             }
         }
-        
+        if($question['anonymous']==1)$question['name']='Anonymous';
         $question['next']=-1;
         if($question['id']>1) {
             //$question['next']=$question['id']-1;

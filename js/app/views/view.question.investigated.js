@@ -37,7 +37,7 @@
                         '<div class="slide-text">'+
                             '<h1><%= question %></h1>'+
                             '<h2>Asked by <%= name %> | Reported by <%= reporter %></h2>'+
-                            '<p><em>Last updated <%= date %></em></p>'+
+                           // '<p><em>Last updated <%= date %></em></p>'+
                         '</div>'+
                         '<img src="<%= imageurl %>" alt="">'+
                     '</div>';

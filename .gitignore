@@ -17,4 +17,5 @@ Libraries/
 .DS_Store
 jda_data.*
 !.gitignore
+php/config.php
 

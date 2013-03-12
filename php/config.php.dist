@@ -1,3 +1,4 @@
 $email = "";
 $password = "";
-$spreadsheetKey= "";
+$spreadsheetKey = "";
+$flickrKey = "";

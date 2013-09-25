@@ -17,6 +17,15 @@ Copy htaccess and index dist files.
 ```bash
 cp .htaccess.dist .htaccess
 cp index.html.dist index.html
+```
+
+To install PHP:
+
+Copy php/config.php.dist to php/config.dist and enter appropriate credentials
+
+Set up cron job to run php/questions_update.php
+
+///////////////
 
 The Curious City web application is a JavaScript application structured within the Backbone.js framework:
 

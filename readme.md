@@ -25,6 +25,12 @@ Copy php/config.php.dist to php/config.dist and enter appropriate credentials
 
 Set up cron job to run php/questions_update.php
 
+To compile JavaScript/CSS run
+
+```
+node aggregate_final.js
+```
+
 ///////////////
 
 The Curious City web application is a JavaScript application structured within the Backbone.js framework:

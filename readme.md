@@ -8,7 +8,7 @@ Clone repository into web directory and checkout master branch.
 
 ```bash
 cd /path/to/web
-git clone https://github.com/MAP-Productions/Curious-City.git .
+git clone https://github.com/MAP-Productions/Curious-City.git
 git checkout master
 ```
 

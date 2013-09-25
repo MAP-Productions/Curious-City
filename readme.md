@@ -12,12 +12,6 @@ git clone https://github.com/MAP-Productions/Curious-City.git .
 git checkout master
 ```
 
-Copy index dist files.
-
-```bash
-cp index.html.dist index.html
-```
-
 To install PHP:
 
 Copy php/config.php.dist to php/config.dist and enter appropriate credentials

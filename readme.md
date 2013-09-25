@@ -31,10 +31,6 @@ The Curious City web application is a JavaScript application structured within t
 
 http://backbonejs.org/
 
-The main application is within the following directory:
-
-Curious-City / js / app 
-
 The backend uses Google Docs Spreadsheets API:
 
 https://developers.google.com/google-apps/spreadsheets/

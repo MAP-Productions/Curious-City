@@ -20,7 +20,7 @@ To automate question retrieval:
 
 * Set up a cron job to run php/questions_update.php
 
-The app runs from aggregated JavaScript files located in js_min. To update these files after making edits to js files located in the app folder run
+The app runs from aggregated JavaScript files located in js_min. To update these files after making edits to js files located in the app folder run:
 
 ```
 node aggregate_final.js

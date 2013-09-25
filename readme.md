@@ -1,6 +1,6 @@
 ## Production Install
 
-Tested on Linux version 2.6.18-028stab101.1 with Apache/2.2.22. Be sure mod_rewrite module is installed. htaccess file may need to be modified if app is not run from root directory.
+Tested on Linux version 2.6.18-028stab101.1 with Apache/2.2.22. Be sure mod_rewrite module is installed.
 
 ### Using ssh and git
 
@@ -12,10 +12,9 @@ git clone https://github.com/MAP-Productions/Curious-City.git .
 git checkout master
 ```
 
-Copy htaccess and index dist files.
+Copy index dist files.
 
 ```bash
-cp .htaccess.dist .htaccess
 cp index.html.dist index.html
 ```
 

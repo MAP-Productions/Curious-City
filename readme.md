@@ -31,6 +31,8 @@ To compile JavaScript/CSS run
 node aggregate_final.js
 ```
 
+(This requires NodeJS to be installed. For the latest version of Node, vist: http://nodejs.org/)
+
 ///////////////
 
 The Curious City web application is a JavaScript application structured within the Backbone.js framework:

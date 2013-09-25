@@ -1,6 +1,6 @@
 ## Production Install
 
-Tested on Linux version 2.6.18-028stab101.1 with Apache/2.2.22. Be sure mod_rewrite module is installed.
+Tested on Linux version 2.6.18-028stab101.1 with Apache/2.2.22.
 
 ### Using ssh and git
 

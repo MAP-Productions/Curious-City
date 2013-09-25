@@ -4,7 +4,7 @@ Tested on Linux version 2.6.18-028stab101.1 with Apache/2.2.22. Be sure mod_rewr
 
 ### Using ssh and git
 
-Clone repository into web directory and checkout stable branch.
+Clone repository into web directory and checkout master branch.
 
 ```bash
 cd /path/to/web

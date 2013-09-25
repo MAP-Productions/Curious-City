@@ -14,9 +14,9 @@ git checkout master
 
 To connect to Google Spreadsheets API:
 
-Copy php/config.php.dist to php/config.dist and enter appropriate credentials
+* Copy php/config.php.dist to php/config.dist and enter appropriate credentials
 
-Set up cron job to run php/questions_update.php
+To automate question retrieval, set up a cron job to run php/questions_update.php
 
 To compile JavaScript/CSS run
 
